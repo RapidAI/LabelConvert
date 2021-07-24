@@ -6,3 +6,7 @@
 
 
 按需要修改 builtin_meta.py 中的类别信息
+
+
+
+资料-  coco voc 格式 : http://www.xyu.ink/3612.html
