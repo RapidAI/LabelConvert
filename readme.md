@@ -16,14 +16,14 @@
 
 coco 数据集格式快速训练 方法 for YOLOX
 
-.1 clone yolox
+1. clone yolox
   git clone  https://github.com/Megvii-BaseDetection/YOLOX
   cd YOLOX
   
-.2 安装 必要的库 
+2. 安装 必要的库 
   pip install -r requirements.txt
   
-.3 安装apex
+3. 安装apex
 
 注意，需要保证机器上安装的cuda版本和pytorch编译时的一致
 ```
