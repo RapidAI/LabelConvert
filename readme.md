@@ -33,6 +33,12 @@ cd apex
 
 pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 ```
+
+## 数据准备
+
+将coco 目录link到YOLOX/dataset/COCO 
+
+比如：  ln -s /path/to/COCO  /path/to/YOLOX/dataset/COCO
 ## 命令行
 python tools/train.py -n yolox-s -d 1 -b 8 --fp16 -o yolox-m  yolox-l yolox-x  yolox_s
 
