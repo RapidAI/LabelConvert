@@ -25,13 +25,13 @@ coco 数据集格式快速训练 方法 for YOLOX
   
 .3 安装apex
 
-  `
+```
 git clone https://github.com/NVIDIA/apex
 
 cd apex
 
 pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
-`
+```
 ## 命令行
 python tools/train.py -n yolox-s -d 1 -b 8 --fp16 -o yolox-m  yolox-l yolox-x  yolox_s
 
