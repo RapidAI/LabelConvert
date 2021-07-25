@@ -23,7 +23,12 @@
 2. 安装 必要的库 
   pip install -r requirements.txt
   
-3. 安装apex
+3. 安装  YOLOX
+```
+python setup.py  develop
+```
+  
+4. 安装apex
 
 注意，需要保证机器上安装的cuda版本和pytorch编译时的一致
 ```
