@@ -40,6 +40,8 @@ pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp
 
 例如：  ln -s /path/to/COCO  /path/to/YOLOX/dataset/COCO
 ## 命令行
-python tools/train.py -n yolox-s -d 1 -b 8 --fp16 -o yolox-m  yolox-l yolox-x  yolox_s
 
+```
+python tools/train.py -n yolox-s -d 1 -b 8 --fp16 -o yolox-m  yolox-l yolox-x  yolox_s
+```
 d 1表示一块显卡， -b 8 表示批大小，如果多块卡，这儿的8要换成  显卡数＊８
