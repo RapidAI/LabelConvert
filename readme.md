@@ -14,7 +14,7 @@
 
 资料-  coco voc 格式 : http://www.xyu.ink/3612.html
 
-coco 数据集格式快速训练 方法 for YOLOX
+## coco 数据集格式快速训练 方法 for YOLOX
 
 1. clone yolox
   git clone  https://github.com/Megvii-BaseDetection/YOLOX
