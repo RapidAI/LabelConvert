@@ -1,8 +1,8 @@
 import json
 import os, cv2
 
-train_json = 'E:\\workprj\\mousika\\ocr\\yolo2coco\\data\\coco\\annotations\\instance_train2021.json'
-train_path = 'E:\\workprj\\mousika\\ocr\\yolo2coco\\data\\coco\\train2021'
+train_json = 'E:\\workprj\\mousika\\ocr\\yolo2coco\\data\\coco\\annotations\\instance_train2017.json'
+train_path = 'E:\\workprj\\mousika\\ocr\\yolo2coco\\data\\coco\\train2017'
 
 def visualization_bbox1(num_image, json_path,img_path):# 需要画的第num副图片， 对应的json路径和图片路径
     with open(json_path) as annos:

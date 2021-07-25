@@ -23,8 +23,8 @@ class YOLO2COCO:
         self.src_data=genconfig_data
         self.src=Path(self.src_data).parent
         self.dst=Path(self.src) / "coco"
-        self.coco_train="train2021"
-        self.coco_valid="valid2021"
+        self.coco_train="train2017"
+        self.coco_valid="valid2017"
         self.coco_annotation="annotations"
         self.coco_train_json=Path(self.dst)/Path(self.coco_annotation) / f'instance_{self.coco_train}.json'
         self.coco_valid_json=Path(self.dst)/Path(self.coco_annotation) / f'instance_{self.coco_valid}.json'
