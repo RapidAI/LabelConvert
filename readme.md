@@ -24,6 +24,7 @@ coco 数据集格式快速训练 方法 for YOLOX
   pip install -r requirements.txt
   
 .3 安装apex
+
 注意，需要保证机器上安装的cuda版本和pytorch编译时的一致
 ```
 git clone https://github.com/NVIDIA/apex
