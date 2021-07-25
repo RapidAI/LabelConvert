@@ -26,8 +26,8 @@ class YOLO2COCO:
         self.coco_train="train2017"
         self.coco_valid="valid2017"
         self.coco_annotation="annotations"
-        self.coco_train_json=Path(self.dst)/Path(self.coco_annotation) / f'instance_{self.coco_train}.json'
-        self.coco_valid_json=Path(self.dst)/Path(self.coco_annotation) / f'instance_{self.coco_valid}.json'
+        self.coco_train_json=Path(self.dst)/Path(self.coco_annotation) / f'instances_{self.coco_train}.json'
+        self.coco_valid_json=Path(self.dst)/Path(self.coco_annotation) / f'instances_{self.coco_valid}.json'
         self.type = 'instances'
         self.categories = []
         self.info = {
