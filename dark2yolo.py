@@ -103,7 +103,7 @@ class YOLO2COCO:
             content.append(file.strip())
         
         return content
-
+# derived from https://github.com/zhiqwang/yolov5-rt-stack/blob/master/yolort/utils/yolo2coco.py 
     def _get_annotation(self,vertex_info, height, width):
 
         cx, cy, w, h = [float(i) for i in vertex_info]
