@@ -183,15 +183,23 @@ class YOLO2COCO:
         annotations=[]
         annotation_id=1
         for img_id,file in   enumerate(file_lists,1):
+            if not Path(file).exists():
+                continue
             txt= str(Path(file).parent / Path(file).stem) + ".txt"  # from 0,  0 readhead, 1 stamp
-            shutil.copyfile(file,target_img_path/ Path(file).name)
+
+            tmpname=str(img_id)
+            prefix="0"*(12- len(tmpname))
+            destfilename=prefix+tmpname+".jpg"
             imgsrc = cv.imread(file) # 读取图片
+            cv.imwrite(str(target_img_path/destfilename),imgsrc)
+            # shutil.copyfile(file,target_img_path/ )
+    
             image = imgsrc.shape #  获取图片宽高及通道数
             height = image[0]
             width = image[1]
             images.append({
                 'date_captured': '2021',
-                'file_name': str(Path(file).name),
+                'file_name': destfilename,
                 'id': img_id,
                            
                 'height': height,
