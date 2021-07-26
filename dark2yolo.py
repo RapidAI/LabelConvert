@@ -143,7 +143,7 @@ class YOLO2COCO:
                             'iscrowd': 0,
                             'image_id': img_id,
                             'bbox': bbox,
-                            'category_id': category_id,
+                            'category_id': str(int(category_id)+1),
                             'id': annotation_id,
                         })
                 annotation_id+=1
