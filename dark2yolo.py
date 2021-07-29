@@ -22,9 +22,10 @@ class YOLO2COCO:
     def __init__(self,genconfig_data): 
         self.src_data=genconfig_data
         self.src=Path(self.src_data).parent
-        self.dst=Path(self.src) / "coco"
+        self.dst=Path(self.src) / "coco_dataset"
         self.coco_train="train2017"
-        self.coco_valid="valid2017"
+        self.coco_valid="val2017"
+        self.coco_images="images"
         self.coco_annotation="annotations"
         self.coco_train_json=Path(self.dst)/Path(self.coco_annotation) / f'instances_{self.coco_train}.json'
         self.coco_valid_json=Path(self.dst)/Path(self.coco_annotation) / f'instances_{self.coco_valid}.json'
@@ -45,12 +46,15 @@ class YOLO2COCO:
         if not Path(self.dst).is_dir():
             Path(self.dst).mkdir()
 
-        if not (Path(self.dst )/ self.coco_train).is_dir():
-            ( Path(self.dst)/self.coco_train).mkdir()
+        if not Path(self.dst/ self.coco_images).is_dir():
+            Path(self.dst/self.coco_images).mkdir()
+
+        if not (Path(self.dst )/self.coco_images/ self.coco_train).is_dir():
+            ( Path(self.dst)/self.coco_images/self.coco_train).mkdir()
 
         
-        if not (Path(self.dst )/ self.coco_valid).is_dir():
-            ( Path(self.dst)/self.coco_valid).mkdir()
+        if not Path(self.dst /self.coco_images/ self.coco_valid).is_dir():
+            ( Path(self.dst)/self.coco_images/self.coco_valid).mkdir()
 
         
         if not (Path(self.dst )/ self.coco_annotation).is_dir():
@@ -169,10 +173,10 @@ class YOLO2COCO:
         self.name_lists=self.get_list(self.names)
         self.get_category()
         
-        dest_path_train=Path(self.dst)/self.coco_train
+        dest_path_train=Path(self.dst)/ self.coco_images/self.coco_train
         self.gen_dataset(self.train_files,dest_path_train,self.coco_train_json)
 
-        dest_path_valid=Path(self.dst)/self.coco_valid
+        dest_path_valid=Path(self.dst)/self.coco_images/self.coco_valid
         
         self.gen_dataset(self.valid_files,dest_path_valid,self.coco_valid_json)
 
