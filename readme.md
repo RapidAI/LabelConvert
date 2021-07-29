@@ -1,6 +1,11 @@
 本程序用于将darknet的训练数据转换为coco格式，以便让yolox 使用。
 
 
+## 使用方法：
+```
+python yolo2coco.py --data_path /path/to/darknet/data_config.data 
+```
+
 
 文档参见 ： [csdn博客](https://blog.csdn.net/znsoft/article/details/119059967)
 
