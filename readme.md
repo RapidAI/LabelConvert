@@ -3,7 +3,12 @@
 
 ## 使用方法：
 ```
+#for darknet data
 python yolo2coco.py --data_path /path/to/darknet/data_config.data 
+
+#for  yolo5 data 
+
+python yolo2coco.py --data_path /path/to/yolo5/dataset/dir
 ```
 
 上面的data_config.data是以下内容：
