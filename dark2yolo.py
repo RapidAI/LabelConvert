@@ -181,6 +181,8 @@ class DARKNET2COCO:
         if os.path.exists(self.valid):
             self.gen_dataset(self.valid_files,dest_path_valid,self.coco_valid_json)
 
+        print("The output directory is :",str(self.dst))
+
 #  https://cocodataset.org/#format-data
     def gen_dataset(self,file_lists,target_img_path,target_json):
            
@@ -196,7 +198,10 @@ class DARKNET2COCO:
             prefix="0"*(12- len(tmpname))
             destfilename=prefix+tmpname+".jpg"
             imgsrc = cv.imread(file) # 读取图片
-            cv.imwrite(str(target_img_path/destfilename),imgsrc)
+            if Path(file).suffix.lower() == ".jpg":
+                shutil.copyfile(file,target_img_path/destfilename)
+            else:
+                cv.imwrite(str(target_img_path/destfilename),imgsrc)
             # shutil.copyfile(file,target_img_path/ )
     
             image = imgsrc.shape #  获取图片宽高及通道数
