@@ -18,7 +18,7 @@ names=qmobj.names
 
 '''
 
-class YOLO2COCO:
+class DARKNET2COCO:
     def __init__(self,genconfig_data): 
         self.src_data=genconfig_data
         self.src=Path(self.src_data).parent
@@ -169,7 +169,8 @@ class YOLO2COCO:
         self.valid= Path( self.src_data).parent / Path(self.getstring("valid")).name 
         self.names=Path( self.src_data).parent / Path(self.getstring("names")).name 
         self.train_files=self.get_path(self.train)
-        self.valid_files=self.get_path(self.valid)
+        if os.path.exists(self.valid):
+            self.valid_files=self.get_path(self.valid)
         self.name_lists=self.get_list(self.names)
         self.get_category()
         
@@ -177,8 +178,8 @@ class YOLO2COCO:
         self.gen_dataset(self.train_files,dest_path_train,self.coco_train_json)
 
         dest_path_valid=Path(self.dst)/self.coco_images/self.coco_valid
-        
-        self.gen_dataset(self.valid_files,dest_path_valid,self.coco_valid_json)
+        if os.path.exists(self.valid):
+            self.gen_dataset(self.valid_files,dest_path_valid,self.coco_valid_json)
 
 #  https://cocodataset.org/#format-data
     def gen_dataset(self,file_lists,target_img_path,target_json):
@@ -229,7 +230,65 @@ class YOLO2COCO:
             json.dump(json_data, f, ensure_ascii=False)
 
       
+class YOLO2COCO(DARKNET2COCO):
+    def __init__(self,srcdir):
+        self.srcdir=srcdir
+        self.srcimgdir=Path(srcdir)/"images/train2017"
+        self.srclabeldir=Path(srcdir)/"labels/train2017"
+      
+        
+        if not self.srcimgdir.exists() or not self.srclabeldir.exists():
+            raise "wrong path, not found labels or images dir."
+        self.dstdir=Path(srcdir)/"darknet"
+        self.gen_config=self.dstdir/"gen_config.data"
+        self.train=self.dstdir/"gen_train.txt"
 
+        self.dstimgdir=self.dstdir/"images"/"train"
+        if not self.dstimgdir.exists():
+            self.dstimgdir.mkdir(parents=True, exist_ok=True)
+
+        self.classlist=set()
+        self.classname=self.dstdir/"classes.names"
+        self.convert2darknet()
+    
+    def convert2darknet(self):
+        imgfiles= self.srcimgdir.rglob("*.jpg")
+        with open(self.train,"w") as f:
+            for file in imgfiles:
+                labelfile=self.srclabeldir/file.stem
+                labelfile=str(labelfile)+".txt"
+                dstimg= self.dstimgdir/file.name
+                dstlabel=self.dstimgdir/Path(labelfile).name
+                shutil.copy(file,dstimg)
+                shutil.copy(labelfile,dstlabel)
+                f.write(str(dstimg)+"\n")
+                # get class number
+                with open(labelfile,"r") as lf:
+                    lines=lf.readlines()
+                    for line in lines:
+                        info=line.split()
+                        self.classlist.add(int(info[0]))
+
+        if self.train.exists():
+            with open(self.gen_config,"w") as f:
+                line="classes="+str(max(self.classlist)+1)+"\n"
+                f.write(line)
+                f.write("train=gen_train.txt"+"\n")
+                f.write("names=classes.names"+"\n")
+                f.write("valid=none\n")
+                
+
+            with open(self.classname,"w") as f:
+                maxclass=max(self.classlist)
+                for clsid in range(maxclass+1):
+                    f.write("class_"+str(clsid)+"\n")
+                    
+                
+            
+            
+    def generate(self):
+        super(YOLO2COCO,self).__init__(str(self.gen_config))
+        super(YOLO2COCO,self).generate()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Datasets converter from yolo to coco', add_help=False)
@@ -241,5 +300,8 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    converter = YOLO2COCO(args.data_path)
+    if Path(args.data_path).is_file():
+        converter = DARKNET2COCO(args.data_path)
+    else:
+        converter = YOLO2COCO(args.data_path)
     converter.generate()
