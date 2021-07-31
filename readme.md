@@ -1,4 +1,4 @@
-本程序用于将darknet的训练数据转换为coco格式，以便让yolox 使用。
+本程序用于将darknet或yolo5的训练数据转换为coco格式，以便让yolox 使用。
 
 
 ## 使用方法：
