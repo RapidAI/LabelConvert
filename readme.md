@@ -35,6 +35,6 @@
 
 #### 可视化COCO格式标注格式
   ```shell
-  python COCO_visual.py --json_path dataset/YOLOV5_COCO_format/annotations/instances_train2017.json \
+  python coco_visual.py --json_path dataset/YOLOV5_COCO_format/annotations/instances_train2017.json \
                         --img_dir dataset/YOLOV5_COCO_format/train2017
   ```
