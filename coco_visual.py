@@ -1,10 +1,15 @@
+# !/usr/bin/env python
+# -*- encoding: utf-8 -*-
+# @File: coco_visual.py
 import json
-import os, cv2
+import os
+import argparse
 
-train_json = 'E:\\workprj\\mousika\\ocr\\yolo2coco\\data\\coco\\annotations\\instance_train2017.json'
-train_path = 'E:\\workprj\\mousika\\ocr\\yolo2coco\\data\\coco\\train2017'
+import cv2
 
-def visualization_bbox1(num_image, json_path,img_path):# 需要画的第num副图片， 对应的json路径和图片路径
+
+def visualization_bbox(num_image, json_path, img_path):
+    # 需要画的第num副图片， 对应的json路径和图片路径
     with open(json_path) as annos:
         annotation_json = json.load(annos)
 
@@ -23,8 +28,8 @@ def visualization_bbox1(num_image, json_path,img_path):# 需要画的第num副�
         if  annotation_json['annotations'][i]['image_id'] == id:
             num_bbox = num_bbox + 1
             x, y, w, h = annotation_json['annotations'][i]['bbox']  # 读取边框
-            image = cv2.rectangle(image, (int(x), int(y)), (int(x + w), int(y + h)), (0, 255, 255), 2)
-        
+            image = cv2.rectangle(image, (int(x), int(y)),
+                                  (int(x + w), int(y + h)), (0, 255, 255), 2)
 
     print('The unm_bbox of the display image is:', num_bbox)
 
@@ -38,5 +43,11 @@ def visualization_bbox1(num_image, json_path,img_path):# 需要画的第num副�
     cv2.imshow(image_name, image)
     cv2.waitKey(0)
 
+
 if __name__ == "__main__":
-   visualization_bbox1(293, train_json, train_path)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--json_path', type=str, required=True)
+    parser.add_argument('--img_dir', type=str, required=True)
+    args = parser.parse_args()
+
+    visualization_bbox(1, args.json_path, args.img_dir)

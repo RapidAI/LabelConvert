@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse
 import json
 import configparser as cfg
-import os 
+import os
 import shutil
 # pathlib https://www.cnblogs.com/sigai/p/8074329.html
 # coco 数据格式 http://www.xyu.ink/3612.html
@@ -19,7 +19,7 @@ names=qmobj.names
 '''
 
 class DARKNET2COCO:
-    def __init__(self,genconfig_data): 
+    def __init__(self,genconfig_data):
         self.src_data=genconfig_data
         self.src=Path(self.src_data).parent
         self.dst=Path(self.src) / "coco_dataset"
@@ -52,11 +52,11 @@ class DARKNET2COCO:
         if not (Path(self.dst )/self.coco_images/ self.coco_train).is_dir():
             ( Path(self.dst)/self.coco_images/self.coco_train).mkdir()
 
-        
+
         if not Path(self.dst /self.coco_images/ self.coco_valid).is_dir():
             ( Path(self.dst)/self.coco_images/self.coco_valid).mkdir()
 
-        
+
         if not (Path(self.dst )/ self.coco_annotation).is_dir():
             ( Path(self.dst)/self.coco_annotation).mkdir()
 
@@ -68,7 +68,7 @@ class DARKNET2COCO:
 
     def initcfg(self):
         if  not self.ready:
-            return 
+            return
         self.cnf = cfg.RawConfigParser()
         with open(self.src_data) as f:
             file_content = '[dummy_section]\n' + f.read()
@@ -105,9 +105,9 @@ class DARKNET2COCO:
             allfiles=f.readlines()
         for file in allfiles:
             content.append(file.strip())
-        
+
         return content
-# derived from https://github.com/zhiqwang/yolov5-rt-stack/blob/master/yolort/utils/yolo2coco.py 
+# derived from https://github.com/zhiqwang/yolov5-rt-stack/blob/master/yolort/utils/yolo2coco.py
     def _get_annotation(self,vertex_info, height, width):
 
         cx, cy, w, h = [float(i) for i in vertex_info]
@@ -123,14 +123,14 @@ class DARKNET2COCO:
 
         bbox = [x, y, w, h]
         return segmentation, bbox, area
-        
+
     def read_annotation(self,txtfile,img_id,height,width,annotation_id):
         annotation=[]
 
         if not Path(txtfile).exists():
             return {},0
         with open(txtfile) as f:
-                allinfo=f.readlines()      
+                allinfo=f.readlines()
 
         for line in allinfo:
                 label_info=line.replace('\n', '').replace('\r', '')
@@ -139,7 +139,7 @@ class DARKNET2COCO:
                     continue
 
                 category_id, vertex_info = label_info[0], label_info[1:]
-               
+
                 segmentation, bbox, area = self._get_annotation(vertex_info, height, width)
                 annotation.append( {
                             'segmentation': segmentation,
@@ -151,7 +151,7 @@ class DARKNET2COCO:
                             'id': annotation_id,
                         })
                 annotation_id+=1
-              
+
         return annotation,annotation_id
 
     def get_category(self):
@@ -165,15 +165,15 @@ class DARKNET2COCO:
 
     def generate(self):
         self.classnum= self.getint("classes")
-        self.train= Path( self.src_data).parent / Path(self.getstring("train")).name 
-        self.valid= Path( self.src_data).parent / Path(self.getstring("valid")).name 
-        self.names=Path( self.src_data).parent / Path(self.getstring("names")).name 
+        self.train= Path( self.src_data).parent / Path(self.getstring("train")).name
+        self.valid= Path( self.src_data).parent / Path(self.getstring("valid")).name
+        self.names=Path( self.src_data).parent / Path(self.getstring("names")).name
         self.train_files=self.get_path(self.train)
         if os.path.exists(self.valid):
             self.valid_files=self.get_path(self.valid)
         self.name_lists=self.get_list(self.names)
         self.get_category()
-        
+
         dest_path_train=Path(self.dst)/ self.coco_images/self.coco_train
         self.gen_dataset(self.train_files,dest_path_train,self.coco_train_json)
 
@@ -185,7 +185,7 @@ class DARKNET2COCO:
 
 #  https://cocodataset.org/#format-data
     def gen_dataset(self,file_lists,target_img_path,target_json):
-           
+
         images=[]
         annotations=[]
         annotation_id=1
@@ -203,7 +203,7 @@ class DARKNET2COCO:
             else:
                 cv.imwrite(str(target_img_path/destfilename),imgsrc)
             # shutil.copyfile(file,target_img_path/ )
-    
+
             image = imgsrc.shape #  获取图片宽高及通道数
             height = image[0]
             width = image[1]
@@ -211,7 +211,7 @@ class DARKNET2COCO:
                 'date_captured': '2021',
                 'file_name': destfilename,
                 'id': img_id,
-                           
+
                 'height': height,
                 'width': width,
             })
@@ -220,7 +220,7 @@ class DARKNET2COCO:
                 new_anno,annotation_id=self.read_annotation(txt,img_id,height,width,annotation_id)
                 if len(new_anno)>0:
                     annotations.extend(new_anno)
-          
+
 
 
         json_data = {
@@ -234,14 +234,14 @@ class DARKNET2COCO:
         with open(target_json, 'w', encoding='utf-8') as f:
             json.dump(json_data, f, ensure_ascii=False)
 
-      
+
 class YOLO2COCO(DARKNET2COCO):
     def __init__(self,srcdir):
         self.srcdir=srcdir
         self.srcimgdir=Path(srcdir)/"images/train2017"
         self.srclabeldir=Path(srcdir)/"labels/train2017"
-      
-        
+
+
         if not self.srcimgdir.exists() or not self.srclabeldir.exists():
             raise "wrong path, not found labels or images dir."
         self.dstdir=Path(srcdir)/"darknet"
@@ -255,7 +255,7 @@ class YOLO2COCO(DARKNET2COCO):
         self.classlist=set()
         self.classname=self.dstdir/"classes.names"
         self.convert2darknet()
-    
+
     def convert2darknet(self):
         imgfiles= self.srcimgdir.rglob("*.jpg")
         with open(self.train,"w") as f:
@@ -281,19 +281,17 @@ class YOLO2COCO(DARKNET2COCO):
                 f.write("train=gen_train.txt"+"\n")
                 f.write("names=classes.names"+"\n")
                 f.write("valid=none\n")
-                
+
 
             with open(self.classname,"w") as f:
                 maxclass=max(self.classlist)
                 for clsid in range(maxclass+1):
                     f.write("class_"+str(clsid)+"\n")
-                    
-                
-            
-            
+
     def generate(self):
         super(YOLO2COCO,self).__init__(str(self.gen_config))
         super(YOLO2COCO,self).generate()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Datasets converter from yolo to coco', add_help=False)

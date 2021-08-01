@@ -1,0 +1,1 @@
+{"info": {"year": 2021, "version": "1.0", "description": "For object detection", "date_created": "2021"}, "images": [], "licenses": [{"id": 1, "name": "GNU General Public License v3.0", "url": "https://github.com/zhiqwang/yolov5-rt-stack/blob/master/LICENSE"}], "type": "instances", "annotations": [], "categories": [{"id": 1, "name": "stamp", "supercategory": "stamp"}]}
