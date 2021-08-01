@@ -40,7 +40,7 @@ class DARKNET2COCO:
         self.licenses = [{
             'id': 1,
             'name': 'GNU General Public License v3.0',
-            'url': 'https://github.com/zhiqwang/yolov5-rt-stack/blob/master/LICENSE',
+            'url': 'https://github.com/RapidAI/YOLO2COCO/LICENSE',
         }]
 
         if not Path(self.dst).is_dir():
