@@ -1,1 +1,1 @@
-dataset/darknet/images/train/images(13).jpg
+images/valid/images(3).jpg

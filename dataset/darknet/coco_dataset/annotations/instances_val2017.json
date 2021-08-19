@@ -1,1 +1,59 @@
-{"info": {"year": 2021, "version": "1.0", "description": "For object detection", "date_created": "2021"}, "images": [], "licenses": [{"id": 1, "name": "GNU General Public License v3.0", "url": "https://github.com/zhiqwang/yolov5-rt-stack/blob/master/LICENSE"}], "type": "instances", "annotations": [], "categories": [{"id": 1, "name": "stamp", "supercategory": "stamp"}]}
+{
+    "info": {
+        "year": 2021,
+        "version": "1.0",
+        "description": "For object detection",
+        "date_created": "2021"
+    },
+    "images": [
+        {
+            "date_captured": "2021",
+            "file_name": "000000000001.jpg",
+            "id": 1,
+            "height": 248,
+            "width": 203
+        }
+    ],
+    "licenses": [
+        {
+            "id": 1,
+            "name": "GNU General Public License v3.0",
+            "url": "https://github.com/RapidAI/YOLO2COCO/LICENSE"
+        }
+    ],
+    "type": "instances",
+    "annotations": [
+        {
+            "segmentation": [
+                [
+                    18.999988000000002,
+                    16.999904,
+                    183.000034,
+                    16.999904,
+                    183.000034,
+                    178.999952,
+                    18.999988000000002,
+                    178.999952
+                ]
+            ],
+            "area": 26568.015324002205,
+            "iscrowd": 0,
+            "image_id": 1,
+            "bbox": [
+                18.999988000000002,
+                16.999904,
+                164.000046,
+                162.000048
+            ],
+            "category_id": 1,
+            "id": 6
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "stamp",
+            "supercategory": "stamp"
+        }
+    ]
+}
