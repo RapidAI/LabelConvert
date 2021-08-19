@@ -151,9 +151,9 @@
     ],
     "categories": [
         {
+            "supercategory": "stamp",
             "id": 1,
-            "name": "stamp",
-            "supercategory": "stamp"
+            "name": "stamp"
         }
     ]
 }

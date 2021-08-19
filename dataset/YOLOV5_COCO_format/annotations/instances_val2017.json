@@ -46,14 +46,14 @@
                 162.000048
             ],
             "category_id": 1,
-            "id": 1
+            "id": 6
         }
     ],
     "categories": [
         {
+            "supercategory": "stamp",
             "id": 1,
-            "name": "stamp",
-            "supercategory": "stamp"
+            "name": "stamp"
         }
     ]
 }

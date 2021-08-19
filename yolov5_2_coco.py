@@ -8,7 +8,7 @@ from pathlib import Path
 import json
 import shutil
 
-import cv2 as cv
+import cv2
 
 
 def read_txt(txt_path):
@@ -47,6 +47,7 @@ class YOLOV5ToCOCO(object):
         # 构建json内容结构
         self.type = 'instances'
         self.categories = []
+        self.annotation_id = 1
 
         # 读取类别数
         self._get_category()
@@ -68,9 +69,9 @@ class YOLOV5ToCOCO(object):
         class_list = read_txt(self.src_data / 'classes.txt')
         for i, category in enumerate(class_list, 1):
             self.categories.append({
+                'supercategory': category,
                 'id': i,
                 'name': category,
-                'supercategory': category,
             })
 
     def generate(self):
@@ -96,7 +97,6 @@ class YOLOV5ToCOCO(object):
         """
         images = []
         annotations = []
-        annotation_id = 1
         for img_id, img_path in enumerate(img_paths, 1):
             img_path = Path(img_path)
 
@@ -106,7 +106,7 @@ class YOLOV5ToCOCO(object):
             label_path = str(img_path.parent.parent
                              / 'labels' / f'{img_path.stem}.txt')
 
-            imgsrc = cv.imread(str(img_path))
+            imgsrc = cv2.imread(str(img_path))
             height, width = imgsrc.shape[:2]
 
             dest_file_name = f'{img_id:012d}.jpg'
@@ -115,7 +115,7 @@ class YOLOV5ToCOCO(object):
             if img_path.suffix.lower() == ".jpg":
                 shutil.copyfile(img_path, save_img_path)
             else:
-                cv.imwrite(str(save_img_path), imgsrc)
+                cv2.imwrite(str(save_img_path), imgsrc)
 
             images.append({
                 'date_captured': '2021',
@@ -127,8 +127,7 @@ class YOLOV5ToCOCO(object):
 
             if Path(label_path).exists():
                 new_anno = self.read_annotation(label_path, img_id,
-                                                height, width,
-                                                annotation_id)
+                                                height, width)
                 if len(new_anno) > 0:
                     annotations.extend(new_anno)
                 else:
@@ -148,10 +147,11 @@ class YOLOV5ToCOCO(object):
             json.dump(json_data, f, ensure_ascii=False)
 
     def read_annotation(self, txtfile, img_id,
-                        height, width, annotation_id):
+                        height, width):
         annotation = []
         allinfo = read_txt(txtfile)
         for label_info in allinfo:
+            # 遍历一张图中不同标注对象
             label_info = label_info.split(" ")
             if len(label_info) < 5:
                 continue
@@ -166,9 +166,9 @@ class YOLOV5ToCOCO(object):
                 'image_id': img_id,
                 'bbox': bbox,
                 'category_id': int(category_id)+1,
-                'id': annotation_id,
+                'id': self.annotation_id,
             })
-            annotation_id += 1
+            self.annotation_id += 1
         return annotation
 
     @staticmethod
