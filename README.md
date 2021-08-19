@@ -39,5 +39,6 @@
                         --json_path dataset/YOLOV5_COCO_format/annotations/instances_train2017.json \
                         --img_dir dataset/YOLOV5_COCO_format/train2017
   ```
-  
-  
+
+#### 相关资料
+- [MSCOCO数据标注详解](https://blog.csdn.net/wc781708249/article/details/79603522)
