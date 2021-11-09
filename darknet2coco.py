@@ -33,7 +33,7 @@ class DARKNET2COCO:
         }
         self.licenses = [{
             'id': 1,
-            'name': 'GNU General Public License v3.0',
+            'name': 'Apache License v2.0',
             'url': 'https://github.com/RapidAI/YOLO2COCO/LICENSE',
         }]
 
