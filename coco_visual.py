@@ -1,10 +1,11 @@
 # !/usr/bin/env python
 # -*- encoding: utf-8 -*-
 # @File: coco_visual.py
-import json
-import random
-import os
 import argparse
+import json
+import os
+import platform
+import random
 
 import cv2
 
@@ -13,13 +14,18 @@ def visualization_bbox(num_image, json_path, img_path):
     with open(json_path) as annos:
         annotation_json = json.load(annos)
 
-    print('the annotation_json num_key is:',len(annotation_json))  # 统计json文件的关键字长度
-    print('the annotation_json key is:', annotation_json.keys()) # 读出json文件的关键字
-    print('the annotation_json num_images is:', len(annotation_json['images'])) # json文件中包含的图片数量
+    # 统计json文件的关键字长度
+    print('the annotation_json num_key is:', len(annotation_json))
+
+    # 读出json文件的关键字
+    print('the annotation_json key is:', annotation_json.keys())
+
+    # json文件中包含的图片数量
+    print('the annotation_json num_images is:', len(annotation_json['images']))
 
     # 获取所有类别数
     categories = annotation_json['categories']
-    categories_dict = {c['id']:c['name'] for c in categories}
+    categories_dict = {c['id']: c['name'] for c in categories}
     class_nums = len(categories_dict.keys())
     color = [(random.randint(0, 255), random.randint(0, 255),
               random.randint(0, 255)) for _ in range(class_nums)]
@@ -33,7 +39,7 @@ def visualization_bbox(num_image, json_path, img_path):
     annotations = annotation_json['annotations']
     num_bbox = 0
     for anno in annotations:
-        if  anno['image_id'] == img_id:
+        if anno['image_id'] == img_id:
             num_bbox = num_bbox + 1
 
             class_id = anno['category_id']
@@ -58,16 +64,24 @@ def visualization_bbox(num_image, json_path, img_path):
 
     print('The unm_bbox of the display image is:', num_bbox)
 
-    cv2.namedWindow(image_name, 0)
-    cv2.resizeWindow(image_name, 1000, 1000)
-    cv2.imshow(image_name, image)
-    cv2.waitKey(0)
+    cur_os = platform.system()
+    if cur_os == 'Windows':
+        cv2.namedWindow(image_name, 0)
+        cv2.resizeWindow(image_name, 1000, 1000)
+        cv2.imshow(image_name, image)
+        cv2.waitKey(0)
+    else:
+        # 保存可视化图即可
+        save_path = f'visul_{num_image}.jpg'
+        cv2.imwrite(save_path, image)
+        print(f'The {save_path} has been saved the current director.')
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--vis_num', type=int, default=1,
-                        help="可视化哪一张")
+                        help="visual which one")
+
     parser.add_argument('--json_path', type=str, required=True)
     parser.add_argument('--img_dir', type=str, required=True)
     args = parser.parse_args()
