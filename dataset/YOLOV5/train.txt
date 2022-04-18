@@ -1,1 +1,1 @@
-dataset/YOLOV5/stamp/images/images(3).jpg
+dataset/YOLOV5/images/images(3).jpg

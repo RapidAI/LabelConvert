@@ -18,20 +18,34 @@
 
 #### YOLOV5格式数据→COCO
 - YOLOV5训练格式目录结构（详情参见`dataset/YOLOV5`）：
-  ```text
-  YOLOV5
-  ├── classes.txt
-  ├── xxxx
-  │   ├── images
-  │   └── labels
-  ├── train.txt
-  └── val.txt
-  ```
+    ```text
+    YOLOV5
+    ├── classes.txt
+    ├── images
+    │   ├── images(13).jpg
+    │   └── images(3).jpg
+    ├── labels
+    │   ├── images(13).txt
+    │   └── images(3).txt
+    ├── train.txt
+    └── val.txt
+    ```
 
 - 转换
   ```shell
   python yolov5_2_coco.py --dir_path dataset/YOLOV5
   ```
+- 转换后目录结构（详情参见`dataset/YOLOV5_COCO_format`）：
+    ```text
+    YOLOV5_COCO_format
+    ├── annotations
+    │   ├── instances_train2017.json
+    │   └── instances_val2017.json
+    ├── train2017
+    │   └── 000000000001.jpg
+    └── val2017
+        └── 000000000001.jpg
+    ```
 
 #### 可视化COCO格式标注格式
   ```shell

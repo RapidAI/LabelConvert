@@ -4,22 +4,28 @@
 # @Author: SWHL
 # @Contact: liekkaskono@163.com
 import argparse
-from pathlib import Path
 import json
 import shutil
+from pathlib import Path
 
 import cv2
+from tqdm import tqdm
 
 
 def read_txt(txt_path):
     with open(str(txt_path), 'r', encoding='utf-8') as f:
-        data = f.readlines()
-    data = list(map(lambda x: x.rstrip('\n'), data))
+        data = list(map(lambda x: x.rstrip('\n'), f))
     return data
 
 
 def mkdir(dir_path):
     Path(dir_path).mkdir(parents=True, exist_ok=True)
+
+
+def verify_exists(file_path):
+    file_path = Path(file_path)
+    if not file_path.exists():
+        raise FileNotFoundError(f'The {file_path} is not exists!!!')
 
 
 class YOLOV5ToCOCO(object):
@@ -28,16 +34,24 @@ class YOLOV5ToCOCO(object):
         self.src = self.src_data.parent
         self.train_txt_path = self.src_data / 'train.txt'
         self.val_txt_path = self.src_data / 'val.txt'
+        self.classes_path = self.src_data / 'classes.txt'
+
+        # 文件存在性校验
+        verify_exists(self.src_data / 'images')
+        verify_exists(self.src_data / 'labels')
+        verify_exists(self.train_txt_path)
+        verify_exists(self.val_txt_path)
+        verify_exists(self.classes_path)
 
         # 构建COCO格式目录
         self.dst = Path(self.src) / f"{Path(self.src_data).name}_COCO_format"
         self.coco_train = "train2017"
         self.coco_val = "val2017"
         self.coco_annotation = "annotations"
-        self.coco_train_json = self.dst / self.coco_annotation \
-                                   / f'instances_{self.coco_train}.json'
-        self.coco_val_json = self.dst / self.coco_annotation \
-                                   / f'instances_{self.coco_val}.json'
+        self.coco_train_json = self.dst / self.coco_annotation / \
+            f'instances_{self.coco_train}.json'
+        self.coco_val_json = self.dst / self.coco_annotation / \
+            f'instances_{self.coco_val}.json'
 
         mkdir(self.dst)
         mkdir(self.dst / self.coco_train)
@@ -66,7 +80,7 @@ class YOLOV5ToCOCO(object):
         }]
 
     def _get_category(self):
-        class_list = read_txt(self.src_data / 'classes.txt')
+        class_list = read_txt(self.classes_path)
         for i, category in enumerate(class_list, 1):
             self.categories.append({
                 'supercategory': category,
@@ -76,32 +90,29 @@ class YOLOV5ToCOCO(object):
 
     def generate(self):
         self.train_files = read_txt(self.train_txt_path)
-        if Path(self.val_txt_path).exists():
-            self.valid_files = read_txt(self.val_txt_path)
+        self.valid_files = read_txt(self.val_txt_path)
 
         train_dest_dir = Path(self.dst) / self.coco_train
         self.gen_dataset(self.train_files, train_dest_dir,
-                         self.coco_train_json)
+                         self.coco_train_json, mode='train')
 
         val_dest_dir = Path(self.dst) / self.coco_val
-        if Path(self.val_txt_path).exists():
-            self.gen_dataset(self.valid_files, val_dest_dir,
-                             self.coco_val_json)
+        self.gen_dataset(self.valid_files, val_dest_dir,
+                         self.coco_val_json, mode='val')
 
         print(f"The output directory is: {str(self.dst)}")
 
-    def gen_dataset(self, img_paths, target_img_path, target_json):
+    def gen_dataset(self, img_paths, target_img_path, target_json, mode):
         """
         https://cocodataset.org/#format-data
 
         """
         images = []
         annotations = []
-        for img_id, img_path in enumerate(img_paths, 1):
+        for img_id, img_path in enumerate(tqdm(img_paths, desc=mode), 1):
             img_path = Path(img_path)
 
-            if not img_path.exists():
-                continue
+            verify_exists(img_path)
 
             label_path = str(img_path.parent.parent
                              / 'labels' / f'{img_path.stem}.txt')
@@ -133,7 +144,7 @@ class YOLOV5ToCOCO(object):
                 else:
                     raise ValueError(f'{label_path} is empty')
             else:
-                raise FileExistsError(f'{label_path} not exists')
+                raise FileNotFoundError(f'{label_path} not exists')
 
         json_data = {
             'info': self.info,
