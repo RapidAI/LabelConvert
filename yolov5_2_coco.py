@@ -157,11 +157,10 @@ class YOLOV5ToCOCO(object):
         with open(target_json, 'w', encoding='utf-8') as f:
             json.dump(json_data, f, ensure_ascii=False)
 
-    def read_annotation(self, txtfile, img_id,
-                        height, width):
+    def read_annotation(self, txt_file, img_id, height, width):
         annotation = []
-        allinfo = read_txt(txtfile)
-        for label_info in allinfo:
+        all_info = read_txt(txt_file)
+        for label_info in all_info:
             # 遍历一张图中不同标注对象
             label_info = label_info.split(" ")
             if len(label_info) < 5:
@@ -208,7 +207,7 @@ class YOLOV5ToCOCO(object):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Datasets converter from YOLOV5 to COCO')
     parser.add_argument('--dir_path', type=str,
-                        default='datasets/tmp/YOLOV5',
+                        default='datasets/YOLOV5',
                         help='Dataset root path')
     args = parser.parse_args()
 
