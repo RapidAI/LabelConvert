@@ -17,6 +17,7 @@
   ```
 
 #### YOLOV5格式数据→COCO
+- 值得一提的是，由标注软件[labelme](https://github.com/wkentaro/labelme)标注所得yolo格式数据，也可由该脚本做转换。前提是满足以下数据目录结构。
 - YOLOV5训练格式目录结构（详情参见`dataset/YOLOV5`）：
     ```text
     YOLOV5
