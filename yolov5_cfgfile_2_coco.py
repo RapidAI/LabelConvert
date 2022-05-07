@@ -65,6 +65,7 @@ class YOLOV5CFG2COCO(object):
         # 构建json内容结构
         self.type = 'instances'
         self.categories = []
+        self._get_category()
         self.annotation_id = 1
 
         self.info = {
@@ -87,11 +88,11 @@ class YOLOV5CFG2COCO(object):
                 'id': i,
                 'name': category,
             })
-        self.categories.append({
-                'supercategory': 'Background',
-                'id': 0,
-                'name': 'Background',
-            })
+        # self.categories.append({
+        #         'supercategory': 'Background',
+        #         'id': 0,
+        #         'name': 'Background',
+        #     })
 
     def generate(self):
         self.train_files = self.getfiles(self.train_path)
@@ -101,9 +102,9 @@ class YOLOV5CFG2COCO(object):
         self.gen_dataset(self.train_files, train_dest_dir,
                          self.coco_train_json, mode='train')
 
-        # val_dest_dir = Path(self.dst) / self.coco_val
-        # self.gen_dataset(self.valid_files, val_dest_dir,
-        #                  self.coco_val_json, mode='val')
+        val_dest_dir = Path(self.dst) / self.coco_val
+        self.gen_dataset(self.valid_files, val_dest_dir,
+                         self.coco_val_json, mode='val')
 
         print(f"The output directory is: {str(self.dst)}")
 
