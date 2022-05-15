@@ -48,6 +48,22 @@
         └── 000000000001.jpg
     ```
 
+#### YOLOV5 yaml数据描述文件转→COCO
+
+- YOLOV5 yaml 数据文件需要包含：
+    ```text
+    YOLOV5 yaml
+    ├── path(str, the root path)
+    ├── train(Train sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..])
+    ├── val(val sets, similar as train)
+
+    ```
+
+- 转换
+  ```shell
+  python yolov5_cfgfile_2_coco.py --cfg_file dataset/sample.yaml
+  ```
+
 #### 可视化COCO格式标注格式
   ```shell
   python coco_visual.py --vis_num 1 \
