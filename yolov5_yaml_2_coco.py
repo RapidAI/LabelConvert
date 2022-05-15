@@ -1,16 +1,15 @@
 # !/usr/bin/env python
 # -*- encoding: utf-8 -*-
-
 import argparse
-import json
-from webbrowser import BackgroundBrowser
-import yaml
-import shutil
 import glob
+import json
 import os
+import shutil
+import time
 from pathlib import Path
 
 import cv2
+import yaml
 from tqdm import tqdm
 
 
@@ -25,30 +24,36 @@ def mkdir(dir_path):
 
 
 def verify_exists(file_path):
-    file_path = Path(file_path)
+    file_path = Path(file_path).resolve()
     if not file_path.exists():
         raise FileNotFoundError(f'The {file_path} is not exists!!!')
 
+
 class YOLOV5CFG2COCO(object):
-    def __init__(self, cfg_file):
-        ROOT = Path(cfg_file).resolve().parent
-        with open(cfg_file, 'r', encoding="UTF-8") as f:
-            data_cfg = yaml.safe_load(f)
-        path = Path(data_cfg.get('path') or '')  # optional 'path' default to '.'
-        if not path.is_absolute():
-            path = (ROOT / path).resolve()
-        for k in 'train', 'val', 'test':
-            if data_cfg.get(k):  # prepend path
-                data_cfg[k] = str(path / data_cfg[k]) if isinstance(data_cfg[k], str) else [str(path / x) for x in data_cfg[k]]
-        if 'names' not in data_cfg:
-            data_cfg['names'] = [f'class{i}' for i in range(data_cfg['nc'])]  # assign class names if missing
-        self.train_path, self.val_path, self.test_path = (data_cfg.get(x) for x in ('train', 'val', 'test'))
-        nc = data_cfg['nc']
-        self.names = data_cfg['names']
-        assert len(self.names) == nc, f'{len(self.names)} names found for nc={nc} dataset in {cfg_file}'  # check
+    def __init__(self, yaml_path):
+        verify_exists(yaml_path)
+        with open(yaml_path, 'r', encoding="UTF-8") as f:
+            self.data_cfg = yaml.safe_load(f)
+
+        self.root_dir = Path(yaml_path).parent.parent
+        self.root_data_dir = Path(self.data_cfg.get('path'))
+
+        self.train_path = self._get_data_dir('train')
+        self.val_path = self._get_data_dir('val')
+
+        nc = self.data_cfg['nc']
+
+        if 'names' in self.data_cfg:
+            self.names = self.data_cfg.get('names')
+        else:
+            # assign class names if missing
+            self.names = [f'class{i}' for i in range(self.data_cfg['nc'])]
+
+        assert len(self.names) == nc, \
+            f'{len(self.names)} names found for nc={nc} dataset in {yaml_path}'
 
         # 构建COCO格式目录
-        self.dst = ROOT / f"{Path(cfg_file).stem}_COCO_format"
+        self.dst = self.root_dir / f"{Path(self.root_data_dir).stem}_COCO_format"
         self.coco_train = "train2017"
         self.coco_val = "val2017"
         self.coco_annotation = "annotations"
@@ -68,11 +73,12 @@ class YOLOV5CFG2COCO(object):
         self._get_category()
         self.annotation_id = 1
 
+        cur_year = time.strftime('%Y', time.localtime(time.time()))
         self.info = {
-            'year': 2021,
+            'year': int(cur_year),
             'version': '1.0',
             'description': 'For object detection',
-            'date_created': '2021',
+            'date_created': cur_year,
         }
 
         self.licenses = [{
@@ -81,22 +87,31 @@ class YOLOV5CFG2COCO(object):
             'url': 'https://github.com/RapidAI/YOLO2COCO/LICENSE',
         }]
 
+    def _get_data_dir(self, mode):
+        data_dir = self.data_cfg.get(mode)
+        if data_dir:
+            if isinstance(data_dir, str):
+                full_path = [str(self.root_data_dir / data_dir)]
+            elif isinstance(data_dir, list):
+                full_path = [str(self.root_data_dir / one_dir)
+                             for one_dir in data_dir]
+            else:
+                raise TypeError(f'{data_dir} is not str or list.')
+        else:
+            raise ValueError(f'{mode} dir is not in the yaml.')
+        return full_path
+
     def _get_category(self):
-        for i, category in enumerate(self.names, 1):
+        for i, category in enumerate(self.names, start=1):
             self.categories.append({
                 'supercategory': category,
                 'id': i,
                 'name': category,
             })
-        # self.categories.append({
-        #         'supercategory': 'Background',
-        #         'id': 0,
-        #         'name': 'Background',
-        #     })
 
     def generate(self):
-        self.train_files = self.getfiles(self.train_path)
-        self.valid_files = self.getfiles(self.val_path)
+        self.train_files = self.get_files(self.train_path)
+        self.valid_files = self.get_files(self.val_path)
 
         train_dest_dir = Path(self.dst) / self.coco_train
         self.gen_dataset(self.train_files, train_dest_dir,
@@ -108,23 +123,29 @@ class YOLOV5CFG2COCO(object):
 
         print(f"The output directory is: {str(self.dst)}")
 
-    def getfiles(self, path):
-        IMG_FORMATS = 'bmp', 'dng', 'jpeg', 'jpg', 'mpo', 'png', 'tif', 'tiff', 'webp'  # include image suffixes
+    def get_files(self, path):
+        # include image suffixes
+        IMG_FORMATS = ['bmp', 'dng', 'jpeg', 'jpg',
+                       'mpo', 'png', 'tif', 'tiff', 'webp']
         f = []
-        for p in path if isinstance(path, list) else [path]:
-                p = Path(p)  # os-agnostic
-                if p.is_dir():  # dir
-                    f += glob.glob(str(p / '**' / '*.*'), recursive=True)
-                    # f = list(p.rglob('*.*'))  # pathlib
-                elif p.is_file():  # file
-                    with open(p) as t:
-                        t = t.read().strip().splitlines()
-                        parent = str(p.parent) + os.sep
-                        f += [x.replace('./', parent) if x.startswith('./') else x for x in t]  # local to global path
-                        # f += [p.parent / x.lstrip(os.sep) for x in t]  # local to global path (pathlib)
-                else:
-                    raise Exception(f'{p} does not exist')
-        im_files = sorted(x.replace('/', os.sep) for x in f if x.split('.')[-1].lower() in IMG_FORMATS)
+        for p in path:
+            p = Path(p)  # os-agnostic
+            if p.is_dir():  # dir
+                f += glob.glob(str(p / '**' / '*.*'), recursive=True)
+                # f = list(p.rglob('*.*'))  # pathlib
+            elif p.is_file():  # file
+                with open(p) as t:
+                    t = t.read().strip().splitlines()
+                    parent = str(p.parent) + os.sep
+                    # local to global path
+                    f += [x.replace('./', parent)
+                          if x.startswith('./') else x for x in t]
+                    # f += [p.parent / x.lstrip(os.sep) for x in t]  # local to global path (pathlib)
+            else:
+                raise Exception(f'{p} does not exist')
+
+        im_files = sorted(x.replace('/', os.sep)
+                          for x in f if x.split('.')[-1].lower() in IMG_FORMATS)
         return im_files
 
     def gen_dataset(self, img_paths, target_img_path, target_json, mode):
@@ -134,13 +155,17 @@ class YOLOV5CFG2COCO(object):
         """
         images = []
         annotations = []
-        sa, sb = os.sep + 'images' + os.sep, os.sep + 'labels' + os.sep  # /images/, /labels/ substrings
+        sa, sb = os.sep + 'images' + os.sep, os.sep + \
+            'labels' + os.sep  # /images/, /labels/ substrings
+
         for img_id, img_path in enumerate(tqdm(img_paths, desc=mode), 1):
-            label_path = sb.join(img_path.rsplit(sa, 1)).rsplit('.', 1)[0] + '.txt'
+            label_path = sb.join(img_path.rsplit(
+                sa, 1)).rsplit('.', 1)[0] + '.txt'
+
             img_path = Path(img_path)
 
             verify_exists(img_path)
-            print(img_path)
+
             imgsrc = cv2.imread(str(img_path))
             height, width = imgsrc.shape[:2]
 
@@ -231,10 +256,10 @@ class YOLOV5CFG2COCO(object):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Datasets converter from YOLOV5 to COCO')
-    parser.add_argument('--cfg_file', type=str,
-                        default='datasets/YOLOV5',
+    parser.add_argument('--yaml_path', type=str,
+                        default='dataset/YOLOV5_yaml/sample.yaml',
                         help='Dataset cfg file')
     args = parser.parse_args()
 
-    converter = YOLOV5CFG2COCO(args.cfg_file)
+    converter = YOLOV5CFG2COCO(args.yaml_path)
     converter.generate()

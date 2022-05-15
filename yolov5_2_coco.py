@@ -7,6 +7,7 @@ import argparse
 import json
 import shutil
 from pathlib import Path
+import time
 
 import cv2
 from tqdm import tqdm
@@ -66,11 +67,12 @@ class YOLOV5ToCOCO(object):
         # 读取类别数
         self._get_category()
 
+        cur_year = time.strftime('%Y', time.localtime(time.time()))
         self.info = {
-            'year': 2021,
+            'year': int(cur_year),
             'version': '1.0',
             'description': 'For object detection',
-            'date_created': '2021',
+            'date_created': cur_year,
         }
 
         self.licenses = [{
