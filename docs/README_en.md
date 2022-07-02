@@ -9,7 +9,7 @@ English | [简体中文](../README.md)
     <a href=". /LICENSE"><img src="https://img.shields.io/badge/License-Apache%202-dfd.svg"></a>
 </p>
 
-#### YOLOV5格式数据 → COCO
+#### YOLOV5 format data → COCO
 - Some background images can be added to the training by directly placing them into the `backgroud_images` directory.
 - The conversion program will automatically scan this directory and add it to the training set, allowing seamless integration with subsequent [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) training.
 - YOLOV5 training format directory structure (see `dataset/YOLOV5` for details).
@@ -36,8 +36,7 @@ English | [简体中文](../README.md)
   - `--mode_list`: specify the generated json, provided that there is a corresponding txt file, which can be specified separately. (e.g. `-train,val,test`)
 
 - The structure of the converted directory (see `dataset/YOLOV5_COCO_format` for details)
-    ``text
-    YOLOV5_COCO_format
+    ```text
     YOLOV5_COCO_format
     ├── annotations
     │   ├── instances_train2017.json
