@@ -1,5 +1,11 @@
 ## YOLO2COCO
 
+- [YOLO2COCO](#yolo2coco)
+    - [YOLOV5格式数据 → COCO](#yolov5格式数据--coco)
+    - [darknet格式数据 → COCO](#darknet格式数据--coco)
+    - [可视化COCO格式下图像](#可视化coco格式下图像)
+    - [相关资料](#相关资料)
+
 #### YOLOV5格式数据 → COCO
 - 可以将一些背景图像加入到训练中，具体做法是：直接将背景图像放入`backgroud_images`目录即可。
 - 转换程序会自动扫描该目录，添加到训练集中，可以无缝集成后续YOLOX的训练。
@@ -84,12 +90,15 @@
   python darknet2coco.py --data_path dataset/darknet/gen_config.data
   ```
 
-#### 可视化COCO格式标注格式
+#### 可视化COCO格式下图像
   ```shell
   python coco_visual.py --vis_num 1 \
                         --json_path dataset/YOLOV5_COCO_format/annotations/instances_train2017.json \
                         --img_dir dataset/YOLOV5_COCO_format/train2017
   ```
+  - `--vis_num`：指定要查看的图像索引
+  - `--json_path`：查看图像的json文件路径
+  - `--img_dir`: 查看图像所在的目录
 
 #### 相关资料
 - [MSCOCO数据标注详解](https://blog.csdn.net/wc781708249/article/details/79603522)
