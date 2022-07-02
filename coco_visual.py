@@ -15,13 +15,13 @@ def visualization_bbox(num_image, json_path, img_path):
         annotation_json = json.load(annos)
 
     # 统计json文件的关键字长度
-    print('the annotation_json num_key is:', len(annotation_json))
+    print('The annotation_json num_key is:', len(annotation_json))
 
     # 读出json文件的关键字
-    print('the annotation_json key is:', annotation_json.keys())
+    print('The annotation_json key is:', annotation_json.keys())
 
     # json文件中包含的图片数量
-    print('the annotation_json num_images is:', len(annotation_json['images']))
+    print('The annotation_json num_images is:', len(annotation_json['images']))
 
     # 获取所有类别数
     categories = annotation_json['categories']

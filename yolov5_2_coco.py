@@ -1,4 +1,3 @@
-# !/usr/bin/env python
 # -*- encoding: utf-8 -*-
 # @File: yolov5_2_coco.py
 # @Author: SWHL
@@ -8,71 +7,64 @@ import json
 import shutil
 from pathlib import Path
 import time
+import warnings
 
 import cv2
 from tqdm import tqdm
 
 
-def read_txt(txt_path):
-    with open(str(txt_path), 'r', encoding='utf-8') as f:
-        data = list(map(lambda x: x.rstrip('\n'), f))
-    return data
-
-
-def mkdir(dir_path):
-    Path(dir_path).mkdir(parents=True, exist_ok=True)
-
-
-def verify_exists(file_path):
-    file_path = Path(file_path)
-    if not file_path.exists():
-        raise FileNotFoundError(f'The {file_path} is not exists!!!')
-
-
 class YOLOV5ToCOCO(object):
-    def __init__(self, dir_path):
-        self.src_data = Path(dir_path)
-        self.src = self.src_data.parent
-        self.train_txt_path = self.src_data / 'train.txt'
-        self.val_txt_path = self.src_data / 'val.txt'
-        self.classes_path = self.src_data / 'classes.txt'
+    def __init__(self, data_dir):
+        self.raw_data_dir = Path(data_dir)
 
-        # 文件存在性校验
-        verify_exists(self.src_data / 'images')
-        verify_exists(self.src_data / 'labels')
-        verify_exists(self.train_txt_path)
-        verify_exists(self.val_txt_path)
-        verify_exists(self.classes_path)
+        self.verify_exists(self.raw_data_dir / 'images')
+        self.verify_exists(self.raw_data_dir / 'labels')
 
-        # 构建COCO格式目录
-        self.dst = Path(self.src) / f"{Path(self.src_data).name}_COCO_format"
-        self.coco_train = "train2017"
-        self.coco_val = "val2017"
-        self.coco_annotation = "annotations"
-        self.coco_train_json = self.dst / self.coco_annotation / \
-            f'instances_{self.coco_train}.json'
-        self.coco_val_json = self.dst / self.coco_annotation / \
-            f'instances_{self.coco_val}.json'
+        save_dir_name = f'{Path(self.raw_data_dir).name}_COCO_format'
+        self.output_dir = self.raw_data_dir.parent / save_dir_name
+        self.mkdir(self.output_dir)
 
-        mkdir(self.dst)
-        mkdir(self.dst / self.coco_train)
-        mkdir(self.dst / self.coco_val)
-        mkdir(self.dst / self.coco_annotation)
+        self._init_json()
 
-        # 构建json内容结构
+    def __call__(self, mode_list: list):
+        if not mode_list:
+            return ValueError(f'mode_list is empty!!')
+
+        for mode in mode_list:
+            # Read the image txt.
+            txt_path = self.raw_data_dir / f'{mode}.txt'
+            self.verify_exists(txt_path)
+            img_list = self.read_txt(txt_path)
+            if mode == 'train':
+                img_list = self.append_bg_img(img_list)
+
+            # Create the directory of saving the new image.
+            save_img_dir = self.output_dir / f'{mode}2017'
+            self.mkdir(save_img_dir)
+
+            # Generate json file.
+            anno_dir = self.output_dir / "annotations"
+            self.mkdir(anno_dir)
+
+            save_json_path = anno_dir / f'instances_{mode}2017.json'
+            json_data = self.convert(img_list, save_img_dir, mode)
+
+            self.write_json(save_json_path, json_data)
+
+    def _init_json(self):
+        classes_path = self.raw_data_dir / 'classes.txt'
+        self.verify_exists(classes_path)
+        self.categories = self._get_category(classes_path)
+
         self.type = 'instances'
-        self.categories = []
         self.annotation_id = 1
 
-        # 读取类别数
-        self._get_category()
-
-        cur_year = time.strftime('%Y', time.localtime(time.time()))
+        self.cur_year = time.strftime('%Y', time.localtime(time.time()))
         self.info = {
-            'year': int(cur_year),
+            'year': int(self.cur_year),
             'version': '1.0',
             'description': 'For object detection',
-            'date_created': cur_year,
+            'date_created': self.cur_year,
         }
 
         self.licenses = [{
@@ -81,72 +73,37 @@ class YOLOV5ToCOCO(object):
             'url': 'https://github.com/RapidAI/YOLO2COCO/LICENSE',
         }]
 
-    def _get_category(self):
-        class_list = read_txt(self.classes_path)
+    def append_bg_img(self, img_list):
+        bg_dir = self.raw_data_dir / 'background_images'
+        if bg_dir.exists():
+            bg_img_list = list(bg_dir.iterdir())
+            for bg_img_path in bg_img_list:
+                img_list.append(str(bg_img_path))
+        return img_list
+
+    def _get_category(self, classes_path):
+        class_list = self.read_txt(classes_path)
+        categories = []
         for i, category in enumerate(class_list, 1):
-            self.categories.append({
+            categories.append({
                 'supercategory': category,
                 'id': i,
                 'name': category,
             })
+        return categories
 
-    def generate(self):
-        self.train_files = read_txt(self.train_txt_path)
-        self.valid_files = read_txt(self.val_txt_path)
+    def convert(self, img_list, save_img_dir, mode):
+        images, annotations = [], []
+        for img_id, img_path in enumerate(tqdm(img_list, desc=mode), 1):
+            image_dict = self.get_image_info(img_path, img_id, save_img_dir)
+            images.append(image_dict)
 
-        train_dest_dir = Path(self.dst) / self.coco_train
-        self.gen_dataset(self.train_files, train_dest_dir,
-                         self.coco_train_json, mode='train')
-
-        val_dest_dir = Path(self.dst) / self.coco_val
-        self.gen_dataset(self.valid_files, val_dest_dir,
-                         self.coco_val_json, mode='val')
-
-        print(f"The output directory is: {str(self.dst)}")
-
-    def gen_dataset(self, img_paths, target_img_path, target_json, mode):
-        """
-        https://cocodataset.org/#format-data
-
-        """
-        images = []
-        annotations = []
-        for img_id, img_path in enumerate(tqdm(img_paths, desc=mode), 1):
-            img_path = Path(img_path)
-
-            verify_exists(img_path)
-
-            label_path = str(img_path.parent.parent
-                             / 'labels' / f'{img_path.stem}.txt')
-
-            imgsrc = cv2.imread(str(img_path))
-            height, width = imgsrc.shape[:2]
-
-            dest_file_name = f'{img_id:012d}.jpg'
-            save_img_path = target_img_path / dest_file_name
-
-            if img_path.suffix.lower() == ".jpg":
-                shutil.copyfile(img_path, save_img_path)
-            else:
-                cv2.imwrite(str(save_img_path), imgsrc)
-
-            images.append({
-                'date_captured': '2021',
-                'file_name': dest_file_name,
-                'id': img_id,
-                'height': height,
-                'width': width,
-            })
-
-            if Path(label_path).exists():
-                new_anno = self.read_annotation(label_path, img_id,
-                                                height, width)
-                if len(new_anno) > 0:
-                    annotations.extend(new_anno)
-                else:
-                    raise ValueError(f'{label_path} is empty')
-            else:
-                raise FileNotFoundError(f'{label_path} not exists')
+            label_path = self.raw_data_dir / 'labels' / f'{Path(img_path).stem}.txt'
+            annotation = self.get_annotation(label_path,
+                                             img_id,
+                                             image_dict['height'],
+                                             image_dict['width'])
+            annotations.extend(annotation)
 
         json_data = {
             'info': self.info,
@@ -156,21 +113,76 @@ class YOLOV5ToCOCO(object):
             'annotations': annotations,
             'categories': self.categories,
         }
-        with open(target_json, 'w', encoding='utf-8') as f:
-            json.dump(json_data, f, ensure_ascii=False)
+        return json_data
 
-    def read_annotation(self, txt_file, img_id, height, width):
+    def get_image_info(self, img_path, img_id, save_img_dir):
+        img_path = Path(img_path)
+        self.verify_exists(img_path)
+
+        new_img_name = f'{img_id:012d}.jpg'
+        save_img_path = save_img_dir / new_img_name
+        img_src = cv2.imread(str(img_path))
+        if img_path.suffix.lower() == ".jpg":
+            shutil.copyfile(img_path, save_img_path)
+        else:
+            cv2.imwrite(str(save_img_path), img_src)
+
+        height, width = img_src.shape[:2]
+        image_info = {
+            'date_captured': self.cur_year,
+            'file_name': new_img_name,
+            'id': img_id,
+            'height': height,
+            'width': width,
+        }
+        return image_info
+
+    def get_annotation(self, label_path: Path, img_id, height, width):
+        def get_box_info(vertex_info, height, width):
+            cx, cy, w, h = [float(i) for i in vertex_info]
+
+            cx = cx * width
+            cy = cy * height
+            box_w = w * width
+            box_h = h * height
+
+            # left top
+            x0 = max(cx - box_w / 2, 0)
+            y0 = max(cy - box_h / 2, 0)
+
+            # right bottom
+            x1 = min(x0 + box_w, width)
+            y1 = min(y0 + box_h, height)
+
+            segmentation = [[x0, y0, x1, y0, x1, y1, x0, y1]]
+            bbox = [x0, y0, box_w, box_h]
+            area = box_w * box_h
+            return segmentation, bbox, area
+
+        if not label_path.exists():
+            annotation = [{
+                'segmentation': [],
+                'area': 0,
+                'iscrowd': 0,
+                'image_id': img_id,
+                'bbox': [],
+                'category_id': -1,
+                'id': self.annotation_id,
+            }]
+            self.annotation_id += 1
+            return annotation
+
         annotation = []
-        all_info = read_txt(txt_file)
-        for label_info in all_info:
-            # 遍历一张图中不同标注对象
-            label_info = label_info.split(" ")
+        label_list = self.read_txt(str(label_path))
+        for i, one_line in enumerate(label_list):
+            label_info = one_line.split(' ')
             if len(label_info) < 5:
+                warnings.warn(
+                    f'The {i+1} line of the {label_path} has been corrupted.')
                 continue
 
             category_id, vertex_info = label_info[0], label_info[1:]
-            segmentation, bbox, area = self._get_annotation(vertex_info,
-                                                            height, width)
+            segmentation, bbox, area = get_box_info(vertex_info, height, width)
             annotation.append({
                 'segmentation': segmentation,
                 'area': area,
@@ -184,34 +196,34 @@ class YOLOV5ToCOCO(object):
         return annotation
 
     @staticmethod
-    def _get_annotation(vertex_info, height, width):
-        cx, cy, w, h = [float(i) for i in vertex_info]
+    def read_txt(txt_path):
+        with open(str(txt_path), 'r', encoding='utf-8') as f:
+            data = list(map(lambda x: x.rstrip('\n'), f))
+        return data
 
-        cx = cx * width
-        cy = cy * height
-        box_w = w * width
-        box_h = h * height
+    @staticmethod
+    def mkdir(dir_path):
+        Path(dir_path).mkdir(parents=True, exist_ok=True)
 
-        # left top
-        x0 = max(cx - box_w / 2, 0)
-        y0 = max(cy - box_h / 2, 0)
+    @staticmethod
+    def verify_exists(file_path):
+        file_path = Path(file_path)
+        if not file_path.exists():
+            raise FileNotFoundError(f'The {file_path} is not exists!!!')
 
-        # right bottomt
-        x1 = min(x0 + box_w, width)
-        y1 = min(y0 + box_h, height)
-
-        segmentation = [[x0, y0, x1, y0, x1, y1, x0, y1]]
-        bbox = [x0, y0, box_w, box_h]
-        area = box_w * box_h
-        return segmentation, bbox, area
+    @staticmethod
+    def write_json(json_path, content: dict):
+        with open(json_path, 'w', encoding='utf-8') as f:
+            json.dump(content, f, ensure_ascii=False)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Datasets converter from YOLOV5 to COCO')
-    parser.add_argument('--dir_path', type=str,
-                        default='datasets/YOLOV5',
+    parser.add_argument('--dir_path', type=str, default='datasets/YOLOV5',
                         help='Dataset root path')
+    parser.add_argument('--mode_list', type=str, default='train,val',
+                        help='generate which mode')
     args = parser.parse_args()
 
     converter = YOLOV5ToCOCO(args.dir_path)
-    converter.generate()
+    converter(mode_list=args.mode_list.split(','))

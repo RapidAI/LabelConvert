@@ -1,9 +1,13 @@
-#### YOLOV5格式数据→COCO
-- 值得一提的是，由标注软件[labelImg](https://github.com/tzutalin/labelImg)标注所得yolo格式数据，也可由该脚本做转换。前提是满足以下数据目录结构。
+## YOLO2COCO
+
+#### YOLOV5格式数据 → COCO
+- 可以将一些相似的背景图像加入到训练中，直接将背景图像放入`backgroud_images`目录即可，转换程序会自动扫描该目录，添加到训练集中。
 - YOLOV5训练格式目录结构（详情参见`dataset/YOLOV5`）：
     ```text
     YOLOV5
     ├── classes.txt
+    ├── background_images  # 背景图像，一般是和要检测的对象容易混淆的图像
+    │   └── bg1.jpeg
     ├── images
     │   ├── images(13).jpg
     │   └── images(3).jpg
@@ -15,8 +19,10 @@
     ```
 
 - 转换
+  - `--dir_path`：整理好的数据集所在目录
+  - `--mode_list`：指定生成的json类型，前提是要有对应的txt文件，可单独指定。
   ```shell
-  python yolov5_2_coco.py --dir_path dataset/YOLOV5
+  python yolov5_2_coco.py --dir_path dataset/YOLOV5 --mode_list train,val
   ```
 - 转换后目录结构（详情参见`dataset/YOLOV5_COCO_format`）：
     ```text
@@ -25,12 +31,13 @@
     │   ├── instances_train2017.json
     │   └── instances_val2017.json
     ├── train2017
-    │   └── 000000000001.jpg
+    │   ├── 000000000001.jpg
+    │   └── 000000000002.jpg  # 这个是背景图像
     └── val2017
         └── 000000000001.jpg
     ```
 
-#### YOLOV5 yaml数据描述文件转→COCO
+#### YOLOV5 yaml数据描述文件转 → COCO
 
 - YOLOV5 yaml 数据文件需要包含：
     ```text
@@ -57,7 +64,7 @@
   python yolov5_yaml_2_coco.py --yaml_path dataset/YOLOV5_yaml/sample.yaml
   ```
 
-#### darknet格式数据→COCO
+#### darknet格式数据 → COCO
 - darknet训练数据目录结构（详情参见`dataset/darknet`）：
   ```text
   darknet
