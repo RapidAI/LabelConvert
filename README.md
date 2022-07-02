@@ -1,7 +1,8 @@
 ## YOLO2COCO
 
 #### YOLOV5格式数据 → COCO
-- 可以将一些相似的背景图像加入到训练中，直接将背景图像放入`backgroud_images`目录即可，转换程序会自动扫描该目录，添加到训练集中。
+- 可以将一些背景图像加入到训练中，具体做法是：直接将背景图像放入`backgroud_images`目录即可。
+- 转换程序会自动扫描该目录，添加到训练集中，可以无缝集成后续YOLOX的训练。
 - YOLOV5训练格式目录结构（详情参见`dataset/YOLOV5`）：
     ```text
     YOLOV5
@@ -19,11 +20,12 @@
     ```
 
 - 转换
-  - `--dir_path`：整理好的数据集所在目录
-  - `--mode_list`：指定生成的json类型，前提是要有对应的txt文件，可单独指定。
-  ```shell
+    ```shell
   python yolov5_2_coco.py --dir_path dataset/YOLOV5 --mode_list train,val
   ```
+  - `--dir_path`：整理好的数据集所在目录
+  - `--mode_list`：指定生成的json，前提是要有对应的txt文件，可单独指定。（e.g. `train,val,test`）
+
 - 转换后目录结构（详情参见`dataset/YOLOV5_COCO_format`）：
     ```text
     YOLOV5_COCO_format
