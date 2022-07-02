@@ -1,22 +1,22 @@
 ## YOLO2COCO
-简体中文 | [English](./docs/README_en.md)
+English | [简体中文](../README.md)
 
 <p align="left">
     <a href=""><img src="https://img.shields.io/badge/Python-3.6+-aff.svg"></a>
     <a href=""><img src="https://img.shields.io/badge/OS-Linux%2C%20Win%2C%20Mac-pink.svg"></a>
-    <a href="https://github.com/RapidAI/YOLO2COCO/graphs/contributors"><img src="https://img.shields.io/github/contributors/RapidAI/RapidOCR?color=9ea"></a>
-    <a href="https://github.com/RapidAI/YOLO2COCO/stargazers"><img src="https://img.shields.io/github/stars/RapidAI/YOLO2COCO?color=ccf"></a>
-    <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache%202-dfd.svg"></a>
+    <a href="https://github.com/RapidAI/YOLO2COCO/graphs/contributors"><img src="https://img.shields.io/github/contributors/RapidAI/YOLO2COCO?color=9ea"></a>
+    <a href="https://github.com/RapidAI/YOLO2COCO/stargazers"><img src="https://img.shields.io/github/stars/RapidAI/YOLO2COCO?color=ccf" ></a>
+    <a href=". /LICENSE"><img src="https://img.shields.io/badge/License-Apache%202-dfd.svg"></a>
 </p>
 
 #### YOLOV5格式数据 → COCO
-- 可以将一些背景图像加入到训练中，具体做法是：直接将背景图像放入`backgroud_images`目录即可。
-- 转换程序会自动扫描该目录，添加到训练集中，可以无缝集成后续[YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)的训练。
-- YOLOV5训练格式目录结构（详情参见`dataset/YOLOV5`）：
+- Some background images can be added to the training by directly placing them into the `backgroud_images` directory.
+- The conversion program will automatically scan this directory and add it to the training set, allowing seamless integration with subsequent [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) training.
+- YOLOV5 training format directory structure (see `dataset/YOLOV5` for details).
     ```text
     YOLOV5
     ├── classes.txt
-    ├── background_images  # 一般是和要检测的对象容易混淆的图像
+    ├── background_images  # usually images that are easily confused with the object to be detected
     │   └── bg1.jpeg
     ├── images
     │   ├── images(13).jpg
@@ -28,28 +28,29 @@
     └── val.txt
     ```
 
-- 转换
+- Convert
     ```shell
   python yolov5_2_coco.py --dir_path dataset/YOLOV5 --mode_list train,val
   ```
-  - `--dir_path`：整理好的数据集所在目录
-  - `--mode_list`：指定生成的json，前提是要有对应的txt文件，可单独指定。（e.g. `train,val,test`）
+  - `--dir_path`: the directory where the collated dataset is located
+  - `--mode_list`: specify the generated json, provided that there is a corresponding txt file, which can be specified separately. (e.g. `-train,val,test`)
 
-- 转换后目录结构（详情参见`dataset/YOLOV5_COCO_format`）：
-    ```text
+- The structure of the converted directory (see `dataset/YOLOV5_COCO_format` for details)
+    ``text
+    YOLOV5_COCO_format
     YOLOV5_COCO_format
     ├── annotations
     │   ├── instances_train2017.json
     │   └── instances_val2017.json
     ├── train2017
     │   ├── 000000000001.jpg
-    │   └── 000000000002.jpg  # 这个是背景图像
+    │   └── 000000000002.jpg  # This is the background image.
     └── val2017
         └── 000000000001.jpg
     ```
 
-#### YOLOV5 YAML描述文件 → COCO
-- YOLOV5 yaml 数据文件需要包含：
+#### YOLOV5 YAML description file → COCO
+- The YOLOV5 yaml data file needs to contain.
     ```text
     YOLOV5_yaml
     ├── images
@@ -69,13 +70,13 @@
     └── sample.yaml
     ```
 
-- 转换
+- Convert
   ```shell
   python yolov5_yaml_2_coco.py --yaml_path dataset/YOLOV5_yaml/sample.yaml
   ```
 
-#### darknet格式数据 → COCO
-- darknet训练数据目录结构（详情参见`dataset/darknet`）：
+#### darknet format data → COCO
+- Darknet training data directory structure (see `dataset/darknet` for details).
   ```text
   darknet
   ├── class.names
@@ -87,21 +88,21 @@
       └── valid
   ```
 
-- 转换
+- Convert
   ```shell
   python darknet2coco.py --data_path dataset/darknet/gen_config.data
   ```
 
-#### 可视化COCO格式下图像
+#### Visualize images in COCO format
 ```shell
 python coco_visual.py --vis_num 1 \
                     --json_path dataset/YOLOV5_COCO_format/annotations/instances_train2017.json \
                     --img_dir dataset/YOLOV5_COCO_format/train2017
 ```
 
-- `--vis_num`：指定要查看的图像索引
-- `--json_path`：查看图像的json文件路径
-- `--img_dir`: 查看图像所在的目录
+- `--vis_num`: specify the index of the image to be viewed
+- `--json_path`: path to the json file of the image to view
+- `--img_dir`: view the directory where the image is located
 
-#### 相关资料
-- [MSCOCO数据标注详解](https://blog.csdn.net/wc781708249/article/details/79603522)
+#### Related information
+- [MSCOCO Data Annotation Details](https://blog.csdn.net/wc781708249/article/details/79603522)
