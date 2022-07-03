@@ -9,6 +9,58 @@
     <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache%202-dfd.svg"></a>
 </p>
 
+#### LabelImg标注数据 → YOLOV5格式
+- 将[labelImg](https://github.com/tzutalin/labelImg)库标注的yolo数据格式一键转换为YOLOV5格式数据
+- labelImg标注数据目录结构如下（详情参见`dataset/labelImg_dataset`）：
+  ```text
+    labelImg_dataset
+    ├── classes.txt
+    ├── images(13).jpg
+    ├── images(13).txt
+    ├── images(3).jpg
+    ├── images(3).txt
+    ├── images4.jpg
+    ├── images4.txt
+    ├── images5.jpg
+    ├── images5.txt
+    ├── images6.jpg
+    ├── images7.jpg
+    └── images7.txt
+  ```
+- 转换
+  ```shell
+  python labelImg_2_yolov5.py --src_dir dataset/labelImg_dataset --out_dir dataset/labelImg_dataset_output
+  ```
+  - `--src_dir`：labelImg标注后所在目录
+  - `--out_dir`： 转换之后的数据存放位置
+- 转换后目录结构（详情参见`dataset/labelImg_dataset_output`）：
+  ```text
+  labelImg_dataset_output/
+    ├── classes.txt
+    ├── images
+    │   ├── images(13).jpg
+    │   ├── images(3).jpg
+    │   ├── images4.jpg
+    │   ├── images5.jpg
+    │   └── images7.jpg
+    ├── labels
+    │   ├── images(13).txt
+    │   ├── images(3).txt
+    │   ├── images4.txt
+    │   ├── images5.txt
+    │   └── images7.txt
+    ├── non_labels        # 这是没有标注txt的图像
+    │   └── images6.jpg
+    ├── test.txt
+    ├── train.txt
+    └── val.txt
+  ```
+- 可以进一步直接对`dataset/labelImg_dataset_output`目录作转COCO的转换
+  ```shell
+  python yolov5_2_coco.py --dir_path dataset/lablelImg_dataset_output
+  ```
+
+
 #### YOLOV5格式数据 → COCO
 - 可以将一些背景图像加入到训练中，具体做法是：直接将背景图像放入`backgroud_images`目录即可。
 - 转换程序会自动扫描该目录，添加到训练集中，可以无缝集成后续[YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)的训练。
