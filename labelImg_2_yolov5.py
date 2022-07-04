@@ -7,6 +7,7 @@ import random
 import shutil
 from pathlib import Path
 
+from tqdm import tqdm
 
 class LabelImgToYOLOV5(object):
     def __init__(self, root_dir, out_dir, val_ratio, have_test, test_ratio):
