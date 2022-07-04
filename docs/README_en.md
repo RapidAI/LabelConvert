@@ -9,7 +9,10 @@ English | [简体中文](../README.md)
     <a href=". /LICENSE"><img src="https://img.shields.io/badge/License-Apache%202-dfd.svg"></a>
 </p>
 
-#### LabelImg label data → YOLOV5 format
+#### labelImg label data → YOLOV5 format
+<details>
+    <summary>Click to expand</summary>
+
 - Convert the yolo data format marked by the [labelImg](https://github.com/tzutalin/labelImg) library to YOLOV5 format data with one click
 - The labelImg label data directory structure is as follows (see `dataset/labelImg_dataset` for details):
   ````text
@@ -28,11 +31,19 @@ English | [简体中文](../README.md)
     └── images7.txt
   ````
 - Convert
-  ```shell
-  python labelImg_2_yolov5.py --src_dir dataset/labelImg_dataset --out_dir dataset/labelImg_dataset_output
-  ````
-  - `--src_dir`: the directory where labelImg is marked
-  - `--out_dir`: The data storage location after conversion
+    ```shell
+    python labelImg_2_yolov5.py --src_dir dataset/labelImg_dataset \
+                                --out_dir dataset/labelImg_dataset_output \
+                                --val_ratio 0.2 \
+                                --have_test true \
+                                --test_ratio 0.2
+    ```
+    - `--src_dir`: the directory where labelImg is stored after labeling.
+    - `--out_dir`: the location where the data is stored after conversion.
+    - `--val_ratio`: the ratio of the generated validation set to the whole data, default is `0.2`.
+    - `--have_test`: whether to generate the test part of the data, the default is `True`.
+    - `--test_ratio`: percentage of the whole data of the test data, default is `0.2`.
+
 - Converted directory structure (see `dataset/labelImg_dataset_output` for details):
   ````text
   labelImg_dataset_output/
@@ -49,7 +60,7 @@ English | [简体中文](../README.md)
     │   ├── images4.txt
     │   ├── images5.txt
     │   └── images7.txt
-    ├── non_labels        # This is the image without label txt
+    ├── non_labels        # This is the catalog without the labeled images.
     │   └── images6.jpg
     ├── test.txt
     ├── train.txt
@@ -59,8 +70,12 @@ English | [简体中文](../README.md)
   ```shell
   python yolov5_2_coco.py --dir_path dataset/labellImg_dataset_output
   ````
+</details>
 
 #### YOLOV5 format data → COCO
+<details>
+    <summary>Click to expand</summary>
+
 - Some background images can be added to the training by directly placing them into the `backgroud_images` directory.
 - The conversion program will automatically scan this directory and add it to the training set, allowing seamless integration with subsequent [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) training.
 - YOLOV5 training format directory structure (see `dataset/YOLOV5` for details).
@@ -98,8 +113,12 @@ English | [简体中文](../README.md)
     └── val2017
         └── 000000000001.jpg
     ```
+</details>
 
 #### YOLOV5 YAML description file → COCO
+<details>
+    <summary>Click to expand</summary>
+
 - The YOLOV5 yaml data file needs to contain.
     ```text
     YOLOV5_yaml
@@ -142,8 +161,12 @@ English | [简体中文](../README.md)
   ```shell
   python darknet2coco.py --data_path dataset/darknet/gen_config.data
   ```
+</details>
 
 #### Visualize images in COCO format
+<details>
+    <summary>Click to expand</summary>
+
 ```shell
 python coco_visual.py --vis_num 1 \
                     --json_path dataset/YOLOV5_COCO_format/annotations/instances_train2017.json \
@@ -153,6 +176,9 @@ python coco_visual.py --vis_num 1 \
 - `--vis_num`: specify the index of the image to be viewed
 - `--json_path`: path to the json file of the image to view
 - `--img_dir`: view the directory where the image is located
+
+</details>
+
 
 #### Related information
 - [MSCOCO Data Annotation Details](https://blog.csdn.net/wc781708249/article/details/79603522)
