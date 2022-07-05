@@ -60,7 +60,7 @@
       │   ├── images4.txt
       │   ├── images5.txt
       │   └── images7.txt
-      ├── non_labels        # 这是没有标注图像的目录
+      ├── non_labels        # 这是没有标注图像的目录，自行决定如何处置
       │   └── images6.jpg
       ├── test.txt
       ├── train.txt

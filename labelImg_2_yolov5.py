@@ -13,13 +13,14 @@ class LabelImgToYOLOV5(object):
         self.root_dir = Path(root_dir)
         self.verify_exists(self.root_dir)
 
-        self.classes_path = self.root_dir / 'classes.txt'
-        self.verify_exists(self.classes_path)
-
         self.out_dir = Path(out_dir)
         self.out_img_dir = self.out_dir / 'images'
         self.out_label_dir = self.out_dir / 'labels'
         self.out_non_label_dir = self.out_dir / 'non_labels'
+
+        self.classes_path = self.root_dir / 'classes.txt'
+        self.verify_exists(self.classes_path)
+        self.cp_file(self.classes_path, dst_dir=self.out_dir)
 
         self.val_ratio = val_ratio
         self.have_test = have_test
@@ -41,7 +42,6 @@ class LabelImgToYOLOV5(object):
         self.write_txt(self.out_dir / 'val.txt', val_list)
         if test_list:
             self.write_txt(self.out_dir / 'test.txt', test_list)
-        self.cp_file(self.classes_path, dst_dir=self.out_dir)
 
     @staticmethod
     def verify_exists(file_path):
@@ -62,7 +62,8 @@ class LabelImgToYOLOV5(object):
         new_image_list = []
         for img_path in img_list:
             right_label_path = img_path.with_name(f'{img_path.stem}.txt')
-            if right_label_path.exists():
+            if right_label_path.exists() \
+                    and self.read_txt(str(right_label_path)):
                 self.cp_file(img_path, dst_dir=self.out_img_dir)
                 self.cp_file(right_label_path, dst_dir=self.out_label_dir)
 
