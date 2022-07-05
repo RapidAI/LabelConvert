@@ -7,6 +7,8 @@ import random
 import shutil
 from pathlib import Path
 
+from tqdm import tqdm
+
 
 class LabelImgToYOLOV5(object):
     def __init__(self, root_dir, out_dir, val_ratio, have_test, test_ratio):
@@ -60,7 +62,7 @@ class LabelImgToYOLOV5(object):
 
     def gen_image_label_dir(self, img_list):
         new_image_list = []
-        for img_path in img_list:
+        for img_path in tqdm(img_list):
             right_label_path = img_path.with_name(f'{img_path.stem}.txt')
             if right_label_path.exists() \
                     and self.read_txt(str(right_label_path)):
