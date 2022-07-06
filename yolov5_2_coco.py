@@ -28,7 +28,7 @@ class YOLOV5ToCOCO(object):
 
     def __call__(self, mode_list: list):
         if not mode_list:
-            return ValueError(f'mode_list is empty!!')
+            return ValueError('mode_list is empty!!')
 
         for mode in mode_list:
             # Read the image txt.
