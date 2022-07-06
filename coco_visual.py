@@ -1,4 +1,3 @@
-# !/usr/bin/env python
 # -*- encoding: utf-8 -*-
 # @File: coco_visual.py
 import argparse
@@ -14,23 +13,18 @@ def visualization_bbox(num_image, json_path, img_path):
     with open(json_path) as annos:
         annotation_json = json.load(annos)
 
-    # 统计json文件的关键字长度
     print('The annotation_json num_key is:', len(annotation_json))
 
-    # 读出json文件的关键字
     print('The annotation_json key is:', annotation_json.keys())
 
-    # json文件中包含的图片数量
     print('The annotation_json num_images is:', len(annotation_json['images']))
 
-    # 获取所有类别数
     categories = annotation_json['categories']
     categories_dict = {c['id']: c['name'] for c in categories}
     class_nums = len(categories_dict.keys())
     color = [(random.randint(0, 255), random.randint(0, 255),
               random.randint(0, 255)) for _ in range(class_nums)]
 
-    # 读取图像
     image_name = annotation_json['images'][num_image - 1]['file_name']
     img_id = annotation_json['images'][num_image - 1]['id']
     image_path = os.path.join(img_path, str(image_name).zfill(5))
@@ -46,12 +40,11 @@ def visualization_bbox(num_image, json_path, img_path):
             class_name = categories_dict[class_id]
             class_color = color[class_id-1]
 
-            # 绘制边框
             x, y, w, h = list(map(int, anno['bbox']))
             cv2.rectangle(image, (int(x), int(y)),
                           (int(x + w), int(y + h)),
                           class_color, 2)
-            # 绘制文本
+
             font_size = 0.7
             txt_size = cv2.getTextSize(class_name, cv2.FONT_HERSHEY_SIMPLEX,
                                        font_size, 1)[0]
@@ -71,7 +64,6 @@ def visualization_bbox(num_image, json_path, img_path):
         cv2.imshow(image_name, image)
         cv2.waitKey(0)
     else:
-        # 保存可视化图即可
         save_path = f'visul_{num_image}.jpg'
         cv2.imwrite(save_path, image)
         print(f'The {save_path} has been saved the current director.')
@@ -81,7 +73,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--vis_num', type=int, default=1,
                         help="visual which one")
-
     parser.add_argument('--json_path', type=str, required=True)
     parser.add_argument('--img_dir', type=str, required=True)
     args = parser.parse_args()
