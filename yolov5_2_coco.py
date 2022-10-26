@@ -117,6 +117,11 @@ class YOLOV5ToCOCO(object):
 
     def get_image_info(self, img_path, img_id, save_img_dir):
         img_path = Path(img_path)
+        if not img_path.as_posix().__contains__(self.raw_data_dir.as_posix()):
+            # relative path (relative to the raw_data_dir)
+            # e.g. images/images(3).jpg
+            img_path = self.raw_data_dir / img_path
+
         self.verify_exists(img_path)
 
         new_img_name = f'{img_id:012d}.jpg'

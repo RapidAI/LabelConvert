@@ -93,13 +93,21 @@ English | [简体中文](../README.md)
     ├── train.txt
     └── val.txt
     ```
-
+- The image paths in train.txt and val.txt can be either:
+  - Path relative to **root directory**:
+      ```text
+      dataset/YOLOV5/images/images(3).jpg
+      ```
+  - Path relative to **dataset/YOLOV5**:
+      ```text
+      images/images(3).jpg
+      ```
 - Convert
     ```shell
   python yolov5_2_coco.py --dir_path dataset/YOLOV5 --mode_list train,val
   ```
   - `--dir_path`: the directory where the collated dataset is located
-  - `--mode_list`: specify the generated json, provided that there is a corresponding txt file, which can be specified separately. (e.g. `-train,val,test`)
+  - `--mode_list`: specify the generated json, provided that there is a corresponding txt file, which can be specified separately. (e.g. `train,val,test`)
 
 - The structure of the converted directory (see `dataset/YOLOV5_COCO_format` for details)
     ```text

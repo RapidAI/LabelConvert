@@ -93,7 +93,15 @@
       ├── train.txt
       └── val.txt
       ```
-
+  - **train.txt**和**val.txt**中图像路径，以下两种均可：
+    - 相对于**根目录**的路径
+      ```text
+      dataset/YOLOV5/images/images(3).jpg
+      ```
+    - 相对于**dataset/YOLOV5**的相对路径
+      ```text
+      images/images(3).jpg
+      ```
   - 转换
       ```shell
     python yolov5_2_coco.py --dir_path dataset/YOLOV5 --mode_list train,val
@@ -102,17 +110,17 @@
     - `--mode_list`：指定生成的json，前提是要有对应的txt文件，可单独指定。（e.g. `train,val,test`）
 
   - 转换后目录结构（详情参见`dataset/YOLOV5_COCO_format`）：
-  ```text
-  YOLOV5_COCO_format
-  ├── annotations
-  │   ├── instances_train2017.json
-  │   └── instances_val2017.json
-  ├── train2017
-  │   ├── 000000000001.jpg
-  │   └── 000000000002.jpg  # 这个是背景图像
-  └── val2017
-      └── 000000000001.jpg
-  ```
+    ```text
+    YOLOV5_COCO_format
+    ├── annotations
+    │   ├── instances_train2017.json
+    │   └── instances_val2017.json
+    ├── train2017
+    │   ├── 000000000001.jpg
+    │   └── 000000000002.jpg  # 这个是背景图像
+    └── val2017
+        └── 000000000001.jpg
+    ```
 </details>
 
 #### YOLOV5 YAML描述文件 → COCO
