@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Checkout source codes
         uses: actions/checkout@v3
-  
+
       - name: Mirror the Github organization repos to Gitee.
         uses: Yikun/hub-mirror-action@master
         with:
@@ -21,4 +21,3 @@ jobs:
           # only sync this repo
           static_list: "YOLO2COCO"
           debug: true
-  
