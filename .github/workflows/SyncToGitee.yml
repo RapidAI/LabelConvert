@@ -21,3 +21,4 @@ jobs:
           # only sync this repo
           static_list: "YOLO2COCO"
           debug: true
+
