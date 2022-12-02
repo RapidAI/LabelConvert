@@ -218,10 +218,10 @@ python coco_visual.py --vis_num 1 \
         "segmentation": [[18.00, 2.99, 105.00, 2.99, 105.00, 89.00, 18.00, 89.00]],
         "area": 7482.011,
         "iscrowd": 0,
-        "image_id": 1,  # 对应images中的id
-        "bbox": [18.00, 2.99, 87.00, 86.00],  # [x, y, w, h]其中(x,y)是左上角的值，w,h是框的宽和高
-        "category_id": 1,  # 对应categories中的ID
-        "id": 1  # 唯一区分不同标注实例的编号
+        "image_id": 1,  // 对应images中的id
+        "bbox": [18.00, 2.99, 87.00, 86.00],  // [x, y, w, h]其中(x,y)是左上角的值，w,h是框的宽和高
+        "category_id": 1,  // 对应categories中的ID
+        "id": 1  // 唯一区分不同标注实例的编号
     }, {
         "segmentation": [
             [126.99, 3.99, 210.99, 3.99, 210.99, 88.99, 126.99, 88.99]

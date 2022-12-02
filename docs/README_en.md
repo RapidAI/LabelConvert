@@ -221,10 +221,10 @@ python coco_visual.py --vis_num 1 \
         "segmentation": [[18.00, 2.99, 105.00, 2.99, 105.00, 89.00, 18.00, 89.00]],
         "area": 7482.011,
         "iscrowd": 0,
-        "image_id": 1,  # Corresponding to the ID in images
-        "bbox": [18.00, 2.99, 87.00, 86.00],  # [x, y, w, h], (x,y) is the left top point of the box. w,h is the width and height of the box.
-        "category_id": 1,  # Corresponding to the ID in categories.
-        "id": 1  # Number that uniquely distinguishes different dimension instances
+        "image_id": 1,  // Corresponding to the ID in images
+        "bbox": [18.00, 2.99, 87.00, 86.00],  // [x, y, w, h], (x,y) is the left top point of the box. w,h is the width and height of the box.
+        "category_id": 1,  // Corresponding to the ID in categories.
+        "id": 1  // Number that uniquely distinguishes different dimension instances
     }, {
         "segmentation": [
             [126.99, 3.99, 210.99, 3.99, 210.99, 88.99, 126.99, 88.99]
