@@ -185,6 +185,63 @@ python coco_visual.py --vis_num 1 \
 
 </details>
 
+#### COCO格式Object Instance示例
+<details>
+
+```json
+{
+    "info": {
+      "year": 2022,
+      "version": "1.0",
+      "description": "For object detection",
+      "date_created": "2022"
+    },
+    "licenses":  [{
+        "id": 1,
+        "name": "Apache License v2.0",
+        "url": "https://github.com/RapidAI/YOLO2COCO/LICENSE"
+    }],
+    "images": [{
+        "date_captured": "2022",
+        "file_name": "000000000001.jpg",
+        "id": 1,
+        "height": 224,
+        "width": 224
+    }, {
+        "date_captured": "2022",
+        "file_name": "000000000002.jpg",
+        "id": 2,
+        "height": 424,
+        "width": 550
+    }],
+    "annotations": [{
+        "segmentation": [[18.00, 2.99, 105.00, 2.99, 105.00, 89.00, 18.00, 89.00]],
+        "area": 7482.011,
+        "iscrowd": 0,
+        "image_id": 1,  # 对应images中的id
+        "bbox": [18.00, 2.99, 87.00, 86.00],  # [x, y, w, h]其中(x,y)是左上角的值，w,h是框的宽和高
+        "category_id": 1,  # 对应categories中的ID
+        "id": 1  # 唯一区分不同标注实例的编号
+    }, {
+        "segmentation": [
+            [126.99, 3.99, 210.99, 3.99, 210.99, 88.99, 126.99, 88.99]
+        ],
+        "area": 7139.994,
+        "iscrowd": 0,
+        "image_id": 1,
+        "bbox": [126.99, 3.99, 84.0, 84.99],
+        "category_id": 1,
+        "id": 2
+    }],
+    "categories": [{
+        "supercategory": "stamp",
+        "id": 1,
+        "name": "stamp"
+    }]
+}
+```
+
+</details>
 
 #### 相关资料
 - [MSCOCO数据标注详解](https://blog.csdn.net/wc781708249/article/details/79603522)
