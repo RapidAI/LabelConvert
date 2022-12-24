@@ -11,7 +11,7 @@ from pathlib import Path
 import cv2 as cv
 
 
-class DARKNET2COCO:
+class DARKNET2COCO():
     def __init__(self, genconfig_data):
         self.src_data = genconfig_data
         self.src = Path(self.src_data).parent

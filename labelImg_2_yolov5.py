@@ -10,7 +10,7 @@ from pathlib import Path
 from tqdm import tqdm
 
 
-class LabelImgToYOLOV5(object):
+class LabelImgToYOLOV5():
     def __init__(self, root_dir, out_dir, val_ratio, have_test, test_ratio):
         self.root_dir = Path(root_dir)
         self.verify_exists(self.root_dir)

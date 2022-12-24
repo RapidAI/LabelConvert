@@ -5,15 +5,15 @@
 import argparse
 import json
 import shutil
-from pathlib import Path
 import time
 import warnings
+from pathlib import Path
 
 import cv2
 from tqdm import tqdm
 
 
-class YOLOV5ToCOCO(object):
+class YOLOV5ToCOCO():
     def __init__(self, data_dir):
         self.raw_data_dir = Path(data_dir)
 

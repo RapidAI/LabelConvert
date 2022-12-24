@@ -29,7 +29,7 @@ def verify_exists(file_path):
         raise FileNotFoundError(f'The {file_path} is not exists!!!')
 
 
-class YOLOV5CFG2COCO(object):
+class YOLOV5CFG2COCO():
     def __init__(self, yaml_path):
         verify_exists(yaml_path)
         with open(yaml_path, 'r', encoding="UTF-8") as f:
