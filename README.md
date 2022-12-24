@@ -150,8 +150,11 @@
     ```shell
     python yolov5_yaml_2_coco.py --yaml_path dataset/YOLOV5_yaml/sample.yaml
     ```
+</details>
 
-  #### darknet格式数据 → COCO
+#### darknet格式数据 → COCO
+<details>
+
   - darknet训练数据目录结构（详情参见`dataset/darknet`）：
     ```text
     darknet

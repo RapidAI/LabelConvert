@@ -151,8 +151,11 @@ English | [简体中文](../README.md)
   ```shell
   python yolov5_yaml_2_coco.py --yaml_path dataset/YOLOV5_yaml/sample.yaml
   ```
+</details>
 
 #### darknet format data → COCO
+<details>
+
 - Darknet training data directory structure (see `dataset/darknet` for details).
   ```text
   darknet
