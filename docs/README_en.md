@@ -74,6 +74,7 @@ English | [简体中文](../README.md)
 
 #### COCO format data → labelImg yolo format
 <details>
+    <summary>Click to expand</summary>
 
 - One-click conversion of COCO format data to labelImg labeled yolo format data.
 - COCO format directory structure（see `dataset/YOLOV5_COCO_format` for details）：
