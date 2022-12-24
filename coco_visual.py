@@ -10,13 +10,10 @@ import cv2
 
 
 def visualization_bbox(num_image, json_path, img_path):
-    with open(json_path) as annos:
+    with open(json_path, 'r', encoding='utf-8') as annos:
         annotation_json = json.load(annos)
-
     print('The annotation_json num_key is:', len(annotation_json))
-
     print('The annotation_json key is:', annotation_json.keys())
-
     print('The annotation_json num_images is:', len(annotation_json['images']))
 
     categories = annotation_json['categories']

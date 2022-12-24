@@ -68,9 +68,53 @@
     ```
   - 可以进一步直接对`dataset/labelImg_dataset_output`目录作转COCO的转换
     ```shell
-    python yolov5_2_coco.py --dir_path dataset/lablelImg_dataset_output
+    python yolov5_2_coco.py --data_dir dataset/lablelImg_dataset_output
     ```
 
+</details>
+
+#### COCO格式数据 → labelImg
+<details>
+
+- 将COCO格式数据一键转换为labelImg标注的yolo格式数据
+- COCO格式数据目录结构如下（详情参见：`dataset/YOLOV5_COCO_format`）：
+  ```text
+  YOLOV5_COCO_format
+    ├── annotations
+    │   ├── instances_train2017.json
+    │   └── instances_val2017.json
+    ├── train2017
+    │   ├── 000000000001.jpg
+    │   └── 000000000002.jpg  # 这个是背景图像
+    └── val2017
+        └── 000000000001.jpg
+  ```
+- 转换
+  ```bash
+  python coco_2_labelImg.py --data_dir dataset/YOLOV5_COCO_format
+  ```
+  - `--data_dir`: COCO格式数据集所在目录
+- 转换后目录结构（详情参见：`dataset/COCO_labelImg_format`）:
+  ```text
+  COCO_labelImg_format
+    ├── train
+    │   ├── 000000000001.jpg
+    │   ├── 000000000001.txt
+    │   |-- 000000000002.jpg
+    │   └── classes.txt
+    └── val
+        ├── 000000000001.jpg
+        ├── 000000000001.txt
+        └── classes.txt
+  ```
+- 对转换之后的目录，可以直接用`labelImg`库直接打开，更改标注，具体命令如下：
+  ```shell
+  $ cd dataset/COCO_labelImg_format
+  $ labelImg train train/classes.txt
+
+  # or
+  $ labelImg val val/classes.txt
+  ```
 </details>
 
 #### YOLOV5格式数据 → COCO
@@ -104,9 +148,9 @@
       ```
   - 转换
       ```shell
-    python yolov5_2_coco.py --dir_path dataset/YOLOV5 --mode_list train,val
+    python yolov5_2_coco.py --data_dir dataset/YOLOV5 --mode_list train,val
     ```
-    - `--dir_path`：整理好的数据集所在目录
+    - `--data_dir`：整理好的数据集所在目录
     - `--mode_list`：指定生成的json，前提是要有对应的txt文件，可单独指定。（e.g. `train,val,test`）
 
   - 转换后目录结构（详情参见`dataset/YOLOV5_COCO_format`）：
@@ -169,7 +213,7 @@
 
   - 转换
     ```shell
-    python darknet2coco.py --data_path dataset/darknet/gen_config.data
+    python darknet_2_coco.py --data_path dataset/darknet/gen_config.data
     ```
 </details>
 

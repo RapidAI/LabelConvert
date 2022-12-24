@@ -1,6 +1,6 @@
 # !/usr/bin/env python
 # -*- encoding: utf-8 -*-
-# @File: darknet2coco.py
+# @File: darknet_2_coco.py
 import argparse
 import configparser as cfg
 import json

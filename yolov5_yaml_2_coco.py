@@ -121,7 +121,7 @@ class YOLOV5CFG2COCO():
         self.gen_dataset(self.valid_files, val_dest_dir,
                          self.coco_val_json, mode='val')
 
-        print(f"The output directory is: {str(self.dst)}")
+        print(f"The output directory is: {self.dst}")
 
     def get_files(self, path):
         # include image suffixes

@@ -13,7 +13,7 @@ English | [简体中文](../README.md)
 <details>
     <summary>Click to expand</summary>
 
-- Convert the yolo data format marked by the [labelImg](https://github.com/tzutalin/labelImg) library to YOLOV5 format data with one click
+- Convert the yolo data format marked by the [labelImg](https://github.com/tzutalin/labelImg) library to YOLOV5 format data with one click.
 - The labelImg label data directory structure is as follows (see `dataset/labelImg_dataset` for details):
   ````text
     labelImg_dataset
@@ -68,8 +68,52 @@ English | [简体中文](../README.md)
   ````
 - You can further directly convert the `dataset/labelImg_dataset_output` directory to COCO
   ```shell
-  python yolov5_2_coco.py --dir_path dataset/labellImg_dataset_output
+  python yolov5_2_coco.py --data_dir dataset/labellImg_dataset_output
   ````
+</details>
+
+#### COCO format data → labelImg yolo format
+<details>
+
+- One-click conversion of COCO format data to labelImg labeled yolo format data.
+- COCO format directory structure（see `dataset/YOLOV5_COCO_format` for details）：
+  ```text
+  YOLOV5_COCO_format
+    ├── annotations
+    │   ├── instances_train2017.json
+    │   └── instances_val2017.json
+    ├── train2017
+    │   ├── 000000000001.jpg
+    │   └── 000000000002.jpg
+    └── val2017
+        └── 000000000001.jpg
+  ```
+- Convert
+  ```bash
+  python coco_2_labelImg.py --data_dir dataset/YOLOV5_COCO_format
+  ```
+  - `--data_dir`: the directory where the COCO format dataset is located. Default is `dataset/YOLOV5_COCO_format`.
+- Converted directory structure (see `dataset/COCO_labelImg_format` for details):
+  ```text
+  COCO_labelImg_format
+    ├── train
+    │   ├── 000000000001.jpg
+    │   ├── 000000000001.txt
+    │   |-- 000000000002.jpg
+    │   └── classes.txt
+    └── val
+        ├── 000000000001.jpg
+        ├── 000000000001.txt
+        └── classes.txt
+  ```
+- For the converted directory, you can directly use the [labelImg](https://github.com/tzutalin/labelImg)  library to open it directly and change the label. The specific commands are as follows:
+  ```shell
+  $ cd dataset/COCO_labelImg_format
+  $ labelImg train train/classes.txt
+
+  # or
+  $ labelImg val val/classes.txt
+  ```
 </details>
 
 #### YOLOV5 format data → COCO
@@ -104,9 +148,9 @@ English | [简体中文](../README.md)
       ```
 - Convert
     ```shell
-  python yolov5_2_coco.py --dir_path dataset/YOLOV5 --mode_list train,val
+  python yolov5_2_coco.py --data_dir dataset/YOLOV5 --mode_list train,val
   ```
-  - `--dir_path`: the directory where the collated dataset is located
+  - `--data_dir`: the directory where the collated dataset is located
   - `--mode_list`: specify the generated json, provided that there is a corresponding txt file, which can be specified separately. (e.g. `train,val,test`)
 
 - The structure of the converted directory (see `dataset/YOLOV5_COCO_format` for details)
@@ -170,7 +214,7 @@ English | [简体中文](../README.md)
 
 - Convert
   ```shell
-  python darknet2coco.py --data_path dataset/darknet/gen_config.data
+  python darknet_2_coco.py --data_path dataset/darknet/gen_config.data
   ```
 </details>
 

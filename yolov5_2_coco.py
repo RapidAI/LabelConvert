@@ -28,7 +28,7 @@ class YOLOV5ToCOCO():
 
     def __call__(self, mode_list: list):
         if not mode_list:
-            return ValueError('mode_list is empty!!')
+            raise ValueError('mode_list is empty!!')
 
         for mode in mode_list:
             # Read the image txt.
@@ -50,6 +50,7 @@ class YOLOV5ToCOCO():
             json_data = self.convert(img_list, save_img_dir, mode)
 
             self.write_json(save_json_path, json_data)
+        print(f'Successfully convert, detail in {self.output_dir}')
 
     def _init_json(self):
         classes_path = self.raw_data_dir / 'classes.txt'
@@ -117,7 +118,7 @@ class YOLOV5ToCOCO():
 
     def get_image_info(self, img_path, img_id, save_img_dir):
         img_path = Path(img_path)
-        if not img_path.as_posix().__contains__(self.raw_data_dir.as_posix()):
+        if self.raw_data_dir.as_posix() not in img_path.as_posix():
             # relative path (relative to the raw_data_dir)
             # e.g. images/images(3).jpg
             img_path = self.raw_data_dir / img_path
@@ -224,11 +225,11 @@ class YOLOV5ToCOCO():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Datasets converter from YOLOV5 to COCO')
-    parser.add_argument('--dir_path', type=str, default='datasets/YOLOV5',
+    parser.add_argument('--data_dir', type=str, default='datasets/YOLOV5',
                         help='Dataset root path')
     parser.add_argument('--mode_list', type=str, default='train,val',
                         help='generate which mode')
     args = parser.parse_args()
 
-    converter = YOLOV5ToCOCO(args.dir_path)
+    converter = YOLOV5ToCOCO(args.data_dir)
     converter(mode_list=args.mode_list.split(','))

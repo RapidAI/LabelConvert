@@ -44,6 +44,7 @@ class LabelImgToYOLOV5():
         self.write_txt(self.out_dir / 'val.txt', val_list)
         if test_list:
             self.write_txt(self.out_dir / 'test.txt', test_list)
+        print(f'Successfully convert, detail in {self.out_dir}')
 
     @staticmethod
     def verify_exists(file_path):
