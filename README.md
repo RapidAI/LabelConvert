@@ -10,6 +10,8 @@
 </p>
 
 
+>  🎉 推出知识星球[RapidAI私享群](https://t.zsxq.com/0duLBZczw)，这里的提问会优先得到回答和支持，也会享受到RapidAI组织后续持续优质的服务。欢迎大家的加入。
+
 #### labelImg标注yolo格式数据 → YOLOV5格式
 <details>
 
