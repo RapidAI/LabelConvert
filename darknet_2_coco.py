@@ -11,7 +11,7 @@ from pathlib import Path
 import cv2 as cv
 
 
-class DARKNET2COCO():
+class DARKNET2COCO:
     def __init__(self, genconfig_data):
         self.src_data = genconfig_data
         self.src = Path(self.src_data).parent
@@ -20,37 +20,43 @@ class DARKNET2COCO():
         self.coco_valid = "val2017"
         self.coco_images = "images"
         self.coco_annotation = "annotations"
-        self.coco_train_json = Path(self.dst) / self.coco_annotation / f'instances_{self.coco_train}.json'
-        self.coco_valid_json = Path(self.dst) / self.coco_annotation / f'instances_{self.coco_valid}.json'
-        self.type = 'instances'
+        self.coco_train_json = (
+            Path(self.dst) / self.coco_annotation / f"instances_{self.coco_train}.json"
+        )
+        self.coco_valid_json = (
+            Path(self.dst) / self.coco_annotation / f"instances_{self.coco_valid}.json"
+        )
+        self.type = "instances"
         self.categories = []
         self.annotation_id = 1
         self.info = {
-            'year': 2021,
-            'version': '1.0',
-            'description': 'For object detection',
-            'date_created': '2021',
+            "year": 2021,
+            "version": "1.0",
+            "description": "For object detection",
+            "date_created": "2021",
         }
-        self.licenses = [{
-            'id': 1,
-            'name': 'Apache License v2.0',
-            'url': 'https://github.com/RapidAI/YOLO2COCO/LICENSE',
-        }]
+        self.licenses = [
+            {
+                "id": 1,
+                "name": "Apache License v2.0",
+                "url": "https://github.com/RapidAI/YOLO2COCO/LICENSE",
+            }
+        ]
 
         if not Path(self.dst).is_dir():
             Path(self.dst).mkdir()
 
         if not Path(self.dst / self.coco_images).is_dir():
-            Path(self.dst/self.coco_images).mkdir()
+            Path(self.dst / self.coco_images).mkdir()
 
-        if not (Path(self.dst)/self.coco_images / self.coco_train).is_dir():
-            (Path(self.dst)/self.coco_images/self.coco_train).mkdir()
+        if not (Path(self.dst) / self.coco_images / self.coco_train).is_dir():
+            (Path(self.dst) / self.coco_images / self.coco_train).mkdir()
 
         if not Path(self.dst / self.coco_images / self.coco_valid).is_dir():
-            (Path(self.dst)/self.coco_images/self.coco_valid).mkdir()
+            (Path(self.dst) / self.coco_images / self.coco_valid).mkdir()
 
         if not (Path(self.dst) / self.coco_annotation).is_dir():
-            (Path(self.dst)/self.coco_annotation).mkdir()
+            (Path(self.dst) / self.coco_annotation).mkdir()
 
         if Path(self.src_data).is_file():
             self.ready = True
@@ -63,7 +69,7 @@ class DARKNET2COCO():
             return
         self.cnf = cfg.RawConfigParser()
         with open(self.src_data) as f:
-            file_content = '[dummy_section]\n' + f.read()
+            file_content = "[dummy_section]\n" + f.read()
         self.cnf.read_string(file_content)
 
     def getint(self, key):
@@ -98,10 +104,10 @@ class DARKNET2COCO():
         return content
 
     def _get_annotation(self, vertex_info, height, width):
-        '''
+        """
         # derived from https://github.com/zhiqwang/yolov5-rt-stack/blob/master/yolort/utils/yolo2coco.py
 
-        '''
+        """
         cx, cy, w, h = [float(i) for i in vertex_info]
         cx = cx * width
         cy = cy * height
@@ -124,44 +130,44 @@ class DARKNET2COCO():
             allinfo = f.readlines()
 
         for line in allinfo:
-            label_info = line.replace('\n', '').replace('\r', '')
+            label_info = line.replace("\n", "").replace("\r", "")
             label_info = label_info.strip().split(" ")
             if len(label_info) < 5:
                 continue
 
             category_id, vertex_info = label_info[0], label_info[1:]
 
-            segmentation, bbox, area = self._get_annotation(
-                vertex_info, height, width)
-            annotation.append({
-                'segmentation': segmentation,
-                'area': area,
-                'iscrowd': 0,
-                'image_id': img_id,
-                'bbox': bbox,
-                'category_id': int(int(category_id)+1),
-                'id': self.annotation_id,
-            })
+            segmentation, bbox, area = self._get_annotation(vertex_info, height, width)
+            annotation.append(
+                {
+                    "segmentation": segmentation,
+                    "area": area,
+                    "iscrowd": 0,
+                    "image_id": img_id,
+                    "bbox": bbox,
+                    "category_id": int(int(category_id) + 1),
+                    "id": self.annotation_id,
+                }
+            )
             self.annotation_id += 1
 
         return annotation
 
     def get_category(self):
         for id, category in enumerate(self.name_lists, 1):
-            self.categories.append({
-                'id': id,
-                'name': category,
-                'supercategory': category,
-            })
+            self.categories.append(
+                {
+                    "id": id,
+                    "name": category,
+                    "supercategory": category,
+                }
+            )
 
     def generate(self):
         self.classnum = self.getint("classes")
-        self.train = Path(self.src_data).parent / \
-            Path(self.getstring("train")).name
-        self.valid = Path(self.src_data).parent / \
-            Path(self.getstring("valid")).name
-        self.names = Path(self.src_data).parent / \
-            Path(self.getstring("names")).name
+        self.train = Path(self.src_data).parent / Path(self.getstring("train")).name
+        self.valid = Path(self.src_data).parent / Path(self.getstring("valid")).name
+        self.names = Path(self.src_data).parent / Path(self.getstring("names")).name
 
         self.train_files = self.get_path(self.train)
         if os.path.exists(self.valid):
@@ -171,49 +177,48 @@ class DARKNET2COCO():
         self.get_category()
 
         dest_path_train = Path(self.dst) / self.coco_images / self.coco_train
-        self.gen_dataset(self.train_files, dest_path_train,
-                         self.coco_train_json)
+        self.gen_dataset(self.train_files, dest_path_train, self.coco_train_json)
 
         dest_path_valid = Path(self.dst) / self.coco_images / self.coco_valid
         if os.path.exists(self.valid):
-            self.gen_dataset(self.valid_files, dest_path_valid,
-                             self.coco_valid_json)
+            self.gen_dataset(self.valid_files, dest_path_valid, self.coco_valid_json)
 
         print("The output directory is :", str(self.dst))
 
     def gen_dataset(self, file_lists, target_img_path, target_json):
-        '''
+        """
         https://cocodataset.org/#format-data
 
-        '''
+        """
         images = []
         annotations = []
         for img_id, file in enumerate(file_lists, 1):
             if not Path(file).exists():
                 continue
-            txt = str(Path(file).parent / Path(file).stem) + \
-                ".txt"
+            txt = str(Path(file).parent / Path(file).stem) + ".txt"
 
             tmpname = str(img_id)
-            prefix = "0"*(12 - len(tmpname))
-            destfilename = prefix+tmpname+".jpg"
+            prefix = "0" * (12 - len(tmpname))
+            destfilename = prefix + tmpname + ".jpg"
             imgsrc = cv.imread(file)  # 读取图片
             if Path(file).suffix.lower() == ".jpg":
-                shutil.copyfile(file, target_img_path/destfilename)
+                shutil.copyfile(file, target_img_path / destfilename)
             else:
-                cv.imwrite(str(target_img_path/destfilename), imgsrc)
+                cv.imwrite(str(target_img_path / destfilename), imgsrc)
             # shutil.copyfile(file,target_img_path/ )
 
             image = imgsrc.shape  # 获取图片宽高及通道数
             height = image[0]
             width = image[1]
-            images.append({
-                'date_captured': '2021',
-                'file_name': destfilename,
-                'id': img_id,
-                'height': height,
-                'width': width,
-            })
+            images.append(
+                {
+                    "date_captured": "2021",
+                    "file_name": destfilename,
+                    "id": img_id,
+                    "height": height,
+                    "width": width,
+                }
+            )
 
             if Path(txt).exists():
                 new_anno = self.read_annotation(txt, img_id, height, width)
@@ -221,21 +226,22 @@ class DARKNET2COCO():
                     annotations.extend(new_anno)
 
         json_data = {
-            'info': self.info,
-            'images': images,
-            'licenses': self.licenses,
-            'type': self.type,
-            'annotations': annotations,
-            'categories': self.categories,
+            "info": self.info,
+            "images": images,
+            "licenses": self.licenses,
+            "type": self.type,
+            "annotations": annotations,
+            "categories": self.categories,
         }
-        with open(target_json, 'w', encoding='utf-8') as f:
+        with open(target_json, "w", encoding="utf-8") as f:
             json.dump(json_data, f, ensure_ascii=False)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_path', default='data/getn_config.data',
-                        help='Dataset root path')
+    parser.add_argument(
+        "--data_path", default="data/getn_config.data", help="Dataset root path"
+    )
     args = parser.parse_args()
 
     converter = DARKNET2COCO(args.data_path)

@@ -13,14 +13,14 @@ import cv2
 from tqdm import tqdm
 
 
-class YOLOV5ToCOCO():
+class YOLOV5ToCOCO:
     def __init__(self, data_dir):
         self.raw_data_dir = Path(data_dir)
 
-        self.verify_exists(self.raw_data_dir / 'images')
-        self.verify_exists(self.raw_data_dir / 'labels')
+        self.verify_exists(self.raw_data_dir / "images")
+        self.verify_exists(self.raw_data_dir / "labels")
 
-        save_dir_name = f'{Path(self.raw_data_dir).name}_COCO_format'
+        save_dir_name = f"{Path(self.raw_data_dir).name}_COCO_format"
         self.output_dir = self.raw_data_dir.parent / save_dir_name
         self.mkdir(self.output_dir)
 
@@ -28,54 +28,56 @@ class YOLOV5ToCOCO():
 
     def __call__(self, mode_list: list):
         if not mode_list:
-            raise ValueError('mode_list is empty!!')
+            raise ValueError("mode_list is empty!!")
 
         for mode in mode_list:
             # Read the image txt.
-            txt_path = self.raw_data_dir / f'{mode}.txt'
+            txt_path = self.raw_data_dir / f"{mode}.txt"
             self.verify_exists(txt_path)
             img_list = self.read_txt(txt_path)
-            if mode == 'train':
+            if mode == "train":
                 img_list = self.append_bg_img(img_list)
 
             # Create the directory of saving the new image.
-            save_img_dir = self.output_dir / f'{mode}2017'
+            save_img_dir = self.output_dir / f"{mode}2017"
             self.mkdir(save_img_dir)
 
             # Generate json file.
             anno_dir = self.output_dir / "annotations"
             self.mkdir(anno_dir)
 
-            save_json_path = anno_dir / f'instances_{mode}2017.json'
+            save_json_path = anno_dir / f"instances_{mode}2017.json"
             json_data = self.convert(img_list, save_img_dir, mode)
 
             self.write_json(save_json_path, json_data)
-        print(f'Successfully convert, detail in {self.output_dir}')
+        print(f"Successfully convert, detail in {self.output_dir}")
 
     def _init_json(self):
-        classes_path = self.raw_data_dir / 'classes.txt'
+        classes_path = self.raw_data_dir / "classes.txt"
         self.verify_exists(classes_path)
         self.categories = self._get_category(classes_path)
 
-        self.type = 'instances'
+        self.type = "instances"
         self.annotation_id = 1
 
-        self.cur_year = time.strftime('%Y', time.localtime(time.time()))
+        self.cur_year = time.strftime("%Y", time.localtime(time.time()))
         self.info = {
-            'year': int(self.cur_year),
-            'version': '1.0',
-            'description': 'For object detection',
-            'date_created': self.cur_year,
+            "year": int(self.cur_year),
+            "version": "1.0",
+            "description": "For object detection",
+            "date_created": self.cur_year,
         }
 
-        self.licenses = [{
-            'id': 1,
-            'name': 'Apache License v2.0',
-            'url': 'https://github.com/RapidAI/YOLO2COCO/LICENSE',
-        }]
+        self.licenses = [
+            {
+                "id": 1,
+                "name": "Apache License v2.0",
+                "url": "https://github.com/RapidAI/YOLO2COCO/LICENSE",
+            }
+        ]
 
     def append_bg_img(self, img_list):
-        bg_dir = self.raw_data_dir / 'background_images'
+        bg_dir = self.raw_data_dir / "background_images"
         if bg_dir.exists():
             bg_img_list = list(bg_dir.iterdir())
             for bg_img_path in bg_img_list:
@@ -86,11 +88,13 @@ class YOLOV5ToCOCO():
         class_list = self.read_txt(classes_path)
         categories = []
         for i, category in enumerate(class_list, 1):
-            categories.append({
-                'supercategory': category,
-                'id': i,
-                'name': category,
-            })
+            categories.append(
+                {
+                    "supercategory": category,
+                    "id": i,
+                    "name": category,
+                }
+            )
         return categories
 
     def convert(self, img_list, save_img_dir, mode):
@@ -99,20 +103,19 @@ class YOLOV5ToCOCO():
             image_dict = self.get_image_info(img_path, img_id, save_img_dir)
             images.append(image_dict)
 
-            label_path = self.raw_data_dir / 'labels' / f'{Path(img_path).stem}.txt'
-            annotation = self.get_annotation(label_path,
-                                             img_id,
-                                             image_dict['height'],
-                                             image_dict['width'])
+            label_path = self.raw_data_dir / "labels" / f"{Path(img_path).stem}.txt"
+            annotation = self.get_annotation(
+                label_path, img_id, image_dict["height"], image_dict["width"]
+            )
             annotations.extend(annotation)
 
         json_data = {
-            'info': self.info,
-            'images': images,
-            'licenses': self.licenses,
-            'type': self.type,
-            'annotations': annotations,
-            'categories': self.categories,
+            "info": self.info,
+            "images": images,
+            "licenses": self.licenses,
+            "type": self.type,
+            "annotations": annotations,
+            "categories": self.categories,
         }
         return json_data
 
@@ -125,7 +128,7 @@ class YOLOV5ToCOCO():
 
         self.verify_exists(img_path)
 
-        new_img_name = f'{img_id:012d}.jpg'
+        new_img_name = f"{img_id:012d}.jpg"
         save_img_path = save_img_dir / new_img_name
         img_src = cv2.imread(str(img_path))
         if img_path.suffix.lower() == ".jpg":
@@ -135,11 +138,11 @@ class YOLOV5ToCOCO():
 
         height, width = img_src.shape[:2]
         image_info = {
-            'date_captured': self.cur_year,
-            'file_name': new_img_name,
-            'id': img_id,
-            'height': height,
-            'width': width,
+            "date_captured": self.cur_year,
+            "file_name": new_img_name,
+            "id": img_id,
+            "height": height,
+            "width": width,
         }
         return image_info
 
@@ -166,45 +169,48 @@ class YOLOV5ToCOCO():
             return segmentation, bbox, area
 
         if not label_path.exists():
-            annotation = [{
-                'segmentation': [],
-                'area': 0,
-                'iscrowd': 0,
-                'image_id': img_id,
-                'bbox': [],
-                'category_id': -1,
-                'id': self.annotation_id,
-            }]
+            annotation = [
+                {
+                    "segmentation": [],
+                    "area": 0,
+                    "iscrowd": 0,
+                    "image_id": img_id,
+                    "bbox": [],
+                    "category_id": -1,
+                    "id": self.annotation_id,
+                }
+            ]
             self.annotation_id += 1
             return annotation
 
         annotation = []
         label_list = self.read_txt(str(label_path))
         for i, one_line in enumerate(label_list):
-            label_info = one_line.split(' ')
+            label_info = one_line.split(" ")
             if len(label_info) < 5:
-                warnings.warn(
-                    f'The {i+1} line of the {label_path} has been corrupted.')
+                warnings.warn(f"The {i+1} line of the {label_path} has been corrupted.")
                 continue
 
             category_id, vertex_info = label_info[0], label_info[1:]
             segmentation, bbox, area = get_box_info(vertex_info, height, width)
-            annotation.append({
-                'segmentation': segmentation,
-                'area': area,
-                'iscrowd': 0,
-                'image_id': img_id,
-                'bbox': bbox,
-                'category_id': int(category_id)+1,
-                'id': self.annotation_id,
-            })
+            annotation.append(
+                {
+                    "segmentation": segmentation,
+                    "area": area,
+                    "iscrowd": 0,
+                    "image_id": img_id,
+                    "bbox": bbox,
+                    "category_id": int(category_id) + 1,
+                    "id": self.annotation_id,
+                }
+            )
             self.annotation_id += 1
         return annotation
 
     @staticmethod
     def read_txt(txt_path):
-        with open(str(txt_path), 'r', encoding='utf-8') as f:
-            data = list(map(lambda x: x.rstrip('\n'), f))
+        with open(str(txt_path), "r", encoding="utf-8") as f:
+            data = list(map(lambda x: x.rstrip("\n"), f))
         return data
 
     @staticmethod
@@ -215,21 +221,23 @@ class YOLOV5ToCOCO():
     def verify_exists(file_path):
         file_path = Path(file_path)
         if not file_path.exists():
-            raise FileNotFoundError(f'The {file_path} is not exists!!!')
+            raise FileNotFoundError(f"The {file_path} is not exists!!!")
 
     @staticmethod
     def write_json(json_path, content: dict):
-        with open(json_path, 'w', encoding='utf-8') as f:
+        with open(json_path, "w", encoding="utf-8") as f:
             json.dump(content, f, ensure_ascii=False)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser('Datasets converter from YOLOV5 to COCO')
-    parser.add_argument('--data_dir', type=str, default='datasets/YOLOV5',
-                        help='Dataset root path')
-    parser.add_argument('--mode_list', type=str, default='train,val',
-                        help='generate which mode')
+    parser = argparse.ArgumentParser("Datasets converter from YOLOV5 to COCO")
+    parser.add_argument(
+        "--data_dir", type=str, default="datasets/YOLOV5", help="Dataset root path"
+    )
+    parser.add_argument(
+        "--mode_list", type=str, default="train,val", help="generate which mode"
+    )
     args = parser.parse_args()
 
     converter = YOLOV5ToCOCO(args.data_dir)
-    converter(mode_list=args.mode_list.split(','))
+    converter(mode_list=args.mode_list.split(","))
