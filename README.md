@@ -1,5 +1,6 @@
-## YOLO2COCO
 简体中文 | [English](./docs/README_en.md)
+
+## YOLO2COCO
 
 <p align="left">
     <a href=""><img src="https://img.shields.io/badge/Python-3.6+-aff.svg"></a>
@@ -7,10 +8,18 @@
     <a href="https://github.com/RapidAI/YOLO2COCO/graphs/contributors"><img src="https://img.shields.io/github/contributors/RapidAI/YOLO2COCO?color=9ea"></a>
     <a href="https://github.com/RapidAI/YOLO2COCO/stargazers"><img src="https://img.shields.io/github/stars/RapidAI/YOLO2COCO?color=ccf"></a>
     <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache%202-dfd.svg"></a>
+    <a href="https://semver.org/"><img alt="SemVer2.0" src="https://img.shields.io/badge/SemVer-2.0-brightgreen"></a>
+    <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 </p>
 
+- 目标检测和图像分割常用数据集格式转换工具。
+- 🎉 推出知识星球[RapidAI私享群](https://t.zsxq.com/0duLBZczw)，这里的提问会优先得到回答和支持，也会享受到RapidAI组织后续持续优质的服务。欢迎大家的加入。
 
->  🎉 推出知识星球[RapidAI私享群](https://t.zsxq.com/0duLBZczw)，这里的提问会优先得到回答和支持，也会享受到RapidAI组织后续持续优质的服务。欢迎大家的加入。
+#### TODO
+- [ ] 完善已有转换代码
+- [ ] 增加分割类数据集格式转换
+- [ ] 发布whl包
+- [ ] 增加单元测试
 
 #### labelImg标注yolo格式数据 → YOLOV5格式
 <details>

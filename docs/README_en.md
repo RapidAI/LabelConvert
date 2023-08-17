@@ -1,5 +1,6 @@
+[简体中文](../README.md) | English
+
 ## YOLO2COCO
-English | [简体中文](../README.md)
 
 <p align="left">
     <a href=""><img src="https://img.shields.io/badge/Python-3.6+-aff.svg"></a>
@@ -7,6 +8,8 @@ English | [简体中文](../README.md)
     <a href="https://github.com/RapidAI/YOLO2COCO/graphs/contributors"><img src="https://img.shields.io/github/contributors/RapidAI/YOLO2COCO?color=9ea"></a>
     <a href="https://github.com/RapidAI/YOLO2COCO/stargazers"><img src="https://img.shields.io/github/stars/RapidAI/YOLO2COCO?color=ccf" ></a>
     <a href=". /LICENSE"><img src="https://img.shields.io/badge/License-Apache%202-dfd.svg"></a>
+    <a href="https://semver.org/"><img alt="SemVer2.0" src="https://img.shields.io/badge/SemVer-2.0-brightgreen"></a>
+    <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 </p>
 
 #### labelImg label data → YOLOV5 format
