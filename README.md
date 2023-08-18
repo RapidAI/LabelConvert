@@ -5,7 +5,7 @@
 </div>
 
 
-## YOLO2COCO
+## LabelConvert
 
 <p align="left">
     <a href=""><img src="https://img.shields.io/badge/Python-3.6+-aff.svg"></a>
@@ -17,14 +17,16 @@
     <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 </p>
 
-- 目标检测和图像分割常用数据集格式转换工具。
-- 🎉 推出知识星球[RapidAI私享群](https://t.zsxq.com/0duLBZczw)，这里的提问会优先得到回答和支持，也会享受到RapidAI组织后续持续优质的服务。欢迎大家的加入。
+> 🎉 推出知识星球[RapidAI私享群](https://t.zsxq.com/0duLBZczw)，这里的提问会优先得到回答和支持，也会享受到RapidAI组织后续持续优质的服务。欢迎大家的加入。
+
+- 目标检测和图像分割常用数据集格式转换工具，支持labelme、labelImg工具和YOLO、VOC、COCO数据集格式之间相互转换。
 
 #### TODO
 - [ ] 完善已有转换代码
 - [ ] 增加分割类数据集格式转换
 - [ ] 发布whl包
 - [ ] 增加单元测试
+- [x] 更改项目名称并添加logo
 
 #### labelImg标注yolo格式数据 → YOLOV5格式
 <details>
