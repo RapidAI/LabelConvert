@@ -1,7 +1,7 @@
 简体中文 | [English](./docs/README_en.md)
 
 <div align="center">
-  <img src="https://github.com/RapidAI/YOLO2COCO/releases/download/v0/LabelConvertv1.png" width="55%" height="55%"/>
+  <img src="https://github.com/RapidAI/YOLO2COCO/releases/download/v0/LabelConvertv2.png" width="55%" height="55%"/>
 </div>
 
 
