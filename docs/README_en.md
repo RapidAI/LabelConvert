@@ -16,7 +16,7 @@
     <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 </p>
 
-- A common data set format conversion tool for target detection and image segmentation, which supports mutual conversion between **labelme, labelImg tools and YOLO, VOC, and COCO** dataset formats.
+- A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between **labelme, labelImg tools and YOLO, VOC, and COCO** dataset formats.
 
 #### labelImg label data → YOLOV5 format
 <details>
