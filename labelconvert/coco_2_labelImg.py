@@ -136,7 +136,7 @@ class COCO2labelImg:
         Path(dir_path).mkdir(parents=True, exist_ok=True)
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser("Datasets convert from COCO to labelImg")
     parser.add_argument(
         "--data_dir",
@@ -148,3 +148,7 @@ if __name__ == "__main__":
 
     converter = COCO2labelImg(args.data_dir)
     converter()
+
+
+if __name__ == "__main__":
+    main()

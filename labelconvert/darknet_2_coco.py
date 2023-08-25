@@ -1,6 +1,6 @@
-# !/usr/bin/env python
 # -*- encoding: utf-8 -*-
-# @File: darknet_2_coco.py
+# @Author: SWHL
+# @Contact: liekkaskono@163.com
 import argparse
 import configparser as cfg
 import json
@@ -84,7 +84,7 @@ class DARKNET2COCO:
 
     def get_path(self, name):
         content = []
-        with open(name) as f:
+        with open(name, "r", encoding="utf-8") as f:
             allfiles = f.readlines()
         for file in allfiles:
             if not os.path.isabs(file):

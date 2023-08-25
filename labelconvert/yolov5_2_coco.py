@@ -1,5 +1,4 @@
 # -*- encoding: utf-8 -*-
-# @File: yolov5_2_coco.py
 # @Author: SWHL
 # @Contact: liekkaskono@163.com
 import argparse
@@ -229,7 +228,7 @@ class YOLOV5ToCOCO:
             json.dump(content, f, ensure_ascii=False)
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser("Datasets converter from YOLOV5 to COCO")
     parser.add_argument(
         "--data_dir", type=str, default="datasets/YOLOV5", help="Dataset root path"
@@ -241,3 +240,7 @@ if __name__ == "__main__":
 
     converter = YOLOV5ToCOCO(args.data_dir)
     converter(mode_list=args.mode_list.split(","))
+
+
+if __name__ == "__main__":
+    main()

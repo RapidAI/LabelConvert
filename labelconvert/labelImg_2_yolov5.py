@@ -30,11 +30,10 @@ class LabelImgToYOLOV5:
 
     def __call__(self):
         img_list = self.get_img_list()
-        if img_list:
-            img_list = self.gen_image_label_dir(img_list)
-        else:
-            return ValueError(f"{self.root_dir} is corrupted.")
+        if not img_list:
+            raise ValueError(f"{self.root_dir} is corrupted.")
 
+        img_list = self.gen_image_label_dir(img_list)
         split_list = self.get_train_val_test_list(
             img_list,
             ratio=self.val_ratio,
@@ -122,7 +121,7 @@ class LabelImgToYOLOV5:
 
     def cp_file(self, file_path: Path, dst_dir: Path):
         if not file_path.exists():
-            return FileExistsError(file_path)
+            raise FileExistsError(file_path)
 
         if not dst_dir.exists():
             self.mkdir(dst_dir)
@@ -131,7 +130,7 @@ class LabelImgToYOLOV5:
         shutil.copy2(str(file_path), str(dst_file_path))
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--src_dir", type=str)
     parser.add_argument("--out_dir", type=str)
@@ -145,3 +144,7 @@ if __name__ == "__main__":
     )
     converter()
     print(f"Successfully output to the {args.out_dir}")
+
+
+if __name__ == "__main__":
+    main()

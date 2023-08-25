@@ -1,5 +1,6 @@
-# !/usr/bin/env python
 # -*- encoding: utf-8 -*-
+# @Author: SWHL
+# @Contact: liekkaskono@163.com
 import argparse
 import glob
 import json
@@ -88,7 +89,7 @@ class YOLOV5CFG2COCO:
             {
                 "id": 1,
                 "name": "Apache License v2.0",
-                "url": "https://github.com/RapidAI/YOLO2COCO/LICENSE",
+                "url": "https://choosealicense.com/licenses/apache-2.0/",
             }
         ]
 
@@ -130,25 +131,21 @@ class YOLOV5CFG2COCO:
         print(f"The output directory is: {self.dst}")
 
     def get_files(self, path):
-        # include image suffixes
         IMG_FORMATS = ["bmp", "dng", "jpeg", "jpg", "mpo", "png", "tif", "tiff", "webp"]
         f = []
         for p in path:
-            p = Path(p)  # os-agnostic
-            if p.is_dir():  # dir
+            p = Path(p)
+            if p.is_dir():
                 f += glob.glob(str(p / "**" / "*.*"), recursive=True)
-                # f = list(p.rglob('*.*'))  # pathlib
             elif p.is_file():  # file
-                with open(p) as t:
+                with open(p, "r", encoding="utf-8") as t:
                     t = t.read().strip().splitlines()
                     parent = str(p.parent) + os.sep
-                    # local to global path
                     f += [
                         x.replace("./", parent) if x.startswith("./") else x for x in t
                     ]
-                    # f += [p.parent / x.lstrip(os.sep) for x in t]  # local to global path (pathlib)
             else:
-                raise Exception(f"{p} does not exist")
+                raise FileExistsError(f"{p} does not exist")
 
         im_files = sorted(
             x.replace("/", os.sep) for x in f if x.split(".")[-1].lower() in IMG_FORMATS
@@ -200,7 +197,6 @@ class YOLOV5CFG2COCO:
                 if len(new_anno) > 0:
                     annotations.extend(new_anno)
                 else:
-                    # print(f'{label_path} is empty')
                     raise ValueError(f"{label_path} is empty")
             else:
                 raise FileNotFoundError(f"{label_path} not exists")
@@ -250,11 +246,8 @@ class YOLOV5CFG2COCO:
         box_w = w * width
         box_h = h * height
 
-        # left top
         x0 = max(cx - box_w / 2, 0)
         y0 = max(cy - box_h / 2, 0)
-
-        # right bottomt
         x1 = min(x0 + box_w, width)
         y1 = min(y0 + box_h, height)
 
@@ -264,7 +257,7 @@ class YOLOV5CFG2COCO:
         return segmentation, bbox, area
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser("Datasets converter from YOLOV5 to COCO")
     parser.add_argument(
         "--yaml_path",
@@ -276,3 +269,7 @@ if __name__ == "__main__":
 
     converter = YOLOV5CFG2COCO(args.yaml_path)
     converter.generate()
+
+
+if __name__ == "__main__":
+    main()

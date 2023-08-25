@@ -1,9 +1,8 @@
-简体中文 | [English](./docs/README_en.md)
+[简体中文](./docs/README.md) | English
 
 <div align="center">
   <img src="https://github.com/RapidAI/YOLO2COCO/releases/download/v0/LabelConvertv3.png" width="55%" height="55%"/>
 </div>
-
 
 ## LabelConvert
 
@@ -11,44 +10,36 @@
     <a href=""><img src="https://img.shields.io/badge/Python-3.6+-aff.svg"></a>
     <a href=""><img src="https://img.shields.io/badge/OS-Linux%2C%20Win%2C%20Mac-pink.svg"></a>
     <a href="https://github.com/RapidAI/YOLO2COCO/graphs/contributors"><img src="https://img.shields.io/github/contributors/RapidAI/YOLO2COCO?color=9ea"></a>
-    <a href="https://github.com/RapidAI/YOLO2COCO/stargazers"><img src="https://img.shields.io/github/stars/RapidAI/YOLO2COCO?color=ccf"></a>
-    <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache%202-dfd.svg"></a>
+    <a href="https://github.com/RapidAI/YOLO2COCO/stargazers"><img src="https://img.shields.io/github/stars/RapidAI/YOLO2COCO?color=ccf" ></a>
+    <a href=". /LICENSE"><img src="https://img.shields.io/badge/License-Apache%202-dfd.svg"></a>
     <a href="https://semver.org/"><img alt="SemVer2.0" src="https://img.shields.io/badge/SemVer-2.0-brightgreen"></a>
     <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 </p>
 
-> 🎉 推出知识星球[RapidAI私享群](https://t.zsxq.com/0duLBZczw)，这里的提问会优先得到回答和支持，也会享受到RapidAI组织后续持续优质的服务。欢迎大家的加入。
+- A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between **labelme, labelImg tools and YOLO, VOC, and COCO** dataset formats.
 
-- 目标检测和图像分割常用数据集格式转换工具，支持labelme、labelImg工具和YOLO、VOC、COCO数据集格式之间相互转换。
-
-#### TODO
-- [ ] 完善已有转换代码
-- [ ] 增加分割类数据集格式转换
-- [ ] 发布whl包
-- [ ] 增加单元测试
-- [x] 更改项目名称并添加logo
-
-#### labelImg标注yolo格式数据 → YOLOV5格式
+#### labelImg label data → YOLOV5 format
 <details>
+    <summary>Click to expand</summary>
 
-  - 将[labelImg](https://github.com/tzutalin/labelImg)库标注的yolo数据格式一键转换为YOLOV5格式数据
-  - labelImg标注数据目录结构如下（详情参见`dataset/labelImg_dataset`）：
-    ```text
-      labelImg_dataset
-      ├── classes.txt
-      ├── images(13).jpg
-      ├── images(13).txt
-      ├── images(3).jpg
-      ├── images(3).txt
-      ├── images4.jpg
-      ├── images4.txt
-      ├── images5.jpg
-      ├── images5.txt
-      ├── images6.jpg  # 注意这个是没有标注的
-      ├── images7.jpg
-      └── images7.txt
-    ```
-  - 转换
+- Convert the yolo data format marked by the [labelImg](https://github.com/tzutalin/labelImg) library to YOLOV5 format data with one click.
+- The labelImg label data directory structure is as follows (see `dataset/labelImg_dataset` for details):
+  ````text
+    labelImg_dataset
+    ├── classes.txt
+    ├── images(13).jpg
+    ├── images(13).txt
+    ├── images(3).jpg
+    ├── images(3).txt
+    ├── images4.jpg
+    ├── images4.txt
+    ├── images5.jpg
+    ├── images5.txt
+    ├── images6.jpg
+    ├── images7.jpg
+    └── images7.txt
+  ````
+- Convert
     ```shell
     python labelImg_2_yolov5.py --src_dir dataset/labelImg_dataset \
                                 --out_dir dataset/labelImg_dataset_output \
@@ -56,46 +47,46 @@
                                 --have_test true \
                                 --test_ratio 0.2
     ```
-    - `--src_dir`：labelImg标注后所在目录
-    - `--out_dir`： 转换之后的数据存放位置
-    - `--val_ratio`：生成验证集占整个数据的比例，默认是`0.2`
-    - `--have_test`：是否生成test部分数据，默认是`True`
-    - `--test_ratio`：test数据整个数据百分比，默认是`0.2`
+    - `--src_dir`: the directory where labelImg is stored after labeling.
+    - `--out_dir`: the location where the data is stored after conversion.
+    - `--val_ratio`: the ratio of the generated validation set to the whole data, default is `0.2`.
+    - `--have_test`: whether to generate the test part of the data, the default is `True`.
+    - `--test_ratio`: percentage of the whole data of the test data, default is `0.2`.
 
-  - 转换后目录结构（详情参见`dataset/labelImg_dataset_output`）：
-    ```text
-    labelImg_dataset_output/
-      ├── classes.txt
-      ├── images
-      │   ├── images(13).jpg
-      │   ├── images(3).jpg
-      │   ├── images4.jpg
-      │   ├── images5.jpg
-      │   └── images7.jpg
-      ├── labels
-      │   ├── images(13).txt
-      │   ├── images(3).txt
-      │   ├── images4.txt
-      │   ├── images5.txt
-      │   └── images7.txt
-      ├── non_labels        # 这是没有标注图像的目录，自行决定如何处置
-      │   └── images6.jpg
-      ├── test.txt
-      ├── train.txt
-      └── val.txt
-    ```
-  - 可以进一步直接对`dataset/labelImg_dataset_output`目录作转COCO的转换
-    ```shell
-    python yolov5_2_coco.py --data_dir dataset/lablelImg_dataset_output
-    ```
-
+- Converted directory structure (see `dataset/labelImg_dataset_output` for details):
+  ````text
+  labelImg_dataset_output/
+    ├── classes.txt
+    ├── images
+    │   ├── images(13).jpg
+    │   ├── images(3).jpg
+    │   ├── images4.jpg
+    │   ├── images5.jpg
+    │   └── images7.jpg
+    ├── labels
+    │   ├── images(13).txt
+    │   ├── images(3).txt
+    │   ├── images4.txt
+    │   ├── images5.txt
+    │   └── images7.txt
+    ├── non_labels        # This is the catalog without the labeled images.
+    │   └── images6.jpg
+    ├── test.txt
+    ├── train.txt
+    └── val.txt
+  ````
+- You can further directly convert the `dataset/labelImg_dataset_output` directory to COCO
+  ```shell
+  python yolov5_2_coco.py --data_dir dataset/labellImg_dataset_output
+  ````
 </details>
 
-#### COCO格式数据 → labelImg
+#### COCO format data → labelImg yolo format
 <details>
+    <summary>Click to expand</summary>
 
-- 将COCO格式数据一键转换为labelImg标注的yolo格式数据
-- COCO格式数据目录结构如下（详情参见：`dataset/YOLOV5_COCO_format`）：
+- One-click conversion of COCO format data to labelImg labeled yolo format data.
+- COCO format directory structure（see `dataset/YOLOV5_COCO_format` for details）：
   ```text
   YOLOV5_COCO_format
     ├── annotations
@@ -103,16 +94,16 @@
     │   └── instances_val2017.json
     ├── train2017
     │   ├── 000000000001.jpg
-    │   └── 000000000002.jpg  # 这个是背景图像
+    │   └── 000000000002.jpg
     └── val2017
         └── 000000000001.jpg
   ```
-- 转换
+- Convert
   ```bash
   python coco_2_labelImg.py --data_dir dataset/YOLOV5_COCO_format
   ```
-  - `--data_dir`: COCO格式数据集所在目录
-- 转换后目录结构（详情参见：`dataset/COCO_labelImg_format`）:
+  - `--data_dir`: the directory where the COCO format dataset is located. Default is `dataset/YOLOV5_COCO_format`.
+- Converted directory structure (see `dataset/COCO_labelImg_format` for details):
   ```text
   COCO_labelImg_format
     ├── train
@@ -125,7 +116,7 @@
         ├── 000000000001.txt
         └── classes.txt
   ```
-- 对转换之后的目录，可以直接用`labelImg`库直接打开，更改标注，具体命令如下：
+- For the converted directory, you can directly use the [labelImg](https://github.com/tzutalin/labelImg)  library to open it directly and change the label. The specific commands are as follows:
   ```shell
   $ cd dataset/COCO_labelImg_format
   $ labelImg train train/classes.txt
@@ -135,43 +126,44 @@
   ```
 </details>
 
-#### YOLOV5格式数据 → COCO
+#### YOLOV5 format data → COCO
 <details>
+    <summary>Click to expand</summary>
 
-  - 可以将一些背景图像加入到训练中，具体做法是：直接将背景图像放入`backgroud_images`目录即可。
-  - 转换程序会自动扫描该目录，添加到训练集中，可以无缝集成后续[YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)的训练。
-  - YOLOV5训练格式目录结构（详情参见`dataset/YOLOV5`）：
-      ```text
-      YOLOV5
-      ├── classes.txt
-      ├── background_images  # 一般是和要检测的对象容易混淆的图像
-      │   └── bg1.jpeg
-      ├── images
-      │   ├── images(13).jpg
-      │   └── images(3).jpg
-      ├── labels
-      │   ├── images(13).txt
-      │   └── images(3).txt
-      ├── train.txt
-      └── val.txt
-      ```
-  - **train.txt**和**val.txt**中图像路径，以下两种均可：
-    - 相对于**根目录**的路径
+- Some background images can be added to the training by directly placing them into the `backgroud_images` directory.
+- The conversion program will automatically scan this directory and add it to the training set, allowing seamless integration with subsequent [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) training.
+- YOLOV5 training format directory structure (see `dataset/YOLOV5` for details).
+    ```text
+    YOLOV5
+    ├── classes.txt
+    ├── background_images  # usually images that are easily confused with the object to be detected
+    │   └── bg1.jpeg
+    ├── images
+    │   ├── images(13).jpg
+    │   └── images(3).jpg
+    ├── labels
+    │   ├── images(13).txt
+    │   └── images(3).txt
+    ├── train.txt
+    └── val.txt
+    ```
+- The image paths in train.txt and val.txt can be either:
+  - Path relative to **root directory**:
       ```text
       dataset/YOLOV5/images/images(3).jpg
       ```
-    - 相对于**dataset/YOLOV5**的相对路径
+  - Path relative to **dataset/YOLOV5**:
       ```text
       images/images(3).jpg
       ```
-  - 转换
-      ```shell
-    python yolov5_2_coco.py --data_dir dataset/YOLOV5 --mode_list train,val
-    ```
-    - `--data_dir`：整理好的数据集所在目录
-    - `--mode_list`：指定生成的json，前提是要有对应的txt文件，可单独指定。（e.g. `train,val,test`）
+- Convert
+    ```shell
+  python yolov5_2_coco.py --data_dir dataset/YOLOV5 --mode_list train,val
+  ```
+  - `--data_dir`: the directory where the collated dataset is located
+  - `--mode_list`: specify the generated json, provided that there is a corresponding txt file, which can be specified separately. (e.g. `train,val,test`)
 
-  - 转换后目录结构（详情参见`dataset/YOLOV5_COCO_format`）：
+- The structure of the converted directory (see `dataset/YOLOV5_COCO_format` for details)
     ```text
     YOLOV5_COCO_format
     ├── annotations
@@ -179,64 +171,66 @@
     │   └── instances_val2017.json
     ├── train2017
     │   ├── 000000000001.jpg
-    │   └── 000000000002.jpg  # 这个是背景图像
+    │   └── 000000000002.jpg  # This is the background image.
     └── val2017
         └── 000000000001.jpg
     ```
 </details>
 
-#### YOLOV5 YAML描述文件 → COCO
+#### YOLOV5 YAML description file → COCO
 <details>
+    <summary>Click to expand</summary>
 
-  - YOLOV5 yaml 数据文件目录结构如下（详情参见`dataset/YOLOV5_yaml`）：
-      ```text
-      YOLOV5_yaml
-      ├── images
-      │   ├── train
-      │   │   ├── images(13).jpg
-      │   │   └── images(3).jpg
-      │   └── val
-      │       ├── images(13).jpg
-      │       └── images(3).jpg
-      ├── labels
-      │   ├── train
-      │   │   ├── images(13).txt
-      │   │   └── images(3).txt
-      │   └── val
-      │       ├── images(13).txt
-      │       └── images(3).txt
-      └── sample.yaml
-      ```
-
-  - 转换
-    ```shell
-    python yolov5_yaml_2_coco.py --yaml_path dataset/YOLOV5_yaml/sample.yaml
-    ```
-</details>
-
-#### darknet格式数据 → COCO
-<details>
-
-  - darknet训练数据目录结构（详情参见`dataset/darknet`）：
+- The YOLOV5 yaml data file needs to contain.
     ```text
-    darknet
-    ├── class.names
-    ├── gen_config.data
-    ├── gen_train.txt
-    ├── gen_valid.txt
-    └── images
-        ├── train
-        └── valid
+    YOLOV5_yaml
+    ├── images
+    │   ├── train
+    │   │   ├── images(13).jpg
+    │   │   └── images(3).jpg
+    │   └── val
+    │       ├── images(13).jpg
+    │       └── images(3).jpg
+    ├── labels
+    │   ├── train
+    │   │   ├── images(13).txt
+    │   │   └── images(3).txt
+    │   └── val
+    │       ├── images(13).txt
+    │       └── images(3).txt
+    └── sample.yaml
     ```
 
-  - 转换
-    ```shell
-    python darknet_2_coco.py --data_path dataset/darknet/gen_config.data
-    ```
+- Convert
+  ```shell
+  python yolov5_yaml_2_coco.py --yaml_path dataset/YOLOV5_yaml/sample.yaml
+  ```
 </details>
 
-#### 可视化COCO格式下图像
+#### darknet format data → COCO
 <details>
+
+- Darknet training data directory structure (see `dataset/darknet` for details).
+  ```text
+  darknet
+  ├── class.names
+  ├── gen_config.data
+  ├── gen_train.txt
+  ├── gen_valid.txt
+  └── images
+      ├── train
+      └── valid
+  ```
+
+- Convert
+  ```shell
+  python darknet_2_coco.py --data_path dataset/darknet/gen_config.data
+  ```
+</details>
+
+#### Visualize images in COCO format
+<details>
+    <summary>Click to expand</summary>
 
 ```shell
 python coco_visual.py --vis_num 1 \
@@ -244,14 +238,15 @@ python coco_visual.py --vis_num 1 \
                     --img_dir dataset/YOLOV5_COCO_format/train2017
 ```
 
-- `--vis_num`：指定要查看的图像索引
-- `--json_path`：查看图像的json文件路径
-- `--img_dir`: 查看图像所在的目录
+- `--vis_num`: specify the index of the image to be viewed
+- `--json_path`: path to the json file of the image to view
+- `--img_dir`: view the directory where the image is located
 
 </details>
 
-#### COCO格式Object Instance示例
+#### Object Instance demo of COCO
 <details>
+    <summary>Click to expand</summary>
 
 ```json
 {
@@ -283,10 +278,10 @@ python coco_visual.py --vis_num 1 \
         "segmentation": [[18.00, 2.99, 105.00, 2.99, 105.00, 89.00, 18.00, 89.00]],
         "area": 7482.011,
         "iscrowd": 0,
-        "image_id": 1,  // 对应images中的id
-        "bbox": [18.00, 2.99, 87.00, 86.00],  // [x, y, w, h]其中(x,y)是左上角的值，w,h是框的宽和高
-        "category_id": 1,  // 对应categories中的ID
-        "id": 1  // 唯一区分不同标注实例的编号
+        "image_id": 1,  // Corresponding to the ID in images
+        "bbox": [18.00, 2.99, 87.00, 86.00],  // [x, y, w, h], (x,y) is the left top point of the box. w,h is the width and height of the box.
+        "category_id": 1,  // Corresponding to the ID in categories.
+        "id": 1  // Number that uniquely distinguishes different dimension instances
     }, {
         "segmentation": [
             [126.99, 3.99, 210.99, 3.99, 210.99, 88.99, 126.99, 88.99]
@@ -305,8 +300,7 @@ python coco_visual.py --vis_num 1 \
     }]
 }
 ```
-
 </details>
 
-#### 相关资料
-- [MSCOCO数据标注详解](https://blog.csdn.net/wc781708249/article/details/79603522)
+#### Related information
+- [MSCOCO Data Annotation Details](https://blog.csdn.net/wc781708249/article/details/79603522)
