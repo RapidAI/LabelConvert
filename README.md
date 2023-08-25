@@ -1,4 +1,4 @@
-[简体中文](./docs/README.md) | English
+[简体中文](./docs/README_zh.md) | English
 
 <div align="center">
   <img src="https://github.com/RapidAI/YOLO2COCO/releases/download/v0/LabelConvertv3.png" width="55%" height="55%"/>
