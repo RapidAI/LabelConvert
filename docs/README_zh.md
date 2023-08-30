@@ -5,7 +5,7 @@
 </div>
 
 
-## LabelConvert
+## Label Convert
 
 <p align="left">
     <a href=""><img src="https://img.shields.io/badge/Python->=3.6,<3.12-aff.svg"></a>
@@ -24,9 +24,14 @@
 #### TODO
 - [ ] 完善已有转换代码
 - [ ] 增加分割类数据集格式转换
-- [ ] 发布whl包
+- [x] 发布whl包
 - [ ] 增加单元测试
 - [x] 更改项目名称并添加logo
+
+#### 安装
+```bash
+pip install label_convert
+```
 
 #### labelImg标注yolo格式数据 → YOLOV5格式
 <details>
@@ -50,11 +55,11 @@
     ```
   - 转换
     ```shell
-    python labelImg_2_yolov5.py --src_dir dataset/labelImg_dataset \
-                                --out_dir dataset/labelImg_dataset_output \
-                                --val_ratio 0.2 \
-                                --have_test true \
-                                --test_ratio 0.2
+    labelimg_to_yolov5 --src_dir dataset/labelImg_dataset \
+                       --out_dir dataset/labelImg_dataset_output \
+                       --val_ratio 0.2 \
+                       --have_test true \
+                       --test_ratio 0.2
     ```
     - `--src_dir`：labelImg标注后所在目录
     - `--out_dir`： 转换之后的数据存放位置
@@ -86,7 +91,7 @@
     ```
   - 可以进一步直接对`dataset/labelImg_dataset_output`目录作转COCO的转换
     ```shell
-    python yolov5_2_coco.py --data_dir dataset/lablelImg_dataset_output
+    yolov5_to_coco --data_dir dataset/lablelImg_dataset_output
     ```
 
 </details>
@@ -109,7 +114,7 @@
   ```
 - 转换
   ```bash
-  python coco_2_labelImg.py --data_dir dataset/YOLOV5_COCO_format
+  coco_to_labelimg --data_dir dataset/YOLOV5_COCO_format
   ```
   - `--data_dir`: COCO格式数据集所在目录
 - 转换后目录结构（详情参见：`dataset/COCO_labelImg_format`）:
@@ -165,8 +170,8 @@
       images/images(3).jpg
       ```
   - 转换
-      ```shell
-    python yolov5_2_coco.py --data_dir dataset/YOLOV5 --mode_list train,val
+    ```shell
+    yolov5_to_coco --data_dir dataset/YOLOV5 --mode_list train,val
     ```
     - `--data_dir`：整理好的数据集所在目录
     - `--mode_list`：指定生成的json，前提是要有对应的txt文件，可单独指定。（e.g. `train,val,test`）
@@ -189,28 +194,28 @@
 <details>
 
   - YOLOV5 yaml 数据文件目录结构如下（详情参见`dataset/YOLOV5_yaml`）：
-      ```text
-      YOLOV5_yaml
-      ├── images
-      │   ├── train
-      │   │   ├── images(13).jpg
-      │   │   └── images(3).jpg
-      │   └── val
-      │       ├── images(13).jpg
-      │       └── images(3).jpg
-      ├── labels
-      │   ├── train
-      │   │   ├── images(13).txt
-      │   │   └── images(3).txt
-      │   └── val
-      │       ├── images(13).txt
-      │       └── images(3).txt
-      └── sample.yaml
-      ```
+    ```text
+    YOLOV5_yaml
+    ├── images
+    │   ├── train
+    │   │   ├── images(13).jpg
+    │   │   └── images(3).jpg
+    │   └── val
+    │       ├── images(13).jpg
+    │       └── images(3).jpg
+    ├── labels
+    │   ├── train
+    │   │   ├── images(13).txt
+    │   │   └── images(3).txt
+    │   └── val
+    │       ├── images(13).txt
+    │       └── images(3).txt
+    └── sample.yaml
+    ```
 
   - 转换
     ```shell
-    python yolov5_yaml_2_coco.py --yaml_path dataset/YOLOV5_yaml/sample.yaml
+    yolov5_yaml_to_coco --yaml_path dataset/YOLOV5_yaml/sample.yaml
     ```
 </details>
 
@@ -231,7 +236,7 @@
 
   - 转换
     ```shell
-    python darknet_2_coco.py --data_path dataset/darknet/gen_config.data
+    darknet_to_coco --data_path dataset/darknet/gen_config.data
     ```
 </details>
 
@@ -239,9 +244,9 @@
 <details>
 
 ```shell
-python coco_visual.py --vis_num 1 \
-                    --json_path dataset/YOLOV5_COCO_format/annotations/instances_train2017.json \
-                    --img_dir dataset/YOLOV5_COCO_format/train2017
+coco_visual --vis_num 1 \
+            --json_path dataset/YOLOV5_COCO_format/annotations/instances_train2017.json \
+            --img_dir dataset/YOLOV5_COCO_format/train2017
 ```
 
 - `--vis_num`：指定要查看的图像索引

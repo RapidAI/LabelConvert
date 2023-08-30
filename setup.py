@@ -26,7 +26,7 @@ def get_readme() -> str:
     return readme
 
 
-MODULE_NAME = "labelconvert"
+MODULE_NAME = "label_convert"
 
 obtainer = GetPyPiLatestVersion()
 try:
@@ -70,6 +70,13 @@ setuptools.setup(
     ],
     python_requires=">=3.6,<3.12",
     entry_points={
-        "console_scripts": [f"{MODULE_NAME}={MODULE_NAME}.main:main"],
+        "console_scripts": [
+            f"coco_to_labelimg={MODULE_NAME}.coco_to_labelimg:main",
+            f"coco_visual={MODULE_NAME}.coco_visual:main",
+            f"darknet_to_coco={MODULE_NAME}.darknet_to_coco:main",
+            f"labelimg_to_yolov5={MODULE_NAME}.labelimg_to_yolov5:main",
+            f"yolov5_to_coco={MODULE_NAME}.yolov5_to_coco:main",
+            f"yolov5_yaml_to_coco={MODULE_NAME}.yolov5_yaml_to_coco:main",
+        ],
     },
 )

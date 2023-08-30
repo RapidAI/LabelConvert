@@ -5,13 +5,14 @@ import argparse
 import json
 import shutil
 from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 from tqdm import tqdm
 
 
 class COCO2labelImg:
-    def __init__(self, data_dir: str = None):
+    def __init__(self, data_dir: Optional[str] = None):
         # coco dir
         self.data_dir = Path(data_dir)
         self.verify_exists(self.data_dir)
@@ -29,7 +30,6 @@ class COCO2labelImg:
         self.verify_exists(self.train2017_dir)
         self.verify_exists(self.val2017_dir)
 
-        # save dir
         self.save_dir = self.data_dir.parent / "COCO_labelImg_format"
         self.mkdir(self.save_dir)
 
@@ -41,7 +41,7 @@ class COCO2labelImg:
 
     def __call__(
         self,
-    ):
+    ) -> None:
         train_list = [self.train_json, self.save_train_dir, self.train2017_dir]
         self.convert(train_list)
 
@@ -50,7 +50,7 @@ class COCO2labelImg:
 
         print(f"Successfully convert, detail in {self.save_dir}")
 
-    def convert(self, info_list: list):
+    def convert(self, info_list: List[Path]) -> None:
         json_path, save_dir, img_dir = info_list
 
         data = self.read_json(str(json_path))
@@ -81,16 +81,16 @@ class COCO2labelImg:
             shutil.copy2(img_full_path, save_dir)
 
     @staticmethod
-    def read_json(json_path):
-        with open(json_path, "r", encoding="utf-8") as f:
+    def read_json(json_path: Union[Path, str]) -> Dict[str, Any]:
+        with open(str(json_path), "r", encoding="utf-8") as f:
             data = json.load(f)
         return data
 
-    def gen_classes_txt(self, save_dir, categories_dict):
+    def gen_classes_txt(self, save_dir: Path, categories_dict: List[Dict[str, str]]):
         class_info = [value["name"] for value in categories_dict]
         self.write_txt(save_dir / "classes.txt", class_info)
 
-    def get_bbox(self, seg_info):
+    def get_bbox(self, seg_info: List[List[float]]) -> List[float]:
         seg_info = np.array(seg_info[0]).reshape(4, 2)
         x0, y0 = np.min(seg_info, axis=0)
         x1, y1 = np.max(seg_info, axis=0)
@@ -98,22 +98,23 @@ class COCO2labelImg:
         return bbox
 
     @staticmethod
-    def write_txt(save_path: str, content: list, mode="w"):
+    def write_txt(save_path: str, content: List[str], mode="w") -> None:
         if not isinstance(save_path, str):
             save_path = str(save_path)
 
         if isinstance(content, str):
             content = [content]
+
         with open(save_path, mode, encoding="utf-8") as f:
             for value in content:
                 f.write(f"{value}\n")
 
     @staticmethod
     def xyxy_to_xywh(
-        xyxy: list, img_width: int, img_height: int
-    ) -> tuple([float, float, float, float]):
+        xyxy: List[float], img_width: int, img_height: int
+    ) -> Tuple[float, float, float, float]:
         """
-        xyxy: (list), [x1, y1, x2, y2]
+        xyxy: (List[float]), [x1, y1, x2, y2]
         """
         x_center = (xyxy[0] + xyxy[2]) / (2 * img_width)
         y_center = (xyxy[1] + xyxy[3]) / (2 * img_height)
@@ -126,13 +127,13 @@ class COCO2labelImg:
         return x_center, y_center, w, h
 
     @staticmethod
-    def verify_exists(file_path):
+    def verify_exists(file_path: Union[str, Path]) -> None:
         file_path = Path(file_path)
         if not file_path.exists():
             raise FileNotFoundError(f"The {file_path} is not exists!!!")
 
     @staticmethod
-    def mkdir(dir_path):
+    def mkdir(dir_path: Union[str, Path]):
         Path(dir_path).mkdir(parents=True, exist_ok=True)
 
 
