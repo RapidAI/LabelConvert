@@ -36,7 +36,7 @@ kramdown:
   syntax_highlighter_opts:
     guess_lang:           true
 
-syntax_highlighter_style: monokai_sublime
+syntax_highlighter_style: github
 
 markdown_ext:             markdown,mkdown,mkdn,mkd,md
 
@@ -64,3 +64,4 @@ plugins:
   - jekyll-feed
   - jekyll-readme-index
   - jemoji
+  - jekyll-mermaid
