@@ -58,3 +58,6 @@ layout: post
     }]
 }
 ```
+
+#### Related information
+- [MSCOCO Data Annotation Details](https://blog.csdn.net/wc781708249/article/details/79603522)
