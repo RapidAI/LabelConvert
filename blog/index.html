@@ -1,0 +1,59 @@
+---
+layout: default
+title: Blog
+description: blogs by Tao He
+---
+
+<div class="home">
+  {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+
+  <ul class="post-list">
+    {% for post in paginator.posts %}
+
+      {% unless post.next %}
+        <h3>{{ post.date | date: '%Y-%m' }}</h3>
+      {% else %}
+        {% capture month %}{{ post.date | date: '%Y-%m' }}{% endcapture %}
+        {% capture nxt_month %}{{ post.next.date | date: '%Y-%m' }}{% endcapture %}
+
+        {% if month != nxt_month %}
+          <h3>{{ post.date | date: '%Y-%m' }}</h3>
+        {% endif %}
+      {% endunless %}
+
+      <li>
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        {%- if site.excerpt_separator -%}
+          {{ post.excerpt }}
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+
+  {%- include mathjax.html -%}
+
+  <hr />
+  <p class="rss-subscribe">Subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+
+  <div class="row">
+    <div class="col-sm-6 col-xs-6 navigation text-left">
+        {% if paginator.previous_page %}
+          <a class="btn btn-orange" href="{{paginator.previous_page_path}}">← Newer</a>
+        {% else %}
+          <span class="btn btn-orange disabled" hidden>← Newer</span>
+        {% endif %}
+    </div>
+    <div class="col-sm-6 col-xs-6 navigation text-right">
+        {% if paginator.next_page %}
+          <a class="btn btn-orange" href="{{paginator.next_page_path}}">Older →</a>
+        {% else %}
+          <span class="btn btn-orange disabled" hidden>Older →</span>
+        {% endif %}
+    </div>
+  </div>
+</div>

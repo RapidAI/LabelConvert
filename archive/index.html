@@ -1,0 +1,34 @@
+---
+layout: default
+title: Archive
+description: blogs by @sighingnow
+---
+
+<div class="home">
+  {% capture tags %}
+      {% for tag in site.tags %}
+          {{ tag[0] }}|
+      {% endfor %}
+  {% endcapture %}
+  <!-- the `|` after tags is used to avoid multi-word tags being splited by space -->
+  {% assign sortedtags = tags | split:'|' | sort %}
+
+  {% for xtag in sortedtags %}
+    {% assign tag = xtag | strip %}
+    <h3 id="{{ tag }}">{{ tag }}</h3>
+    <ul>
+      {% for post in site.posts %}
+        {% for otag in post.tags %}
+          {% if tag == otag %}
+            <li class="alink"><a href="{{ post.url }}" class="red-link">{{ post.date | date: "%Y-%m-%d" }}&emsp;{{ post.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</div>
+
+<div class="arrow-wrapper">
+  <hr />
+  <p class="rss-subscribe">Subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+</div>

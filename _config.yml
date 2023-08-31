@@ -1,28 +1,17 @@
 # Configurations
-title:            Jekyll Gitbook
-longtitle:        Jekyll Gitbook
+title:            HE Tao
+longtitle:        Hello my love
 author:           HE Tao
 email:            sighingnow@gmail.com
 description: >
-  Build Jekyll site with the GitBook style.
+  HE Tao's homepage, for blogs, codes and other interesting things.
 
 version:          1.0
-gitbook_version:  3.2.3
 
-url:              'https://rapidai.github.io'
+url:              'https://sighingnow.github.io'
+# url:              'http://localhost:4000'
 baseurl:          ''
 rss:              RSS
-
-# bootstrap: use the remote theme for the site itself
-remote_theme: RapidAI/LabelConvert
-
-toc:
-  enabled: true
-  h_min: 1
-  h_max: 3
-
-# customize the link favicon in header, will be {{site.baseurl}}/{{site.favicon_path}}
-favicon_path:     /assets/gitbook/images/favicon.ico
 
 # markdown render engine.
 markdown:         kramdown
@@ -36,31 +25,62 @@ kramdown:
   syntax_highlighter_opts:
     guess_lang:           true
 
-syntax_highlighter_style: colorful
+# pandoc:
+#   format: html5
+#   highlight-style: tango
+#   extensions:
+#     - smart
+#     - mathjax
 
-markdown_ext:             markdown,mkdown,mkdn,mkd,md
+markdown_ext:     markdown,mkdown,mkdn,mkd,md
 
 # Permalinks
-permalink:                /:categories/:year-:month-:day-:title:output_ext
+permalink:        none
 
-# Disqus comments
-# disqushandler:            sighingnow
+excerpt_separator: "<!--more-->"
+
+# Navigation
+navigation:
+- text: Blog
+  url: /blog/
+- text: Archive
+  url: /archive/
+- text: Résumé
+  url: /resume/
+- text: Github
+  url: https://github.com/sighingnow
+  external: true
 
 exclude:
   - _drafts
 
-collections:
-  pages:
-    output: true
-    permalink: /:collection/:path/
+#Social Media links
+social:
+  github:         sighingnow
+  facebook:       sighingnow
+  linkedin:       涛-何-732868bb
+  pinterest:      sighingnow
+  twitter:        sighingnow
+  stackoverflow:  users/5080177/he-tao
 
-page_width: 800px
+# Google Analytics
+gahandler:        'UA-124803592-1'
 
+# CNZZ
+cnzzhandler:      '1277366039'
+
+# Disqus
+disqushandler:    'sighingnow'
+
+# Blog Configurations
+paginate:         10 # Posts per page on the blog index
+paginate_path:    '/blog/page:num'
 destination:      ./_site
-incremental:      false
-regenerate:       true
+incremental:      true
+regenerate:       false
 
 plugins:
   - jekyll-feed
-  - jekyll-readme-index
+  - jekyll-paginate
+  - jekyll-seo-tag
   - jemoji
