@@ -217,6 +217,7 @@ pip install label_convert
 
 #### darknet format data → COCO
 <details>
+    <summary>Click to expand</summary>
 
 - Darknet training data directory structure (see `dataset/darknet` for details).
     ```text
