@@ -8,8 +8,6 @@ on:
       - 'docs/doc_whl.md'
       - 'setup.py'
       - '.github/workflows/gen_whl_to_pypi.yml'
-    tags:
-      - v0.*
 
 jobs:
   UnitTesting:
