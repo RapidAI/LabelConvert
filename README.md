@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Label Convert
+title:
 permalink: /
 ---
 
