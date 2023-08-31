@@ -30,3 +30,11 @@ A dataset format conversion tool for object detection and image segmentation, wh
 ```bash
 pip install label_convert
 ```
+
+```mermaid
+flowchart LR
+
+A([Documents]) --ExtractText--> B([sentences])
+B --Embeddings--> C([Embeddings])
+C --Store--> D[(DataBase)]
+```
