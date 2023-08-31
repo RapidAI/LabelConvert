@@ -1,12 +1,10 @@
 ---
-title: COCO format data → labelImg yolo format
+title: COCO → labelImg yolo
 author: SWHL
 date: 2023-08-31
 category: Jekyll
 layout: post
 ---
-
-### COCO format data → labelImg yolo format
 
 - One-click conversion of COCO format data to labelImg labeled yolo format data.
 - COCO format directory structure（see `dataset/YOLOV5_COCO_format` for details）：

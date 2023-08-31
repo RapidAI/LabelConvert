@@ -1,12 +1,10 @@
 ---
-title: YOLOV5 YAML description file → COCO
+title: YOLOV5 YAML → COCO
 author: SWHL
 date: 2023-08-31
 category: Jekyll
 layout: post
 ---
-
-### YOLOV5 YAML description file → COCO
 
 - The YOLOV5 yaml data file needs to contain.
     ```text

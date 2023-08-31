@@ -1,12 +1,11 @@
 ---
-title: darknet format data → COCO
+title: darknet → COCO
 author: SWHL
 date: 2023-08-31
 category: Jekyll
 layout: post
 ---
 
-### darknet format data → COCO
 - Darknet training data directory structure (see `dataset/darknet` for details).
     ```text
     darknet

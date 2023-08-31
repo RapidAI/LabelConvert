@@ -1,12 +1,10 @@
 ---
-title: Object Instance demo of COCO
+title: Demo of COCO json
 author: SWHL
 date: 2023-08-31
 category: Jekyll
 layout: post
 ---
-
-### Object Instance demo of COCO
 
 ```json
 {

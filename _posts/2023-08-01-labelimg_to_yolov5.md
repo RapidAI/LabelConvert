@@ -1,12 +1,11 @@
 ---
-title: labelImg label data → YOLOV5 format
+title: labelImg → YOLOV5
 author: SWHL
 date: 2023-08-31
 category: Jekyll
 layout: post
 ---
 
-### labelImg label data → YOLOV5 format
 - Convert the yolo data format marked by the [labelImg](https://github.com/tzutalin/labelImg) library to YOLOV5 format data with one click.
 - The labelImg label data directory structure is as follows (see `dataset/labelImg_dataset` for details):
     ````text

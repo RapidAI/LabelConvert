@@ -1,12 +1,10 @@
 ---
-title: Visualize images in COCO format
+title: Visualize COCO image
 author: SWHL
 date: 2023-08-31
 category: Jekyll
 layout: post
 ---
-
-### Visualize images in COCO format
 
 ```bash
 coco_visual --vis_num 1 \

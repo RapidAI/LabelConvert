@@ -1,12 +1,10 @@
 ---
-title: YOLOV5 format data → COCO
+title: YOLOV5 → COCO
 author: SWHL
 date: 2023-08-31
 category: Jekyll
 layout: post
 ---
-
-### YOLOV5 format data → COCO
 
 - Some background images can be added to the training by directly placing them into the `backgroud_images` directory.
 - The conversion program will automatically scan this directory and add it to the training set, allowing seamless integration with subsequent [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) training.
