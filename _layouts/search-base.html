@@ -1,7 +1,8 @@
+<!-- Slightly Modified from _layouts/home.html -->
+
 <!DOCTYPE HTML>
 <html lang="en" >
     <head>
-
         {%- include head.html -%}
 
         {% assign reversed_posts = site.posts | reverse %}
@@ -29,13 +30,29 @@
                 </div>
 
                 <div class="body-inner">
-                    {%- include body.html -%}
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            <section class="normal markdown-section">
+                                {% if page.title %}
+                                    <h1 id="{{ page.id }}">{{ page.title | escape }}</h1>
+                                {% else %}
+                                    <h1 id="{{ page.id }}">{{ site.title | escape }}</h1>
+                                {% endif %}
 
-                    {% if reversed_posts %}
-                        <a href="{{site.baseurl}}{{reversed_posts.first.url}}" class="navigation navigation-next navigation-unique" aria-label="Next page: {{reversed_posts.first.title}}">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    {% endif %}
+                                <br />
+                            </section>
+
+                            {{ content }}
+
+                            <div id="book-search-results">
+                                <div class="search-noresults">
+                                    
+                                </div>
+                    
+                                {%- include search.html -%}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
