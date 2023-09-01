@@ -10,7 +10,7 @@ mermaid: true
   <img src="https://github.com/RapidAI/YOLO2COCO/releases/download/v0/LabelConvertv3.png" width="55%" height="55%"/>
 </div>
 
-<br/>
+# Label Convert
 
 <p align="left">
     <a href=""><img src="https://img.shields.io/badge/Python->=3.6,<3.12-aff.svg"></a>
