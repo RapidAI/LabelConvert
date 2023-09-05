@@ -106,7 +106,7 @@ enableGitInfo = true # N.B. .GitInfo does not currently function with submodule 
         eventAPI   = "/docs/s/api/event/"       # optional - (or set via env variable HUGO_PARAMS_PLAUSIBLE_eventAPI)
 
     [params.feedback]
-        enabled = true
+        enabled = false
         emoticonTpl = true
         eventDest = ["plausible","google"]
         emoticonEventName = "Feedback"
