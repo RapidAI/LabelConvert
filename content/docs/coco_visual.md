@@ -4,7 +4,7 @@ date: "2022-09-30T05:33:22+01:00"
 draft: false
 author: "SWHL"
 title: "Visualize COCO image"
-icon: "circle"
+icon: "bike_scooter"
 toc: true
 description: "Lotus Docs is a modern documentation theme built for Hugo."
 publishdate: "2022-09-30T05:33:22+01:00"
