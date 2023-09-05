@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+<html lang="en-us"><head>
+    <meta charset="utf-8" />
+    <title>KaTex | My New Hugo Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A Modern Documentation Theme for Hugo" />
+    <meta name="keywords" content="Documentation, Hugo, Hugo Theme, Bootstrap" />
+    <meta name="author" content="Colin Wilson - Lotus Labs" />
+    <meta name="email" content="support@aigis.uk" />
+    <meta name="website" content="https://lotusdocs.dev" />
+    <meta name="Version" content="v0.1.0" />
+    
+    <link rel="icon" href="http://example.org/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="http://example.org/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="http://example.org/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+<link rel="manifest" crossorigin="use-credentials" href="http://example.org/site.webmanifest">
+
+    
+    
+    
+            
+                
+                <script type="text/javascript" src="http://example.org/docs/js/flexsearch.bundle.min.249548594cb6843f3060a3cdd3043799676c59ce8db83358a3fc2e4d20598d05dfa6ce4994805d2835cb33b54dc9b9e7.js" integrity="sha384-JJVIWUy2hD8wYKPN0wQ3mWdsWc6NuDNYo/wuTSBZjQXfps5JlIBdKDXLM7VNybnn" crossorigin="anonymous"></script>
+                
+        
+    
+    
+
+    <link rel="stylesheet" href="/docs/scss/style.min.0af1ac9683d9c839c8971b1773fc3d30aa77c5698ac875d94674730020e18608d76282278aa1d71ae62958a818a318ee.css" integrity="sha384-CvGsloPZyDnIlxsXc/w9MKp3xWmKyHXZRnRzACDhhgjXYoIniqHXGuYpWKgYoxju"crossorigin="anonymous">
+    <link rel="stylesheet" href="/docs/scss/katex.min.8d55e5153865e6cbdd63203b1168f5a06c9e69e03d8c3aa45aa84a3c1809fc595ec0c4e233ee383a3d110eb6ef09baae.css" integrity="sha384-jVXlFThl5svdYyA7EWj1oGyeaeA9jDqkWqhKPBgJ/FlewMTiM&#43;44Oj0RDrbvCbqu"crossorigin="anonymous">
+    
+    
+        
+        <script src="/docs/js/katex.min.9c20b90e02ce1d4c1ddf0cffa176c8e2c5b3c3e14126816d658694da9994cc5473b6fe4d746367f674558f254f579891.js" integrity="sha384-nCC5DgLOHUwd3wz/oXbI4sWzw&#43;FBJoFtZYaU2pmUzFRztv5NdGNn9nRVjyVPV5iR"defer></script>
+    <script src="/docs/js/auto-render.min.81f4fdf791ea42f6e629079731f53d5bd4ae29b869d5905ba5e6e02af9b163bce719a7004f01932799fa889a0136408b.js" integrity="sha384-gfT995HqQvbmKQeXMfU9W9SuKbhp1ZBbpebgKvmxY7znGacATwGTJ5n6iJoBNkCL"defer></script>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.getElementById("content"), {
+          
+          
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+    
+    </head><body>
+    <div class="content">
+        <div class="page-wrapper toggled">
+<nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-brand">
+        <a href='/' aria-label="HomePage" alt="HomePage">
+            
+                <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250"><path d="m143,39.5c-18,0-18,18-18,18,0,0,0-18-18-18H22c-2.76,0-5,2.24-5,5v143c0,2.76,2.24,5,5,5h76c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h76c2.76,0,5-2.24,5-5V44.5c0-2.76-2.24-5-5-5h-85Zm63,123.5c0,1.38-1.12,2.5-2.5,2.5h-60.5c-18,0-18,18-18,18,0,0,0-18-18-18h-60.5c-1.38,0-2.5-1.12-2.5-2.5v-94c0-1.38,1.12-2.5,2.5-2.5h51.5c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h51.5c1.38,0,2.5,1.12,2.5,2.5v94Z" style="fill:#06f;"/></svg>
+            
+        </a>
+    </div>
+    <div class="sidebar-content" style="height: calc(100% - 131px);">
+        <ul class="sidebar-menu">
+            
+                
+                
+                    
+                        
+                        <li class="">
+                            <a class="sidebar-root-link" href="http://example.org/docs/overview/">
+                                
+                                Overview
+                            </a>
+                        </li>
+                    
+                
+                    
+                        
+                        <li class="">
+                            <a class="sidebar-root-link" href="http://example.org/docs/quickstart/">
+                                
+                                Quickstart
+                            </a>
+                        </li>
+                    
+                
+                    
+                    
+                        <li class="sidebar-dropdown no-icon current active">
+                            <button class="btn">
+                                Guides
+                            </button>
+                            <div class="sidebar-submenu d-block">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class="sidebar-dropdown nested no-icon ">
+                                                <button class="btn">
+                                                    Features
+                                                </button>
+                                                <div class="sidebar-submenu ">
+                                                    <ul>
+                                                        
+                                                            
+                                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/features/syntax-highlighting/">Syntax Highlighting</a></li>
+                                                        
+                                                            
+                                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/features/plausible-analytics/">Plausible Analytics</a></li>
+                                                        
+                                                            
+                                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/features/google-analytics/">Google Analytics v4</a></li>
+                                                        
+                                                            
+                                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/features/feedback-widget/">Feedback Widget</a></li>
+                                                        
+                                                            
+                                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/features/flexsearch/">FlexSearch</a></li>
+                                                        
+                                                            
+                                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/features/docsearch/">DocSearch</a></li>
+                                                        
+                                                            
+                                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/features/katex/">KaTex</a></li>
+                                                        
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class="sidebar-dropdown nested no-icon ">
+                                                <button class="btn">
+                                                    Theme Options
+                                                </button>
+                                                <div class="sidebar-submenu ">
+                                                    <ul>
+                                                        
+                                                            
+                                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/theme-options/breadcrumbs/">Breadcrumb Navigation</a></li>
+                                                        
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class="sidebar-dropdown nested no-icon current active">
+                                                <button class="btn">
+                                                    Shortcodes
+                                                </button>
+                                                <div class="sidebar-submenu d-block">
+                                                    <ul>
+                                                        
+                                                            
+                                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/shortcodes/alerts/">Alerts</a></li>
+                                                        
+                                                            
+                                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/shortcodes/tables/">Tables</a></li>
+                                                        
+                                                            
+                                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/shortcodes/tabs/">Tabs</a></li>
+                                                        
+                                                            
+                                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/shortcodes/prism/">Prism</a></li>
+                                                        
+                                                            
+                                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/shortcodes/markdownify/">Markdownify</a></li>
+                                                        
+                                                            
+                                                            <li class="current no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/guides/shortcodes/katex/">KaTex</a></li>
+                                                        
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+                    
+                    
+                        <li class="sidebar-dropdown no-icon ">
+                            <button class="btn">
+                                Reference
+                            </button>
+                            <div class="sidebar-submenu ">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/reference/configuration/">Configuration</a></li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+                    
+                    
+                        <li class="sidebar-dropdown no-icon ">
+                            <button class="btn">
+                                Contributing
+                            </button>
+                            <div class="sidebar-submenu ">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/contributing/how-to-contribute/">How to Contribute</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/contributing/financial-contributions/">Financial Contributions</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/contributing/code-of-conduct/">Code of Conduct</a></li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+                    
+                    
+                        <li class="sidebar-dropdown no-icon ">
+                            <button class="btn">
+                                Help
+                            </button>
+                            <div class="sidebar-submenu ">
+                                <ul>
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/help/troubleshooting/">Troubleshooting</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" no-icon"><a class="sidebar-nested-link" href="http://example.org/docs/help/faqs/">FAQ</a></li>
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    
+                
+            
+        </ul>
+        
+    </div>
+    
+        <ul class="sidebar-footer list-unstyled mb-0">
+            
+        </ul>
+    
+</nav>
+
+                <main class="page-content bg-transparent">
+<div id="top-header" class="top-header d-print-none">
+    <div class="header-bar d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+            <a href='/' class="logo-icon me-3" aria-label="HomePage" alt="HomePage">
+                <div class="small">
+                    
+                            <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250"><path d="m143,39.5c-18,0-18,18-18,18,0,0,0-18-18-18H22c-2.76,0-5,2.24-5,5v143c0,2.76,2.24,5,5,5h76c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h76c2.76,0,5-2.24,5-5V44.5c0-2.76-2.24-5-5-5h-85Zm63,123.5c0,1.38-1.12,2.5-2.5,2.5h-60.5c-18,0-18,18-18,18,0,0,0-18-18-18h-60.5c-1.38,0-2.5-1.12-2.5-2.5v-94c0-1.38,1.12-2.5,2.5-2.5h51.5c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h51.5c1.38,0,2.5,1.12,2.5,2.5v94Z" style="fill:#06f;"/></svg>
+                    
+                </div>
+                <div class="big">
+                    
+                            <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250"><path d="m143,39.5c-18,0-18,18-18,18,0,0,0-18-18-18H22c-2.76,0-5,2.24-5,5v143c0,2.76,2.24,5,5,5h76c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h76c2.76,0,5-2.24,5-5V44.5c0-2.76-2.24-5-5-5h-85Zm63,123.5c0,1.38-1.12,2.5-2.5,2.5h-60.5c-18,0-18,18-18,18,0,0,0-18-18-18h-60.5c-1.38,0-2.5-1.12-2.5-2.5v-94c0-1.38,1.12-2.5,2.5-2.5h51.5c7.2,0,8.64,11.52,8.93,16.13.07,1.05.95,1.87,2,1.87h32.14c1.06,0,1.94-.82,2-1.87.29-4.61,1.73-16.13,8.93-16.13h51.5c1.38,0,2.5,1.12,2.5,2.5v94Z" style="fill:#06f;"/></svg>
+                    
+                </div>
+            </a>
+            <button id="close-sidebar" class="btn btn-icon btn-soft">
+                <span class="material-icons size-20 menu-icon align-middle">menu</span>
+            </button>
+            
+            
+                    
+                    <button id="flexsearch-button" class="ms-3 btn btn-soft" data-bs-toggle="collapse" data-bs-target="#FlexSearchCollapse" aria-expanded="false" aria-controls="FlexSearchCollapse">
+                        <span class="material-icons size-20 menu-icon align-middle">search</span>
+                        <span class="flexsearch-button-placeholder ms-1 me-2 d-none d-sm-block">Search</span>
+                        <div class="d-none d-sm-block">
+                            <span class="flexsearch-button-keys">
+                                <kbd class="flexsearch-button-cmd-key">
+                                    <svg width="44" height="15"><path d="M2.118,11.5A1.519,1.519,0,0,1,1,11.042,1.583,1.583,0,0,1,1,8.815a1.519,1.519,0,0,1,1.113-.458h.715V6.643H2.118A1.519,1.519,0,0,1,1,6.185,1.519,1.519,0,0,1,.547,5.071,1.519,1.519,0,0,1,1,3.958,1.519,1.519,0,0,1,2.118,3.5a1.519,1.519,0,0,1,1.114.458A1.519,1.519,0,0,1,3.69,5.071v.715H5.4V5.071A1.564,1.564,0,0,1,6.976,3.5,1.564,1.564,0,0,1,8.547,5.071,1.564,1.564,0,0,1,6.976,6.643H6.261V8.357h.715a1.575,1.575,0,0,1,1.113,2.685,1.583,1.583,0,0,1-2.227,0A1.519,1.519,0,0,1,5.4,9.929V9.214H3.69v.715a1.519,1.519,0,0,1-.458,1.113A1.519,1.519,0,0,1,2.118,11.5Zm0-.857a.714.714,0,0,0,.715-.714V9.214H2.118a.715.715,0,1,0,0,1.429Zm4.858,0a.715.715,0,1,0,0-1.429H6.261v.715a.714.714,0,0,0,.715.714ZM3.69,8.357H5.4V6.643H3.69ZM2.118,5.786h.715V5.071a.714.714,0,0,0-.715-.714.715.715,0,0,0-.5,1.22A.686.686,0,0,0,2.118,5.786Zm4.143,0h.715a.715.715,0,0,0,.5-1.22.715.715,0,0,0-1.22.5Z" fill="currentColor"></path><path d="M12.4,11.475H11.344l3.879-7.95h1.056Z" fill="currentColor"></path><path d="M25.073,5.384l-.864.576a2.121,2.121,0,0,0-1.786-.923,2.207,2.207,0,0,0-2.266,2.326,2.206,2.206,0,0,0,2.266,2.325,2.1,2.1,0,0,0,1.782-.918l.84.617a3.108,3.108,0,0,1-2.622,1.293,3.217,3.217,0,0,1-3.349-3.317,3.217,3.217,0,0,1,3.349-3.317A3.046,3.046,0,0,1,25.073,5.384Z" fill="currentColor"></path><path d="M30.993,5.142h-2.07v5.419H27.891V5.142h-2.07V4.164h5.172Z" fill="currentColor"></path><path d="M34.67,4.164c1.471,0,2.266.658,2.266,1.851,0,1.087-.832,1.809-2.134,1.855l2.107,2.691h-1.28L33.591,7.87H33.07v2.691H32.038v-6.4Zm-1.6.969v1.8h1.572c.832,0,1.22-.3,1.22-.918s-.411-.882-1.22-.882Z" fill="currentColor"></path><path d="M42.883,10.561H38.31v-6.4h1.033V9.583h3.54Z" fill="currentColor"></path></svg>
+                                </kbd>
+                                <kbd class="flexsearch-button-key">
+                                    <svg width="15" height="15"><path d="M5.926,12.279H4.41L9.073,2.721H10.59Z" fill="currentColor"/></svg>
+                                </kbd>
+                            </span>
+                        </div>
+                    </button>
+                
+            </div>
+
+        <div class="d-flex align-items-center">
+            <ul class="list-unstyled mb-0">
+                
+            </ul>
+            
+        </div>
+    </div>
+    
+    
+            <div class="collapse" id="FlexSearchCollapse">
+                <div class="flexsearch-container">
+                    <div class="flexsearch-keymap">
+                        <li>
+                            <kbd class="flexsearch-button-cmd-key"><svg width="15" height="15" aria-label="Arrow down" role="img"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"><path d="M7.5 3.5v8M10.5 8.5l-3 3-3-3"></path></g></svg></kbd>
+                            <kbd class="flexsearch-button-cmd-key"><svg width="15" height="15" aria-label="Arrow up" role="img"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"><path d="M7.5 11.5v-8M10.5 6.5l-3-3-3 3"></path></g></svg></kbd>
+                            <span class="flexsearch-key-label">to navigate</span>
+                        </li>
+                        <li>
+                            <kbd class="flexsearch-button-cmd-key"><svg width="15" height="15" aria-label="Enter key" role="img"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"><path d="M12 3.53088v3c0 1-1 2-2 2H4M7 11.53088l-3-3 3-3"></path></g></svg></kbd>
+                            <span class="flexsearch-key-label">to select</span>
+                        </li>
+                        <li>
+                            <kbd class="flexsearch-button-cmd-key"><svg width="15" height="15" aria-label="Escape key" role="img"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"><path d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956"></path></g></svg></kbd>
+                            <span class="flexsearch-key-label">to close</span>
+                        </li>
+                    </div>
+                    <form class="flexsearch position-relative flex-grow-1 ms-2 me-2">
+                        <div class="d-flex flex-row">
+                            <input id="flexsearch" class="form-control" type="search" placeholder="Search" aria-label="Search" autocomplete="off">
+                            <button id="hideFlexsearch" type="button" class="ms-2 btn btn-soft">
+                                cancel
+                            </button>
+                        </div>
+                        <div id="suggestions" class="shadow rounded-1 d-none"></div>
+                    </form>
+                </div>
+            </div>
+        
+    
+    
+</div>
+<div class="container-fluid">
+                            <div class="layout-spacing">
+                                
+                                    <div class="d-md-flex justify-content-between align-items-center"><nav aria-label="breadcrumb" class="d-inline-block pb-2 mt-1 mt-sm-0">
+    <ul id="breadcrumbs" class="breadcrumb bg-transparent mb-0" itemscope itemtype="https://schema.org/BreadcrumbList">
+        
+            
+                <li class="breadcrumb-item text-capitalize active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/docs/">
+                        <i class="material-icons size-20 align-text-bottom" itemprop="name">Home</i>
+                    </a>
+                    <meta itemprop="position" content='1' />
+                </li>
+            
+            
+                <li class="breadcrumb-item text-capitalize" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/docs/guides/">
+                        <span itemprop="name">Guides</span>
+                    </a>
+                    <meta itemprop="position" content='2' />
+                </li>
+            
+            
+                <li class="breadcrumb-item text-capitalize" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/docs/guides/shortcodes/">
+                        <span itemprop="name">Shortcodes</span>
+                    </a>
+                    <meta itemprop="position" content='3' />
+                </li>
+            
+        
+            <li class="breadcrumb-item text-capitalize active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span itemprop="name">KaTex</span>
+                <meta itemprop="position" content='4' />
+            </li>
+        
+    </ul>
+</nav></div>
+                                
+                                <div class="row flex-xl-nowrap">
+                                    
+                                    <div class="docs-toc col-xl-3  visually-hidden  d-xl-block"><toc>
+    <div class="fw-bold text-uppercase mb-2">On this page</div>
+    <nav id="TableOfContents"></nav>
+    </toc></div>
+                                    
+                                    
+                                    <div class="docs-toc-mobile  visually-hidden  d-print-none d-xl-none">
+                                        <button id="toc-dropdown-btn" class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
+                                            Table of Contents
+                                        </button>
+<nav id="toc-mobile"></nav></div>
+                                    <div class="docs-content col-12  mt-0">
+                                        <div class="mb-0 d-flex">
+                                            
+                                            <h1 class="content-title mb-0">
+                                                <span class="title-text">
+                                                    KaTex
+                                                </span>
+                                                
+                                            </h1>
+                                        </div>
+                                        
+                                        <div id="content" class="main-content" >
+                                            
+    
+    <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
+        <p>Lotus Docs has <a href="http://example.org/docs/guides/features/katex/">built-in support</a> for <a href="https://katex.org/">KaTex</a>. However, there are certain equation syntaxes which do not render well if at all without a lot of character escaping<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> or alterations. The KaTex shortcode is suited to handle such cases.</p>
+<p>For example:</p>
+
+
+    
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>{{&lt; <span style="color:#a6e22e">katex</span> &gt;}}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$$</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">begin</span>{<span style="color:#a6e22e">array</span>} {<span style="color:#a6e22e">lcl</span>}
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">L</span>(<span style="color:#a6e22e">p</span>,<span style="color:#a6e22e">w_i</span>) <span style="color:#f92672">&amp;=&amp;</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">dfrac</span>{<span style="color:#ae81ff">1</span>}{<span style="color:#a6e22e">N</span>}<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">Sigma_</span>{<span style="color:#a6e22e">i</span>=<span style="color:#ae81ff">1</span>}^<span style="color:#a6e22e">N</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">underbrace</span>{<span style="color:#a6e22e">f_r</span>(<span style="color:#a6e22e">x_2</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">rightarrow</span> <span style="color:#a6e22e">x_1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">rightarrow</span> <span style="color:#a6e22e">x_0</span>)<span style="color:#a6e22e">G</span>(<span style="color:#a6e22e">x_1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">longleftrightarrow</span> <span style="color:#a6e22e">x_2</span>)<span style="color:#a6e22e">f_r</span>(<span style="color:#a6e22e">x_3</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">rightarrow</span> <span style="color:#a6e22e">x_2</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">rightarrow</span> <span style="color:#a6e22e">x_1</span>)}<span style="color:#a6e22e">_</span>{<span style="color:#a6e22e">sample</span><span style="color:#960050;background-color:#1e0010">\</span>, <span style="color:#a6e22e">radiance</span><span style="color:#960050;background-color:#1e0010">\</span>, <span style="color:#a6e22e">evaluation</span><span style="color:#960050;background-color:#1e0010">\</span>, <span style="color:#a6e22e">in</span><span style="color:#960050;background-color:#1e0010">\</span>, <span style="color:#a6e22e">stage2</span>}
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">\\\\\\</span> <span style="color:#f92672">&amp;=&amp;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">prod_</span>{<span style="color:#a6e22e">i</span>=<span style="color:#ae81ff">3</span>}^{<span style="color:#a6e22e">k</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>}(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">underbrace</span>{<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">dfrac</span>{<span style="color:#a6e22e">f_r</span>(<span style="color:#a6e22e">x_</span>{<span style="color:#a6e22e">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>}
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">rightarrow</span> <span style="color:#a6e22e">x_i</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">rightarrow</span> <span style="color:#a6e22e">x_</span>{<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>})<span style="color:#a6e22e">G</span>(<span style="color:#a6e22e">x_i</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">longleftrightarrow</span> <span style="color:#a6e22e">x_</span>{<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>})}{<span style="color:#a6e22e">p_a</span>(<span style="color:#a6e22e">x_</span>{<span style="color:#a6e22e">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>})}}<span style="color:#a6e22e">_</span>{<span style="color:#a6e22e">stored</span><span style="color:#960050;background-color:#1e0010">\</span>,<span style="color:#a6e22e">in</span><span style="color:#960050;background-color:#1e0010">\</span>,<span style="color:#a6e22e">vertex</span><span style="color:#960050;background-color:#1e0010">\</span>, <span style="color:#a6e22e">during</span><span style="color:#960050;background-color:#1e0010">\</span>,<span style="color:#a6e22e">light</span><span style="color:#960050;background-color:#1e0010">\</span>, <span style="color:#a6e22e">path</span><span style="color:#960050;background-color:#1e0010">\</span>, <span style="color:#a6e22e">tracing</span><span style="color:#960050;background-color:#1e0010">\</span>, <span style="color:#a6e22e">in</span><span style="color:#960050;background-color:#1e0010">\</span>, <span style="color:#a6e22e">stage1</span>})<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">dfrac</span>{<span style="color:#a6e22e">G</span>(<span style="color:#a6e22e">x_k</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">longleftrightarrow</span> <span style="color:#a6e22e">x_</span>{<span style="color:#a6e22e">k</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>})<span style="color:#a6e22e">L_e</span>(<span style="color:#a6e22e">x_k</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">rightarrow</span> <span style="color:#a6e22e">x_</span>{<span style="color:#a6e22e">k</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>})}{<span style="color:#a6e22e">p_a</span>(<span style="color:#a6e22e">x_</span>{<span style="color:#a6e22e">k</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>})<span style="color:#a6e22e">p_a</span>(<span style="color:#a6e22e">x_k</span>)})
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">end</span>{<span style="color:#a6e22e">array</span>}
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$$</span>
+</span></span><span style="display:flex;"><span>{{&lt; <span style="color:#f92672">/</span><span style="color:#a6e22e">katex</span> &gt;}}</span></span></code></pre></div>
+<p><strong>renders as</strong>:</p>
+
+  <div class="equation leqno" >$$
+\begin{array} {lcl}
+  L(p,w_i) &amp;=&amp; \dfrac{1}{N}\Sigma_{i=1}^N(\underbrace{f_r(x_2
+  \rightarrow x_1
+  \rightarrow x_0)G(x_1
+  \longleftrightarrow x_2)f_r(x_3
+  \rightarrow x_2
+  \rightarrow x_1)}_{sample\, radiance\, evaluation\, in\, stage2}
+  \\\\\\ &amp;=&amp;
+  \prod_{i=3}^{k-1}(\underbrace{\dfrac{f_r(x_{i&#43;1}
+  \rightarrow x_i
+  \rightarrow x_{i-1})G(x_i
+  \longleftrightarrow x_{i-1})}{p_a(x_{i-1})}}_{stored\,in\,vertex\, during\,light\, path\, tracing\, in\, stage1})\dfrac{G(x_k
+  \longleftrightarrow x_{k-1})L_e(x_k
+  \rightarrow x_{k-1})}{p_a(x_{k-1})p_a(x_k)})
+\end{array}
+$$
+  </div>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://discourse.gohugo.io/t/how-to-render-math-equations-properly-with-katex/40998/4">How to render math equations properly with KaTeX</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    
+                                        </div>
+                                        <div><hr class="doc-hr">
+<div id="doc-nav" class="d-print-none">
+
+	<div class="row flex-xl-nowrap ">
+	<div class="col-sm-6 pt-2 doc-next">
+		<a href="/docs/guides/shortcodes/markdownify/">
+			<div class="card h-100 my-1">
+				<div class="card-body py-2">
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> Markdownify</p>
+					
+				</div>
+			</div>
+		</a>
+        </div>
+	<div class="col-sm-6 pt-2 doc-prev">
+		<a class="ms-auto" href="/docs/reference/configuration/">
+			<div class="card h-100 my-1 text-end">
+				<div class="card-body py-2">
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0">Configuration <i class="material-icons align-middle">navigate_next</i></p>
+					
+				</div>
+			</div>
+		</a>
+        </div>
+	</div>
+</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<footer class="shadow py-3 d-print-none">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="text-sm-start text-center mx-md-2">
+                    <p class="mb-0">
+                        
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</main>
+        </div>
+    </div>
+
+    
+    
+    <button onclick="topFunction()" id="back-to-top" aria-label="Back to Top Button" class="back-to-top fs-5"><svg width="24" height="24"><path d="M12,10.224l-6.3,6.3L4.32,15.152,12,7.472l7.68,7.68L18.3,16.528Z" style="fill:#fff"/></svg></button>
+    
+    
+
+    
+    
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+    
+
+    <script src="/docs/js/bootstrap.e8d9a90c17df6cf9c9b09d70807f24da08765377598f34eeffe9cc9c2b9d53bfdf9628eadd25faa1c9f4cf7c1e9193c8.js" integrity="sha384-6NmpDBffbPnJsJ1wgH8k2gh2U3dZjzTu/&#43;nMnCudU7/flijq3SX6ocn0z3wekZPI"defer></script>
+
+
+    <script type="text/javascript" src="http://example.org/docs/js/bundle.min.ae43fca70d004def675ef5e5228e882ec5f50e93117a0abc9fc867db765f3e7678162f967c27ff158d218ea6452815c1.js" integrity="sha384-rkP8pw0ATe9nXvXlIo6ILsX1DpMRegq8n8hn23ZfPnZ4Fi&#43;WfCf/FY0hjqZFKBXB" crossorigin="anonymous" defer></script>
+    
+
+    
+    <script type="module">
+    var suggestions = document.getElementById('suggestions');
+    var search = document.getElementById('flexsearch');
+
+    const flexsearchContainer = document.getElementById('FlexSearchCollapse');
+
+    const hideFlexsearchBtn = document.getElementById('hideFlexsearch');
+
+    const configObject = { toggle: false }
+    const flexsearchContainerCollapse = new Collapse(flexsearchContainer, configObject) 
+
+    if (search !== null) {
+        document.addEventListener('keydown', inputFocus);
+        flexsearchContainer.addEventListener('shown.bs.collapse', function () {
+            search.focus();
+        });
+        
+        var topHeader = document.getElementById("top-header");
+        document.addEventListener('click', function(elem) {
+            if (!flexsearchContainer.contains(elem.target) && !topHeader.contains(elem.target))
+                flexsearchContainerCollapse.hide();
+        });
+    }
+
+    hideFlexsearchBtn.addEventListener('click', () =>{
+        flexsearchContainerCollapse.hide()
+    })
+
+    function inputFocus(e) {
+        if (e.ctrlKey && e.key === '/') {
+            e.preventDefault();
+            flexsearchContainerCollapse.toggle();
+        }
+        if (e.key === 'Escape' ) {
+            search.blur();
+            
+            flexsearchContainerCollapse.hide();
+        }
+    };
+
+    document.addEventListener('click', function(event) {
+
+    var isClickInsideElement = suggestions.contains(event.target);
+
+    if (!isClickInsideElement) {
+        suggestions.classList.add('d-none');
+    }
+
+    });
+
+    
+
+
+    document.addEventListener('keydown',suggestionFocus);
+
+    function suggestionFocus(e) {
+    const suggestionsHidden = suggestions.classList.contains('d-none');
+    if (suggestionsHidden) return;
+
+    const focusableSuggestions= [...suggestions.querySelectorAll('a')];
+    if (focusableSuggestions.length === 0) return;
+
+    const index = focusableSuggestions.indexOf(document.activeElement);
+
+    if (e.key === "ArrowUp") {
+        e.preventDefault();
+        const nextIndex = index > 0 ? index - 1 : 0;
+        focusableSuggestions[nextIndex].focus();
+    }
+    else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        const nextIndex= index + 1 < focusableSuggestions.length ? index + 1 : index;
+        focusableSuggestions[nextIndex].focus();
+    }
+
+    }
+
+    
+
+
+    (function(){
+
+    var index = new FlexSearch.Document({
+        
+        tokenize: "forward",
+        minlength:  0 ,
+        cache:  100 ,
+        optimize:  true ,
+        document: {
+        id: 'id',
+        store: [
+            "href", "title", "description"
+        ],
+        index: ["title", "description", "content"]
+        }
+    });
+
+
+    
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+
+    
+
+    index.add(
+            {
+                id:  0 ,
+                href: "\/docs\/",
+                title: "Documentation",
+                description: "Explore our guides and examples to deploy your site using Lotus Docs.",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  1 ,
+                href: "\/docs\/overview\/",
+                title: "Overview",
+                description: "Lotus Docs is a modern documentation theme built for Hugo.",
+                content: " Lotus Docs is currently in the pre-release stage of development and, therefore, is not recommended for use in production. You’re welcome to try out the theme yourself, and contributions to the project a very welcome.\nWelcome to the Lotus Docs user guide. This guide shows you how to start creating technical documentation sites using Lotus Docs, including site customisation and using Lotus Docs’ features and templates.\nWhat is Lotus Docs? linkLotus Docs is a theme for the Hugo static site generator (SSG), specifically designed for technical documentation sets and includes many best practices by default (The site you’re currently reading was built using the Lotus Docs theme!). Use Lotus Docs to get a working and reliable documentation site up and running fast, leaving valuable time to focus on creating content for your users.\nFeatures linkMany of the features and configurations available in the Lotus Docs theme are on display here in this documentation. You can clone this entire site and edit it to suit your projects, or explore the site, its source and see what Lotus Docs can do. Check out a few of Lotus Docs’ features:\nWho is Lotus Docs for? linkLotus Docs is (currently) suited to small or medium technical documentation sets with 100 or fewer pages of docs. That’s not to say Lotus Docs won’t scale to larger documentation sets, just that its navigation and site structure may not be sufficient for larger data sets without heavy customisation.\nThe good news is that development to accommodate such sites is part of the development roadmap. So keep an eye on the Lotus Docs GitHub repository for updates.\n"
+            }
+        );
+    index.add(
+            {
+                id:  2 ,
+                href: "\/docs\/quickstart\/",
+                title: "Quickstart",
+                description: "A guide to getting up and running with Lotus Docs.",
+                content: "Requirements link git Go ≥ v1.19 Hugo ≥ v0.100.0 (Extended Version) Install Hugo linkInstall the Hugo CLI, using the specific instructions for your operating system below:\nLinux Homebrew (macOS) Windows (Chocolatey) Windows (Scoop) Your Linux distro’s package manager may include Hugo. If this is the case, install it directly using your distro’s package manager – for instance, in Ubuntu, run the following command. This will install the extended edition of Hugo:\nsudo apt install hugo If you use the package manager Homebrew, run the brew install command in your terminal to install Hugo:\nbrew install hugo If you use the package manager Chocolatey, run the choco install command in your terminal to install Hugo:\nchoco install hugo --confirm If you use the package manager Scoop, run the scoop install command in your terminal to install Hugo:\nscoop install hugo Manual Installation linkThe Hugo GitHub repository contains pre-built versions of the Hugo command-line tool for various operating systems, which can be found on the Releases page\nFor more instruction on installing these releases, refer to Hugo’s documentation\nCreate a New Lotus Docs Site linkWith Hugo installed, create a new Hugo project using the hugo new command:\nhugo new site my-docs-site \u0026\u0026 cd my-docs-site Now initialize your project as a Hugo Module using the hugo mod init command:\nhugo mod init my-docs-site You can now choose your preferred method for adding the Lotus Docs theme to your new site from the options below:\nAdd as a Hugo Module Add as a Git submodule Clone theme files Edit the hugo.toml configuration file to include the Lotus Docs theme and the Hugo Bootstrap module (lines 5 to 11 below):\n1 2 3 4 5 6 7 8 9 10 11 baseURL = 'http://example.org/' languageCode = 'en-us' title = 'My New Hugo Site' [module] [[module.imports]] path = \"github.com/colinwilson/lotusdocs\" disable = false [[module.imports]] path = \"github.com/gohugoio/hugo-mod-bootstrap-scss/v5\" disable = false Initialize Git and clone the Lotus Docs theme repository as a submodule:\ngit init git submodule add https://github.com/colinwilson/lotusdocs themes/lotusdocs Update your existing hugo.toml config file with the configuration below:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 baseURL = 'http://example.org/' languageCode = 'en-us' title = 'My New Hugo Site' [module] # uncomment line below for temporary local development of module # or when using a 'theme' as a git submodule replacements = \"github.com/colinwilson/lotusdocs -\u003e lotusdocs\" [[module.imports]] path = \"github.com/colinwilson/lotusdocs\" disable = false [[module.imports]] path = \"github.com/gohugoio/hugo-mod-bootstrap-scss/v5\" disable = false In cases where you prefer to customise and maintain the Lotus Docs theme yourself, you can clone the theme into your project’s themes subdirectory.\nRun the following command from your project’s root directory to clone the Lotus Docs theme into your themes subdirectory:\ngit clone https://github.com/colinwilson/lotusdocs themes/lotusdocs Edit the hugo.toml configuration file to include the Lotus Docs theme and the Hugo Bootstrap module (lines 5 to 14 below):\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 baseURL = 'http://example.org/' languageCode = 'en-us' title = 'My New Hugo Site' [module] # uncomment line below for temporary local development of module, # when using a 'theme' as a git submodule or git cloned files replacements = \"github.com/colinwilson/lotusdocs -\u003e lotusdocs\" [[module.imports]] path = \"github.com/colinwilson/lotusdocs\" disable = false [[module.imports]] path = \"github.com/gohugoio/hugo-mod-bootstrap-scss/v5\" disable = false Create New Content linkNavigate to the root of your Hugo project and use the hugo new command to create a file in the content/docs directory:\nhugo new docs/example-page.md This will create a markdown file named example-page.md with the following default front matter:\n+++ title = \"Example Page\" description = \"\" icon = \"article\" date = \"2023-05-22T00:27:57+01:00\" lastmod = \"2023-05-22T00:27:57+01:00\" draft = false toc = true weight = 999 +++ Modify the options to suit your needs.\nThe code below shows the front matter code used to create this page, along with a portion of markdown from the body:\n+++ weight = 100 date = \"2023-05-03T22:37:22+01:00\" draft = true author = \"Colin Wilson\" title = \"Quickstart\" icon = \"rocket_launch\" toc = true description = \"A quickstart guide to creating new content in Lotus Docs\" publishdate = \"2023-05-03T22:37:22+01:00\" tags = [\"Beginners\"] +++ ## Create New Content Navigate to the root of your Hugo project and use the `hugo new` command to create a file in the `content/docs` directory: ```shell hugo new docs/examplepage.md ``` ... Preview your Site linkNow that you’ve created some sample content you can preview your new Lotus Docs site using the huge server command:\nhugo server -D Navigate to localhost:1313/docs/ and you should see a card link to the Example Page created earlier:\nOrdering Content linkLotus Docs uses a simple weighting method for ordering content and creating menus.\nThe front matter weight variable is used to order all content and auto-generate the menu structure (including the sidebar menu and page navigation buttons). Lower weight values take higher precedence. So content with lower weights come first and are so ordered in the menu.\nAuto-Generated Menu linkAs mentioned, Lotus Docs auto-generates menus and navigation links using the front matter weight variable. For example, Navigate to the content/docs directory and create two content files, doc-one.md and doc-two.md, then edit the weight values to 100 and 200 respectively:\nnotifications It’s good practice to increment the weight of your posts by a factor of 100. This ensures plenty of room to insert new posts between existing items should you need to. Your directory structure should now look like this:\ncontent/ └── docs/ ├── doc-one.md └── doc-two.md Links to both posts are now visible in the sidebar menu where doc-one.md will come before and be placed above doc-two.md:\ninfo The option to manually configure a predefined menu structure in hugo.toml as opposed to an auto-generated one is part of the Lotus Docs roadmap. Second Level Menu Items linkSecond level menu items can be generated by first creating a ‘parent’ directory containing an _index.md file, e.g.:\nhugo new docs/parent-directory/_index.md The above command creates an _index.md file inside a directory named parent-directory under content/docs:\ncontent/ └── docs/ ├── parent-directory/ │ └── _index.md ├── doc-one.md ├── doc-two.md └── _index.md You can now create second level items inside the parent-directory as normal. Run the hugo new command again to create a post inside the newly created parent-directory:\nhugo new docs/parent-directory/doc-three.md Your directory/file structure should now look like this:\ncontent/ └── docs/ ├── parent-directory/ │ ├── _index.md │ └── doc-three.md ├── doc-one.md ├── doc-two.md └── _index.md This is reflected in the sidebar menu with parent-directory functioning as a dropdown menu containing a link to the Doc Three post:\n"
+            }
+        );
+    index.add(
+            {
+                id:  3 ,
+                href: "\/docs\/guides\/",
+                title: "Guides",
+                description: "Guides to getting the most out of Lotus Docs.",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  4 ,
+                href: "\/docs\/guides\/features\/",
+                title: "Features",
+                description: "A guide to the core features of Lotus Docs.",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  5 ,
+                href: "\/docs\/guides\/features\/syntax-highlighting\/",
+                title: "Syntax Highlighting",
+                description: "Code highlighting in Lotus Docs.",
+                content: "Code Highlighters linkLotus Docs supports syntax highlighting by Prism (enabled by default via param.docs.prism in hugo.toml) or Hugo’s built-in code highlighter Chroma.\nFenced code blocks (code enclosed by triple backticks above and below) that specify a code language (declared right of the opening fence), will automatically highlight the code content as HTML e.g. ```html:\n```html \u003chtml\u003e \u003chead\u003e \u003ctitle\u003eBuy cool new product\u003c/title\u003e \u003c/head\u003e \u003cbody\u003e \u003cform action=\"/create-checkout-session\" method=\"POST\"\u003e \u003cbutton type=\"submit\"\u003eCheckout\u003c/button\u003e \u003c/form\u003e \u003c/body\u003e \u003c/html\u003e ``` Result - Prism Highlighter:\n\u003chtml\u003e \u003chead\u003e \u003ctitle\u003eBuy cool new product\u003c/title\u003e \u003c/head\u003e \u003cbody\u003e \u003cform action=\"/create-checkout-session\" method=\"POST\"\u003e \u003cbutton type=\"submit\"\u003eCheckout\u003c/button\u003e \u003c/form\u003e \u003c/body\u003e \u003c/html\u003e Result - Chroma Highlighter (param.docs.prism = false):\nPrism Features linkThe Prism highlighter features the following:\nCopy Code Button linkAll code blocks feature a button which copies the code to the clipboard when clicked. Hover over any code block and the copy button (content_copy) will appear in the top right hand corner.\nCode Block id linkEvery code block on a page has a unique id attribute, an auto-generated value calculated from the sha1 hash of the block’s contents combined with it’s position on the page.\nFor example, the following snippet can be linked via the unique id 80c9335:\npackage main import \"fmt\" func main() { fmt.Println(\"go\" + \"lang\") fmt.Println(\"1+1 =\", 1+1) fmt.Println(\"7.0/3.0 =\", 7.0/3.0) fmt.Println(true \u0026\u0026 false) fmt.Println(true || false) fmt.Println(!true) } Line Anchors linkSpecific sections of code can be linked and highlighted by combining the code block id with the desired line numbers or ranges.\nThe URL format follows, /#{code block id}.{line no. range}.\nFor example, /#80c9335.3,5,7-13 will link to (and highlight) lines 3, 5 and 7-13 in the code block above:\nSupported Languages linkBoth Prism \u0026 Chroma support a vast array of languages. See the links below for a complete list of languages supported by each highlighter:\nPrism (≈ 290 languages) Chroma (≈ 200 languages) Code Fence Translations link For more extensive code highlighting options with Prism, consider using the Prism Shortcode in place of the code fences syntax.\nIf your code blocks are highlighted using the code fences syntax, Prism will auto translate the following Hugo Shortcode options1:\nlinenos: configure line numbers. Valid values are true, false, table, or inline. false will turn off line numbers if it’s configured to be on in site config. All remaining options will translate to a line number at the beginning of code lines (as described by Prism’s Line Numbers plugin).\nhl_lines: lists a set of line numbers or line number ranges to be highlighted.\nlinenostart=199: starts the line number count from 199.\nanchorlinenos: Configure anchors on line numbers. Valid values are true or false;\nSo the following example:\n```go {linenos=table,hl_lines=[3,\"5-7\"],linenostart=199,anchorlinenos=true} package main import \"fmt\" func main() { fmt.Println(\"hello world\") } ``` Will render as shown below:\n199 200 201 202 203 204 205 package main import \"fmt\" func main() { fmt.Println(\"hello world\") } Translation of Hugo’s Highlight Shortcode syntax by Prism is currently not (fully) supported.\nHighlight Shortcode - Hugo ↩︎\n"
+            }
+        );
+    index.add(
+            {
+                id:  6 ,
+                href: "\/docs\/guides\/features\/plausible-analytics\/",
+                title: "Plausible Analytics",
+                description: "How to add Plausible Analytics to your Lotus Docs site.",
+                content: "Plausible Analytics is a simple, open source, lightweight (\u003c 1 KB), privacy-focused alternative to Google Analytics. Plausible is completely independent, self-funded and bootstrapped. Read more about Plausible Analytics.\nWhy use Plausible Analytics? linkAs previously mentioned, Plausible is an open source, privacy-focused Google Analytics alternative. So what are the benefits of this?\nPrivacy by design - Plausible, by design complies with strict privacy policies. Including: GDPR, CCPA, and PECR. You own your data - Plausible does not sell or share your data, or abuse your visitor’s privacy. When using Plausible Analytics, you 100% own and control all of your website data. Your data is not being shared with or sold to any third-parties. No personal data collected - Plausible does not track and collect any personal data or personally identifiable information. Open Source - Plausible Analytics is completely open source so anyone can view, review and inspect the code they’re running to verify whether their actions match their claims of privacy. Your data is encrypted - Plausible minimize their data collection and whatever is tracked is kept fully secured, encrypted and hosted on servers in the EU (European Union) to ensure it’s covered by strict laws on data privacy. You can read more about Plausible Analytics and their polices.\nCreate an Account with plausible.io linkBefore enabling Plausible Analytics in Lotus Docs, make sure to register an account with them and add your site domain to your account; without an active account, no data can be collected by Plausible.\nMake a note of the domain name that you entered when adding your website to Plausible, as this is required when enabling Plausible Analytics in Lotus Docs.\nEnable Plausible Analytics linkTo enable Plausible Analytics, provide the following parameters in your configuration file under [params.plausible]:\ndataDomain - Enter the domain name that you will be tracking through Plausible Analytics, e.g. yourdomain.com; make sure it’s the same domain you entered when adding your website to your Plausible account.\nscriptURL - optional - If you’re self-hosting Plausible, enter the URL that points to your self-hosted script.js file here, e.g. https://plausible.yourdomain.com/js/script.js. When not set, the scriptURL value defaults to https://plausible.io/js/script.js.\neventAPI - optional - If you’re proxying Plausible requests via another service (e.g. Vercel, Netlify, Cloudflare), enter the appropriate event API path here e.g. https://plausible.yourdomain.com/api/event\nhugo.toml hugo.yaml hugo.json [params.plausible] # Parameters for Plausible Analytics dataDomain = \"yourdomain.com\" scriptURL = \"https://plausible.yourdomain.com/js/script.js\" # optional eventAPI = \"https://plausible.yourdomain.com/stats/api/event\" # optional params: plausible: # Parameters for Plausible Analytics dataDomain: \"yourdomain.com\" scriptURL: \"https://plausible.yourdomain.com/js/script.js\" # optional eventAPI: \"https://plausible.yourdomain.com/stats/api/event\" # optional { \"params\": { \"plausible\": { \"dataDomain\": \"yourdomain.com\", \"scriptURL\": \"https://plausible.yourdomain.com/js/script.js\", \"eventAPI\": \"https://plausible.yourdomain.com/stats/api/event\" } } } Proxying Plausible through Vercel linkSome adblockers/browsers block every tracking script, even privacy-focused analytics like plausible.io. You can mitigate this by proxying the script.\nVercel is the preferred platform on which to deploy Lotus Docs themed sites. Follow the instructions below to setup proxying the Plausible script when hosting your Lotus Docs site on Vercel:\nCreate a vercel.json file at the root of your site:\n/vercel.json Add the following JSON to rewrite calls within your Lotus Docs site to Plausible’s resources:\n{ \"rewrites\": [ { \"source\": \"/stats/js/script.js\", \"destination\": \"https://plausible.io/js/script.js\" }, { \"source\": \"/stats/api/event\", \"destination\": \"https://plausible.io/api/event\" } ] } Set Lotus Docs’ [params.plausible] parameters to use the values configured above: hugo.toml hugo.yaml hugo.json [params.plausible] # Parameters for Plausible Analytics dataDomain = \"yourdomain.com\" scriptURL = \"/stats/js/script.js\" eventAPI = \"/stats/api/event\" # optional params: plausible: # Parameters for Plausible Analytics dataDomain: \"yourdomain.com\" scriptURL: \"/stats/js/script.js\" eventAPI: \"/stats/api/event\" # optional { \"params\": { \"plausible\": { \"dataDomain\": \"yourdomain.com\", \"scriptURL\": \"/stats/js/script.js\", \"eventAPI\": \"/stats/api/event\" } } } "
+            }
+        );
+    index.add(
+            {
+                id:  7 ,
+                href: "\/docs\/guides\/features\/google-analytics\/",
+                title: "Google Analytics v4",
+                description: "How to enable Google Analytics on your Lotus Docs site.",
+                content: "Lotus Docs utilises Hugo’s internal Google Analytics v4 template1.\nEnabling Google Analytics linkTo enable Google Analytics v4, simply provide your tracking ID in your configuration file:\nhugo.toml hugo.yaml hugo.json googleAnalytics = 'G-MEASUREMENT_ID' googleAnalytics: G-MEASUREMENT_ID { \"googleAnalytics\": \"G-MEASUREMENT_ID\" } Hugo Google Analytics v4 Internal Template - gohugo.io ↩︎\n"
+            }
+        );
+    index.add(
+            {
+                id:  8 ,
+                href: "\/docs\/guides\/features\/feedback-widget\/",
+                title: "Feedback Widget",
+                description: "How to configure the Feedback Widget so visitors can rate or/and comment on your site's content.",
+                content: "The Lotus Docs feedback plugin integrates with Google or Plausible Analytics to allow you to collect visitor feedback on your sites’ content.\nWhy use web analytics to collect feedback? linkShort answer? Because it’s FREE! Other benefits include:\nNo need to sign up to yet another service just to collect basic visitor feedback. Easy to configure. Once Google or Plausible Analytics (or both) are configured in hugo.toml, the Feedback Widget it ready to go. No limit on the number of events that can be collected. How it works linkOnce enabled, the feedback widget appears at bottom of every content page. Whenever a site visitor interacts with it, their feedback is collected and sent to whichever web analytics you have configured in your hugo.toml file.\nCustom Events linkThe Feedback Widget works by leveraging custom events. What is a custom event?\nA custom event is an event that you define so you can collect information about an interaction that’s important to your business.1\nCheck out the links below for more information on how custom events work:\nGoogle Analytics v4 - Custom events Plausible Analytics - Custom event goals The feedback form uses these custom events to send visitor interactions to the corresponding analytics service.\nTemplates linkLotus Docs currently offers two template styles for the feedback widget:\nEmoticon link Default (Classic) link Configure Custom Events linkYour web analytics service may require some preparation prior to receiving custom events from the feedback widget.\nPlausible linkCustom events aren’t automatically displayed in the Plausible dashboard. You’ll have to configure the custom event goal for you feedback to show up.\nTo configure a goal, go to your website’s settings in your Plausible account and visit the “Goals” section. You should see an empty list with a prompt to add a goal.\nClick on the “+ Add goal” button to go to the goal creation form.\nSelect Custom event as the goal trigger and enter the name of the custom event you are triggering e.g. Feedback, the default name of the emoticon template feedback event. The name must match the value you set for [params.feedback.emoticonEventName] in your hugo.toml config.\nHead back to the stats page for your site and scroll to the bottom to view the Goal Conversion statistics. You’ll see the Feedback goal along with the breakdown by rating. Next to it is a message link, which shows a breakdown of any messages received via the widget’s text area.\nGoogle linkOnce Google Analytics and the feedback widget are configured in your hugo.toml file, no additional configuration is required to view collected events in the Google Analytics dashboard. However, there are a couple of tasks that will help you better view and understand your feedback stats in Google Analytics:\nSee the events in your reports - After you configure the feedback widget and Google Analytics collects the feedback event, you can use the Events report in the Reports section to see how many times feedback was collected and other data (ratings, messages) about the event in the specified date range.\nYou can also select the feedback event name to open a more detailed report, including details about the ratings and messages, and how many users triggered the event (and the associated parameters) in realtime.\nCustom dimensions and metrics - To access the different values assigned to the ratings and message event parameters in your reports, you should create a custom dimension or metric. A custom dimension or metric lets you see the information you collected from ratings and message parameters. For example, with the rating event parameter, you could create a custom metric called ‘Rating’ that allows you to see each value assigned to the event parameter. Learn more about custom dimensions and metrics.\nHow to configure the Feedback Widget linkThe Feedback Widget is configured via the [params.feedback] parameter:\nhugo.toml hugo.yaml hugo.json [params.feedback] enabled = true # default / not set = false emoticonTpl = true # optional eventDest = [\"plausible\",\"google\"] # optional emoticonEventName = \"Feedback\" # optional positiveEventName = \"Positive Feedback\" # optional negativeEventName = \"Negative Feedback\" # optional positiveFormTitle = \"What did you like?\" # optional negativeFormTitle = \"What went wrong?\" # optional successMsg = \"Thank you for helping to improve our documentation!\" # optional errorMsg = \"Sorry! There was an error while attempting to submit your feedback!\" # optional positiveForm = [ [\"Accurate\", \"Accurately describes the feature or option.\"], [\"Solved my problem\", \"Helped me resolve an issue.\"], [\"Easy to understand\", \"Easy to follow and comprehend.\"], [\"Something else\"] ] negativeForm = [ [\"Inaccurate\", \"Doesn't accurately describe the feature or option.\"], [\"Couldn't find what I was looking for\", \"Missing important information.\"], [\"Hard to understand\", \"Too complicated or unclear.\"], [\"Code sample errors\", \"One or more code samples are incorrect.\"], [\"Something else\"] ] params: feedback: enabled: true # default / not set = false emoticonTpl: true # optional eventDest: # optional - plausible - google emoticonEventName: Feedback # optional positiveEventName: Positive Feedback # optional negativeEventName: Negative Feedback # optional positiveFormTitle: What did you like? # optional negativeFormTitle: What went wrong? # optional successMsg: Thank you for helping to improve our documentation! # optional errorMsg: Sorry! There was an error while attempting to submit your feedback! # optional positiveForm: - - Accurate - Accurately describes the feature or option. - - Solved my problem - Helped me resolve an issue. - - Easy to understand - Easy to follow and comprehend. - - Something else negativeForm: - - Inaccurate - Doesn't accurately describe the feature or option. - - Couldn't find what I was looking for - Missing important information. - - Hard to understand - Too complicated or unclear. - - Code sample errors - One or more code samples are incorrect. - - Something else { \"params\": { \"feedback\": { \"enabled\": true, \"emoticonTpl\": true, \"eventDest\": [ \"plausible\", \"google\" ], \"emoticonEventName\": \"Feedback\", \"positiveEventName\": \"Positive Feedback\", \"negativeEventName\": \"Negative Feedback\", \"positiveFormTitle\": \"What did you like?\", \"negativeFormTitle\": \"What went wrong?\", \"successMsg\": \"Thank you for helping to improve our documentation!\", \"errorMsg\": \"Sorry! There was an error while attempting to submit your feedback!\", \"positiveForm\": [ [ \"Accurate\", \"Accurately describes the feature or option.\" ], [ \"Solved my problem\", \"Helped me resolve an issue.\" ], [ \"Easy to understand\", \"Easy to follow and comprehend.\" ], [ \"Something else\" ] ], \"negativeForm\": [ [ \"Inaccurate\", \"Doesn't accurately describe the feature or option.\" ], [ \"Couldn't find what I was looking for\", \"Missing important information.\" ], [ \"Hard to understand\", \"Too complicated or unclear.\" ], [ \"Code sample errors\", \"One or more code samples are incorrect.\" ], [ \"Something else\" ] ] } } } Configuration Options linkThe following options are available for the Feedback Widget:\nTemplate linkChoose which feedback template is displayed on your site:\nemoticonTpl - Set to true to enable the emoticon feedback template. (default) is false. Event Destination linkThis determines which of your configured web analytics services to send your collected feedback to:\nIf this parameter is not set, feedback will be sent to all web analytics configured in hugo.toml\neventDest - A list of web analytics services to send visitor feedback to e.g. [\"plausible\", \"google\"] (default) Event Name linkSet the name of the feedback event that’s sent to the web analytics service:\nemoticonEventName - The name of the event for the emoticon feedback template e.g. Feedback (default)\npositiveEventName - The name of the positive event for the default feedback template e.g. Positive Feedback (default)\nnegativeEventName - The name of the negative event for the default feedback template e.g. Negative Feedback (default)\nForm Title linkThis option sets the title for each form in the default feedback template:\npositiveFormTitle - The title of the positive feedback form e.g. What did you like? (default)\nnegativeFormTitle - The title of the negative feedback form e.g. What went wrong? (default)\nSuccess / Error Messages linkMessages displayed after feedback is submitted (applies to both templates):\nsuccessMsg - The message displayed after feedback has been successfully sent e.g. Thank you for helping to improve our documentation! (default)\nerrorMsg - The message displayed if the widget fails to submit feedback e.g. Sorry! There was an error while attempting to submit your feedback! (default)\nRatings \u0026 Description Configuration linkA nested array of options for each form in the default feedback template. The first string in each nested array sets the name of the feedback rating. The second string sets a description for that feedback rating.\npositiveForm - A nested array consisting of a positive rating name and description (optional) for each feedback radio option e.g. [[\"Accurate\", \"Accurately describes the feature or option.\"]].\nnegativeForm - A nested array consisting of a negative rating name and description (optional) for each feedback radio option e.g. [[\"Code sample errors\", \"One or more code samples are incorrect.\"]].\nSo [\"Solved my problem\", \"Helped me resolve an issue.\"] results in:\nThe feedback rating Solved my problem is sent as an event parameter value of a key named rating, and any text entered in the text area, is sent as a value of a key named message.\n[GA4] Custom events - Analytics Help ↩︎\n"
+            }
+        );
+    index.add(
+            {
+                id:  9 ,
+                href: "\/docs\/guides\/features\/flexsearch\/",
+                title: "FlexSearch",
+                description: "Search your Lotus Docs site using the FlexSearch Static site Search plugin.",
+                content: " What is FlexSearch? linkFlexSearch is a Static Search plugin that provides a fast and simple search experience for your Lotus Docs site. Static Search provides instant, dynamic results for any search terms, and includes a wealth of options and settings to fine-tune the functionality to best suit the needs of your site visitors.\nHow does FlexSearch work? linkFlexSearch works via a mechanism known as Contextual Search (invented by Thomas Wilkerling). A Contextual Search boosts queries to a complete new level but also requires some additional memory (depending on depth). The basic idea of this concept is to limit relevance by its context instead of calculating relevance through the whole distance of its corresponding document. This way contextual search also improves the results of relevance-based queries on large Lotus Docs sites with many pages.\nModel of Contextual-based Scoring - Copyright 2018-2021 Thomas Wilkerling Nextapps GmbH - source Enabling FlexSearch link To disable it, simply set the enabled parameter nested under [params.flexsearch] in your configuration file to false. That’s it!\nhugo.toml hugo.yaml hugo.json [params.flexsearch] enabled = false params: flexsearch: enabled: false { \"params\": { \"flexsearch\": { \"enabled\": false } } } How to search your site using FlexSearch linkWith FlexSearch enabled you should see a search button in the top navigation bar:\nFlexSearch components: 1. Search Button 2. Search Input Bar 3. Search Result | Lotus Docs Click on the search button (or use ctrl + /) to reveal and activate the search input bar. Start typing a search query and the result(s) will automatically appear in a ‘suggestions’ panel underneath. Click a search result to navigate to said page.\nAdvanced options linkThe various settings below offer more advanced control over how FlexSearch indexes your site content.\nNote: Since the default settings1 for FlexSearch are capable of providing accurate search results, most Lotus Docs users can ignore all the options in this section. However, if your site has a large number of posts, the generated index file can be relatively large; in such cases it may be beneficial to limit indexing to specific elements to reduce the overall size of the file.\nAll FlexSearch options should be declared under [params.flexsearch]:\n[params.flexsearch] enabled = true tokenize = \"full\" # default is \"forward\" cache = 100 # default is 100 optimize = true # default is true minQueryChar = 3 # default is 0 (disabled) maxResult = 5 # default is 5 searchSectionsIndex = [] The following FlexSearch options are available:\nTokenize linkThis option sets the behaviour for the search process; that is, how it looks for the words that are being searched for and how effective the search is. Generally-speaking, the full setting will provide the most effective search experience, but alternative, simpler options may be used on large websites to limit the amount of memory required for the search. The available settings for this option are:\nstrict - Only exact matches for the search term will be shown in the results.\nforward (default) - Words are searched for starting from the first letter in a forward order, allowing partial matches to be displayed; unfinished words or words with mispellings at the end will still display results e.g. if searching for ‘Testing’, entering only ‘Tes’ will provide some results.\nreverse - A result will be shown when the letters of the search term occur in both forward or reverse order, provide even more support for mispellings or incomplete searches e.g. if searching for ‘Testing’, entering either ‘Tes’ or ‘ing’ will provide some results.\nfull - Combines all of the above, plus partial matches for the middle section of the search term e.g. if searching for ‘Testing’, entering either ‘Tes’, ‘ing’ or ‘sti’, or other combinations thereof will provide some results.\nCache linkIf enabled, FlexSearch will use the available cache to store popular searches in order to provide instant search when typing in the search bar. The options available in this section are:\ntrue - no size limit - Searches will be saved to provide dynamic searches when typing and autocomplete suggestions if enabled.\nfalse - Disabled - No searches will be stored; searches may run slower than when the cache is enabled.\n- with size limit - The number entered in this field defines the maximum number of searches that FlexSearch should save for dynamic searches and suggestions. By default, this is set to 100.\nOptimize linkWhen enabled it uses a memory-optimized stack flow for the index.\ntrue - Enable memory-optimized stack flow for the index.\nfalse - Disabled\nMinimum query character count linkThe minQueryChar parameter defines the minimum number of characters typed before any search results are rendered. A higher number decreases memory allocation:\n0 - Disabled - (default) Search suggestions are presented as soon as an entry is made in the search input.\n- The minimum number of characters required before search suggestions are presented.\nMaximum number of results linkYou can control the maximum number of results presented per a search via the maxResult parameter:\n- Maximum number of results displayed in the suggestions box for a search query. The default is 5. https://github.com/colinwilson/lotusdocs ↩︎\n"
+            }
+        );
+    index.add(
+            {
+                id:  10 ,
+                href: "\/docs\/guides\/features\/docsearch\/",
+                title: "DocSearch",
+                description: "DocSearch is a free and powerful Server Side Search plugin integrated with Lotus Docs.",
+                content: " \u003c?xml version=\"1.0\" encoding=\"UTF-8\"?\u003e What is DocSearch? linkDocSearch is a unique, free search plugin, specifically designed for technical documentation for open-source projects or technical blogs. Providing fast, accurate search options, DocSearch empowers visitors to find the information they need as quickly as possible. With the DocSearch plugin enabled, integrating search into your Lotus Docs site takes just a few moments.\nHow does DocSearch work? linkMuch like other search engines, DocSearch uses a scraper to index your site content; in simple terms, the scraper scans your website and stores the data, which it can then collate to make a custom search that is effective for your site. Uniquely, DocSearch is targeted at documentation specifically; this means it’s designed to help users more effectively find answers to specific questions or subjects within a narrow scope rather than looking for more generalised relevance, and it also offers autocomplete functionality to help users locate the sections that will be more helpful in answering their query.\nWith the data collected, Algolia will automatically configure a search relevant to your site content, then provide methods to integrate this search into your site. The functionality for the search is handled by DocSearch itself; processing the search query and delivering results occurs separate from your site’s infrastructure.\nWhy DocSearch? linkDocSearch is designed purely to provide efficient, relevant documentation searches; this means that it will be more efficient and effective at answering specific queries and pointing you to relevant sections in the documentation, rather than the more general searches that Google or other search engines provide.\nIf you’re running a website providing technical documentation on an open-source project, then DocSearch is the perfect choice as your search provider.\nDocSearch requirements linkDocSearch’s mission is to make finding relevant content in technical documentation easier, rather than to create a general search engine that any site can use. Therefore, in order to use DocSearch, each site must meet certain criteria.\nTo be eligible to use DocSearch, your website must meet these conditions: link Your website must be publicly available so that DocSearch can index it.\nYour website must be a documentation site for an open-source project or a technical blog. Algolia will reduce the scope of the data they collect for searches to helpful pages only.\nYour website is production-ready; that is, already contains relevant and useful documentation content. Algolia will not accept placeholder or lorem ipsum websites intended to be updated later.\nHow to get started? linkOnce your website is online and ready to add search functionality, you should submit an application to DocSearch via their frontpage; the form in the header of the site will allow you to do this. You only need provide the website URL and your email address so you can receive the search credentials once they are ready; note that you will also need to be the owner of the site in question and verify this when submitting your application. Once Algolia accepts your submission they will send you the credentials for enabling your search via email.\nAfter receiving the confirmation email, you will need to copy the following data in order to add it into the plugin options:\nApplication ID API Key Index Name Once the plugin has been enabled and the relevant data added, DocSearch will crawl your website every 7 days to ensure your search is up-to-date. By default Lotus Docs generates a complete sitemap for you. DocSearch will make use of this sitemap to better track changes to content.\nEnabling the DocSearch Plugin linkTo enable DocSearch, set the values to parameters nested under [params.docsearch] in your configuration file using the credentials emailed to you by Algolia after the submitted site was approved.\nhugo.toml hugo.yaml hugo.json [params.docsearch] # Parameters for DocSearch appID = \"FLVV3WOCO5\" # DocSearch Application ID (or set env variable HUGO_PARAM_DOCSEARCH_appID) apiKey = \"9eeee4fac1e6cf21438cc9736e5112fc\" # DocSearch Search-Only API (Public) Key (or set env variable HUGO_PARAM_DOCSEARCH_apiKey) indexName = \"lotusdocs.dev\" # Index Name on which to perform search (or set env variable HUGO_PARAM_DOCSEARCH_indexName) params: docsearch: appID: \"FLVV3WOCO5\" apiKey: \"9eeee4fac1e6cf21438cc9736e5112fc\" indexName: \"lotusdocs.dev\" { \"params\": { \"docsearch\": { \"appID\": \"FLVV3WOCO5\", \"apiKey\": \"9eeee4fac1e6cf21438cc9736e5112fc\", \"indexName\": \"lotusdocs.dev\" } } } "
+            }
+        );
+    index.add(
+            {
+                id:  11 ,
+                href: "\/docs\/guides\/features\/katex\/",
+                title: "KaTex",
+                description: "Fast Tex math rendering for your Lotus Docs site",
+                content: "$$ f\\relax{x} = \\int_{-\\infty}^\\infty \\hat f(\\xi)\\ e^{2 \\pi i \\xi x} \\ d\\xi $$\nHow to use KaTex with Lotus Docs linkKaTex support is controlled by the katex parameter in your front matter (line 10 below). Add and set it to true in your front matter to enable KaTex support for that page. This means KaTex support and resources are active only for pages that require it.\n--- weight: 530 title: \"KaTex\" description: \"Fast Tex math rendering for your Lotus Docs site\" icon: \"function\" date: \"2023-08-26T20:43:23+01:00\" lastmod: \"2023-08-26T20:43:23+01:00\" draft: true toc: true katex: true --- Writing LaTex in Markdown linkEquations can be displayed either in block level or inline.\nBlock display linkType an equation using double dollar signs as the delimiter:\n$$ \\int \\frac{1}{x} dx = \\ln \\left| x \\right| + C $$ renders as:\n$$ \\int \\frac{1}{x} dx = \\ln \\left| x \\right| + C $$\nInline display linkType an equation using single dollar signs as the delimiter:\n$ \\int \\frac{1}{x} dx = \\ln \\left| x \\right| + C $ renders as:\n$ \\int \\frac{1}{x} dx = \\ln \\left| x \\right| + C $\nSyntax Rendering Issues linkAs a consequence of Hugo rendering to HTML before KaTex renders to math1, there are some instances in which the KaTex equation syntax requires heavy escaping or alterations before rendering correctly. This can be time-consuming and frustrating (especially for inexperienced users). To avoid this, a KaTex Shortcode is available.\n{{\u003c katex \u003e}} $$ \\begin{array} {lcl} L(p,w_i) \u0026=\u0026 \\dfrac{1}{N}\\Sigma_{i=1}^N(\\underbrace{f_r(x_2 \\rightarrow x_1 \\rightarrow x_0)G(x_1 \\longleftrightarrow x_2)f_r(x_3 \\rightarrow x_2 \\rightarrow x_1)}_{sample\\, radiance\\, evaluation\\, in\\, stage2} \\\\\\\\\\\\ \u0026=\u0026 \\prod_{i=3}^{k-1}(\\underbrace{\\dfrac{f_r(x_{i+1} \\rightarrow x_i \\rightarrow x_{i-1})G(x_i \\longleftrightarrow x_{i-1})}{p_a(x_{i-1})}}_{stored\\,in\\,vertex\\, during\\,light\\, path\\, tracing\\, in\\, stage1})\\dfrac{G(x_k \\longleftrightarrow x_{k-1})L_e(x_k \\rightarrow x_{k-1})}{p_a(x_{k-1})p_a(x_k)}) \\end{array} $$ {{\u003c /katex \u003e}} renders as:\n$$ \\begin{array} {lcl} L(p,w_i) \u0026=\u0026 \\dfrac{1}{N}\\Sigma_{i=1}^N(\\underbrace{f_r(x_2 \\rightarrow x_1 \\rightarrow x_0)G(x_1 \\longleftrightarrow x_2)f_r(x_3 \\rightarrow x_2 \\rightarrow x_1)}_{sample\\, radiance\\, evaluation\\, in\\, stage2} \\\\\\\\\\\\ \u0026=\u0026 \\prod_{i=3}^{k-1}(\\underbrace{\\dfrac{f_r(x_{i+1} \\rightarrow x_i \\rightarrow x_{i-1})G(x_i \\longleftrightarrow x_{i-1})}{p_a(x_{i-1})}}_{stored\\,in\\,vertex\\, during\\,light\\, path\\, tracing\\, in\\, stage1})\\dfrac{G(x_k \\longleftrightarrow x_{k-1})L_e(x_k \\rightarrow x_{k-1})}{p_a(x_{k-1})p_a(x_k)}) \\end{array} $$ How to render math equations properly with KaTeX ↩︎\n"
+            }
+        );
+    index.add(
+            {
+                id:  12 ,
+                href: "\/docs\/guides\/theme-options\/",
+                title: "Theme Options",
+                description: "Optional features in Lotus Docs.",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  13 ,
+                href: "\/docs\/guides\/theme-options\/breadcrumbs\/",
+                title: "Breadcrumb Navigation",
+                description: "How to configure Breadcrumb navigation for your Lotus Docs site.",
+                content: " \u003c?xml version=\"1.0\" encoding=\"UTF-8\"?\u003e/ Guides / Theme Options / Breadcrumbs Enable Breadcrumbs linkBreadcrumb navigation is enabled by default1 and appears in the top right-hand corner of content pages above the page title. The Lotus Docs breadcrumb implementation functions with both multilingual and single-language sites.\nStructured Data linkThe breadcrumb navigation also auto-generates structured data for rich results to help enable search results that are more engaging to users. Here are the Breadcrumb Rich Results test results for this very page.\nBreadcrumb configuration reference. ↩︎\n"
+            }
+        );
+    index.add(
+            {
+                id:  14 ,
+                href: "\/docs\/guides\/shortcodes\/",
+                title: "Shortcodes",
+                description: "Lotus Docs Custom Shortcodes.",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  15 ,
+                href: "\/docs\/guides\/shortcodes\/alerts\/",
+                title: "Alerts",
+                description: "How to use Alert Shortcodes to render custom page alerts in markdown.",
+                content: "Adding a Page Alert linkPage alerts can be added to your markdown using the following shortcode:\n{{\u003c alert text=\"This is the default alert. It consists of a default theme colour and icon.\" /\u003e}} The above code results in the following alert:\nnotifications This is the default alert. It consists of a default theme colour and icon. Alert with Context linkAdd context to an alert via the context parameter:\n{{\u003c alert context=\"info\" text=\"This is an alert with an info context. It consists of the info theme colour and icon.\" /\u003e}} Here’s what is rendered:\ninfo This is an alert with an info context. It consists of the info theme colour and icon. Additional alert contexts include success, danger, warning, primary, light and dark:\ncheck_circle This is an alert with a success context. It consists of the success theme colour and icon. report This is an alert with a danger context. It consists of the danger theme colour and icon. warning This is an alert with a warning context. It consists of the warning theme colour and icon. info This is an alert with a primary context. Its theme and icon colors match those of the current primary theme colour. This is an alert with a light context. It consists of the light theme colour. The light alert has no default icon. This is an alert with a dark context. It consists of the dark theme colour. The dark alert has no default icon. Alert with Custom Emoji Icon linkThe default icon for an alert context can be substituted with an emoji using the icon parameter:\n{{\u003c alert icon=\"🍅\" context=\"info\" text=\"This is an info context alert with a tomato emoji replacing the default icon. The info theme colour remains unchanged.\" /\u003e}} 🍅 This is an info context alert with a tomato emoji replacing the default icon. The info theme colour remains unchanged. Alert with No Icon linkSetting the icon parameter to an empty space, icon=\" \", will render an alert with no icon:\n{{\u003c alert icon=\" \" context=\"info\" text=\"This info context alert has no icon.\" /\u003e}} This info context alert has no icon. N.B. The icon parameter must contain a space. Setting it to icon=\"\" will render the default icon.\nRender Markdown \u0026 HTML inside an Alert link So % delimited alerts render correctly, ensure you have unsafe = true set under [markup.goldmark.renderer] in your hugo.toml configuration file1.\nUse a paired shortcode with the % delimiter2 to render Markdown and HTML inside an alert:\n{{% alert icon=\"🛒\" context=\"success\" %}} This ***paired shortcode*** alert contains a **markdown** list and header: #### My Shopping List: 1. Tomatoes 2. Bananas 3. Pineapples and a sentence \u003cem\u003estyled\u003c/em\u003e using \u003cstrong\u003eHTML\u003c/strong\u003e tags such as \\\u003cstrong\\\u003e and \\\u003cem\\\u003e {{% /alert %}} 🛒\nThis paired shortcode alert contains a markdown list and header:\nMy Shopping List: link Tomatoes Bananas Pineapples and a sentence styled using HTML tags such as and Markdown alerts do not seem to display background color ↩︎\nShortcodes with Markdown - gohugo.io ↩︎\n"
+            }
+        );
+    index.add(
+            {
+                id:  16 ,
+                href: "\/docs\/guides\/shortcodes\/tables\/",
+                title: "Tables",
+                description: "How to use the Lotus Docs table shortcode to render great looking markdown tables",
+                content: "The table shortcode enables Lotus Docs to take advantage of Bootstrap’s opt-in table styling.\nRegular Tables linkBy default Lotus Docs renders regular Markdown tables with some very basic styling:\n| Tables | Are | Cool | |----------|:-------------:|------:| | col 1 is | left-aligned | $1600 | | col 2 is | centered | $12 | | col 3 is | right-aligned | $1 | Result:\nTables Are Cool col 1 is left-aligned $1600 col 2 is centered $12 col 3 is right-aligned $1 Shortcode Tables linkThe the table shortcode allows you to implement a number of Bootstrap’s table styling classes. The table shortcode without any options will render a basic bordered table with a borderless floating table head:\n{{\u003c table \u003e}} | Animal | Sounds | Legs | |---------|--------|-----| | `Cat` | Meow | 4 | | `Dog` | Woof | 4 | | `Cricket` | Chirp | 6 | {{\u003c /table \u003e}} Animal Sounds Legs Cat Meow 4 Dog Woof 4 Cricket Chirp 6 Since the table shortcode works by implementing Bootstrap’s opt-in table styling, not all Bootstrap’s table styles are compatible with Lotus Docs. All compatible options are documented on this page.\nStriped Rows linkUse the table-striped option to add zebra-striping to the table rows.\n{{\u003c table \"table-striped\" \u003e}} ... .. {{\u003c /table \u003e}} Parameter Default Value Description google_fonts N/A An array of Google fonts and sizes to load. e.g.google_fonts = [[\"Poppins\", \"300, 400, 600, 700\"],[\"Source Code Pro\", \"500, 700\"]] This will load the Google Poppins and Source Code Pro fonts in the specified sizes. sans_serif_font System Font Set the Sans Serif font. e.g. \"Poppins\" secondary_font System Font Set the Secondary font. e.g. \"Poppins\" Striped Columns linkUse the table-striped-columns option to add zebra-striping to the table columns.\n{{\u003c table \"table-striped-columns\" \u003e}} ... .. {{\u003c /table \u003e}} Parameter Default Value Description google_fonts N/A An array of Google fonts and sizes to load. e.g.google_fonts = [[\"Poppins\", \"300, 400, 600, 700\"],[\"Source Code Pro\", \"500, 700\"]] This will load the Google Poppins and Source Code Pro fonts in the specified sizes. sans_serif_font System Font Set the Sans Serif font. e.g. \"Poppins\" secondary_font System Font Set the Secondary font. e.g. \"Poppins\" Hoverable Rows linkUse the table-hover option to enable a hover state on the table rows.\n{{\u003c table \"table-hover\" \u003e}} ... .. {{\u003c /table \u003e}} Parameter Default Value Description google_fonts N/A An array of Google fonts and sizes to load. e.g.google_fonts = [[\"Poppins\", \"300, 400, 600, 700\"],[\"Source Code Pro\", \"500, 700\"]] This will load the Google Poppins and Source Code Pro fonts in the specified sizes. sans_serif_font System Font Set the Sans Serif font. e.g. \"Poppins\" secondary_font System Font Set the Secondary font. e.g. \"Poppins\" Tables without borders linkUse the table-borderless option a table without borders.\n{{\u003c table \"table-borderless\" \u003e}} ... .. {{\u003c /table \u003e}} Parameter Default Value Description google_fonts N/A An array of Google fonts and sizes to load. e.g.google_fonts = [[\"Poppins\", \"300, 400, 600, 700\"],[\"Source Code Pro\", \"500, 700\"]] This will load the Google Poppins and Source Code Pro fonts in the specified sizes. sans_serif_font System Font Set the Sans Serif font. e.g. \"Poppins\" secondary_font System Font Set the Secondary font. e.g. \"Poppins\" Small Tables linkAdd table-sm or table-xs to make any table more compact by reducing the cell padding.\nParameter Default Value Description google_fonts N/A An array of Google fonts and sizes to load. e.g.google_fonts = [[\"Poppins\", \"300, 400, 600, 700\"],[\"Source Code Pro\", \"500, 700\"]] This will load the Google Poppins and Source Code Pro fonts in the specified sizes. sans_serif_font System Font Set the Sans Serif font. e.g. \"Poppins\" secondary_font System Font Set the Secondary font. e.g. \"Poppins\" Parameter Default Value Description google_fonts N/A An array of Google fonts and sizes to load. e.g.google_fonts = [[\"Poppins\", \"300, 400, 600, 700\"],[\"Source Code Pro\", \"500, 700\"]] This will load the Google Poppins and Source Code Pro fonts in the specified sizes. sans_serif_font System Font Set the Sans Serif font. e.g. \"Poppins\" secondary_font System Font Set the Secondary font. e.g. \"Poppins\" Responsive Tables linkAdd the table-responsive option to make a table responsive:\nAnimal Sounds Legs Cat Meow 4 Dog Woof 4 Cricket Chirp 6 Combining Table Options linkCombine table shortcode options to create your desired effect:\n{{\u003c table \"table-striped table-sm table-borderless\" \u003e}} ... .. {{\u003c /table \u003e}} Parameter Default Value Description google_fonts N/A An array of Google fonts and sizes to load. e.g.google_fonts = [[\"Poppins\", \"300, 400, 600, 700\"],[\"Source Code Pro\", \"500, 700\"]] This will load the Google Poppins and Source Code Pro fonts in the specified sizes. sans_serif_font System Font Set the Sans Serif font. e.g. \"Poppins\" secondary_font System Font Set the Secondary font. e.g. \"Poppins\" "
+            }
+        );
+    index.add(
+            {
+                id:  17 ,
+                href: "\/docs\/guides\/shortcodes\/tabs\/",
+                title: "Tabs",
+                description: "How to use the Lotus Docs tabs shortcode to render Bootstrap Tabs",
+                content: "The tabs shortcode leverages Bootstrap’s Tabs styling to easily add Tabs to your markdown content. The shortcode is actually a combination of two separate shortcodes (tab and tabs) working together.\nYou need a minimum of one tab shortcode nested inside a tabs shortcode for the component to function:\n{{\u003c tabs tabTotal=\"1\"\u003e}} {{% tab tabName=\"Tab 1\" %}} **Tab 1 Content** {{% /tab %}} {{\u003c /tabs \u003e}} Basic Tabs linkThe following example demonstrates how to create a basic multi tab navigation component using the tabs and tab shortcodes.\n{{\u003c tabs tabTotal=\"3\"\u003e}} {{% tab tabName=\"Windows\" %}} **Windows Content** Example content specific to **Windows** operating systems {{% /tab %}} {{% tab tabName=\"MacOS\" %}} **MacOS Content** Example content specific to **Mac** operating systems {{% /tab %}} {{% tab tabName=\"Linux\" %}} **Linux Content** Example content specific to **Linux** operating systems {{% /tab %}} {{\u003c /tabs \u003e}} Renders:\nWindows MacOS Linux Windows Content\nExample content specific to Windows operating systems\nMacOS Content\nExample content specific to Mac operating systems\nLinux Content\nExample content specific to Linux operating systems\nRight Aligned Tabs link {{\u003c tabs tabTotal=\"3\" tabRightAlign=\"2\"\u003e}} {{% tab tabName=\"Tab 1\" %}} **Tab 1 Content** {{% /tab %}} {{% tab tabName=\"Tab 2\" %}} **Tab 2 Content** {{% /tab %}} {{% tab tabName=\"Tab 3\" %}} **Tab 3 Content** {{% /tab %}} {{\u003c /tabs \u003e}} Renders:\nTab 1 Tab 2 Tab 3 Tab 1 Content\nTab 2 Content\nTab 3 Content\nHow does it work? linktabs.html linkThis is the parent shortcode that wraps around all nested tab shortcodes in the tab group and generates the tab navigation.\nVariable Description tabTotal This variable is used to generate the tab navigation. Simply set it to the amount of tab shortcodes you have. In the above example, since there are three nested tab shortcodes, you would set tabTotal to 3. tabRightAlign This is an optional variable that if used will right align the tab number you inputted and all tabs after it. In the above example, since tabRightAlign is set to two, tabs 2 and 3 will be right aligned. tab.html linkThis is a child shortcode that is nested inside tabs shortcodes. Each tab shortcode equals one tab so add as many as you need. Please note, make sure tabTotal in the tabs shortcode is equal to the amount of tab shortcodes you define.\nVariable Description tabName This variable defines the title of the tab. Credit linkBoth tab and tabs shortcodes documented above are a modified versions of the open source Hugo Dynamic Tabs shortcodes. Thank you rvanhorn 👍.\n"
+            }
+        );
+    index.add(
+            {
+                id:  18 ,
+                href: "\/docs\/guides\/shortcodes\/prism\/",
+                title: "Prism",
+                description: "How to use the Prism Shortcode for syntax highlighting code blocks.",
+                content: "Prism Shortcode linkWhen Prism is enabled in hugo.toml syntax highlighting can also be achieved using a paired Prism shortcode. The code language is declared using the lang parameter:\n{{\u003c prism lang=\"html\" \u003e}} \u003chtml\u003e \u003chead\u003e \u003ctitle\u003eBuy cool new product\u003c/title\u003e \u003c/head\u003e \u003cbody\u003e \u003c!-- Use action=\"/create-checkout-session.php\" if your server is PHP based. --\u003e \u003cform action=\"/create-checkout-session\" method=\"POST\"\u003e \u003cbutton type=\"submit\"\u003eCheckout\u003c/button\u003e \u003c/form\u003e \u003c/body\u003e \u003c/html\u003e {{\u003c /prism \u003e}} All code blocks highlighted by Prism feature the Copy to Clipboard Button plugin. Hover over (or tap if on mobile) the examples above and the copy button appears in the top right hand corner of the code block. Click this button to copy the code to your clipboard.\nLine Highlighting linkThe Prism shortcode can highlight specific lines and/or line ranges in code blocks using the line parameter:\n{{\u003c prism lang=\"html\" line=\"2-4,6\" \u003e}} \u003chtml\u003e \u003chead\u003e ... {{\u003c /prism \u003e}} See the rendered example below:\nBuy cool new product Checkout Line Numbers linkAdd line numbers to your code with the line-numbers=\"true\" parameter:\nBuy cool new product Checkout The number at which the line starts can be specified by the start parameter. e.g. start=\"48\":\nBuy cool new product Checkout Line Number Anchors linkSpecific lines in highlighted code blocks can be linked when both the line-numbers and linkable-line-numbers options are true:\n{{\u003c prism lang=\"html\" linkable-line-numbers=\"true\" line-numbers=\"true\" \u003e}} \u003chtml\u003e \u003chead\u003e ... {{\u003c /prism \u003e}} Rendered code block:\nBuy cool new product Checkout Clicking on any of the line numbers above will update the hash of the current page to link to that specific line.\nAll elements of Prism code blocks have an auto-generated id attribute. This id is a combination of the unique hash of the code block content plus it’s unique position on the page. The generated hash can be overridden using a Custom id set via the id option.\nThe url format follows #{hash-id}.{lines}, where {hash-id} is the auto-generated hash value of the code block and {lines} is one or more lines or line ranges that follows the line highlighting format.\nFor example, line 8 in the code block below can be linked using the following anchor #adea9eb.8:\nBuy cool new product Checkout Combined Line Parameters linkPrism’s Line Highlighting \u0026 Line Numbers plugins are compatible with each other. So the line \u0026 line-numbers options can be combined to display both, line numbers and highlight specified lines in a code block:\n{{\u003c prism lang=\"html\" line-numbers=\"true\" line=\"2-4,6\" \u003e}} \u003chtml\u003e \u003chead\u003e ... {{\u003c /prism \u003e}} This renders the following code block:\nBuy cool new product Checkout Combining line \u0026 start options requires the use of the line-offset option:\n{{\u003c prism lang=\"html\" line-numbers=\"true\" start=\"48\" line=\"49-51,54\" line-offset=\"48\" \u003e}} \u003chtml\u003e \u003chead\u003e ... {{\u003c /prism \u003e}} This renders the following code block:\nBuy cool new product Checkout File Highlight linkExternal files can be fetched and highlighted using the File Highlight option. Use the src parameter to retrieve an external file, like so:\n{{\u003c prism src=\"https://raw.githubusercontent.com/colinwilson/lotusdocs/release/SECURITY.md\" /\u003e}} Result:\nUse the src-range parameter to retrieve a specific line range from an external file. src-range=\"32,46\" will fetch lines 32 to 46 of the file specified by the src parameter:\n{{\u003c prism src-range=\"32,46\" src=\"https://raw.githubusercontent.com/colinwilson/lotusdocs/release/data/landing.yaml\" line-numbers=\"true\" /\u003e}} src-range can be used with the line-numbers option to number the retrieved range. So the above shortcode produces the following code block:\nSee Prism’s docs for more info on the File Highlight plugin.\nDisable Prism linkPrism syntax highlighting can be disabled by setting [params.docs.prism] to false in the hugo.toml configuration file.\nCommand Line linkTBC\n"
+            }
+        );
+    index.add(
+            {
+                id:  19 ,
+                href: "\/docs\/guides\/shortcodes\/markdownify\/",
+                title: "Markdownify",
+                description: "A simple shortcode to render content as Markdown.",
+                content: "This shortcode parses its content as markdown.\nUsage linkThe following:\n{{\u003c markdownify \u003e}} **Bold Text**: Above a code block. ```html \u003c!-- An example HTML code block --\u003e \u003ch1\u003eHello World\u003c/h1\u003e {{\u003c /markdownify \u003e}} Renders:\nBold Text: Above a code block.\n\u003ch1\u003eHello World\u003c/h1\u003e Nested Shortcodes linkThe markdownify shortcode is especially useful in cases where you require portions of content nested inside another shortcode be parsed as Markdown.\nFor example, here’s a paragraph of markdown text and a prism shortcode codeblock nested within a tabs shortcode:\n{{\u003c tabs tabTotal=\"1\" \u003e}} {{\u003c tab tabName=\"Tab 1\" \u003e}} {{\u003c markdownify \u003e}} ### Markdownified Text Some `markdownified` text inside a `tabs` shortcode {{\u003c /markdownify \u003e}} {{\u003c prism lang=\"html\" line=\"3,6\" \u003e}} \u003chtml\u003e \u003chead\u003e \u003ctitle\u003eA code block using the Prism Shortcode\u003c/title\u003e \u003c/head\u003e \u003cp\u003e This shortcode is nested inside a Tabs shortcode \u003c/p\u003e \u003c/html\u003e {{\u003c /prism \u003e}} {{\u003c /tab \u003e}} {{\u003c /tabs \u003e}} Renders:\nTab 1 Markdownified Text\nSome markdownified text inside a tabs shortcode\nA code block using the Prism Shortcode This shortcode is nested inside a Tabs shortcode "
+            }
+        );
+    index.add(
+            {
+                id:  20 ,
+                href: "\/docs\/guides\/shortcodes\/katex\/",
+                title: "KaTex",
+                description: "A Shortcode to render KaTex syntax in your Lotus Docs site",
+                content: "Lotus Docs has built-in support for KaTex. However, there are certain equation syntaxes which do not render well if at all without a lot of character escaping1 or alterations. The KaTex shortcode is suited to handle such cases.\nFor example:\n{{\u003c katex \u003e}} $$ \\begin{array} {lcl} L(p,w_i) \u0026=\u0026 \\dfrac{1}{N}\\Sigma_{i=1}^N(\\underbrace{f_r(x_2 \\rightarrow x_1 \\rightarrow x_0)G(x_1 \\longleftrightarrow x_2)f_r(x_3 \\rightarrow x_2 \\rightarrow x_1)}_{sample\\, radiance\\, evaluation\\, in\\, stage2} \\\\\\\\\\\\ \u0026=\u0026 \\prod_{i=3}^{k-1}(\\underbrace{\\dfrac{f_r(x_{i+1} \\rightarrow x_i \\rightarrow x_{i-1})G(x_i \\longleftrightarrow x_{i-1})}{p_a(x_{i-1})}}_{stored\\,in\\,vertex\\, during\\,light\\, path\\, tracing\\, in\\, stage1})\\dfrac{G(x_k \\longleftrightarrow x_{k-1})L_e(x_k \\rightarrow x_{k-1})}{p_a(x_{k-1})p_a(x_k)}) \\end{array} $$ {{\u003c /katex \u003e}} renders as:\n$$ \\begin{array} {lcl} L(p,w_i) \u0026=\u0026 \\dfrac{1}{N}\\Sigma_{i=1}^N(\\underbrace{f_r(x_2 \\rightarrow x_1 \\rightarrow x_0)G(x_1 \\longleftrightarrow x_2)f_r(x_3 \\rightarrow x_2 \\rightarrow x_1)}_{sample\\, radiance\\, evaluation\\, in\\, stage2} \\\\\\\\\\\\ \u0026=\u0026 \\prod_{i=3}^{k-1}(\\underbrace{\\dfrac{f_r(x_{i+1} \\rightarrow x_i \\rightarrow x_{i-1})G(x_i \\longleftrightarrow x_{i-1})}{p_a(x_{i-1})}}_{stored\\,in\\,vertex\\, during\\,light\\, path\\, tracing\\, in\\, stage1})\\dfrac{G(x_k \\longleftrightarrow x_{k-1})L_e(x_k \\rightarrow x_{k-1})}{p_a(x_{k-1})p_a(x_k)}) \\end{array} $$ How to render math equations properly with KaTeX ↩︎\n"
+            }
+        );
+    index.add(
+            {
+                id:  21 ,
+                href: "\/docs\/reference\/",
+                title: "Reference",
+                description: "Reference information for Lotus Docs",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  22 ,
+                href: "\/docs\/reference\/configuration\/",
+                title: "Configuration",
+                description: "Reference table of configuration options for the Lotus Docs theme.",
+                content: "A list of available configuration settings in the site configuration file, hugo.toml, hugo.yaml, or hugo.json:\n[params] linkGoogle Fonts link Parameter Type Default Value Description google_fonts array N/A An array of Google fonts and sizes to load. e.g.google_fonts = [[\"Inter\", \"300, 400, 600, 700\"],[\"Fira Code\", \"500, 700\"]] This will load the Google Inter and Fira Code fonts in the specified sizes. sans_serif_font string System Font Set the Sans Serif font. e.g. \"Inter\" secondary_font string System Font Set the Secondary font. e.g. \"Inter\" mono_font string System Font Set the Mono font. e.g. \"Fira Code\" [params.footer] linkFooter link Parameter Type Default Value Description copyright string N/A Sets the footer copyright text for both the landing page and documentation site (supports Markdown) version boolean false Display the site’s truncated git commit hash in the footer? TBC [params.social] linkSocial links are displayed as icons in the top left corner of the Lotus Docs theme. This goes for the landing page and docs site.\nSocial Icon Links link Parameter Type Default Value Description github string N/A Enables the GitHub social icon link using the GitHub URL value set here e.g. colinwilson or colinwilson/lotusdocs twitter string N/A Enables the Twitter / X social icon link using the username value set here e.g. lotusdocs instagram string N/A Enables the Instagram social icon link using the username value set here e.g. lotusdocs rss boolean false Display an RSS icon link? [params.docs] linkOptions to help you configure Lotus Docs to suite your needs.\nCore Site Options link Parameter Type Default Value Description title string N/A Set the default HTML title for your documentation pages/sections e.g. Lotus Docs (This parameter is separate from the root Hugo title parameter that sets the title for your site overall e.g the landing page.) pathName string docs Pathname for the documentation site. A few additional changes to the Lotus Docs theme are required when this value is updated. See the Installation guide for more details. themeColor string blue Set the sites accent color. This affects links, buttons and icons. Available options/colors include, blue (default), green, red, yellow, emerald, cardinal, magenta, cyan. darkMode boolean false Enable Dark Mode? prism boolean true Enable the PrismJS syntax highlighting plugin? See the Syntax Highlighting and Prism Shortcode guides for more details. UI Options link Parameter Type Default Value Description breadcrumbs boolean true Enable breadcrumb navigation links above the content title? descriptions boolean true Enable front matter descriptions under content title? backToTop boolean true Enable back-to-top button? navDesc boolean true Enable front matter descriptions in content Prev/Next navigation card links? navDescTrunc integer 40 Number of characters by which to truncate the Prev/Next link front matter descriptions. listDescTrunc integer 100 Number of characters by which to truncate card front matter description. Icon Options link Parameter Type Default Value Description sidebarIcons boolean false Enable icons for menu items in the sidebar?. titleIcon boolean false Prefix content titles with an icon? When enabled and no icon is set in front matter, a the default Material Symbol icon article is set. GitInfo Options link Parameter Type Default Value Description repoURL string N/A Set the Git repository URL for your site e.g. https://github.com/colinwilson/lotusdocs.dev repoBranch string main for GitHub and GitLab. master for BitBucket Set the branch name of your Git repository to use for your site e.g. main editPage boolean false Enable ‘Edit this page’ link at the bottom of documentation pages? Links to the Git repository set by the ghrepo parameter. lastMod boolean false Enable ‘Last updated’ date at the bottom of documentation pages? lastModRelative boolean true Format the lastMod (if enabled) date parameter as relative? e.g. 8 hours ago, 2 months ago Table of Contents link Parameter Type Default Value Description toc boolean true Enable a Table of Contents for all documentation pages? (Activates only if a documentation page generates a ToC). tocMobile boolean true Enable a Table of Contents menu in mobile view? Helps navigate pages with a lot of headings/sections. scrollSpy boolean true Enable scrollSpy on the Table of Contents menus? [params.flexsearch] linkFlexSearch Options linkSee the the FlexSearch Guide for more information regarding the options below.\nParameter Type Default Value Description enabled boolean true Enable FlexSearch? Note: If [params.docsearch] is configured, FlexSearch is automatically disabled regardless of the value set here. tokenize string forward Set the behaviour for the search process. Options include: full, strict, forward, and reverse. optimize boolean false Enabled to uses a memory-optimized stack flow for the FlexSearch index? cache integer/boolean 100 Enable of set cache behaviour. FlexSearch will use the available cache to store popular searches. minQueryChar integer 0 Set the minimum number of entered characters required before any search results are rendered. 0 disables this requirement and results are shown as soon as any character is entered. maxResult integer 5 Set the maximum number of results presented for a search query. searchSectionsIndex array [] TBD. [params.docsearch] linkDocSearch Options linkSee the the DocSearch Guide for more information about DocSearch.\nParameter Type Default Value Description appID string N/A DocSearch / Algolia Application ID. apiKey string N/A DocSearch Algolia Search-Only API (Public) Key. indexName string N/A Index Name to perform search on. [params.plausible] linkPlausible Analytics Options linkSee the the Plausible Analytics Guide for more information about how to configure Plausible Analytics for your Lotus Docs site.\nParameter Type Default Value Description dataDomain string N/A Set the domain name that you wish to track via Plausible Analytics, e.g. lotusdocs.dev. scriptURL string https://plausible.io/js/script.js optional - Set the URL (domain/subdomain name) where your script.js file is self-hosted, e.g. https://plausible.lotusdocs.dev/js/script.js. eventAPI string N/A optional - Set the event API path. e.g. https://plausible.lotusdocs.dev/api/event [params.feedback] linkFeedback Widget linkSee the the Feedback Widget Guide for detailed information about how to configure the widget for Plausible and Google Analytics.\nParameter Type Default Value Description enabled boolean false Enable the Feedback Widget? Note: Either Google or Plausible Analytics need to be configured for the Feedback Widget to function. emoticonTpl boolean false optional - Enable the emoticon Feedback Widget template? eventDest array N/A optional - An array to define which configured web analytics services to send feedback events to. Available options currently include, google and plausible. Note: If not set, the feedback widget will send feedback events to all web analytics services configured in hugo.toml. successMsg string Thank you for helping to improve our documentation! optional - Set the message that’s displayed when feedback is successfully submitted. errorMsg string Sorry! There was an error while attempting to submit your feedback! optional - Set the message that’s displayed when there is an error in submitting feedback. Emoticon Feedback Template linkParameters specific to the emoticon feedback widget template.\nParameter Type Default Value Description emoticonEventName string Feedback optional - Set the feedback event name for the emoticon template. Default Feedback Template linkParameters specific to the default feedback template.\nParameter Type Default Value Description positiveEventName string Positive Feedback optional - Set the name for the positive feedback event. negativeEventName string Negative Feedback optional - Set the name for the negative feedback event. positiveFormTitle string What did you like? optional - Set the title for the positive feedback form. negativeFormTitle string What went wrong? optional - Set the title for the negative feedback form. positiveForm array N/A optional - A nested array of ratings and descriptions for the positive feedback form. e.g. [[\"Easy to understand\",\"Easy to follow and comprehend.\"]], the first element in the nested array represents the rating, and the second, the description. negativeForm array N/A optional - A nested array of ratings and descriptions for the negative feedback form. e.g. [[\"Hard to understand\",\"Too complicated or unclear.\"]], the first element in the nested array represents the rating, and the second, the description. "
+            }
+        );
+    index.add(
+            {
+                id:  23 ,
+                href: "\/docs\/contributing\/",
+                title: "Contributing",
+                description: "How to contribute to Lotus Labs.",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  24 ,
+                href: "\/docs\/contributing\/how-to-contribute\/",
+                title: "How to Contribute",
+                description: "Contribute to code, improve documentation, help others, submit to showcase, and contribute financially.",
+                content: "Contribute to code linkCreate a Pull Request link Follow the GitHub flow. Follow the Conventional Commits Specification Improve documentation link Follow the GitHub flow. Follow the Conventional Commits Specification Create an issue link Bug report Feature request Help others linkLotus Docs Discussions is the place to get help and help others with Lotus Docs.\nSubmit to showcase linkShare what you’ve built with us.\nContribute financially linkHelp support the team developing Lotus Docs by becoming a financial contributor.\n"
+            }
+        );
+    index.add(
+            {
+                id:  25 ,
+                href: "\/docs\/contributing\/financial-contributions\/",
+                title: "Financial Contributions",
+                description: "Help support the Lotus Docs development team by becoming a financial contributor.",
+                content: "We use Open Collective to receive contributions, share our budget, and manage expenses. Visit the Lotus Labs Open Collective page.\nBecome a Sponsor linkBecome a sponsor starting at $50.00 per month. Your logo — with a link to your website — will show up on the Lotus Docs website, the Lotus Docs repository, and the Lotus Labs Open Collective page.\nBecome a Backer linkBecome a backer starting at $5.00 per month. Your avatar will show up on the Lotus Docs repository and the Lotus Labs Open Collective page.\nMake a Donation linkMake a custom one-time or recurring contribution.\nThanks :green_heart: linkThanks for your contribution!\n"
+            }
+        );
+    index.add(
+            {
+                id:  26 ,
+                href: "\/docs\/contributing\/code-of-conduct\/",
+                title: "Code of Conduct",
+                description: "Contributor Covenant Code of Conduct.",
+                content: "Our Pledge linkWe as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, caste, color, religion, or sexual identity and orientation.\nWe pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.\nOur Standards linkExamples of behaviour that contributes to a positive environment for our community include:\nDemonstrating empathy and kindness toward other people Being respectful of differing opinions, viewpoints, and experiences Giving and gracefully accepting constructive feedback Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience Focusing on what is best not just for us as individuals, but for the overall community Examples of unacceptable behaviour include:\nThe use of sexualized language or imagery, and sexual attention or advances of any kind Trolling, insulting or derogatory comments, and personal or political attacks Public or private harassment Publishing others’ private information, such as a physical or email address, without their explicit permission Other conduct which could reasonably be considered inappropriate in a professional setting Enforcement Responsibilities linkCommunity leaders are responsible for clarifying and enforcing our standards of acceptable behaviour and will take appropriate and fair corrective action in response to any behaviour that they deem inappropriate, threatening, offensive, or harmful.\nCommunity leaders have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, and will communicate reasons for moderation decisions when appropriate.\nScope linkThis Code of Conduct applies within all community spaces, and also applies when an individual is officially representing the community in public spaces. Examples of representing our community include using an official e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event.\nEnforcement linkInstances of abusive, harassing, or otherwise unacceptable behaviour may be reported by contacting the project team at lotusdocs@aigis.uk. All complaints will be reviewed and investigated promptly and fairly.\nAll community leaders are obligated to respect the privacy and security of the reporter of any incident.\nEnforcement Guidelines linkCommunity leaders will follow these Community Impact Guidelines in determining the consequences for any action they deem in violation of this Code of Conduct:\n1. Correction linkCommunity Impact: Use of inappropriate language or other behaviour deemed unprofessional or unwelcome in the community.\nConsequence: A private, written warning from community leaders, providing clarity around the nature of the violation and an explanation of why the behaviour was inappropriate. A public apology may be requested.\n2. Warning linkCommunity Impact: A violation through a single incident or series of actions.\nConsequence: A warning with consequences for continued behaviour. No interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.\n3. Temporary Ban linkCommunity Impact: A serious violation of community standards, including sustained inappropriate behaviour.\nConsequence: A temporary ban from any sort of interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, is allowed during this period. Violating these terms may lead to a permanent ban.\n4. Permanent Ban linkCommunity Impact: Demonstrating a pattern of violation of community standards, including sustained inappropriate behaviour, harassment of an individual, or aggression toward or disparagement of classes of individuals.\nConsequence: A permanent ban from any sort of public interaction within the community.\nAttribution linkThis Code of Conduct is adapted from the Contributor Covenant, version 2.1, available at https://www.contributor-covenant.org/version/2/1/code_of_conduct.html.\nCommunity Impact Guidelines were inspired by Mozilla’s code of conduct enforcement ladder.\nFor answers to common questions about this code of conduct, see the FAQ at https://www.contributor-covenant.org/faq. Translations are available at https://www.contributor-covenant.org/translations.\n"
+            }
+        );
+    index.add(
+            {
+                id:  27 ,
+                href: "\/docs\/help\/",
+                title: "Help",
+                description: "Help using the Lotus Docs theme.",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  28 ,
+                href: "\/docs\/help\/troubleshooting\/",
+                title: "Troubleshooting",
+                description: "Solutions to common problems.",
+                content: " "
+            }
+        );
+    index.add(
+            {
+                id:  29 ,
+                href: "\/docs\/help\/faqs\/",
+                title: "FAQ",
+                description: "Answers to frequently asked questions.",
+                content: " "
+            }
+        );
+    search.addEventListener('input', show_results, true);
+
+    function show_results(){
+        const maxResult =  5 ;
+        const minlength =  0 ;
+        var searchQuery = this.value;
+        var results = index.search(searchQuery, {limit: maxResult, enrich: true});
+
+        
+        const flatResults = new Map(); 
+        for (const result of results.flatMap(r => r.result)) {
+        if (flatResults.has(result.doc.href)) continue;
+        flatResults.set(result.doc.href, result.doc);
+        }
+
+        suggestions.innerHTML = "";
+        suggestions.classList.remove('d-none');
+
+        
+        if (searchQuery.length < minlength) {
+            const minCharMessage = document.createElement('div')
+            minCharMessage.innerHTML = `Please type at least <strong>${minlength}</strong> characters`
+            minCharMessage.classList.add("suggestion__no-results");
+            suggestions.appendChild(minCharMessage);
+            return;
+        } else {
+            
+            if (flatResults.size === 0 && searchQuery) {
+                const noResultsMessage = document.createElement('div')
+                noResultsMessage.innerHTML = "No results for" + ` "<strong>${searchQuery}</strong>"`
+                noResultsMessage.classList.add("suggestion__no-results");
+                suggestions.appendChild(noResultsMessage);
+                return;
+            }
+        }
+
+        
+        for(const [href, doc] of flatResults) {
+            const entry = document.createElement('div');
+            suggestions.appendChild(entry);
+
+            const a = document.createElement('a');
+            a.href = href;
+            entry.appendChild(a);
+
+            const title = document.createElement('span');
+            title.textContent = doc.title;
+            title.classList.add("suggestion__title");
+            a.appendChild(title);
+
+            const description = document.createElement('span');
+            description.textContent = doc.description;
+            description.classList.add("suggestion__description");
+            a.appendChild(description);
+
+            suggestions.appendChild(entry);
+
+            if(suggestions.childElementCount == maxResult) break;
+        }
+    }
+    }());
+</script>
+    
+</body></html>

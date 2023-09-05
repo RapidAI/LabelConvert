@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Theme Options on My New Hugo Site</title>
+    <link>http://example.org/docs/guides/theme-options/</link>
+    <description>Recent content in Theme Options on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Nov 2022 07:04:15 +0000</lastBuildDate><atom:link href="http://example.org/docs/guides/theme-options/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Breadcrumb Navigation</title>
+      <link>http://example.org/docs/guides/theme-options/breadcrumbs/</link>
+      <pubDate>Sun, 27 Nov 2022 07:08:15 +0000</pubDate>
+      
+      <guid>http://example.org/docs/guides/theme-options/breadcrumbs/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;/ Guides / Theme Options / Breadcrumbs Enable Breadcrumbs linkBreadcrumb navigation is enabled by default1 and appears in the top right-hand corner of content pages above the page title. The Lotus Docs breadcrumb implementation functions with both multilingual and single-language sites.
+Structured Data linkThe breadcrumb navigation also auto-generates structured data for rich results to help enable search results that are more engaging to users. Here are the Breadcrumb Rich Results test results for this very page.</description>
+    </item>
+    
+  </channel>
+</rss>
