@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Help on My New Hugo Site</title>
-    <link>http://example.org/docs/help/</link>
+    <link>https://rapidai.github.io/LabelConvert/docs/help/</link>
     <description>Recent content in Help on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Oct 2020 08:49:15 +0000</lastBuildDate><atom:link href="http://example.org/docs/help/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Oct 2020 08:49:15 +0000</lastBuildDate><atom:link href="https://rapidai.github.io/LabelConvert/docs/help/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Troubleshooting</title>
-      <link>http://example.org/docs/help/troubleshooting/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/help/troubleshooting/</link>
       <pubDate>Thu, 12 Nov 2020 15:22:20 +0100</pubDate>
       
-      <guid>http://example.org/docs/help/troubleshooting/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/help/troubleshooting/</guid>
       <description> </description>
     </item>
     
     <item>
       <title>FAQ</title>
-      <link>http://example.org/docs/help/faqs/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/help/faqs/</link>
       <pubDate>Tue, 06 Oct 2020 08:49:31 +0000</pubDate>
       
-      <guid>http://example.org/docs/help/faqs/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/help/faqs/</guid>
       <description> </description>
     </item>
     

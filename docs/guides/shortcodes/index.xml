@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Shortcodes on My New Hugo Site</title>
-    <link>http://example.org/docs/guides/shortcodes/</link>
+    <link>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/</link>
     <description>Recent content in Shortcodes on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Nov 2022 12:40:15 +0000</lastBuildDate><atom:link href="http://example.org/docs/guides/shortcodes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Nov 2022 12:40:15 +0000</lastBuildDate><atom:link href="https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Alerts</title>
-      <link>http://example.org/docs/guides/shortcodes/alerts/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/alerts/</link>
       <pubDate>Tue, 22 Nov 2022 13:42:31 +0000</pubDate>
       
-      <guid>http://example.org/docs/guides/shortcodes/alerts/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/alerts/</guid>
       <description>Adding a Page Alert linkPage alerts can be added to your markdown using the following shortcode:
 {{&amp;lt; alert text=&amp;#34;This is the default alert. It consists of a default theme colour and icon.&amp;#34; /&amp;gt;}} The above code results in the following alert:
 notifications This is the default alert. It consists of a default theme colour and icon. Alert with Context linkAdd context to an alert via the context parameter:
@@ -21,10 +21,10 @@ notifications This is the default alert. It consists of a default theme colour a
     
     <item>
       <title>Tables</title>
-      <link>http://example.org/docs/guides/shortcodes/tables/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/tables/</link>
       <pubDate>Sat, 05 Nov 2022 04:41:15 +0000</pubDate>
       
-      <guid>http://example.org/docs/guides/shortcodes/tables/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/tables/</guid>
       <description>The table shortcode enables Lotus Docs to take advantage of Bootstrap&amp;rsquo;s opt-in table styling.
 Regular Tables linkBy default Lotus Docs renders regular Markdown tables with some very basic styling:
 | Tables | Are | Cool | |----------|:-------------:|------:| | col 1 is | left-aligned | $1600 | | col 2 is | centered | $12 | | col 3 is | right-aligned | $1 | Result:
@@ -33,10 +33,10 @@ Tables Are Cool col 1 is left-aligned $1600 col 2 is centered $12 col 3 is right
     
     <item>
       <title>Tabs</title>
-      <link>http://example.org/docs/guides/shortcodes/tabs/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/tabs/</link>
       <pubDate>Tue, 25 Apr 2023 03:51:15 +0000</pubDate>
       
-      <guid>http://example.org/docs/guides/shortcodes/tabs/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/tabs/</guid>
       <description>The tabs shortcode leverages Bootstrap&amp;rsquo;s Tabs styling to easily add Tabs to your markdown content. The shortcode is actually a combination of two separate shortcodes (tab and tabs) working together.
 You need a minimum of one tab shortcode nested inside a tabs shortcode for the component to function:
 {{&amp;lt; tabs tabTotal=&amp;#34;1&amp;#34;&amp;gt;}} {{% tab tabName=&amp;#34;Tab 1&amp;#34; %}} **Tab 1 Content** {{% /tab %}} {{&amp;lt; /tabs &amp;gt;}} Basic Tabs linkThe following example demonstrates how to create a basic multi tab navigation component using the tabs and tab shortcodes.</description>
@@ -44,20 +44,20 @@ You need a minimum of one tab shortcode nested inside a tabs shortcode for the c
     
     <item>
       <title>Prism</title>
-      <link>http://example.org/docs/guides/shortcodes/prism/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/prism/</link>
       <pubDate>Mon, 28 Nov 2022 04:05:31 +0000</pubDate>
       
-      <guid>http://example.org/docs/guides/shortcodes/prism/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/prism/</guid>
       <description>Prism Shortcode linkWhen Prism is enabled in hugo.toml syntax highlighting can also be achieved using a paired Prism shortcode. The code language is declared using the lang parameter:
 {{&amp;lt; prism lang=&amp;#34;html&amp;#34; &amp;gt;}} &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Buy cool new product&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;!-- Use action=&amp;#34;/create-checkout-session.php&amp;#34; if your server is PHP based. --&amp;gt; &amp;lt;form action=&amp;#34;/create-checkout-session&amp;#34; method=&amp;#34;POST&amp;#34;&amp;gt; &amp;lt;button type=&amp;#34;submit&amp;#34;&amp;gt;Checkout&amp;lt;/button&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; {{&amp;lt; /prism &amp;gt;}} All code blocks highlighted by Prism feature the Copy to Clipboard Button plugin.</description>
     </item>
     
     <item>
       <title>Markdownify</title>
-      <link>http://example.org/docs/guides/shortcodes/markdownify/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/markdownify/</link>
       <pubDate>Fri, 28 Apr 2023 16:35:15 +0000</pubDate>
       
-      <guid>http://example.org/docs/guides/shortcodes/markdownify/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/markdownify/</guid>
       <description>This shortcode parses its content as markdown.
 Usage linkThe following:
 {{&amp;lt; markdownify &amp;gt;}} **Bold Text**: Above a code block. ```html &amp;lt;!-- An example HTML code block --&amp;gt; &amp;lt;h1&amp;gt;Hello World&amp;lt;/h1&amp;gt; {{&amp;lt; /markdownify &amp;gt;}} Renders:
@@ -67,10 +67,10 @@ Bold Text: Above a code block.
     
     <item>
       <title>KaTex</title>
-      <link>http://example.org/docs/guides/shortcodes/katex/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/katex/</link>
       <pubDate>Sun, 27 Aug 2023 04:13:11 +0100</pubDate>
       
-      <guid>http://example.org/docs/guides/shortcodes/katex/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/katex/</guid>
       <description>Lotus Docs has built-in support for KaTex. However, there are certain equation syntaxes which do not render well if at all without a lot of character escaping1 or alterations. The KaTex shortcode is suited to handle such cases.
 For example:
 {{&amp;lt; katex &amp;gt;}} $$ \begin{array} {lcl} L(p,w_i) &amp;amp;=&amp;amp; \dfrac{1}{N}\Sigma_{i=1}^N(\underbrace{f_r(x_2 \rightarrow x_1 \rightarrow x_0)G(x_1 \longleftrightarrow x_2)f_r(x_3 \rightarrow x_2 \rightarrow x_1)}_{sample\, radiance\, evaluation\, in\, stage2} \\\\\\ &amp;amp;=&amp;amp; \prod_{i=3}^{k-1}(\underbrace{\dfrac{f_r(x_{i+1} \rightarrow x_i \rightarrow x_{i-1})G(x_i \longleftrightarrow x_{i-1})}{p_a(x_{i-1})}}_{stored\,in\,vertex\, during\,light\, path\, tracing\, in\, stage1})\dfrac{G(x_k \longleftrightarrow x_{k-1})L_e(x_k \rightarrow x_{k-1})}{p_a(x_{k-1})p_a(x_k)}) \end{array} $$ {{&amp;lt; /katex &amp;gt;}} renders as:</description>

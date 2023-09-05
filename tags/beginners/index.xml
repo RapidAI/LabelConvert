@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Beginners on My New Hugo Site</title>
-    <link>http://example.org/tags/beginners/</link>
+    <link>https://rapidai.github.io/LabelConvert/tags/beginners/</link>
     <description>Recent content in Beginners on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 08 Jun 2023 19:25:22 +0100</lastBuildDate><atom:link href="http://example.org/tags/beginners/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 08 Jun 2023 19:25:22 +0100</lastBuildDate><atom:link href="https://rapidai.github.io/LabelConvert/tags/beginners/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Overview</title>
-      <link>http://example.org/docs/overview/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/overview/</link>
       <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
       
-      <guid>http://example.org/docs/overview/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/overview/</guid>
       <description>Lotus Docs is currently in the pre-release stage of development and, therefore, is not recommended for use in production. You&amp;rsquo;re welcome to try out the theme yourself, and contributions to the project a very welcome.
 Welcome to the Lotus Docs user guide. This guide shows you how to start creating technical documentation sites using Lotus Docs, including site customisation and using Lotus Docs&amp;rsquo; features and templates.
 What is Lotus Docs?</description>
@@ -20,10 +20,10 @@ What is Lotus Docs?</description>
     
     <item>
       <title>Quickstart</title>
-      <link>http://example.org/docs/quickstart/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/quickstart/</link>
       <pubDate>Thu, 08 Jun 2023 19:25:22 +0100</pubDate>
       
-      <guid>http://example.org/docs/quickstart/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/quickstart/</guid>
       <description>Requirements link git Go ≥ v1.19 Hugo ≥ v0.100.0 (Extended Version) Install Hugo linkInstall the Hugo CLI, using the specific instructions for your operating system below:
 Linux Homebrew (macOS) Windows (Chocolatey) Windows (Scoop) Your Linux distro’s package manager may include Hugo. If this is the case, install it directly using your distro’s package manager – for instance, in Ubuntu, run the following command. This will install the extended edition of Hugo:</description>
     </item>

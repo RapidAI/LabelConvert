@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Guides on My New Hugo Site</title>
-    <link>http://example.org/docs/guides/</link>
+    <link>https://rapidai.github.io/LabelConvert/docs/guides/</link>
     <description>Recent content in Guides on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Nov 2022 12:36:15 +0000</lastBuildDate><atom:link href="http://example.org/docs/guides/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Nov 2022 12:36:15 +0000</lastBuildDate><atom:link href="https://rapidai.github.io/LabelConvert/docs/guides/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
