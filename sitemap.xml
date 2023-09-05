@@ -5,104 +5,35 @@
     <loc>https://rapidai.github.io/LabelConvert/docs/</loc>
     <lastmod>2022-10-10T02:21:15+00:00</lastmod>
   </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/overview/</loc>
+    <loc>https://rapidai.github.io/LabelConvert/docs/labelimg_to_yolov5/</loc>
     <lastmod>2022-09-30T05:33:22+01:00</lastmod>
   </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/quickstart/</loc>
-    <lastmod>2023-06-08T19:25:22+01:00</lastmod>
+    <loc>https://rapidai.github.io/LabelConvert/docs/coco_to_labelimg/</loc>
+    <lastmod>2022-09-30T05:33:22+01:00</lastmod>
   </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/</loc>
-    <lastmod>2022-11-22T12:36:15+00:00</lastmod>
+    <loc>https://rapidai.github.io/LabelConvert/docs/yolov5_to_coco/</loc>
+    <lastmod>2022-09-30T05:33:22+01:00</lastmod>
   </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/features/</loc>
-    <lastmod>2022-12-16T01:04:15+00:00</lastmod>
+    <loc>https://rapidai.github.io/LabelConvert/docs/yolov5_yaml_to_coco/</loc>
+    <lastmod>2022-09-30T05:33:22+01:00</lastmod>
   </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/features/syntax-highlighting/</loc>
-    <lastmod>2022-12-16T01:07:15+00:00</lastmod>
+    <loc>https://rapidai.github.io/LabelConvert/docs/darknet_to_coco/</loc>
+    <lastmod>2022-09-30T05:33:22+01:00</lastmod>
   </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/features/plausible-analytics/</loc>
-    <lastmod>2023-07-27T23:28:15+00:00</lastmod>
+    <loc>https://rapidai.github.io/LabelConvert/docs/coco_visual/</loc>
+    <lastmod>2022-09-30T05:33:22+01:00</lastmod>
   </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/features/google-analytics/</loc>
-    <lastmod>2023-07-05T23:48:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/features/feedback-widget/</loc>
-    <lastmod>2023-08-24T02:43:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/features/flexsearch/</loc>
-    <lastmod>2023-06-20T15:30:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/features/docsearch/</loc>
-    <lastmod>2023-08-04T00:22:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/features/katex/</loc>
-    <lastmod>2023-08-26T20:43:23+01:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/theme-options/</loc>
-    <lastmod>2023-08-11T17:38:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/theme-options/breadcrumbs/</loc>
-    <lastmod>2023-08-16T02:49:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/</loc>
-    <lastmod>2022-11-22T12:40:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/alerts/</loc>
-    <lastmod>2022-11-22T13:42:31+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/tables/</loc>
-    <lastmod>2022-11-05T04:41:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/tabs/</loc>
-    <lastmod>2023-04-25T22:08:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/prism/</loc>
-    <lastmod>2022-11-28T04:05:31+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/markdownify/</loc>
-    <lastmod>2023-08-04T00:23:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/guides/shortcodes/katex/</loc>
-    <lastmod>2023-08-27T04:13:11+01:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/reference/</loc>
-    <lastmod>2023-01-21T16:13:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/reference/configuration/</loc>
-    <lastmod>2023-01-21T16:16:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/contributing/</loc>
-    <lastmod>2022-10-15T02:21:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/contributing/how-to-contribute/</loc>
-    <lastmod>2023-08-24T16:34:38+01:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/contributing/financial-contributions/</loc>
-    <lastmod>2022-10-19T07:07:38+01:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/contributing/code-of-conduct/</loc>
-    <lastmod>2022-10-15T02:21:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/help/</loc>
-    <lastmod>2020-10-06T08:49:15+00:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/help/troubleshooting/</loc>
-    <lastmod>2020-11-12T15:22:20+01:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/docs/help/faqs/</loc>
-    <lastmod>2020-10-06T08:49:31+00:00</lastmod>
+    <loc>https://rapidai.github.io/LabelConvert/docs/demo_of_coco/</loc>
+    <lastmod>2022-09-30T05:33:22+01:00</lastmod>
   </url><url>
     <loc>https://rapidai.github.io/LabelConvert/</loc>
-    <lastmod>2023-08-27T04:13:11+01:00</lastmod>
+    <lastmod>2022-10-10T02:21:15+00:00</lastmod>
   </url><url>
     <loc>https://rapidai.github.io/LabelConvert/tags/beginners/</loc>
-    <lastmod>2023-06-08T19:25:22+01:00</lastmod>
-  </url><url>
-    <loc>https://rapidai.github.io/LabelConvert/tags/guide/</loc>
-    <lastmod>2023-06-08T19:25:22+01:00</lastmod>
+    <lastmod>2022-09-30T05:33:22+01:00</lastmod>
   </url><url>
     <loc>https://rapidai.github.io/LabelConvert/tags/</loc>
-    <lastmod>2023-06-08T19:25:22+01:00</lastmod>
+    <lastmod>2022-09-30T05:33:22+01:00</lastmod>
   </url><url>
     <loc>https://rapidai.github.io/LabelConvert/categories/</loc>
   </url>
