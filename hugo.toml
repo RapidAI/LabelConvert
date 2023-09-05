@@ -39,7 +39,7 @@ enableGitInfo = true # N.B. .GitInfo does not currently function with submodule 
   mono_font       = "Fira Code" # Default is System font
 
     [params.footer]
-        copyright = "© :YEAR: Lotus Labs. Built with [**Lotus Docs**](https://github.com/colinwilson/lotusdocs)"
+        copyright = "© :YEAR: SWHL. Built with [**Lotus Docs**](https://github.com/colinwilson/lotusdocs)"
         version   = true # include git commit info in footer
 
     [params.social]
@@ -49,7 +49,7 @@ enableGitInfo = true # N.B. .GitInfo does not currently function with submodule 
         # rss = true                     # show rss icon with link
 
     [params.docs] # Parameters for the /docs 'template'
-        title           = "Lotus Docs"                        # default html title for documentation pages/sections
+        title           = "Label Convert Documentation"                        # default html title for documentation pages/sections
 
         # pathName        = "docs"                            # path for documentation site | default "docs"
 
