@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
+    <title>Label Convert Documentation</title>
     <link>https://rapidai.github.io/LabelConvert/</link>
-    <description>Recent content on My New Hugo Site</description>
+    <description>Recent content on Label Convert Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 10 Oct 2022 02:21:15 +0000</lastBuildDate><atom:link href="https://rapidai.github.io/LabelConvert/index.xml" rel="self" type="application/rss+xml" />
