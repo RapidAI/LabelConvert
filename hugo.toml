@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://rapidai.github.io/LabelConvert/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 
