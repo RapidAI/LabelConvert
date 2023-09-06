@@ -36,7 +36,7 @@ pip install label_convert
 ```
 
 ## 文档
-完整文档可从这里查看：[docs](https://rapidai.github.io/LabelConvert/docs/))
+完整文档可从这里查看：[docs](https://rapidai.github.io/LabelConvert/docs/)
 
 
 ## 贡献
