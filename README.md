@@ -27,7 +27,7 @@ pip install label_convert
 ```
 
 ## Documentation
-Full documentation can be found on [docs](https://rapidai.github.io/LabelConvert/docs/)).
+Full documentation can be found on [docs](https://rapidai.github.io/LabelConvert/docs/).
 
 
 ## Contributing
