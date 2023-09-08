@@ -16,7 +16,7 @@ jobs:
 
       - uses: actions/setup-go@v4
         with:
-          go-version: 'stable'
+          go-version-file: 'go.mod'
       - run: go version
 
       - name: Setup Hugo
@@ -26,11 +26,7 @@ jobs:
           extended: true
 
       - name: Build
-        run: |
-          ls
-          pwd
-          hugo mod init LabelConvert
-          hugo
+        run: hugo
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
