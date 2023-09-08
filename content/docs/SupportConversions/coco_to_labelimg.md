@@ -59,3 +59,11 @@ twitter:
   # or
   $ labelImg val val/classes.txt
   ```
+
+```mermaid
+flowchart LR
+
+A([Documents]) --ExtractText--> B([sentences])
+B --Embeddings--> C([Embeddings])
+C --Store--> D[(DataBase)]
+```
