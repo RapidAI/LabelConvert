@@ -21,10 +21,10 @@ License linkApache 2.0</description>
     
     <item>
       <title>labelImg → YOLOV5</title>
-      <link>https://rapidai.github.io/LabelConvert/docs/support-conversions/labelimg_to_yolov5/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_yolov5/</link>
       <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
       
-      <guid>https://rapidai.github.io/LabelConvert/docs/support-conversions/labelimg_to_yolov5/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_yolov5/</guid>
       <description>Convert the yolo data format marked by the labelImg library to YOLOV5 format data with one click.
 The labelImg label data directory structure is as follows (see dataset/labelImg_dataset for details):
 labelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt Convert
@@ -33,19 +33,19 @@ labelimg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelI
     
     <item>
       <title>COCO → labelImg yolo</title>
-      <link>https://rapidai.github.io/LabelConvert/docs/support-conversions/coco_to_labelimg/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_to_labelimg/</link>
       <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
       
-      <guid>https://rapidai.github.io/LabelConvert/docs/support-conversions/coco_to_labelimg/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_to_labelimg/</guid>
       <description>One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/YOLOV5_COCO_format for details）： YOLOV5_COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelimg --data_dir dataset/YOLOV5_COCO_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/YOLOV5_COCO_format. Converted directory structure (see dataset/COCO_labelImg_format for details): COCO_labelImg_format ├── train │ ├── 000000000001.</description>
     </item>
     
     <item>
       <title>YOLOV5 → COCO</title>
-      <link>https://rapidai.github.io/LabelConvert/docs/support-conversions/yolov5_to_coco/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_coco/</link>
       <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
       
-      <guid>https://rapidai.github.io/LabelConvert/docs/support-conversions/yolov5_to_coco/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_coco/</guid>
       <description>Some background images can be added to the training by directly placing them into the backgroud_images directory.
 The conversion program will automatically scan this directory and add it to the training set, allowing seamless integration with subsequent YOLOX training.
 YOLOV5 training format directory structure (see dataset/YOLOV5 for details).
@@ -54,10 +54,10 @@ YOLOV5 ├── classes.txt ├── background_images # usually images that a
     
     <item>
       <title>YOLOV5 YAML → COCO</title>
-      <link>https://rapidai.github.io/LabelConvert/docs/support-conversions/yolov5_yaml_to_coco/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_yaml_to_coco/</link>
       <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
       
-      <guid>https://rapidai.github.io/LabelConvert/docs/support-conversions/yolov5_yaml_to_coco/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_yaml_to_coco/</guid>
       <description> The YOLOV5 yaml data file needs to contain.
 YOLOV5_yaml ├── images │ ├── train │ │ ├── images(13).jpg │ │ └── images(3).jpg │ └── val │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── train │ │ ├── images(13).txt │ │ └── images(3).txt │ └── val │ ├── images(13).txt │ └── images(3).txt └── sample.yaml Convert
 yolov5_yaml_to_coco --yaml_path dataset/YOLOV5_yaml/sample.yaml </description>
@@ -65,28 +65,28 @@ yolov5_yaml_to_coco --yaml_path dataset/YOLOV5_yaml/sample.yaml </description>
     
     <item>
       <title>darknet → COCO</title>
-      <link>https://rapidai.github.io/LabelConvert/docs/support-conversions/darknet_to_coco/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/darknet_to_coco/</link>
       <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
       
-      <guid>https://rapidai.github.io/LabelConvert/docs/support-conversions/darknet_to_coco/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/darknet_to_coco/</guid>
       <description> Darknet training data directory structure (see dataset/darknet for details). darknet ├── class.names ├── gen_config.data ├── gen_train.txt ├── gen_valid.txt └── images ├── train └── valid Convert darknet_to_coco --data_path dataset/darknet/gen_config.data </description>
     </item>
     
     <item>
       <title>Visualize COCO image</title>
-      <link>https://rapidai.github.io/LabelConvert/docs/support-conversions/coco_visual/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_visual/</link>
       <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
       
-      <guid>https://rapidai.github.io/LabelConvert/docs/support-conversions/coco_visual/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_visual/</guid>
       <description> coco_visual --vis_num 1 \ --json_path dataset/YOLOV5_COCO_format/annotations/instances_train2017.json \ --img_dir dataset/YOLOV5_COCO_format/train2017 --vis_num: specify the index of the image to be viewed --json_path: path to the json file of the image to view --img_dir: view the directory where the image is located </description>
     </item>
     
     <item>
       <title>Demo of COCO json</title>
-      <link>https://rapidai.github.io/LabelConvert/docs/support-conversions/demo_of_coco/</link>
+      <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/demo_of_coco/</link>
       <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
       
-      <guid>https://rapidai.github.io/LabelConvert/docs/support-conversions/demo_of_coco/</guid>
+      <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/demo_of_coco/</guid>
       <description>{ &amp;#34;info&amp;#34;: { &amp;#34;year&amp;#34;: 2022, &amp;#34;version&amp;#34;: &amp;#34;1.0&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;For object detection&amp;#34;, &amp;#34;date_created&amp;#34;: &amp;#34;2022&amp;#34; }, &amp;#34;licenses&amp;#34;: [{ &amp;#34;id&amp;#34;: 1, &amp;#34;name&amp;#34;: &amp;#34;Apache License v2.0&amp;#34;, &amp;#34;url&amp;#34;: &amp;#34;https://github.com/RapidAI/YOLO2COCO/LICENSE&amp;#34; }], &amp;#34;images&amp;#34;: [{ &amp;#34;date_captured&amp;#34;: &amp;#34;2022&amp;#34;, &amp;#34;file_name&amp;#34;: &amp;#34;000000000001.jpg&amp;#34;, &amp;#34;id&amp;#34;: 1, &amp;#34;height&amp;#34;: 224, &amp;#34;width&amp;#34;: 224 }, { &amp;#34;date_captured&amp;#34;: &amp;#34;2022&amp;#34;, &amp;#34;file_name&amp;#34;: &amp;#34;000000000002.jpg&amp;#34;, &amp;#34;id&amp;#34;: 2, &amp;#34;height&amp;#34;: 424, &amp;#34;width&amp;#34;: 550 }], &amp;#34;annotations&amp;#34;: [{ &amp;#34;segmentation&amp;#34;: [[18.00, 2.99, 105.00, 2.99, 105.00, 89.00, 18.00, 89.00]], &amp;#34;area&amp;#34;: 7482.011, &amp;#34;iscrowd&amp;#34;: 0, &amp;#34;image_id&amp;#34;: 1, // Corresponding to the ID in images &amp;#34;bbox&amp;#34;: [18.</description>
     </item>
     
