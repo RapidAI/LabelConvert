@@ -27,6 +27,8 @@ jobs:
 
       - name: Build
         run: |
+          ls
+          pwd
           hugo mod init LabelConvert
           hugo
 
