@@ -16,7 +16,7 @@ jobs:
 
       - uses: actions/setup-go@v4
         with:
-          go-version-file: 'go.mod'
+          go-version-file: '1.21.0'
       - run: go version
 
       - name: Setup Hugo
