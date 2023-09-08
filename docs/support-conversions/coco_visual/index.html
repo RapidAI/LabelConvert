@@ -18,7 +18,7 @@
 
 <html lang="en-us"><head>
     <meta charset="utf-8" />
-    <title>darknet → COCO | Label Convert Documentation</title>
+    <title>Visualize COCO image | Label Convert Documentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A Modern Documentation Theme for Hugo" />
     <meta name="keywords" content="Documentation, Hugo, Hugo Theme, Bootstrap" />
@@ -81,7 +81,18 @@
                     
                         
                         <li class="">
-                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/labelimg_to_yolov5/">
+                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/overview/">
+                                <i class="material-icons me-2">circle</i>
+                                
+                                Overview
+                            </a>
+                        </li>
+                    
+                
+                    
+                        
+                        <li class="">
+                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/labelimg_to_yolov5/">
                                 <i class="material-icons me-2">circle</i>
                                 
                                 labelImg → YOLOV5
@@ -92,7 +103,7 @@
                     
                         
                         <li class="">
-                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/coco_to_labelimg/">
+                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/coco_to_labelimg/">
                                 <i class="material-icons me-2">circle</i>
                                 
                                 COCO → labelImg yolo
@@ -103,7 +114,7 @@
                     
                         
                         <li class="">
-                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/yolov5_to_coco/">
+                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/yolov5_to_coco/">
                                 <i class="material-icons me-2">circle</i>
                                 
                                 YOLOV5 → COCO
@@ -114,7 +125,7 @@
                     
                         
                         <li class="">
-                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/yolov5_yaml_to_coco/">
+                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/yolov5_yaml_to_coco/">
                                 <i class="material-icons me-2">circle</i>
                                 
                                 YOLOV5 YAML → COCO
@@ -124,8 +135,8 @@
                 
                     
                         
-                        <li class="current">
-                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/darknet_to_coco/">
+                        <li class="">
+                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/darknet_to_coco/">
                                 <i class="material-icons me-2">circle</i>
                                 
                                 darknet → COCO
@@ -135,8 +146,8 @@
                 
                     
                         
-                        <li class="">
-                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/coco_visual/">
+                        <li class="current">
+                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/coco_visual/">
                                 <i class="material-icons me-2">bike_scooter</i>
                                 
                                 Visualize COCO image
@@ -147,7 +158,7 @@
                     
                         
                         <li class="">
-                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/demo_of_coco/">
+                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/demo_of_coco/">
                                 <i class="material-icons me-2">circle</i>
                                 
                                 Demo of COCO json
@@ -250,7 +261,7 @@
             
         
             <li class="breadcrumb-item text-capitalize active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <span itemprop="name">darknet → COCO</span>
+                <span itemprop="name">Visualize COCO image</span>
                 <meta itemprop="position" content='2' />
             </li>
         
@@ -273,11 +284,11 @@
                                     <div class="docs-content col-12  mt-0">
                                         <div class="mb-0 d-flex">
                                             
-                                            <i class="material-icons title-icon me-2">circle</i>
+                                            <i class="material-icons title-icon me-2">bike_scooter</i>
                                             
                                             <h1 class="content-title mb-0">
                                                 <span class="title-text">
-                                                    darknet → COCO
+                                                    Visualize COCO image
                                                 </span>
                                                 
                                             </h1>
@@ -289,37 +300,7 @@
                                             
     
     <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
-        <ul>
-<li>Darknet training data directory structure (see <code>dataset/darknet</code> for details).
-
-
-
-  
-  
-  
-
-  
-  
-  
-  
-
-  
-
-  <div class="prism-codeblock ">
-  <pre id="13cdf49" class="language-text ">
-  <code>darknet
-├── class.names
-├── gen_config.data
-├── gen_train.txt
-├── gen_valid.txt
-└── images
-    ├── train
-    └── valid</code>
-  </pre>
-  </div>
-</li>
-<li>Convert
-
+        
 
 
   
@@ -334,11 +315,16 @@
   
 
   <div class="prism-codeblock ">
-  <pre id="37c9d86" class="language-bash ">
-  <code>darknet_to_coco --data_path dataset/darknet/gen_config.data</code>
+  <pre id="fe8753f" class="language-bash ">
+  <code>coco_visual --vis_num 1 \
+            --json_path dataset/YOLOV5_COCO_format/annotations/instances_train2017.json \
+            --img_dir dataset/YOLOV5_COCO_format/train2017</code>
   </pre>
   </div>
-</li>
+<ul>
+<li><code>--vis_num</code>: specify the index of the image to be viewed</li>
+<li><code>--json_path</code>: path to the json file of the image to view</li>
+<li><code>--img_dir</code>: view the directory where the image is located</li>
 </ul>
 
     </div>
@@ -359,7 +345,7 @@
 
 <div class="gitinfo d-flex flex-wrap justify-content-between align-items-center opacity-85 pt-3">
     <div id="edit-this-page" class="mt-1">
-        <a href="https://github.com/RapidAI/LabelConvert/blob/main/content/docs/darknet_to_coco.md" alt="darknet → COCO" rel="noopener noreferrer" target="_blank">
+        <a href="https://github.com/RapidAI/LabelConvert/blob/main/content/docs/Support%20Conversions/coco_visual.md" alt="Visualize COCO image" rel="noopener noreferrer" target="_blank">
             
             <span class="me-1 align-text-bottom">
                 
@@ -377,9 +363,9 @@
     <div id="last-modified" class="mt-1">
         <p class="mb-0 fw-semibold">Last updated <span
             id="relativetime"
-            data-authdate="2023-09-05T10:10:52&#43;0800"
-            title="05 Sep 2023, 10:10 &#43;0800">
-            05 Sep 2023, 10:10 &#43;0800
+            data-authdate="2023-09-08T08:29:10&#43;0800"
+            title="08 Sep 2023, 08:29 &#43;0800">
+            08 Sep 2023, 08:29 &#43;0800
         </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
         </p>
     </div>
@@ -393,10 +379,10 @@
 
 	<div class="row flex-xl-nowrap ">
 	<div class="col-sm-6 pt-2 doc-next">
-		<a href="/LabelConvert/docs/yolov5_yaml_to_coco/">
+		<a href="/LabelConvert/docs/support-conversions/darknet_to_coco/">
 			<div class="card h-100 my-1">
 				<div class="card-body py-2">
-                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> YOLOV5 YAML → COCO</p>
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> darknet → COCO</p>
 					<p class="card-text ms-2">Lotus Docs is a modern …</p>
 					
 				</div>
@@ -404,10 +390,10 @@
 		</a>
         </div>
 	<div class="col-sm-6 pt-2 doc-prev">
-		<a class="ms-auto" href="/LabelConvert/docs/coco_visual/">
+		<a class="ms-auto" href="/LabelConvert/docs/support-conversions/demo_of_coco/">
 			<div class="card h-100 my-1 text-end">
 				<div class="card-body py-2">
-                    <p class="card-title fs-5 fw-semibold lh-base mb-0">Visualize COCO image <i class="material-icons align-middle">navigate_next</i></p>
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0">Demo of COCO json <i class="material-icons align-middle">navigate_next</i></p>
 					<p class="card-text me-2">Lotus Docs is a modern …</p>
 					
 				</div>
