@@ -57,7 +57,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css?family=Inter:300,400,600,700|Fira+Code:500,700&display=block" rel="stylesheet">
 
-    <link rel="stylesheet" href="/LabelConvert/docs/scss/style.min.0f9bc13040229b6c8fc20e6ab599c65d5eda3bf552b4eb061137f08590cc0944bcce63c51f0e2e76b7f410955f367947.css" integrity="sha384-D5vBMEAim2yPwg5qtZnGXV7aO/VStOsGETfwhZDMCUS8zmPFHw4udrf0EJVfNnlH"crossorigin="anonymous">
+    <link rel="stylesheet" href="/LabelConvert/docs/scss/style.min.b1d7009fcb3a8b0151758684274bb4b0c75d855b2326442acbd933d2e2ce65abb51a3f84c732bb73c35513c6cd1a8bae.css" integrity="sha384-sdcAn8s6iwFRdYaEJ0u0sMddhVsjJkQqy9kz0uLOZau1Gj&#43;ExzK7c8NVE8bNGouu"crossorigin="anonymous">
     
     
     
@@ -390,29 +390,12 @@ $ labelImg val val/classes.txt</code>
   </div>
 </li>
 </ul>
-
-
-
-  
-  
-  
-
-  
-  
-  
-  
-
-  
-
-  <div class="prism-codeblock ">
-  <pre id="b2c7802" class="language-mermaid ">
-  <code>flowchart LR
+<pre class="mermaid">flowchart LR
 
 A([Documents]) --ExtractText--&gt; B([sentences])
 B --Embeddings--&gt; C([Embeddings])
-C --Store--&gt; D[(DataBase)]</code>
-  </pre>
-  </div>
+C --Store--&gt; D[(DataBase)]
+</pre>
 
     </div>
 
@@ -458,6 +441,19 @@ C --Store--&gt; D[(DataBase)]</code>
     </div>
     
 </div>
+
+    
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+        const config = {
+            startOnLoad:true,
+            logLevel: "error",
+            align: "center",
+            theme:"null"
+        };
+        mermaid.initialize(config);
+    </script>
+    
 
     
                                         </div>
