@@ -18,7 +18,7 @@
 
 <html lang="en-us"><head>
     <meta charset="utf-8" />
-    <title>Overview | Label Convert Documentation</title>
+    <title>Guides | Label Convert Documentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A Modern Documentation Theme for Hugo" />
     <meta name="keywords" content="Documentation, Hugo, Hugo Theme, Bootstrap" />
@@ -80,7 +80,7 @@
                 
                     
                         
-                        <li class="current">
+                        <li class="">
                             <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/overview/">
                                 <i class="material-icons me-2">circle</i>
                                 
@@ -91,12 +91,12 @@
                 
                     
                     
-                        <li class="sidebar-dropdown  ">
+                        <li class="sidebar-dropdown  current active">
                             <button class="btn">
                                 <i class="material-icons me-2">menu_book</i>
                                 Guides
                             </button>
-                            <div class="sidebar-submenu ">
+                            <div class="sidebar-submenu d-block">
                                 <ul>
                                     
                                         
@@ -234,7 +234,7 @@
             
         
             <li class="breadcrumb-item text-capitalize active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <span itemprop="name">Overview</span>
+                <span itemprop="name">Guides</span>
                 <meta itemprop="position" content='2' />
             </li>
         
@@ -243,47 +243,25 @@
                                 
                                 <div class="row flex-xl-nowrap">
                                     
-                                    <div class="docs-toc col-xl-3    d-xl-block"><toc>
+                                    <div class="docs-toc col-xl-3 visually-hidden visually-hidden  d-xl-block"><toc>
     <div class="fw-bold text-uppercase mb-2">On this page</div>
-    <nav id="toc">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#label-convert">Label Convert</a></li>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#contributing">Contributing</a></li>
-        <li><a href="#license">License</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+    <nav id="toc"></nav>
     </toc></div>
                                     
                                     
-                                    <div class="docs-toc-mobile    d-print-none d-xl-none">
+                                    <div class="docs-toc-mobile visually-hidden visually-hidden  d-print-none d-xl-none">
                                         <button id="toc-dropdown-btn" class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
                                             Table of Contents
                                         </button>
-<nav id="toc-mobile">
-  <ul class="dropdown-menu">
-    <li>
-      <ul>
-        <li><a href="#label-convert">Label Convert</a></li>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#contributing">Contributing</a></li>
-        <li><a href="#license">License</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-                                    <div class="docs-content col-12 col-xl-9 mt-0">
+<nav id="toc-mobile"></nav></div>
+                                    <div class="docs-content col-12  mt-0">
                                         <div class="mb-0 d-flex">
                                             
-                                            <i class="material-icons title-icon me-2">circle</i>
+                                            <i class="material-icons title-icon me-2">menu_book</i>
                                             
                                             <h1 class="content-title mb-0">
                                                 <span class="title-text">
-                                                    Overview
+                                                    Guides
                                                 </span>
                                                 
                                             </h1>
@@ -293,110 +271,132 @@
                                         
                                         <div id="content" class="main-content" data-bs-spy="scroll" data-bs-root-margin="0px 0px -65%" data-bs-target="#toc-mobile">
                                             
-    
-    <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
-        <div align="center">
-  <img src="https://github.com/RapidAI/LabelConvert/releases/download/v0/LabelConvertv3.png" width="55%" height="55%"/>
-</div>
-<h2 id="label-convert">Label Convert <a href="#label-convert" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h2><p align="left">
-    <a href=""><img src="https://img.shields.io/badge/Python->=3.6,<3.12-aff.svg"></a>
-    <a href=""><img src="https://img.shields.io/badge/OS-Linux%2C%20Win%2C%20Mac-pink.svg"></a>
-    <a href="https://github.com/RapidAI/LabelConvert/graphs/contributors"><img src="https://img.shields.io/github/contributors/RapidAI/LabelConvert?color=9ea"></a>
-    <a href="https://github.com/RapidAI/LabelConvert/stargazers"><img src="https://img.shields.io/github/stars/RapidAI/LabelConvert?color=ccf" ></a>
-    <a href="https://pepy.tech/project/label_convert"><img src="https://static.pepy.tech/badge/label_convert?period=total&units=abbreviation&left_color=grey&right_color=blue&left_text=Downloads"></a>
-    <a href="https://pypi.org/project/label_convert/"><img alt="PyPI" src="https://img.shields.io/pypi/v/label_convert"></a>
-    <a href="https://choosealicense.com/licenses/apache-2.0/"><img src="https://img.shields.io/badge/License-Apache%202-dfd.svg"></a>
-    <a href="https://semver.org/"><img alt="SemVer2.0" src="https://img.shields.io/badge/SemVer-2.0-brightgreen"></a>
-    <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
-</p>
-<p>A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between <strong>labelme, labelImg tools and YOLO, VOC, and COCO</strong> dataset formats.</p>
-<h2 id="installation">Installation <a href="#installation" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h2>
-
-
-  
-  
-  
-
-  
-  
-  
-  
-
-  
-
-  <div class="prism-codeblock ">
-  <pre id="849cde8" class="language-bash ">
-  <code>pip install label_convert</code>
-  </pre>
-  </div>
-<h2 id="contributing">Contributing <a href="#contributing" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h2><p>Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.</p>
-<p>Please make sure to update tests as appropriate.</p>
-<h2 id="license">License <a href="#license" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h2><p><a href="https://choosealicense.com/licenses/apache-2.0/">Apache 2.0</a></p>
-
+    <div class="row flex-xl-wrap">
+        
+        <div id="list-item" class="col-md-4 col-12 mt-4 pt-2">
+            <a class="text-decoration-none text-reset" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/labelimg_to_yolov5/">
+                <div class="card h-100 features feature-full-bg rounded p-4 position-relative overflow-hidden border-1">
+                    <span class="icon-color d-flex my-3">
+                        <i class="material-icons align-middle">circle</i>
+                        
+                        
+                    </span>
+                    <div class="card-body p-0 content">
+                        <p class="fs-5 fw-semibold card-title mb-1">labelImg → YOLOV5</p>
+                        <p class="para card-text mb-0"></p>
+                    </div>
+                    
+                </div>
+            </a>
+        </div>
+        
+        <div id="list-item" class="col-md-4 col-12 mt-4 pt-2">
+            <a class="text-decoration-none text-reset" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/coco_to_labelimg/">
+                <div class="card h-100 features feature-full-bg rounded p-4 position-relative overflow-hidden border-1">
+                    <span class="icon-color d-flex my-3">
+                        <i class="material-icons align-middle">circle</i>
+                        
+                        
+                    </span>
+                    <div class="card-body p-0 content">
+                        <p class="fs-5 fw-semibold card-title mb-1">COCO → labelImg yolo</p>
+                        <p class="para card-text mb-0"></p>
+                    </div>
+                    
+                </div>
+            </a>
+        </div>
+        
+        <div id="list-item" class="col-md-4 col-12 mt-4 pt-2">
+            <a class="text-decoration-none text-reset" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/yolov5_to_coco/">
+                <div class="card h-100 features feature-full-bg rounded p-4 position-relative overflow-hidden border-1">
+                    <span class="icon-color d-flex my-3">
+                        <i class="material-icons align-middle">circle</i>
+                        
+                        
+                    </span>
+                    <div class="card-body p-0 content">
+                        <p class="fs-5 fw-semibold card-title mb-1">YOLOV5 → COCO</p>
+                        <p class="para card-text mb-0"></p>
+                    </div>
+                    
+                </div>
+            </a>
+        </div>
+        
+        <div id="list-item" class="col-md-4 col-12 mt-4 pt-2">
+            <a class="text-decoration-none text-reset" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/yolov5_yaml_to_coco/">
+                <div class="card h-100 features feature-full-bg rounded p-4 position-relative overflow-hidden border-1">
+                    <span class="icon-color d-flex my-3">
+                        <i class="material-icons align-middle">circle</i>
+                        
+                        
+                    </span>
+                    <div class="card-body p-0 content">
+                        <p class="fs-5 fw-semibold card-title mb-1">YOLOV5 YAML → COCO</p>
+                        <p class="para card-text mb-0"></p>
+                    </div>
+                    
+                </div>
+            </a>
+        </div>
+        
+        <div id="list-item" class="col-md-4 col-12 mt-4 pt-2">
+            <a class="text-decoration-none text-reset" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/darknet_to_coco/">
+                <div class="card h-100 features feature-full-bg rounded p-4 position-relative overflow-hidden border-1">
+                    <span class="icon-color d-flex my-3">
+                        <i class="material-icons align-middle">circle</i>
+                        
+                        
+                    </span>
+                    <div class="card-body p-0 content">
+                        <p class="fs-5 fw-semibold card-title mb-1">darknet → COCO</p>
+                        <p class="para card-text mb-0"></p>
+                    </div>
+                    
+                </div>
+            </a>
+        </div>
+        
+        <div id="list-item" class="col-md-4 col-12 mt-4 pt-2">
+            <a class="text-decoration-none text-reset" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/coco_visual/">
+                <div class="card h-100 features feature-full-bg rounded p-4 position-relative overflow-hidden border-1">
+                    <span class="icon-color d-flex my-3">
+                        <i class="material-icons align-middle">bike_scooter</i>
+                        
+                        
+                    </span>
+                    <div class="card-body p-0 content">
+                        <p class="fs-5 fw-semibold card-title mb-1">Visualize COCO image</p>
+                        <p class="para card-text mb-0"></p>
+                    </div>
+                    
+                </div>
+            </a>
+        </div>
+        
+        <div id="list-item" class="col-md-4 col-12 mt-4 pt-2">
+            <a class="text-decoration-none text-reset" href="https://rapidai.github.io/LabelConvert/docs/support-conversions/demo_of_coco/">
+                <div class="card h-100 features feature-full-bg rounded p-4 position-relative overflow-hidden border-1">
+                    <span class="icon-color d-flex my-3">
+                        <i class="material-icons align-middle">circle</i>
+                        
+                        
+                    </span>
+                    <div class="card-body p-0 content">
+                        <p class="fs-5 fw-semibold card-title mb-1">Demo of COCO json</p>
+                        <p class="para card-text mb-0"></p>
+                    </div>
+                    
+                </div>
+            </a>
+        </div>
+        
     </div>
 
-    
-
-
-
-
-
-    
-    
-
-
-
-
-
-
-<div class="gitinfo d-flex flex-wrap justify-content-between align-items-center opacity-85 pt-3">
-    <div id="edit-this-page" class="mt-1">
-        <a href="https://github.com/RapidAI/LabelConvert/blob/main/content/docs/overview.md" alt="Overview" rel="noopener noreferrer" target="_blank">
-            
-            <span class="me-1 align-text-bottom">
-                
-                    <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-  <path d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z"/>
-</svg>
-
-                
-            </span>
-            Edit this page
-            
-        </a>
-    </div>
-    
-    <div id="last-modified" class="mt-1">
-        <p class="mb-0 fw-semibold">Last updated <span
-            id="relativetime"
-            data-authdate="2023-09-08T08:34:08&#43;0800"
-            title="08 Sep 2023, 08:34 &#43;0800">
-            08 Sep 2023, 08:34 &#43;0800
-        </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
-        </p>
-    </div>
-    
-</div>
-
-    
                                         </div>
                                         <div><hr class="doc-hr">
 <div id="doc-nav" class="d-print-none">
-
-	<div class="row flex-xl-nowrap flex-row-reverse">
-	<div class="col-sm-6 pt-2 doc-prev">
-		<a class="ms-auto" href="/LabelConvert/docs/support-conversions/labelimg_to_yolov5/">
-			<div class="card h-100 my-1 text-end">
-				<div class="card-body py-2">
-                    <p class="card-title fs-5 fw-semibold lh-base mb-0">labelImg → YOLOV5 <i class="material-icons align-middle">navigate_next</i></p>
-					<p class="card-text me-2"></p>
-					
-				</div>
-			</div>
-		</a>
-        </div>
-	</div>
 </div></div>
                                     </div>
                                 </div>
