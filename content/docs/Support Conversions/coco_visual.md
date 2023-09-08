@@ -6,7 +6,7 @@ author: "SWHL"
 title: "Visualize COCO image"
 icon: "bike_scooter"
 toc: true
-description: "Lotus Docs is a modern documentation theme built for Hugo."
+description: ""
 publishdate: "2022-09-30T05:33:22+01:00"
 tags: ["Beginners"]
 categories: [""]

@@ -6,7 +6,7 @@ author: "SWHL"
 title: "Overview"
 icon: "circle"
 toc: true
-description: "Lotus Docs is a modern documentation theme built for Hugo."
+description: ""
 publishdate: "2023-09-08"
 tags: ["Beginners"]
 categories: [""]
