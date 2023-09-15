@@ -6,6 +6,7 @@ import imghdr
 import random
 import shutil
 from pathlib import Path
+from typing import Union
 
 from tqdm import tqdm
 
@@ -48,9 +49,8 @@ class LabelImgToYOLOV5:
         print(f"Successfully convert, detail in {self.out_dir}")
 
     @staticmethod
-    def verify_exists(file_path):
-        file_path = Path(file_path)
-        if not file_path.exists():
+    def verify_exists(file_path: Union[Path, str]):
+        if not Path(file_path).exists():
             raise FileNotFoundError(f"The {file_path} is not exists!!!")
 
     def get_img_list(self):

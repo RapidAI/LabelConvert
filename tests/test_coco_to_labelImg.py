@@ -10,7 +10,7 @@ root_dir = cur_dir.parent
 
 sys.path.append(str(root_dir))
 
-from label_convert.coco_to_labelimg import COCO2labelImg
+from label_convert.coco_to_labelImg import COCO2labelImg
 
 test_file_dir = cur_dir / "test_files"
 

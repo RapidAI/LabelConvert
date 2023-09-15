@@ -1,5 +1,3 @@
-[简体中文](./docs/README_zh.md) | English
-
 <div align="center">
   <img src="https://github.com/RapidAI/LabelConvert/releases/download/v0/LabelConvertv3.png" width="55%" height="55%"/>
 </div>
@@ -27,7 +25,7 @@ pip install label_convert
 ```
 
 ## Documentation
-Full documentation can be found on [docs](https://rapidai.github.io/LabelConvert/).
+Full documentation can be found on [docs](https://rapidai.github.io/LabelConvert/docs).
 
 
 ## Contributing

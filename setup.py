@@ -44,6 +44,10 @@ if len(sys.argv) > 2:
         VERSION_NUM = matched_versions
 sys.argv = sys.argv[:2]
 
+project_urls = {
+    'Documentation': 'https://rapidai.github.io/LabelConvert/docs'
+}
+
 setuptools.setup(
     name=MODULE_NAME,
     version=VERSION_NUM,
@@ -54,12 +58,13 @@ setuptools.setup(
     author="SWHL",
     author_email="liekkaskono@163.com",
     url="https://github.com/RapidAI/LabelConvert",
+    project_urls=project_urls,
     license="Apache-2.0",
     include_package_data=True,
     install_requires=read_txt("requirements.txt"),
     packages=[MODULE_NAME],
     package_data={"": ["*.yaml"]},
-    keywords=["convert,coco,labelme,labelimg,yolov5,yolox,yolov6,yolov8"],
+    keywords=["convert,coco,labelme,labelImg,yolov5,yolox,yolov6,yolov8"],
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
@@ -71,12 +76,13 @@ setuptools.setup(
     python_requires=">=3.6,<3.12",
     entry_points={
         "console_scripts": [
-            f"coco_to_labelimg={MODULE_NAME}.coco_to_labelimg:main",
+            f"coco_to_labelImg={MODULE_NAME}.coco_to_labelImg:main",
             f"coco_visual={MODULE_NAME}.coco_visual:main",
             f"darknet_to_coco={MODULE_NAME}.darknet_to_coco:main",
-            f"labelimg_to_yolov5={MODULE_NAME}.labelimg_to_yolov5:main",
+            f"labelImg_to_yolov5={MODULE_NAME}.labelImg_to_yolov5:main",
             f"yolov5_to_coco={MODULE_NAME}.yolov5_to_coco:main",
             f"yolov5_yaml_to_coco={MODULE_NAME}.yolov5_yaml_to_coco:main",
+            f'labelImg_to_publaynet={MODULE_NAME}.labelImg_to_publaynet:main',
         ],
     },
 )

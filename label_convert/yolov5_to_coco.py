@@ -7,6 +7,7 @@ import shutil
 import time
 import warnings
 from pathlib import Path
+from typing import Union
 
 import cv2
 from tqdm import tqdm
@@ -217,9 +218,8 @@ class YOLOV5ToCOCO:
         Path(dir_path).mkdir(parents=True, exist_ok=True)
 
     @staticmethod
-    def verify_exists(file_path):
-        file_path = Path(file_path)
-        if not file_path.exists():
+    def verify_exists(file_path: Union[Path, str]):
+        if not Path(file_path).exists():
             raise FileNotFoundError(f"The {file_path} is not exists!!!")
 
     @staticmethod

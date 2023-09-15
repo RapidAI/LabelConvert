@@ -128,8 +128,7 @@ class COCO2labelImg:
 
     @staticmethod
     def verify_exists(file_path: Union[str, Path]) -> None:
-        file_path = Path(file_path)
-        if not file_path.exists():
+        if not Path(file_path).exists():
             raise FileNotFoundError(f"The {file_path} is not exists!!!")
 
     @staticmethod
