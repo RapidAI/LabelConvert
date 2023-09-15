@@ -586,8 +586,8 @@
 
     var index = new FlexSearch.Document({
         
-        tokenize: "forward",
-        minlength:  0 ,
+        tokenize: "full",
+        minlength:  3 ,
         cache:  100 ,
         optimize:  true ,
         document: {
@@ -775,7 +775,7 @@
 
     function show_results(){
         const maxResult =  5 ;
-        const minlength =  0 ;
+        const minlength =  3 ;
         var searchQuery = this.value;
         var results = index.search(searchQuery, {limit: maxResult, enrich: true});
 
