@@ -20,6 +20,18 @@ labelimg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelI
     </item>
     
     <item>
+      <title>labelImg → PubLayNet</title>
+      <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_publaynet/</link>
+      <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
+      
+      <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_publaynet/</guid>
+      <description>Convert the yolo data format marked by the labelImg library to PubLayNet format data with one click.
+The labelImg label data directory structure is as follows (see dataset/labelImg_dataset for details):
+labelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt Convert
+labelImg_to_publaynet --data_dir dataset/labelImg_dataset \ --val_ratio 0.2 \ --have_test true \ --test_ratio 0.2 --data_dir: the directory where labelImg is stored after labeling.</description>
+    </item>
+    
+    <item>
       <title>COCO → labelImg yolo</title>
       <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_to_labelimg/</link>
       <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>

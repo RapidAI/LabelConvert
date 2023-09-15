@@ -62,7 +62,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css?family=Inter:300,400,600,700|Fira+Code:500,700&display=block" rel="stylesheet">
 
-    <link rel="stylesheet" href="/LabelConvert/docs/scss/style.min.57e9efba42418914c22e375eade35e78513a0ae95b74888bc928020e9c1765a36e4be5be96be2593ce2c04c70917f94e.css" integrity="sha384-V&#43;nvukJBiRTCLjdereNeeFE6CulbdIiLySgCDpwXZaNuS&#43;W&#43;lr4lk84sBMcJF/lO"crossorigin="anonymous">
+    <link rel="stylesheet" href="/LabelConvert/docs/scss/style.min.c4d14a1b2829e68f04f46d5c87e918b8ee79d8e9b9995ff1ebee6fbd9e2d5774cc2842f1e64d18475c11ab04a24e9112.css" integrity="sha384-xNFKGygp5o8E9G1ch&#43;kYuO552Om5mV/x6&#43;5vvZ4tV3TMKELx5k0YR1wRqwSiTpES"crossorigin="anonymous">
     
     
     
@@ -111,6 +111,11 @@
                                     
                                         
                                         
+                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_publaynet/">labelImg → PubLayNet</a></li>
+                                        
+                                    
+                                        
+                                        
                                             <li class="current "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_to_labelimg/">COCO → labelImg yolo</a></li>
                                         
                                     
@@ -141,6 +146,17 @@
                                     
                                 </ul>
                             </div>
+                        </li>
+                    
+                
+                    
+                        
+                        <li class="">
+                            <a class="sidebar-root-link" href="https://rapidai.github.io/LabelConvert/docs/changelog/">
+                                <i class="material-icons me-2">update</i>
+                                
+                                Changelog
+                            </a>
                         </li>
                     
                 
@@ -476,9 +492,9 @@ $ labelImg val val/classes.txt</code>
     <div id="last-modified" class="mt-1">
         <p class="mb-0 fw-semibold">Last updated <span
             id="relativetime"
-            data-authdate="2023-09-08T22:22:01&#43;0800"
-            title="08 Sep 2023, 22:22 &#43;0800">
-            08 Sep 2023, 22:22 &#43;0800
+            data-authdate="2023-09-15T10:10:47&#43;0800"
+            title="15 Sep 2023, 10:10 &#43;0800">
+            15 Sep 2023, 10:10 &#43;0800
         </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
         </p>
     </div>
@@ -494,10 +510,10 @@ $ labelImg val val/classes.txt</code>
 
 	<div class="row flex-xl-nowrap ">
 	<div class="col-sm-6 pt-2 doc-next">
-		<a href="/LabelConvert/docs/supportconversions/labelimg_to_yolov5/">
+		<a href="/LabelConvert/docs/supportconversions/labelimg_to_publaynet/">
 			<div class="card h-100 my-1">
 				<div class="card-body py-2">
-                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> labelImg → YOLOV5</p>
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> labelImg → PubLayNet</p>
 					<p class="card-text ms-2"></p>
 					
 				</div>
@@ -747,6 +763,20 @@ $ labelImg val val/classes.txt</code>
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
     
@@ -765,24 +795,6 @@ $ labelImg val val/classes.txt</code>
     index.add(
             {
                 id:  1 ,
-                href: "\/LabelConvert\/docs\/overview\/",
-                title: "Overview",
-                description: "Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.\nInstallation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.\nPlease make sure to update tests as appropriate.\nLicense linkApache 2.0",
-                content: " Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.\nInstallation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.\nPlease make sure to update tests as appropriate.\nLicense linkApache 2.0\n"
-            }
-        );
-    index.add(
-            {
-                id:  2 ,
-                href: "\/LabelConvert\/docs\/supportconversions\/",
-                title: "Support Conversions",
-                description: "",
-                content: ""
-            }
-        );
-    index.add(
-            {
-                id:  3 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/labelimg_to_yolov5\/",
                 title: "labelImg → YOLOV5",
                 description: "Convert the yolo data format marked by the labelImg library to YOLOV5 format data with one click.\nThe labelImg label data directory structure is as follows (see dataset/labelImg_dataset for details):\nlabelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt Convert\nlabelimg_to_yolov5 --src_dir dataset/labelImg_dataset \\ --out_dir dataset/labelImg_dataset_output \\ --val_ratio 0.2 \\ --have_test true \\ --test_ratio 0.",
@@ -791,7 +803,16 @@ $ labelImg val val/classes.txt</code>
         );
     index.add(
             {
-                id:  4 ,
+                id:  2 ,
+                href: "\/LabelConvert\/docs\/supportconversions\/labelimg_to_publaynet\/",
+                title: "labelImg → PubLayNet",
+                description: "Convert the yolo data format marked by the labelImg library to PubLayNet format data with one click.\nThe labelImg label data directory structure is as follows (see dataset/labelImg_dataset for details):\nlabelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt Convert\nlabelImg_to_publaynet --data_dir dataset/labelImg_dataset \\ --val_ratio 0.2 \\ --have_test true \\ --test_ratio 0.2 --data_dir: the directory where labelImg is stored after labeling.",
+                content: " Convert the yolo data format marked by the labelImg library to PubLayNet format data with one click.\nThe labelImg label data directory structure is as follows (see dataset/labelImg_dataset for details):\nlabelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt Convert\nlabelImg_to_publaynet --data_dir dataset/labelImg_dataset \\ --val_ratio 0.2 \\ --have_test true \\ --test_ratio 0.2 --data_dir: the directory where labelImg is stored after labeling. --val_ratio: the ratio of the generated validation set to the whole data, default is 0.2. --have_test: whether to generate the test part of the data, the default is True. --test_ratio: percentage of the whole data of the test data, default is 0.2. Converted directory structure (see dataset/labelImg_dataset_publaynet for details):\nlabelImg_dataset_publaynet ├── test │ ├── images5.jpg │ └── images5.txt ├── test.json ├── train │ ├── images(13).jpg │ ├── images(13).txt │ ├── images(3).jpg │ ├── images(3).txt │ ├── images4.jpg │ ├── images4.txt │ ├── images5.jpg │ ├── images5.txt │ ├── images7.jpg │ └── images7.txt ├── train.json ├── val │ ├── images(13).jpg │ ├── images(13).txt │ ├── images5.jpg │ ├── images5.txt │ ├── images7.jpg │ └── images7.txt └── val.json "
+            }
+        );
+    index.add(
+            {
+                id:  3 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/coco_to_labelimg\/",
                 title: "COCO → labelImg yolo",
                 description: "One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/YOLOV5_COCO_format for details）： YOLOV5_COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelimg --data_dir dataset/YOLOV5_COCO_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/YOLOV5_COCO_format. Converted directory structure (see dataset/COCO_labelImg_format for details): COCO_labelImg_format ├── train │ ├── 000000000001.",
@@ -800,11 +821,20 @@ $ labelImg val val/classes.txt</code>
         );
     index.add(
             {
-                id:  5 ,
+                id:  4 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/yolov5_to_coco\/",
                 title: "YOLOV5 → COCO",
                 description: "Some background images can be added to the training by directly placing them into the backgroud_images directory.\nThe conversion program will automatically scan this directory and add it to the training set, allowing seamless integration with subsequent YOLOX training.\nYOLOV5 training format directory structure (see dataset/YOLOV5 for details).\nYOLOV5 ├── classes.txt ├── background_images # usually images that are easily confused with the object to be detected │ └── bg1.jpeg ├── images │ ├── images(13).",
                 content: " Some background images can be added to the training by directly placing them into the backgroud_images directory.\nThe conversion program will automatically scan this directory and add it to the training set, allowing seamless integration with subsequent YOLOX training.\nYOLOV5 training format directory structure (see dataset/YOLOV5 for details).\nYOLOV5 ├── classes.txt ├── background_images # usually images that are easily confused with the object to be detected │ └── bg1.jpeg ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt The image paths in train.txt and val.txt can be either:\nPath relative to root directory: dataset/YOLOV5/images/images(3).jpg Path relative to dataset/YOLOV5: images/images(3).jpg Convert\nyolov5_to_coco --data_dir dataset/YOLOV5 --mode_list train,val --data_dir: the directory where the collated dataset is located --mode_list: specify the generated json, provided that there is a corresponding txt file, which can be specified separately. (e.g. train,val,test) The structure of the converted directory (see dataset/YOLOV5_COCO_format for details)\nYOLOV5_COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg # This is the background image. └── val2017 └── 000000000001.jpg "
+            }
+        );
+    index.add(
+            {
+                id:  5 ,
+                href: "\/LabelConvert\/docs\/overview\/",
+                title: "Overview",
+                description: "Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.\nInstallation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.\nPlease make sure to update tests as appropriate.\nLicense linkApache 2.0",
+                content: " Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.\nInstallation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.\nPlease make sure to update tests as appropriate.\nLicense linkApache 2.0\n"
             }
         );
     index.add(
@@ -819,6 +849,24 @@ $ labelImg val val/classes.txt</code>
     index.add(
             {
                 id:  7 ,
+                href: "\/LabelConvert\/docs\/supportconversions\/",
+                title: "Support Conversions",
+                description: "",
+                content: ""
+            }
+        );
+    index.add(
+            {
+                id:  8 ,
+                href: "\/LabelConvert\/docs\/changelog\/",
+                title: "Changelog",
+                description: "2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. ",
+                content: "2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. "
+            }
+        );
+    index.add(
+            {
+                id:  9 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/darknet_to_coco\/",
                 title: "darknet → COCO",
                 description: " Darknet training data directory structure (see dataset/darknet for details). darknet ├── class.names ├── gen_config.data ├── gen_train.txt ├── gen_valid.txt └── images ├── train └── valid Convert darknet_to_coco --data_path dataset/darknet/gen_config.data ",
@@ -827,7 +875,7 @@ $ labelImg val val/classes.txt</code>
         );
     index.add(
             {
-                id:  8 ,
+                id:  10 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/coco_visual\/",
                 title: "Visualize COCO image",
                 description: " coco_visual --vis_num 1 \\ --json_path dataset/YOLOV5_COCO_format/annotations/instances_train2017.json \\ --img_dir dataset/YOLOV5_COCO_format/train2017 --vis_num: specify the index of the image to be viewed --json_path: path to the json file of the image to view --img_dir: view the directory where the image is located ",
@@ -836,7 +884,7 @@ $ labelImg val val/classes.txt</code>
         );
     index.add(
             {
-                id:  9 ,
+                id:  11 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/demo_of_coco\/",
                 title: "Demo of COCO json",
                 description: "{ \"info\": { \"year\": 2022, \"version\": \"1.0\", \"description\": \"For object detection\", \"date_created\": \"2022\" }, \"licenses\": [{ \"id\": 1, \"name\": \"Apache License v2.0\", \"url\": \"https://github.com/RapidAI/YOLO2COCO/LICENSE\" }], \"images\": [{ \"date_captured\": \"2022\", \"file_name\": \"000000000001.jpg\", \"id\": 1, \"height\": 224, \"width\": 224 }, { \"date_captured\": \"2022\", \"file_name\": \"000000000002.jpg\", \"id\": 2, \"height\": 424, \"width\": 550 }], \"annotations\": [{ \"segmentation\": [[18.00, 2.99, 105.00, 2.99, 105.00, 89.00, 18.00, 89.00]], \"area\": 7482.011, \"iscrowd\": 0, \"image_id\": 1, // Corresponding to the ID in images \"bbox\": [18.",

@@ -19,5 +19,14 @@ Please make sure to update tests as appropriate.
 License linkApache 2.0</description>
     </item>
     
+    <item>
+      <title>Changelog</title>
+      <link>https://rapidai.github.io/LabelConvert/docs/changelog/</link>
+      <pubDate>Fri, 15 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://rapidai.github.io/LabelConvert/docs/changelog/</guid>
+      <description>2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. </description>
+    </item>
+    
   </channel>
 </rss>

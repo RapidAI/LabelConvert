@@ -6,19 +6,7 @@
     <description>Recent content on Label Convert Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://rapidai.github.io/LabelConvert/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Overview</title>
-      <link>https://rapidai.github.io/LabelConvert/docs/overview/</link>
-      <pubDate>Fri, 08 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://rapidai.github.io/LabelConvert/docs/overview/</guid>
-      <description>Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.
-Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-Please make sure to update tests as appropriate.
-License linkApache 2.0</description>
-    </item>
-    
+    <lastBuildDate>Fri, 15 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://rapidai.github.io/LabelConvert/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>labelImg → YOLOV5</title>
       <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_yolov5/</link>
@@ -29,6 +17,18 @@ License linkApache 2.0</description>
 The labelImg label data directory structure is as follows (see dataset/labelImg_dataset for details):
 labelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt Convert
 labelimg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelImg_dataset_output \ --val_ratio 0.2 \ --have_test true \ --test_ratio 0.</description>
+    </item>
+    
+    <item>
+      <title>labelImg → PubLayNet</title>
+      <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_publaynet/</link>
+      <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
+      
+      <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_publaynet/</guid>
+      <description>Convert the yolo data format marked by the labelImg library to PubLayNet format data with one click.
+The labelImg label data directory structure is as follows (see dataset/labelImg_dataset for details):
+labelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt Convert
+labelImg_to_publaynet --data_dir dataset/labelImg_dataset \ --val_ratio 0.2 \ --have_test true \ --test_ratio 0.2 --data_dir: the directory where labelImg is stored after labeling.</description>
     </item>
     
     <item>
@@ -53,6 +53,18 @@ YOLOV5 ├── classes.txt ├── background_images # usually images that a
     </item>
     
     <item>
+      <title>Overview</title>
+      <link>https://rapidai.github.io/LabelConvert/docs/overview/</link>
+      <pubDate>Fri, 08 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://rapidai.github.io/LabelConvert/docs/overview/</guid>
+      <description>Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.
+Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Please make sure to update tests as appropriate.
+License linkApache 2.0</description>
+    </item>
+    
+    <item>
       <title>YOLOV5 YAML → COCO</title>
       <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_yaml_to_coco/</link>
       <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
@@ -61,6 +73,15 @@ YOLOV5 ├── classes.txt ├── background_images # usually images that a
       <description> The YOLOV5 yaml data file needs to contain.
 YOLOV5_yaml ├── images │ ├── train │ │ ├── images(13).jpg │ │ └── images(3).jpg │ └── val │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── train │ │ ├── images(13).txt │ │ └── images(3).txt │ └── val │ ├── images(13).txt │ └── images(3).txt └── sample.yaml Convert
 yolov5_yaml_to_coco --yaml_path dataset/YOLOV5_yaml/sample.yaml </description>
+    </item>
+    
+    <item>
+      <title>Changelog</title>
+      <link>https://rapidai.github.io/LabelConvert/docs/changelog/</link>
+      <pubDate>Fri, 15 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://rapidai.github.io/LabelConvert/docs/changelog/</guid>
+      <description>2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. </description>
     </item>
     
     <item>
