@@ -96,9 +96,9 @@ enableGitInfo = true # N.B. .GitInfo does not currently function with submodule 
         # searchSectionsIndex = []
 
     [params.docsearch] # Parameters for DocSearch
-        appID     = "O2QIOCBDAK"                       # Algolia Application ID (or set env variable HUGO_PARAM_DOCSEARCH_appID)
-        apiKey    = "fdc60eee76a72a35d739b54521498b77" # Algolia Search-Only API (Public) Key (or set env variable HUGO_PARAM_DOCSEARCH_apiKey)
-        indexName = "dev_lotusdocs.dev"               # Index Name to perform search on (or set env variable HUGO_PARAM_DOCSEARCH_indexName)
+        # appID     = "O2QIOCBDAK"                       # Algolia Application ID (or set env variable HUGO_PARAM_DOCSEARCH_appID)
+        # apiKey    = "fdc60eee76a72a35d739b54521498b77" # Algolia Search-Only API (Public) Key (or set env variable HUGO_PARAM_DOCSEARCH_apiKey)
+        # indexName = "dev_lotusdocs.dev"               # Index Name to perform search on (or set env variable HUGO_PARAM_DOCSEARCH_indexName)
 
     [params.plausible] # Parameters for Plausible Analytics
         dataDomain = "lotusdocs.dev" # (or set via env variable HUGO_PARAMS_PLAUSIBLE_dataDomain)
