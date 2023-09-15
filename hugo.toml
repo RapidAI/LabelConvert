@@ -91,7 +91,7 @@ enableGitInfo = true # N.B. .GitInfo does not currently function with submodule 
         tokenize            = "full"
         optimize            = true
         cache               = 100
-        minQueryChar        = 3 # default is 0 (disabled)
+        minQueryChar        = 1 # default is 0 (disabled)
         maxResult           = 5 # default is 5
         searchSectionsIndex = []
 
