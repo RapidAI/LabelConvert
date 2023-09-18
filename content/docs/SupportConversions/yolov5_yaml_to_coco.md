@@ -11,7 +11,7 @@ publishdate: "2022-09-30T05:33:22+01:00"
 ---
 
 - The YOLOV5 yaml data file needs to contain.
-    ```text
+    ```text {linenos=table}
     YOLOV5_yaml
     ├── images
     │   ├── train
@@ -31,6 +31,6 @@ publishdate: "2022-09-30T05:33:22+01:00"
     ```
 
 - Convert
-    ```bash
+    ```bash {linenos=table}
     yolov5_yaml_to_coco --yaml_path dataset/YOLOV5_yaml/sample.yaml
     ```

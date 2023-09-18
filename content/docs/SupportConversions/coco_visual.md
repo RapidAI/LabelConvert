@@ -11,7 +11,7 @@ publishdate: "2022-09-30T05:33:22+01:00"
 ---
 
 
-```bash
+```bash {linenos=table}
 coco_visual --vis_num 1 \
             --json_path dataset/YOLOV5_COCO_format/annotations/instances_train2017.json \
             --img_dir dataset/YOLOV5_COCO_format/train2017

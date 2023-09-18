@@ -8,8 +8,6 @@ icon: "circle"
 toc: true
 description: ""
 publishdate: "2023-09-08"
-tags: ["Beginners"]
-categories: [""]
 ---
 
 
@@ -35,7 +33,7 @@ A dataset format conversion tool for object detection and image segmentation, wh
 
 
 ## Installation
-```bash
+```bash {linenos=table}
 pip install label_convert
 ```
 

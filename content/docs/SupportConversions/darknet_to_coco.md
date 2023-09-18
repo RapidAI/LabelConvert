@@ -11,7 +11,7 @@ publishdate: "2022-09-30T05:33:22+01:00"
 ---
 
 - Darknet training data directory structure (see `dataset/darknet` for details).
-    ```text
+    ```text {linenos=table}
     darknet
     ├── class.names
     ├── gen_config.data
@@ -22,6 +22,6 @@ publishdate: "2022-09-30T05:33:22+01:00"
         └── valid
     ```
 - Convert
-    ```bash
+    ```bash {linenos=table}
     darknet_to_coco --data_path dataset/darknet/gen_config.data
     ```

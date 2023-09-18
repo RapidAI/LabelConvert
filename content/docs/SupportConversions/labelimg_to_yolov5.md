@@ -13,7 +13,7 @@ publishdate: "2022-09-30T05:33:22+01:00"
 
 - Convert the yolo data format marked by the [labelImg](https://github.com/tzutalin/labelImg) library to YOLOV5 format data with one click.
 - The labelImg label data directory structure is as follows (see `dataset/labelImg_dataset` for details):
-    ````text
+    ````text {linenos=table}
     labelImg_dataset
     ├── classes.txt
     ├── images(13).jpg
@@ -29,7 +29,7 @@ publishdate: "2022-09-30T05:33:22+01:00"
     └── images7.txt
     ````
 - Convert
-    ```bash
+    ```bash {linenos=table}
     labelimg_to_yolov5 --src_dir dataset/labelImg_dataset \
                        --out_dir dataset/labelImg_dataset_output \
                        --val_ratio 0.2 \
@@ -43,7 +43,7 @@ publishdate: "2022-09-30T05:33:22+01:00"
     - `--test_ratio`: percentage of the whole data of the test data, default is `0.2`.
 
 - Converted directory structure (see `dataset/labelImg_dataset_output` for details):
-    ````text
+    ````text {linenos=table}
     labelImg_dataset_output/
     ├── classes.txt
     ├── images
@@ -65,6 +65,6 @@ publishdate: "2022-09-30T05:33:22+01:00"
     └── val.txt
     ````
 - You can further directly convert the `dataset/labelImg_dataset_output` directory to COCO
-    ```bash
+    ```bash {linenos=table}
     yolov5_to_coco --data_dir dataset/labellImg_dataset_output
     ````
