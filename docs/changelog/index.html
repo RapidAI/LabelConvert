@@ -20,7 +20,6 @@
     <meta charset="utf-8" />
     <title>Changelog | Label Convert Documentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A Modern Documentation Theme for Hugo" />
     <meta name="keywords" content="Documentation, Hugo, Hugo Theme, Bootstrap" />
     <meta name="author" content="Colin Wilson - Lotus Labs" />
     <meta name="email" content="support@aigis.uk" />
@@ -62,7 +61,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css?family=Inter:300,400,600,700|Fira+Code:500,700&display=block" rel="stylesheet">
 
-    <link rel="stylesheet" href="/LabelConvert/docs/scss/style.min.c4d14a1b2829e68f04f46d5c87e918b8ee79d8e9b9995ff1ebee6fbd9e2d5774cc2842f1e64d18475c11ab04a24e9112.css" integrity="sha384-xNFKGygp5o8E9G1ch&#43;kYuO552Om5mV/x6&#43;5vvZ4tV3TMKELx5k0YR1wRqwSiTpES"crossorigin="anonymous">
+    <link rel="stylesheet" href="/LabelConvert/docs/scss/style.min.abb3af304688d6d7c998f9392ca55979523dabb5a7f68d5abbee77daee9c8ab7a6eb82b8774ce134dceaa7e8066885ce.css" integrity="sha384-q7OvMEaI1tfJmPk5LKVZeVI9q7Wn9o1au&#43;532u6cirem64K4d0zhNNzqp&#43;gGaIXO"crossorigin="anonymous">
     
     
     
@@ -347,9 +346,7 @@
                                         <div class="mb-0 d-flex">
                                             
                                             <h1 class="content-title mb-0">
-                                                <span class="title-text">
-                                                    Changelog
-                                                </span>
+                                                Changelog
                                                 
                                             </h1>
                                         </div>
@@ -494,7 +491,7 @@
     <script src="/LabelConvert/docs/js/bootstrap.39e36097440e8ae1bae5fa5b30b62819b701b2b6a0b19a492a1bf309e2a1dcfc02734909ea7951d33c11038d5ac48cd4.js" integrity="sha384-OeNgl0QOiuG65fpbMLYoGbcBsragsZpJKhvzCeKh3PwCc0kJ6nlR0zwRA41axIzU"defer></script>
 
 
-    <script type="text/javascript" src="https://rapidai.github.io/LabelConvert/docs/js/bundle.min.fadb30d71fd1560a0277e58cce2f06da367f12ed4e6d22545b39e167b61d3abd0f930918104e515259a27804cabbfd71.js" integrity="sha384-&#43;tsw1x/RVgoCd&#43;WMzi8G2jZ/Eu1ObSJUWznhZ7YdOr0PkwkYEE5RUlmieATKu/1x" crossorigin="anonymous" defer></script>
+    <script type="text/javascript" src="https://rapidai.github.io/LabelConvert/docs/js/bundle.min.d366a47881d032acbbb655e523bc69bfccd2532d6b4a2ddd45720c6e4f041d325d4f5f56b6079f6a8329b5e3d424b7b7.js" integrity="sha384-02akeIHQMqy7tlXlI7xpv8zSUy1rSi3dRXIMbk8EHTJdT19WtgefaoMptePUJLe3" crossorigin="anonymous" defer></script>
     
 
     
@@ -804,7 +801,7 @@
     function show_results(){
         const maxResult =  5 ;
         const minlength =  1 ;
-        var searchQuery = this.value;
+        var searchQuery = sanitizeHTML(this.value);
         var results = index.search(searchQuery, {limit: maxResult, enrich: true});
 
         
