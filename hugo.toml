@@ -51,6 +51,8 @@ enableGitInfo = true # N.B. .GitInfo does not currently function with submodule 
     [params.docs] # Parameters for the /docs 'template'
         title           = "Label Convert Documentation"                        # default html title for documentation pages/sections
 
+        prismTheme      = "twilight"
+
         # pathName        = "docs"                            # path for documentation site | default "docs"
 
         # themeColor      = "cyan"                            # (optional) - Set theme accent colour. Options include: blue (default), green, red, yellow, emerald, cardinal, magenta, cyan
