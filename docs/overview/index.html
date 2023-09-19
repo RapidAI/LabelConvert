@@ -315,7 +315,7 @@
       <ul>
         <li><a href="#label-convert">Label Convert</a>
           <ul>
-            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#transformation-diagram">Transformation Diagram</a></li>
             <li><a href="#installation">Installation</a></li>
             <li><a href="#contributing">Contributing</a></li>
             <li><a href="#license">License</a></li>
@@ -338,7 +338,7 @@
       <ul>
         <li><a href="#label-convert">Label Convert</a>
           <ul>
-            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#transformation-diagram">Transformation Diagram</a></li>
             <li><a href="#installation">Installation</a></li>
             <li><a href="#contributing">Contributing</a></li>
             <li><a href="#license">License</a></li>
@@ -378,16 +378,7 @@
     <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 </p>
 <p>A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between <strong>labelme, labelImg tools and YOLO, VOC, and COCO</strong> dataset formats.</p>
-<h3 id="architecture">Architecture <a href="#architecture" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><pre class="mermaid">flowchart LR
-
-A(labelImg) --&gt; B(YOLOv5)
-A --&gt; C(PubLayNet)
-D(COCO) --&gt; A
-D --&gt; B
-E(YOLOv5 YAML) --&gt; D
-F(darknet) --&gt; D
-</pre>
-<h3 id="installation">Installation <a href="#installation" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3>
+<h3 id="transformation-diagram">Transformation Diagram <a href="#transformation-diagram" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><h3 id="installation">Installation <a href="#installation" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3>
 
 
   
@@ -405,7 +396,7 @@ F(darknet) --&gt; D
   
 
   <div class="prism-codeblock  linenos">
-  <pre id="51dad20" class="language-bash  line-numbers">
+  <pre id="849cde8" class="language-bash  line-numbers">
   <code>pip install label_convert</code>
   </pre>
   </div>
@@ -450,26 +441,15 @@ to discuss what you would like to change.</p>
     <div id="last-modified" class="mt-1">
         <p class="mb-0 fw-semibold">Last updated <span
             id="relativetime"
-            data-authdate="2023-09-19T21:03:08&#43;0800"
-            title="19 Sep 2023, 21:03 &#43;0800">
-            19 Sep 2023, 21:03 &#43;0800
+            data-authdate="2023-09-19T21:18:20&#43;0800"
+            title="19 Sep 2023, 21:18 &#43;0800">
+            19 Sep 2023, 21:18 &#43;0800
         </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
         </p>
     </div>
     
 </div>
 
-    
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
-        const config = {
-            startOnLoad:true,
-            logLevel: "error",
-            align: "center",
-            theme:"null"
-        };
-        mermaid.initialize(config);
-    </script>
     
 
     
@@ -801,8 +781,8 @@ to discuss what you would like to change.</p>
                 id:  5 ,
                 href: "\/LabelConvert\/docs\/overview\/",
                 title: "Overview",
-                description: "Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats. Architecture linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A D --\u003e B E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.",
-                content: " Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.\nArchitecture linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A D --\u003e B E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.\nPlease make sure to update tests as appropriate.\nLicense linkApache 2.0\n"
+                description: "Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.\nTransformation Diagram linkInstallation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.\nPlease make sure to update tests as appropriate.\nLicense linkApache 2.0",
+                content: " Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.\nTransformation Diagram linkInstallation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.\nPlease make sure to update tests as appropriate.\nLicense linkApache 2.0\n"
             }
         );
     index.add(
