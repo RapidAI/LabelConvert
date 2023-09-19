@@ -11,7 +11,7 @@ publishdate: "2022-09-30T05:33:22+01:00"
 ---
 
 
-```json
+```json {linenos=table}
 {
     "info": {
       "year": 2022,

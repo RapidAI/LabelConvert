@@ -32,17 +32,29 @@ publishdate: "2023-09-08"
 A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between **labelme, labelImg tools and YOLO, VOC, and COCO** dataset formats.
 
 
-## Installation
+### Architecture
+```mermaid
+flowchart LR
+
+A(labelImg) --> B(YOLOv5)
+A --> C(PubLayNet)
+D(COCO) --> A
+D --> B
+E(YOLOv5 YAML) --> D
+F(darknet) --> D
+```
+
+### Installation
 ```bash {linenos=table}
 pip install label_convert
 ```
 
-## Contributing
+### Contributing
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
 
-## License
+### License
 [Apache 2.0](https://choosealicense.com/licenses/apache-2.0/)
