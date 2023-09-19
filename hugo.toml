@@ -3,7 +3,6 @@ languageCode = 'en-us'
 title = 'Label Convert Documentation'
 enableEmoji = true
 enableGitInfo = true # N.B. .GitInfo does not currently function with submodule content directories
-# googleAnalytics = "G-VXQVVP7V8K" # (or set via env variable HUGO_GOOGLEANALYTICS)
 
 [build]
   noJSConfigInAssets = true
