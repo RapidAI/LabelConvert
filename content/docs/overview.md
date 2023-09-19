@@ -33,16 +33,7 @@ A dataset format conversion tool for object detection and image segmentation, wh
 
 
 ### Transformation Diagram
-```mermaid
-flowchart LR
 
-A(labelImg) --> B(YOLOv5)
-A --> C(PubLayNet)
-D(COCO) --> A
-D --> B
-E(YOLOv5 YAML) --> D
-F(darknet) --> D
-```
 
 ### Installation
 ```bash {linenos=table}
