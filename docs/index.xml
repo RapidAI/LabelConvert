@@ -14,7 +14,7 @@
       
       <guid>https://rapidai.github.io/LabelConvert/docs/overview/</guid>
       <description>Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.
-Supported conversions linkflowchart LR A(labelImg) --&amp;gt; B(YOLOv5) A --&amp;gt; C(PubLayNet) D(COCO) --&amp;gt; A D --&amp;gt; B E(YOLOv5 YAML) --&amp;gt; D F(darknet) --&amp;gt; D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.</description>
+Supported conversions linkflowchart LR A(labelImg) --&amp;gt; B(YOLOv5) A --&amp;gt; C(PubLayNet) D(COCO) --&amp;gt; A E(YOLOv5 YAML) --&amp;gt; D F(darknet) --&amp;gt; D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.</description>
     </item>
     
     <item>
