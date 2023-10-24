@@ -135,7 +135,7 @@ def main():
     parser.add_argument("--src_dir", type=str)
     parser.add_argument("--out_dir", type=str)
     parser.add_argument("--val_ratio", type=float, default=0.2)
-    parser.add_argument("--have_test", type=bool, default=True)
+    parser.add_argument("--have_test", action="store_true", default=False)
     parser.add_argument("--test_ratio", type=float, default=0.2)
     args = parser.parse_args()
 
