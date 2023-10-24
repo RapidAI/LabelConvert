@@ -25,7 +25,7 @@ publishdate: "2022-09-30T05:33:22+01:00"
     ```
 - Convert
     ```bash {linenos=table}
-    coco_to_labelimg --data_dir dataset/YOLOV5_COCO_format
+    coco_to_labelImg --data_dir dataset/YOLOV5_COCO_format
     ```
   - `--data_dir`: the directory where the COCO format dataset is located. Default is `dataset/YOLOV5_COCO_format`.
 - Converted directory structure (see `dataset/COCO_labelImg_format` for details):
