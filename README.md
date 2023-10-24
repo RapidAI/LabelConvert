@@ -18,6 +18,17 @@
 
 A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between **labelme, labelImg tools and YOLO, VOC, and COCO** dataset formats.
 
+## Supported conversions
+```mermaid
+flowchart LR
+
+A(labelImg) --> B(YOLOv5)
+A --> C(PubLayNet)
+D(COCO) --> A
+B --> D
+E(YOLOv5 YAML) --> D
+F(darknet) --> D
+```
 
 ## Installation
 ```bash
