@@ -13,8 +13,8 @@ publishdate: "2022-09-30T05:33:22+01:00"
 
 ```bash {linenos=table}
 coco_visual --vis_num 1 \
-            --json_path dataset/YOLOV5_COCO_format/annotations/instances_train2017.json \
-            --img_dir dataset/YOLOV5_COCO_format/train2017
+            --json_path dataset/COCO_format/annotations/instances_train2017.json \
+            --img_dir dataset/COCO_format/train2017
 ```
 
 - `--vis_num`: specify the index of the image to be viewed

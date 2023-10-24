@@ -33,13 +33,13 @@ publishdate: "2022-09-30T05:33:22+01:00"
     labelimg_to_yolov5 --src_dir dataset/labelImg_dataset \
                        --out_dir dataset/labelImg_dataset_output \
                        --val_ratio 0.2 \
-                       --have_test true \
+                       --have_test \
                        --test_ratio 0.2
     ```
     - `--src_dir`: the directory where labelImg is stored after labeling.
     - `--out_dir`: the location where the data is stored after conversion.
     - `--val_ratio`: the ratio of the generated validation set to the whole data, default is `0.2`.
-    - `--have_test`: whether to generate the test part of the data, the default is `True`.
+    - `--have_test`: whether to generate the test part of the data, the default is `False`. If this parameter appears, it is `True`.
     - `--test_ratio`: percentage of the whole data of the test data, default is `0.2`.
 
 - Converted directory structure (see `dataset/labelImg_dataset_output` for details):

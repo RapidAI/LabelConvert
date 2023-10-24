@@ -43,9 +43,9 @@ publishdate: "2022-09-30T05:33:22+01:00"
   - `--data_dir`: the directory where the collated dataset is located
   - `--mode_list`: specify the generated json, provided that there is a corresponding txt file, which can be specified separately. (e.g. `train,val,test`)
 
-- The structure of the converted directory (see `dataset/YOLOV5_COCO_format` for details)
+- The structure of the converted directory (see `dataset/COCO_format` for details)
     ```text {linenos=table}
-    YOLOV5_COCO_format
+    COCO_format
     ├── annotations
     │   ├── instances_train2017.json
     │   └── instances_val2017.json

@@ -11,9 +11,9 @@ publishdate: "2022-09-30T05:33:22+01:00"
 ---
 
 - One-click conversion of COCO format data to labelImg labeled yolo format data.
-- COCO format directory structure（see `dataset/YOLOV5_COCO_format` for details）：
+- COCO format directory structure（see `dataset/COCO_format` for details）：
     ```text {linenos=table}
-    YOLOV5_COCO_format
+    COCO_format
     ├── annotations
     │   ├── instances_train2017.json
     │   └── instances_val2017.json
@@ -25,16 +25,16 @@ publishdate: "2022-09-30T05:33:22+01:00"
     ```
 - Convert
     ```bash {linenos=table}
-    coco_to_labelImg --data_dir dataset/YOLOV5_COCO_format
+    coco_to_labelImg --data_dir dataset/COCO_format
     ```
-  - `--data_dir`: the directory where the COCO format dataset is located. Default is `dataset/YOLOV5_COCO_format`.
-- Converted directory structure (see `dataset/COCO_labelImg_format` for details):
+  - `--data_dir`: the directory where the COCO format dataset is located. Default is `dataset/COCO_format`.
+- Converted directory structure (see `dataset/labelImg_format` for details):
   ```text {linenos=table}
-  COCO_labelImg_format
+  labelImg_format
     ├── train
     │   ├── 000000000001.jpg
     │   ├── 000000000001.txt
-    │   |-- 000000000002.jpg
+    │   ├── 000000000002.jpg
     │   └── classes.txt
     └── val
         ├── 000000000001.jpg
@@ -43,7 +43,7 @@ publishdate: "2022-09-30T05:33:22+01:00"
   ```
 - For the converted directory, you can directly use the [labelImg](https://github.com/tzutalin/labelImg)  library to open it directly and change the label. The specific commands are as follows:
   ```bash {linenos=table}
-  $ cd dataset/COCO_labelImg_format
+  $ cd dataset/labelImg_format
   $ labelImg train train/classes.txt
 
   # or
