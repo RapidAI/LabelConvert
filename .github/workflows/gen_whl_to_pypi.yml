@@ -2,12 +2,14 @@ name: Push label_convert to pypi
 
 on:
   push:
-    branches: [ main ]
-    paths:
-      - 'label_convert/**'
+    # branches: [ main ]
+    # paths:
+      # - 'label_convert/**'
       # - 'docs/doc_whl.md'
-      - 'setup.py'
+      # - 'setup.py'
       # - '.github/workflows/gen_whl_to_pypi.yml'
+    tags:
+      - v*
 
 jobs:
   UnitTesting:
