@@ -30,7 +30,7 @@ publishdate: "2022-09-30T05:33:22+01:00"
     ````
 - Convert
     ```bash {linenos=table}
-    labelimg_to_yolov5 --src_dir dataset/labelImg_dataset \
+    labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \
                        --out_dir dataset/labelImg_dataset_output \
                        --val_ratio 0.2 \
                        --have_test \
