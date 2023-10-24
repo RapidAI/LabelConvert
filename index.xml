@@ -16,7 +16,7 @@
       <description>Convert the yolo data format marked by the labelImg library to YOLOV5 format data with one click.
 The labelImg label data directory structure is as follows (see dataset/labelImg_dataset for details):
 labelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt Convert
-labelimg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelImg_dataset_output \ --val_ratio 0.2 \ --have_test \ --test_ratio 0.</description>
+labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelImg_dataset_output \ --val_ratio 0.2 \ --have_test \ --test_ratio 0.</description>
     </item>
     
     <item>
