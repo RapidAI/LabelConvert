@@ -32,6 +32,15 @@
 <link rel="icon" type="image/png" sizes="32x32" href="https://rapidai.github.io/LabelConvert/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://rapidai.github.io/LabelConvert/favicon-16x16.png">
 <link rel="manifest" crossorigin="use-credentials" href="https://rapidai.github.io/LabelConvert/site.webmanifest">
+<meta property="og:title" content="COCO → labelImg yolo" />
+<meta property="og:description" content="One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/YOLOV5_COCO_format for details）： YOLOV5_COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/YOLOV5_COCO_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/YOLOV5_COCO_format. Converted directory structure (see dataset/COCO_labelImg_format for details): COCO_labelImg_format ├── train │ ├── 000000000001." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_to_labelimg/" /><meta property="og:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_3680120591224597640.png"/><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2022-09-30T05:33:22+01:00" />
+<meta property="article:modified_time" content="2023-10-24T19:34:45+08:00" /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_3680120591224597640.png"/>
+<meta name="twitter:title" content="COCO → labelImg yolo"/>
+<meta name="twitter:description" content="One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/YOLOV5_COCO_format for details）： YOLOV5_COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/YOLOV5_COCO_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/YOLOV5_COCO_format. Converted directory structure (see dataset/COCO_labelImg_format for details): COCO_labelImg_format ├── train │ ├── 000000000001."/>
 
     
     <script>(()=>{var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,e=localStorage.getItem("theme");t&&e===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),t&&e==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),e==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script>
@@ -61,14 +70,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css?family=Inter:300,400,600,700|Fira+Code:500,700&display=block" rel="stylesheet">
 
-    <link rel="stylesheet" href="/LabelConvert/docs/scss/style.min.03d881508d0c712c4936077f67fedccc064065ae7997b6798f919fcfc1be2c928166de0652eac8ae53ad62459d222aa5.css" integrity="sha384-A9iBUI0McSxJNgd/Z/7czAZAZa55l7Z5j5Gfz8G&#43;LJKBZt4GUurIrlOtYkWdIiql"crossorigin="anonymous">
+    <link rel="stylesheet" href="/LabelConvert/docs/scss/style.min.699bed22b2e9f217570dfb4d0eae55db0646e76af4182bedf0d47ec13b875b45bc29a3a3e3b58712846e6c21cae5ef75.css" integrity="sha384-aZvtIrLp8hdXDftNDq5V2wZG52r0GCvt8NR&#43;wTuHW0W8KaOj47WHEoRubCHK5e91"crossorigin="anonymous">
     
     
     
     <script defer data-domain="lotusdocs.dev" data-api='/docs/s/api/event/' src='/docs/s/js/script.outbound-links.js'></script>
 <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script></head><body>
-    <div class="content">
-        <div class="page-wrapper toggled">
+        <div class="content">
+            <div class="page-wrapper toggled">
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-brand">
         <a href='/LabelConvert/' aria-label="HomePage" alt="HomePage">
@@ -170,7 +179,8 @@
     
 </nav>
 
-                <main class="page-content bg-transparent">
+                    <main class="page-content bg-transparent">
+                        
 <div id="top-header" class="top-header d-print-none">
     <div class="header-bar d-flex justify-content-between">
         <div class="d-flex align-items-center">
@@ -282,10 +292,11 @@
     
     
 </div>
-<div class="container-fluid">
-                            <div class="layout-spacing">
-                                
-                                    <div class="d-md-flex justify-content-between align-items-center"><nav aria-label="breadcrumb" class="d-inline-block pb-2 mt-1 mt-sm-0">
+
+                            <div class="container-fluid">
+                                <div class="layout-spacing">
+                                    
+                                        <div class="d-md-flex justify-content-between align-items-center"><nav aria-label="breadcrumb" class="d-inline-block pb-2 mt-1 mt-sm-0">
     <ul id="breadcrumbs" class="breadcrumb bg-transparent mb-0" itemscope itemtype="https://schema.org/BreadcrumbList">
         
             
@@ -312,33 +323,33 @@
         
     </ul>
 </nav></div>
-                                
-                                <div class="row flex-xl-nowrap">
                                     
-                                    <div class="docs-toc col-xl-3  visually-hidden  d-xl-block"><toc>
+                                    <div class="row flex-xl-nowrap">
+                                        
+                                        <div class="docs-toc col-xl-3  visually-hidden  d-xl-block"><toc>
     <div class="fw-bold text-uppercase mb-2">On this page</div>
     <nav id="toc"></nav>
     </toc></div>
-                                    
-                                    
-                                    <div class="docs-toc-mobile  visually-hidden  d-print-none d-xl-none">
-                                        <button id="toc-dropdown-btn" class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
-                                            Table of Contents
-                                        </button>
+                                        
+                                        
+                                        <div class="docs-toc-mobile  visually-hidden  d-print-none d-xl-none">
+                                            <button id="toc-dropdown-btn" class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
+                                                Table of Contents
+                                            </button>
 <nav id="toc-mobile"></nav></div>
-                                    <div class="docs-content col-12  mt-0">
-                                        <div class="mb-0 d-flex">
-                                            
-                                            <h1 class="content-title mb-0">
-                                                COCO → labelImg yolo
+                                        <div class="docs-content col-12  mt-0">
+                                            <div class="mb-0 d-flex">
                                                 
-                                            </h1>
-                                        </div>
-                                        
-                                            <p class="lead mb-3"></p>
-                                        
-                                        <div id="content" class="main-content" data-bs-spy="scroll" data-bs-root-margin="0px 0px -65%" data-bs-target="#toc-mobile">
+                                                <h1 class="content-title mb-0">
+                                                    COCO → labelImg yolo
+                                                    
+                                                </h1>
+                                            </div>
                                             
+                                                <p class="lead mb-3"></p>
+                                            
+                                            <div id="content" class="main-content" data-bs-spy="scroll" data-bs-root-margin="0px 0px -65%" data-bs-target="#toc-mobile">
+                                                
     
     <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
         <ul>
@@ -394,8 +405,8 @@
   
 
   <div class="prism-codeblock  linenos">
-  <pre id="596c505" class="language-bash  line-numbers">
-  <code>coco_to_labelimg --data_dir dataset/YOLOV5_COCO_format</code>
+  <pre id="5085548" class="language-bash  line-numbers">
+  <code>coco_to_labelImg --data_dir dataset/YOLOV5_COCO_format</code>
   </pre>
   </div>
 <ul>
@@ -501,9 +512,9 @@ $ labelImg val val/classes.txt</code>
     <div id="last-modified" class="mt-1">
         <p class="mb-0 fw-semibold">Last updated <span
             id="relativetime"
-            data-authdate="2023-09-18T08:52:01&#43;0800"
-            title="18 Sep 2023, 08:52 &#43;0800">
-            18 Sep 2023, 08:52 &#43;0800
+            data-authdate="2023-10-24T19:34:45&#43;0800"
+            title="24 Oct 2023, 19:34 &#43;0800">
+            24 Oct 2023, 19:34 &#43;0800
         </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
         </p>
     </div>
@@ -513,8 +524,8 @@ $ labelImg val val/classes.txt</code>
     
 
     
-                                        </div>
-                                        <div><hr class="doc-hr">
+                                            </div>
+                                            <div><hr class="doc-hr">
 <div id="doc-nav" class="d-print-none">
 
 	<div class="row flex-xl-nowrap ">
@@ -542,10 +553,10 @@ $ labelImg val val/classes.txt</code>
         </div>
 	</div>
 </div></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 <footer class="shadow py-3 d-print-none">
     <div class="container-fluid">
         <div class="row align-items-center">
@@ -561,19 +572,19 @@ $ labelImg val val/classes.txt</code>
     </div>
 </footer>
 </main>
+            </div>
         </div>
-    </div>
 
-    
-    
-    <button onclick="topFunction()" id="back-to-top" aria-label="Back to Top Button" class="back-to-top fs-5"><svg width="24" height="24"><path d="M12,10.224l-6.3,6.3L4.32,15.152,12,7.472l7.68,7.68L18.3,16.528Z" style="fill:#fff"/></svg></button>
-    
-    
+        
+        
+        <button onclick="topFunction()" id="back-to-top" aria-label="Back to Top Button" class="back-to-top fs-5"><svg width="24" height="24"><path d="M12,10.224l-6.3,6.3L4.32,15.152,12,7.472l7.68,7.68L18.3,16.528Z" style="fill:#fff"/></svg></button>
+        
+        
 
-    
-    
-        <script>(()=>{var e=document.getElementById("mode");e!==null&&(window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",e=>{e.matches?(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")):(localStorage.setItem("theme","light"),document.documentElement.removeAttribute("data-dark-mode"))}),e.addEventListener("click",()=>{document.documentElement.toggleAttribute("data-dark-mode"),localStorage.setItem("theme",document.documentElement.hasAttribute("data-dark-mode")?"dark":"light")}),localStorage.getItem("theme")==="dark"?document.documentElement.setAttribute("data-dark-mode",""):document.documentElement.removeAttribute("data-dark-mode"))})()</script>
-    
+        
+        
+            <script>(()=>{var e=document.getElementById("mode");e!==null&&(window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",e=>{e.matches?(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")):(localStorage.setItem("theme","light"),document.documentElement.removeAttribute("data-dark-mode"))}),e.addEventListener("click",()=>{document.documentElement.toggleAttribute("data-dark-mode"),localStorage.setItem("theme",document.documentElement.hasAttribute("data-dark-mode")?"dark":"light")}),localStorage.getItem("theme")==="dark"?document.documentElement.setAttribute("data-dark-mode",""):document.documentElement.removeAttribute("data-dark-mode"))})()</script>
+        
 
 
 
@@ -591,14 +602,14 @@ $ labelImg val val/classes.txt</code>
 
     
 
-    <script src="/LabelConvert/docs/js/bootstrap.39e36097440e8ae1bae5fa5b30b62819b701b2b6a0b19a492a1bf309e2a1dcfc02734909ea7951d33c11038d5ac48cd4.js" integrity="sha384-OeNgl0QOiuG65fpbMLYoGbcBsragsZpJKhvzCeKh3PwCc0kJ6nlR0zwRA41axIzU"defer></script>
+    <script src="/LabelConvert/docs/js/bootstrap.62f66a246944c6008b07a852a45195f58bef9a847482b10d5916828839dcb18678cf99006f7c5dcd5cb72f95a1eb41a1.js" integrity="sha384-YvZqJGlExgCLB6hSpFGV9YvvmoR0grENWRaCiDncsYZ4z5kAb3xdzVy3L5Wh60Gh"defer></script>
 
 
     <script type="text/javascript" src="https://rapidai.github.io/LabelConvert/docs/js/bundle.min.8f4d5b8a9f8ef5f5a8fc64465e16294119bcdbe8b18dc452df45c545cb969ac914ab9d8e2db7ba754679ad7cf144cb9f.js" integrity="sha384-j01bip&#43;O9fWo/GRGXhYpQRm82&#43;ixjcRS30XFRcuWmskUq52OLbe6dUZ5rXzxRMuf" crossorigin="anonymous" defer></script>
-    
+        
 
-    
-    <script type="module">
+        
+        <script type="module">
     var suggestions = document.getElementById('suggestions');
     var search = document.getElementById('flexsearch');
 
@@ -823,8 +834,8 @@ $ labelImg val val/classes.txt</code>
                 id:  3 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/coco_to_labelimg\/",
                 title: "COCO → labelImg yolo",
-                description: "One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/YOLOV5_COCO_format for details）： YOLOV5_COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelimg --data_dir dataset/YOLOV5_COCO_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/YOLOV5_COCO_format. Converted directory structure (see dataset/COCO_labelImg_format for details): COCO_labelImg_format ├── train │ ├── 000000000001.",
-                content: " One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/YOLOV5_COCO_format for details）： YOLOV5_COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelimg --data_dir dataset/YOLOV5_COCO_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/YOLOV5_COCO_format. Converted directory structure (see dataset/COCO_labelImg_format for details): COCO_labelImg_format ├── train │ ├── 000000000001.jpg │ ├── 000000000001.txt │ |-- 000000000002.jpg │ └── classes.txt └── val ├── 000000000001.jpg ├── 000000000001.txt └── classes.txt For the converted directory, you can directly use the labelImg library to open it directly and change the label. The specific commands are as follows: $ cd dataset/COCO_labelImg_format $ labelImg train train/classes.txt # or $ labelImg val val/classes.txt "
+                description: "One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/YOLOV5_COCO_format for details）： YOLOV5_COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/YOLOV5_COCO_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/YOLOV5_COCO_format. Converted directory structure (see dataset/COCO_labelImg_format for details): COCO_labelImg_format ├── train │ ├── 000000000001.",
+                content: " One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/YOLOV5_COCO_format for details）： YOLOV5_COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/YOLOV5_COCO_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/YOLOV5_COCO_format. Converted directory structure (see dataset/COCO_labelImg_format for details): COCO_labelImg_format ├── train │ ├── 000000000001.jpg │ ├── 000000000001.txt │ |-- 000000000002.jpg │ └── classes.txt └── val ├── 000000000001.jpg ├── 000000000001.txt └── classes.txt For the converted directory, you can directly use the labelImg library to open it directly and change the label. The specific commands are as follows: $ cd dataset/COCO_labelImg_format $ labelImg train train/classes.txt # or $ labelImg val val/classes.txt "
             }
         );
     index.add(
@@ -961,5 +972,6 @@ $ labelImg val val/classes.txt</code>
     }
     }());
 </script>
-    
-</body></html>
+        
+    </body>
+</html>
