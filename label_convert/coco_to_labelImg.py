@@ -12,8 +12,7 @@ from tqdm import tqdm
 
 
 class COCO2labelImg:
-    def __init__(self, data_dir: Optional[str] = None):
-        # coco dir
+    def __init__(self, data_dir: Optional[str] = None, save_dir: Optional[str] = None):
         self.data_dir = Path(data_dir)
         self.verify_exists(self.data_dir)
 
@@ -30,7 +29,12 @@ class COCO2labelImg:
         self.verify_exists(self.train2017_dir)
         self.verify_exists(self.val2017_dir)
 
-        self.save_dir = self.data_dir.parent / "COCO_labelImg_format"
+        self.save_dir = save_dir
+        if save_dir is None:
+            self.save_dir = (
+                self.data_dir.parent / f"{self.data_dir.name}_labelImg_format"
+            )
+
         self.mkdir(self.save_dir)
 
         self.save_train_dir = self.save_dir / "train"
@@ -144,9 +148,12 @@ def main():
         default="dataset/YOLOV5_COCO_format",
         help="Dataset root path",
     )
+    parser.add_argument(
+        "--save_dir", type=str, default=None, help="Path to save the converted dataset."
+    )
     args = parser.parse_args()
 
-    converter = COCO2labelImg(args.data_dir)
+    converter = COCO2labelImg(args.data_dir, args.save_dir)
     converter()
 
 
