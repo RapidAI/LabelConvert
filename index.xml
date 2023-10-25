@@ -79,7 +79,7 @@ yolov5_yaml_to_coco --yaml_path dataset/YOLOV5_yaml/sample.yaml </description>
       <pubDate>Fri, 15 Sep 2023 00:00:00 +0000</pubDate>
       
       <guid>https://rapidai.github.io/LabelConvert/docs/changelog/</guid>
-      <description>2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. </description>
+      <description>2023-10-25 v0.0.4~v0.0.5 update: link 修复命令行模式下，参数类型错误 更新文档内容，优化文档表达 2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. </description>
     </item>
     
     <item>
