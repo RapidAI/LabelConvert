@@ -25,9 +25,10 @@ publishdate: "2022-09-30T05:33:22+01:00"
     ```
 - Convert
     ```bash {linenos=table}
-    coco_to_labelImg --data_dir dataset/COCO_format
+    coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format
     ```
   - `--data_dir`: the directory where the COCO format dataset is located. Default is `dataset/COCO_format`.
+  - `--save_dir`: Path to save the converted dataset. Default is `f"{data_dir.name}_labelImg_format"`
 - Converted directory structure (see `dataset/labelImg_format` for details):
   ```text {linenos=table}
   labelImg_format
