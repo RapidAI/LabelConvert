@@ -33,14 +33,14 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://rapidai.github.io/LabelConvert/favicon-16x16.png">
 <link rel="manifest" crossorigin="use-credentials" href="https://rapidai.github.io/LabelConvert/site.webmanifest">
 <meta property="og:title" content="COCO → labelImg yolo" />
-<meta property="og:description" content="One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/COCO_format for details）： COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/COCO_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/COCO_format. Converted directory structure (see dataset/labelImg_format for details): labelImg_format ├── train │ ├── 000000000001." />
+<meta property="og:description" content="One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/COCO_format for details）： COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/COCO_format. --save_dir: Path to save the converted dataset. Default is f&quot;{data_dir.name}_labelImg_format&quot; Converted directory structure (see dataset/labelImg_format for details): labelImg_format ├── train │ ├── 000000000001." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_to_labelimg/" /><meta property="og:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_3680120591224597640.png"/><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2022-09-30T05:33:22+01:00" />
-<meta property="article:modified_time" content="2023-10-24T22:11:07+08:00" /><meta name="twitter:card" content="summary_large_image"/>
+<meta property="article:modified_time" content="2023-10-25T22:10:17+08:00" /><meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_3680120591224597640.png"/>
 <meta name="twitter:title" content="COCO → labelImg yolo"/>
-<meta name="twitter:description" content="One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/COCO_format for details）： COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/COCO_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/COCO_format. Converted directory structure (see dataset/labelImg_format for details): labelImg_format ├── train │ ├── 000000000001."/>
+<meta name="twitter:description" content="One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/COCO_format for details）： COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/COCO_format. --save_dir: Path to save the converted dataset. Default is f&quot;{data_dir.name}_labelImg_format&quot; Converted directory structure (see dataset/labelImg_format for details): labelImg_format ├── train │ ├── 000000000001."/>
 
     
     <script>(()=>{var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,e=localStorage.getItem("theme");t&&e===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),t&&e==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),e==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script>
@@ -411,12 +411,13 @@
   
 
   <div class="prism-codeblock  linenos">
-  <pre id="be67dd6" class="language-bash  line-numbers">
-  <code>coco_to_labelImg --data_dir dataset/COCO_format</code>
+  <pre id="a825b89" class="language-bash  line-numbers">
+  <code>coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format</code>
   </pre>
   </div>
 <ul>
 <li><code>--data_dir</code>: the directory where the COCO format dataset is located. Default is <code>dataset/COCO_format</code>.</li>
+<li><code>--save_dir</code>: Path to save the converted dataset. Default is <code>f&quot;{data_dir.name}_labelImg_format&quot;</code></li>
 </ul>
 </li>
 <li>Converted directory structure (see <code>dataset/labelImg_format</code> for details):
@@ -518,9 +519,9 @@ $ labelImg val val/classes.txt</code>
     <div id="last-modified" class="mt-1">
         <p class="mb-0 fw-semibold">Last updated <span
             id="relativetime"
-            data-authdate="2023-10-24T22:11:07&#43;0800"
-            title="24 Oct 2023, 22:11 &#43;0800">
-            24 Oct 2023, 22:11 &#43;0800
+            data-authdate="2023-10-25T22:10:17&#43;0800"
+            title="25 Oct 2023, 22:10 &#43;0800">
+            25 Oct 2023, 22:10 &#43;0800
         </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
         </p>
     </div>
@@ -840,8 +841,8 @@ $ labelImg val val/classes.txt</code>
                 id:  3 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/coco_to_labelimg\/",
                 title: "COCO → labelImg yolo",
-                description: "One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/COCO_format for details）： COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/COCO_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/COCO_format. Converted directory structure (see dataset/labelImg_format for details): labelImg_format ├── train │ ├── 000000000001.",
-                content: " One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/COCO_format for details）： COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/COCO_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/COCO_format. Converted directory structure (see dataset/labelImg_format for details): labelImg_format ├── train │ ├── 000000000001.jpg │ ├── 000000000001.txt │ ├── 000000000002.jpg │ └── classes.txt └── val ├── 000000000001.jpg ├── 000000000001.txt └── classes.txt For the converted directory, you can directly use the labelImg library to open it directly and change the label. The specific commands are as follows: $ cd dataset/labelImg_format $ labelImg train train/classes.txt # or $ labelImg val val/classes.txt "
+                description: "One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/COCO_format for details）： COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/COCO_format. --save_dir: Path to save the converted dataset. Default is f\"{data_dir.name}_labelImg_format\" Converted directory structure (see dataset/labelImg_format for details): labelImg_format ├── train │ ├── 000000000001.",
+                content: " One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/COCO_format for details）： COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/COCO_format. --save_dir: Path to save the converted dataset. Default is f\"{data_dir.name}_labelImg_format\" Converted directory structure (see dataset/labelImg_format for details): labelImg_format ├── train │ ├── 000000000001.jpg │ ├── 000000000001.txt │ ├── 000000000002.jpg │ └── classes.txt └── val ├── 000000000001.jpg ├── 000000000001.txt └── classes.txt For the converted directory, you can directly use the labelImg library to open it directly and change the label. The specific commands are as follows: $ cd dataset/labelImg_format $ labelImg train train/classes.txt # or $ labelImg val val/classes.txt "
             }
         );
     index.add(
