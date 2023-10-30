@@ -39,7 +39,7 @@ class DARKNET2COCO:
             {
                 "id": 1,
                 "name": "Apache License v2.0",
-                "url": "https://github.com/RapidAI/YOLO2COCO/LICENSE",
+                "url": "https://github.com/RapidAI/LabelConvert/LICENSE",
             }
         ]
 

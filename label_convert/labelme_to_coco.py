@@ -7,26 +7,33 @@ import shutil
 import time
 import warnings
 from pathlib import Path
-from typing import Union
+from typing import List, Optional, Union
 
 import cv2
 from tqdm import tqdm
 
 
-class YOLOV5ToCOCO:
-    def __init__(self, data_dir):
+class LabelmeToCOCO:
+    def __init__(
+        self,
+        data_dir: str,
+        out_dir: Optional[str] = None,
+        val_ratio: float = 0.2,
+        have_test: bool = False,
+        test_ratio: float = 0.2,
+    ):
         self.raw_data_dir = Path(data_dir)
 
-        self.verify_exists(self.raw_data_dir / "images")
-        self.verify_exists(self.raw_data_dir / "labels")
+        self.verify_exists(self.raw_data_dir)
 
-        save_dir_name = f"{Path(self.raw_data_dir).name}_COCO_format"
-        self.output_dir = self.raw_data_dir.parent / save_dir_name
+        if out_dir is None:
+            save_dir_name = f"{Path(self.raw_data_dir).name}_COCO_format"
+            self.output_dir = self.raw_data_dir.parent / save_dir_name
         self.mkdir(self.output_dir)
 
         self._init_json()
 
-    def __call__(self, mode_list: list):
+    def __call__(self, mode_list: List[str]):
         if not mode_list:
             raise ValueError("mode_list is empty!!")
 
@@ -84,7 +91,10 @@ class YOLOV5ToCOCO:
                 img_list.append(str(bg_img_path))
         return img_list
 
-    def _get_category(self, classes_path):
+    def _get_category(
+        self,
+    ):
+        #
         class_list = self.read_txt(classes_path)
         categories = []
         for i, category in enumerate(class_list, 1):
@@ -230,15 +240,16 @@ class YOLOV5ToCOCO:
 
 def main():
     parser = argparse.ArgumentParser("Datasets converter from YOLOV5 to COCO")
-    parser.add_argument(
-        "--data_dir", type=str, default="datasets/YOLOV5", help="Dataset root path"
-    )
-    parser.add_argument(
-        "--mode_list", type=str, default="train,val", help="generate which mode"
-    )
+    parser.add_argument("--src_dir", type=str)
+    parser.add_argument("--out_dir", type=str)
+    parser.add_argument("--val_ratio", type=float, default=0.2)
+    parser.add_argument("--have_test", action="store_true", default=False)
+    parser.add_argument("--test_ratio", type=float, default=0.2)
     args = parser.parse_args()
 
-    converter = YOLOV5ToCOCO(args.data_dir)
+    converter = LabelmeToCOCO(
+        args.src_dir, args.out_dir, args.val_ratio, args.have_test, args.test_ratio
+    )
     converter(mode_list=args.mode_list.split(","))
 
 
