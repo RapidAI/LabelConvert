@@ -3,6 +3,7 @@
 # @Contact: liekkaskono@163.com
 import argparse
 import json
+import random
 import shutil
 import time
 import warnings
@@ -23,28 +24,78 @@ class LabelmeToCOCO:
         test_ratio: float = 0.2,
     ):
         self.raw_data_dir = Path(data_dir)
+        self.val_ratio = val_ratio
+        self.test_ratio = test_ratio
+        self.have_test = have_test
 
         self.verify_exists(self.raw_data_dir)
 
         if out_dir is None:
             save_dir_name = f"{Path(self.raw_data_dir).name}_COCO_format"
             self.output_dir = self.raw_data_dir.parent / save_dir_name
+        self.output_dir = Path(out_dir)
         self.mkdir(self.output_dir)
 
-        self._init_json()
+        self.anno_dir = self.output_dir / "annotations"
+        self.mkdir(self.anno_dir)
 
-    def __call__(self, mode_list: List[str]):
-        if not mode_list:
-            raise ValueError("mode_list is empty!!")
+        self.train_dir = self.output_dir / "train2017"
+        self.mkdir(self.train_dir)
+
+        self.val_dir = self.output_dir / "val2017"
+        self.mkdir(self.val_dir)
+
+        self.test_dir = None
+        if have_test:
+            self.test_dir = self.output_dir / "test2017"
+            self.mkdir(self.test_dir)
+
+        self.cur_year = time.strftime("%Y", time.localtime(time.time()))
+
+    def __call__(self, mode_list: List[str] = None):
+        img_list = self.get_img_list()
+        if not img_list:
+            raise ValueError(f"{self.raw_data_dir} is empty!")
+
+        img_list = self.gen_image_label_dir(img_list)
+        split_list = self.get_train_val_test_list(
+            img_list,
+            ratio=self.val_ratio,
+            have_test=self.have_test,
+            test_ratio=self.test_ratio,
+        )
+        train_list, val_list, test_list = split_list
+
+        # 遍历所有的json，得到所有类别字段
+        # TODO
+
+        anno = self._init_json()
+        for i, img_path in enumerate(train_list):
+            img_id = i + 1
+
+            new_img_name = f"{img_id:012d}.jpg"
+            new_img_path = self.train_dir / new_img_name
+
+            # 将图像复制到指定目录下
+            self.cp_file(img_path, new_img_path)
+
+            raw_json_path = img_path.with_suffix(".json")
+            raw_json_data = self.read_json(raw_json_path)
+
+            # 写入到json中
+            img_info = {
+                "date_captured": str(self.cur_year),
+                "file_name": new_img_name,
+                "id": img_id,
+                "height": raw_json_data.get("imageHeight"),
+                "width": raw_json_data.get("imageWidth"),
+            }
+
+            # 记录类别
+
+        print("ok")
 
         for mode in mode_list:
-            # Read the image txt.
-            txt_path = self.raw_data_dir / f"{mode}.txt"
-            self.verify_exists(txt_path)
-            img_list = self.read_txt(txt_path)
-            if mode == "train":
-                img_list = self.append_bg_img(img_list)
-
             # Create the directory of saving the new image.
             save_img_dir = self.output_dir / f"{mode}2017"
             self.mkdir(save_img_dir)
@@ -59,42 +110,65 @@ class LabelmeToCOCO:
             self.write_json(save_json_path, json_data)
         print(f"Successfully convert, detail in {self.output_dir}")
 
-    def _init_json(self):
-        classes_path = self.raw_data_dir / "classes.txt"
-        self.verify_exists(classes_path)
-        self.categories = self._get_category(classes_path)
-
-        self.type = "instances"
-        self.annotation_id = 1
-
-        self.cur_year = time.strftime("%Y", time.localtime(time.time()))
-        self.info = {
-            "year": int(self.cur_year),
-            "version": "1.0",
-            "description": "For object detection",
-            "date_created": self.cur_year,
-        }
-
-        self.licenses = [
-            {
-                "id": 1,
-                "name": "Apache License v2.0",
-                "url": "https://github.com/RapidAI/LabelConvert/LICENSE",
-            }
-        ]
-
-    def append_bg_img(self, img_list):
-        bg_dir = self.raw_data_dir / "background_images"
-        if bg_dir.exists():
-            bg_img_list = list(bg_dir.iterdir())
-            for bg_img_path in bg_img_list:
-                img_list.append(str(bg_img_path))
+    def get_img_list(self):
+        all_list = self.raw_data_dir.glob("*.*")
+        img_list = [v for v in all_list if v.suffix != ".json"]
         return img_list
+
+    def gen_image_label_dir(self, img_list):
+        new_image_list = []
+        for img_path in tqdm(img_list):
+            right_label_path = img_path.with_name(f"{img_path.stem}.json")
+            if right_label_path.exists() and self.read_txt(str(right_label_path)):
+                new_image_list.append(img_path)
+        return new_image_list
+
+    def get_train_val_test_list(
+        self, img_list, ratio=0.2, have_test=True, test_ratio=0.2
+    ):
+        random.shuffle(img_list)
+        len_img = len(img_list)
+        if have_test:
+            split_idx_first = int(len_img * ratio)
+            split_idx_second = int(len_img * (ratio + test_ratio))
+
+            val_list = img_list[:split_idx_first]
+            train_list = img_list[split_idx_second:]
+            test_list = img_list[split_idx_first:split_idx_second]
+        else:
+            split_node = int(len_img * ratio)
+
+            val_list = img_list[:split_node]
+            train_list = img_list[split_node:]
+            test_list = None
+        return train_list, val_list, test_list
+
+    def _init_json(self):
+        annotation_info = {
+            "type": "instances",
+            "info": {
+                "year": int(self.cur_year),
+                "version": "1.0",
+                "description": "For object detection",
+                "date_created": self.cur_year,
+            },
+            "images": [],
+            "annotations": [],
+            "licenses": [
+                {
+                    "id": 1,
+                    "name": "Apache License v2.0",
+                    "url": "https://github.com/RapidAI/LabelConvert/LICENSE",
+                }
+            ],
+            "categories": [],
+        }
+        return annotation_info
 
     def _get_category(
         self,
     ):
-        #
+        # 这个放在扫描全部json的中获取
         class_list = self.read_txt(classes_path)
         categories = []
         for i, category in enumerate(class_list, 1):
@@ -224,6 +298,12 @@ class LabelmeToCOCO:
         return data
 
     @staticmethod
+    def read_json(json_path: Union[str, Path]):
+        with open(json_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data
+
+    @staticmethod
     def mkdir(dir_path):
         Path(dir_path).mkdir(parents=True, exist_ok=True)
 
@@ -236,6 +316,12 @@ class LabelmeToCOCO:
     def write_json(json_path, content: dict):
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump(content, f, ensure_ascii=False)
+
+    def cp_file(self, file_path: Path, dst_dir: Path):
+        if not file_path.exists():
+            raise FileExistsError(file_path)
+
+        shutil.copy2(str(file_path), dst_dir)
 
 
 def main():

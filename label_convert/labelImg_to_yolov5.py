@@ -54,12 +54,8 @@ class LabelImgToYOLOV5:
             raise FileNotFoundError(f"The {file_path} is not exists!!!")
 
     def get_img_list(self):
-        img_list = []
-        all_list = self.root_dir.glob("*.*")
-        for one in all_list:
-            cur_suffix = one.suffix
-            if cur_suffix != ".txt":
-                img_list.append(one)
+        all_list = self.raw_data_dir.glob("*.*")
+        img_list = [v for v in all_list if v.suffix != ".txt"]
         return img_list
 
     def gen_image_label_dir(self, img_list):
