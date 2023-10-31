@@ -18,7 +18,7 @@
 
 <html lang="en-us"><head>
     <meta charset="utf-8" />
-    <title>labelImg → YOLOV5 | Label Convert Documentation</title>
+    <title>labelme → COCO | Label Convert Documentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Documentation, Hugo, Hugo Theme, Bootstrap" />
     <meta name="author" content="Colin Wilson - Lotus Labs" />
@@ -32,21 +32,15 @@
 <link rel="icon" type="image/png" sizes="32x32" href="https://rapidai.github.io/LabelConvert/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://rapidai.github.io/LabelConvert/favicon-16x16.png">
 <link rel="manifest" crossorigin="use-credentials" href="https://rapidai.github.io/LabelConvert/site.webmanifest">
-<meta property="og:title" content="labelImg → YOLOV5" />
-<meta property="og:description" content="Convert the yolo data format marked by the labelImg library to YOLOV5 format data with one click.
-The labelImg label data directory structure is as follows (see dataset/labelImg_dataset for details):
-labelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt Convert
-labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelImg_dataset_output \ --val_ratio 0.2 \ --have_test \ --test_ratio 0." />
+<meta property="og:title" content="labelme → COCO" />
+<meta property="og:description" content="TODO link" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_yolov5/" /><meta property="og:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_58180050024849160.png"/><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-09-30T05:33:22+01:00" />
-<meta property="article:modified_time" content="2023-10-24T22:12:35+08:00" /><meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_58180050024849160.png"/>
-<meta name="twitter:title" content="labelImg → YOLOV5"/>
-<meta name="twitter:description" content="Convert the yolo data format marked by the labelImg library to YOLOV5 format data with one click.
-The labelImg label data directory structure is as follows (see dataset/labelImg_dataset for details):
-labelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt Convert
-labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelImg_dataset_output \ --val_ratio 0.2 \ --have_test \ --test_ratio 0."/>
+<meta property="og:url" content="https://rapidai.github.io/LabelConvert/docs/supportconversions/labelme_to_coco/" /><meta property="og:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_17261691416152828985.png"/><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2023-10-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-31T22:26:25+08:00" /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_17261691416152828985.png"/>
+<meta name="twitter:title" content="labelme → COCO"/>
+<meta name="twitter:description" content="TODO link"/>
 
     
     <script>(()=>{var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,e=localStorage.getItem("theme");t&&e===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),t&&e==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),e==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script>
@@ -120,7 +114,7 @@ labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelI
                                     
                                         
                                         
-                                            <li class="current "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_yolov5/">labelImg → YOLOV5</a></li>
+                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_yolov5/">labelImg → YOLOV5</a></li>
                                         
                                     
                                         
@@ -140,7 +134,7 @@ labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelI
                                     
                                         
                                         
-                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/labelme_to_coco/">labelme → COCO</a></li>
+                                            <li class="current "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/labelme_to_coco/">labelme → COCO</a></li>
                                         
                                     
                                         
@@ -334,7 +328,7 @@ labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelI
             
         
             <li class="breadcrumb-item text-capitalize active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <span itemprop="name">labelImg → YOLOV5</span>
+                <span itemprop="name">labelme → COCO</span>
                 <meta itemprop="position" content='3' />
             </li>
         
@@ -343,22 +337,30 @@ labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelI
                                     
                                     <div class="row flex-xl-nowrap">
                                         
-                                        <div class="docs-toc col-xl-3  visually-hidden  d-xl-block"><toc>
+                                        <div class="docs-toc col-xl-3    d-xl-block"><toc>
     <div class="fw-bold text-uppercase mb-2">On this page</div>
-    <nav id="toc"></nav>
+    <nav id="toc">
+  <ul>
+    <li><a href="#todo">TODO</a></li>
+  </ul>
+</nav>
     </toc></div>
                                         
                                         
-                                        <div class="docs-toc-mobile  visually-hidden  d-print-none d-xl-none">
+                                        <div class="docs-toc-mobile    d-print-none d-xl-none">
                                             <button id="toc-dropdown-btn" class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
                                                 Table of Contents
                                             </button>
-<nav id="toc-mobile"></nav></div>
-                                        <div class="docs-content col-12  mt-0">
+<nav id="toc-mobile">
+  <ul class="dropdown-menu">
+    <li><a href="#todo">TODO</a></li>
+  </ul>
+</nav></div>
+                                        <div class="docs-content col-12 col-xl-9 mt-0">
                                             <div class="mb-0 d-flex">
                                                 
                                                 <h1 class="content-title mb-0">
-                                                    labelImg → YOLOV5
+                                                    labelme → COCO
                                                     
                                                 </h1>
                                             </div>
@@ -369,153 +371,7 @@ labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelI
                                                 
     
     <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
-        <ul>
-<li>
-<p>Convert the yolo data format marked by the <a href="https://github.com/tzutalin/labelImg" rel="external" target="_blank">labelImg<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 5c-.552 0-1-.448-1-1s.448-1 1-1h6c.552 0 1 .448 1 1v6c0 .552-.448 1-1 1s-1-.448-1-1v-3.586l-7.293 7.293c-.391.39-1.024.39-1.414 0-.391-.391-.391-1.024 0-1.414l7.293-7.293h-3.586zm-9 2c-.552 0-1 .448-1 1v11c0 .552.448 1 1 1h11c.552 0 1-.448 1-1v-4.563c0-.552.448-1 1-1s1 .448 1 1v4.563c0 1.657-1.343 3-3 3h-11c-1.657 0-3-1.343-3-3v-11c0-1.657 1.343-3 3-3h4.563c.552 0 1 .448 1 1s-.448 1-1 1h-4.563z"/></svg></a> library to YOLOV5 format data with one click.</p>
-</li>
-<li>
-<p>The labelImg label data directory structure is as follows (see <code>dataset/labelImg_dataset</code> for details):</p>
-
-
-
-  
-  
-  
-
-  
-  
-  
-    
-  
-  
-
-   
-  
-
-  <div class="prism-codeblock  linenos">
-  <pre id="086a445" class="language-text  line-numbers">
-  <code>labelImg_dataset
-├── classes.txt
-├── images(13).jpg
-├── images(13).txt
-├── images(3).jpg
-├── images(3).txt
-├── images4.jpg
-├── images4.txt
-├── images5.jpg
-├── images5.txt
-├── images6.jpg
-├── images7.jpg
-└── images7.txt</code>
-  </pre>
-  </div>
-</li>
-<li>
-<p>Convert</p>
-
-
-
-  
-  
-  
-
-  
-  
-  
-    
-  
-  
-
-   
-  
-
-  <div class="prism-codeblock  linenos">
-  <pre id="e5256b4" class="language-bash  line-numbers">
-  <code>labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \
-                   --out_dir dataset/labelImg_dataset_output \
-                   --val_ratio 0.2 \
-                   --have_test \
-                   --test_ratio 0.2</code>
-  </pre>
-  </div>
-<ul>
-<li><code>--src_dir</code>: the directory where labelImg is stored after labeling.</li>
-<li><code>--out_dir</code>: the location where the data is stored after conversion.</li>
-<li><code>--val_ratio</code>: the ratio of the generated validation set to the whole data, default is <code>0.2</code>.</li>
-<li><code>--have_test</code>: whether to generate the test part of the data, the default is <code>False</code>. If this parameter appears, it is <code>True</code>.</li>
-<li><code>--test_ratio</code>: percentage of the whole data of the test data, default is <code>0.2</code>.</li>
-</ul>
-</li>
-<li>
-<p>Converted directory structure (see <code>dataset/labelImg_dataset_output</code> for details):</p>
-
-
-
-  
-  
-  
-
-  
-  
-  
-    
-  
-  
-
-   
-  
-
-  <div class="prism-codeblock  linenos">
-  <pre id="ad67236" class="language-text  line-numbers">
-  <code>labelImg_dataset_output/
-├── classes.txt
-├── images
-│   ├── images(13).jpg
-│   ├── images(3).jpg
-│   ├── images4.jpg
-│   ├── images5.jpg
-│   └── images7.jpg
-├── labels
-│   ├── images(13).txt
-│   ├── images(3).txt
-│   ├── images4.txt
-│   ├── images5.txt
-│   └── images7.txt
-├── non_labels        # This is the catalog without the labeled images.
-│   └── images6.jpg
-├── test.txt
-├── train.txt
-└── val.txt</code>
-  </pre>
-  </div>
-</li>
-<li>
-<p>You can further directly convert the <code>dataset/labelImg_dataset_output</code> directory to COCO</p>
-
-
-
-  
-  
-  
-
-  
-  
-  
-    
-  
-  
-
-   
-  
-
-  <div class="prism-codeblock  linenos">
-  <pre id="a31c322" class="language-bash  line-numbers">
-  <code>yolov5_to_coco --data_dir dataset/labellImg_dataset_output</code>
-  </pre>
-  </div>
-</li>
-</ul>
-
+        <h1 id="todo">TODO <a href="#todo" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h1>
     </div>
 
     
@@ -534,7 +390,7 @@ labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelI
 
 <div class="gitinfo d-flex flex-wrap justify-content-between align-items-center opacity-85 pt-3">
     <div id="edit-this-page" class="mt-1">
-        <a href="https://github.com/RapidAI/LabelConvert/blob/main/content/docs/SupportConversions/labelimg_to_yolov5.md" alt="labelImg → YOLOV5" rel="noopener noreferrer" target="_blank">
+        <a href="https://github.com/RapidAI/LabelConvert/blob/main/content/docs/SupportConversions/labelme_to_coco.md" alt="labelme → COCO" rel="noopener noreferrer" target="_blank">
             
             <span class="me-1 align-text-bottom">
                 
@@ -552,9 +408,9 @@ labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelI
     <div id="last-modified" class="mt-1">
         <p class="mb-0 fw-semibold">Last updated <span
             id="relativetime"
-            data-authdate="2023-10-24T22:12:35&#43;0800"
-            title="24 Oct 2023, 22:12 &#43;0800">
-            24 Oct 2023, 22:12 &#43;0800
+            data-authdate="2023-10-31T22:26:25&#43;0800"
+            title="31 Oct 2023, 22:26 &#43;0800">
+            31 Oct 2023, 22:26 &#43;0800
         </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
         </p>
     </div>
@@ -568,12 +424,23 @@ labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelI
                                             <div><hr class="doc-hr">
 <div id="doc-nav" class="d-print-none">
 
-	<div class="row flex-xl-nowrap flex-row-reverse">
+	<div class="row flex-xl-nowrap ">
+	<div class="col-sm-6 pt-2 doc-next">
+		<a href="/LabelConvert/docs/supportconversions/yolov5_to_coco/">
+			<div class="card h-100 my-1">
+				<div class="card-body py-2">
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> YOLOV5 → COCO</p>
+					<p class="card-text ms-2"></p>
+					
+				</div>
+			</div>
+		</a>
+        </div>
 	<div class="col-sm-6 pt-2 doc-prev">
-		<a class="ms-auto" href="/LabelConvert/docs/supportconversions/labelimg_to_publaynet/">
+		<a class="ms-auto" href="/LabelConvert/docs/overview/">
 			<div class="card h-100 my-1 text-end">
 				<div class="card-body py-2">
-                    <p class="card-title fs-5 fw-semibold lh-base mb-0">labelImg → PubLayNet <i class="material-icons align-middle">navigate_next</i></p>
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0">Overview <i class="material-icons align-middle">navigate_next</i></p>
 					<p class="card-text me-2"></p>
 					
 				</div>

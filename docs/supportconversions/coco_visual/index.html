@@ -134,6 +134,11 @@
                                     
                                         
                                         
+                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/labelme_to_coco/">labelme → COCO</a></li>
+                                        
+                                    
+                                        
+                                        
                                             <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_yaml_to_coco/">YOLOV5 YAML → COCO</a></li>
                                         
                                     
@@ -708,6 +713,13 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
 
 
     
@@ -762,15 +774,24 @@
     index.add(
             {
                 id:  5 ,
-                href: "\/LabelConvert\/docs\/overview\/",
-                title: "Overview",
-                description: "Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats. Supported conversions linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A B --\u003e D E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.",
-                content: " Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.\nSupported conversions linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A B --\u003e D E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.\nPlease make sure to update tests as appropriate.\n"
+                href: "\/LabelConvert\/docs\/supportconversions\/labelme_to_coco\/",
+                title: "labelme → COCO",
+                description: "TODO link",
+                content: "TODO link"
             }
         );
     index.add(
             {
                 id:  6 ,
+                href: "\/LabelConvert\/docs\/overview\/",
+                title: "Overview",
+                description: "Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats. Supported conversions linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A B --\u003e D E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D G(labelme) --\u003e D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.",
+                content: " Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.\nSupported conversions linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A B --\u003e D E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D G(labelme) --\u003e D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.\nPlease make sure to update tests as appropriate.\n"
+            }
+        );
+    index.add(
+            {
+                id:  7 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/yolov5_yaml_to_coco\/",
                 title: "YOLOV5 YAML → COCO",
                 description: " The YOLOV5 yaml data file needs to contain.\nYOLOV5_yaml ├── images │ ├── train │ │ ├── images(13).jpg │ │ └── images(3).jpg │ └── val │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── train │ │ ├── images(13).txt │ │ └── images(3).txt │ └── val │ ├── images(13).txt │ └── images(3).txt └── sample.yaml Convert\nyolov5_yaml_to_coco --yaml_path dataset/YOLOV5_yaml/sample.yaml ",
@@ -779,7 +800,7 @@
         );
     index.add(
             {
-                id:  7 ,
+                id:  8 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/",
                 title: "Support Conversions",
                 description: "",
@@ -788,7 +809,7 @@
         );
     index.add(
             {
-                id:  8 ,
+                id:  9 ,
                 href: "\/LabelConvert\/docs\/changelog\/",
                 title: "Changelog",
                 description: "2023-10-25 v0.0.4~v0.0.5 update: link 修复命令行模式下，参数类型错误 更新文档内容，优化文档表达 2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. ",
@@ -797,7 +818,7 @@
         );
     index.add(
             {
-                id:  9 ,
+                id:  10 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/darknet_to_coco\/",
                 title: "darknet → COCO",
                 description: " Darknet training data directory structure (see dataset/darknet for details). darknet ├── class.names ├── gen_config.data ├── gen_train.txt ├── gen_valid.txt └── images ├── train └── valid Convert darknet_to_coco --data_path dataset/darknet/gen_config.data ",
@@ -806,7 +827,7 @@
         );
     index.add(
             {
-                id:  10 ,
+                id:  11 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/coco_visual\/",
                 title: "Visualize COCO image",
                 description: " coco_visual --vis_num 1 \\ --json_path dataset/COCO_format/annotations/instances_train2017.json \\ --img_dir dataset/COCO_format/train2017 --vis_num: specify the index of the image to be viewed --json_path: path to the json file of the image to view --img_dir: view the directory where the image is located ",
@@ -815,7 +836,7 @@
         );
     index.add(
             {
-                id:  11 ,
+                id:  12 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/demo_of_coco\/",
                 title: "Demo of COCO json",
                 description: "{ \"info\": { \"year\": 2022, \"version\": \"1.0\", \"description\": \"For object detection\", \"date_created\": \"2022\" }, \"licenses\": [{ \"id\": 1, \"name\": \"Apache License v2.0\", \"url\": \"https://github.com/RapidAI/YOLO2COCO/LICENSE\" }], \"images\": [{ \"date_captured\": \"2022\", \"file_name\": \"000000000001.jpg\", \"id\": 1, \"height\": 224, \"width\": 224 }, { \"date_captured\": \"2022\", \"file_name\": \"000000000002.jpg\", \"id\": 2, \"height\": 424, \"width\": 550 }], \"annotations\": [{ \"segmentation\": [[18.00, 2.99, 105.00, 2.99, 105.00, 89.00, 18.00, 89.00]], \"area\": 7482.011, \"iscrowd\": 0, \"image_id\": 1, // Corresponding to the ID in images \"bbox\": [18.",
