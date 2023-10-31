@@ -6,11 +6,10 @@ import json
 import random
 import shutil
 import time
-import warnings
 from pathlib import Path
 from typing import List, Optional, Union
 
-import cv2
+import numpy as np
 from tqdm import tqdm
 
 
@@ -33,7 +32,8 @@ class LabelmeToCOCO:
         if out_dir is None:
             save_dir_name = f"{Path(self.raw_data_dir).name}_COCO_format"
             self.output_dir = self.raw_data_dir.parent / save_dir_name
-        self.output_dir = Path(out_dir)
+        else:
+            self.output_dir = Path(out_dir)
         self.mkdir(self.output_dir)
 
         self.anno_dir = self.output_dir / "annotations"
@@ -52,7 +52,14 @@ class LabelmeToCOCO:
 
         self.cur_year = time.strftime("%Y", time.localtime(time.time()))
 
-    def __call__(self, mode_list: List[str] = None):
+        self.cls_to_idx = {}
+        self.object_id = 1
+
+        self.categories = self._get_category()
+
+    def __call__(
+        self,
+    ):
         img_list = self.get_img_list()
         if not img_list:
             raise ValueError(f"{self.raw_data_dir} is empty!")
@@ -66,48 +73,15 @@ class LabelmeToCOCO:
         )
         train_list, val_list, test_list = split_list
 
-        # 遍历所有的json，得到所有类别字段
-        # TODO
+        train_anno = self.generate_json(train_list, self.train_dir)
+        self.write_json(self.anno_dir / "instances_train2017.json", train_anno)
 
-        anno = self._init_json()
-        for i, img_path in enumerate(train_list):
-            img_id = i + 1
+        val_anno = self.generate_json(val_list, self.val_dir)
+        self.write_json(self.anno_dir / "instances_val2017.json", val_anno)
 
-            new_img_name = f"{img_id:012d}.jpg"
-            new_img_path = self.train_dir / new_img_name
-
-            # 将图像复制到指定目录下
-            self.cp_file(img_path, new_img_path)
-
-            raw_json_path = img_path.with_suffix(".json")
-            raw_json_data = self.read_json(raw_json_path)
-
-            # 写入到json中
-            img_info = {
-                "date_captured": str(self.cur_year),
-                "file_name": new_img_name,
-                "id": img_id,
-                "height": raw_json_data.get("imageHeight"),
-                "width": raw_json_data.get("imageWidth"),
-            }
-
-            # 记录类别
-
-        print("ok")
-
-        for mode in mode_list:
-            # Create the directory of saving the new image.
-            save_img_dir = self.output_dir / f"{mode}2017"
-            self.mkdir(save_img_dir)
-
-            # Generate json file.
-            anno_dir = self.output_dir / "annotations"
-            self.mkdir(anno_dir)
-
-            save_json_path = anno_dir / f"instances_{mode}2017.json"
-            json_data = self.convert(img_list, save_img_dir, mode)
-
-            self.write_json(save_json_path, json_data)
+        if test_list:
+            test_anno = self.generate_json(test_list, self.test_dir)
+            self.write_json(self.anno_dir / "instances_test2017.json", test_anno)
         print(f"Successfully convert, detail in {self.output_dir}")
 
     def get_img_list(self):
@@ -119,7 +93,7 @@ class LabelmeToCOCO:
         new_image_list = []
         for img_path in tqdm(img_list):
             right_label_path = img_path.with_name(f"{img_path.stem}.json")
-            if right_label_path.exists() and self.read_txt(str(right_label_path)):
+            if right_label_path.exists() and self.read_json(str(right_label_path)):
                 new_image_list.append(img_path)
         return new_image_list
 
@@ -161,141 +135,81 @@ class LabelmeToCOCO:
                     "url": "https://github.com/RapidAI/LabelConvert/LICENSE",
                 }
             ],
-            "categories": [],
+            "categories": self.categories,
         }
         return annotation_info
 
     def _get_category(
         self,
     ):
-        # 这个放在扫描全部json的中获取
-        class_list = self.read_txt(classes_path)
-        categories = []
-        for i, category in enumerate(class_list, 1):
-            categories.append(
+        json_list = Path(self.raw_data_dir).glob("*.json")
+        all_categories = []
+        for json_path in json_list:
+            json_info = self.read_json(json_path)
+            shapes = json_info.get("shapes", [])
+            all_categories.extend([v["label"] for v in shapes])
+
+        categories = list(set(all_categories))
+        categories.sort(key=all_categories.index)
+
+        coco_categories = []
+        for i, cls_name in enumerate(categories):
+            coco_categories.append(
                 {
-                    "supercategory": category,
-                    "id": i,
-                    "name": category,
+                    "supercategory": cls_name,
+                    "id": i + 1,
+                    "name": cls_name,
                 }
             )
-        return categories
+        self.cls_to_idx = {v: i + 1 for i, v in enumerate(categories)}
+        return coco_categories
 
-    def convert(self, img_list, save_img_dir, mode):
-        images, annotations = [], []
-        for img_id, img_path in enumerate(tqdm(img_list, desc=mode), 1):
-            image_dict = self.get_image_info(img_path, img_id, save_img_dir)
-            images.append(image_dict)
+    def generate_json(self, img_list, save_dir):
+        anno = self._init_json()
+        for i, img_path in enumerate(img_list):
+            img_id = i + 1
 
-            label_path = self.raw_data_dir / "labels" / f"{Path(img_path).stem}.txt"
-            annotation = self.get_annotation(
-                label_path, img_id, image_dict["height"], image_dict["width"]
-            )
-            annotations.extend(annotation)
+            new_img_name = f"{img_id:012d}{Path(img_path).suffix}"
+            new_img_path = save_dir / new_img_name
+            self.cp_file(img_path, new_img_path)
 
-        json_data = {
-            "info": self.info,
-            "images": images,
-            "licenses": self.licenses,
-            "type": self.type,
-            "annotations": annotations,
-            "categories": self.categories,
-        }
-        return json_data
+            raw_json_path = img_path.with_suffix(".json")
+            raw_json_data = self.read_json(raw_json_path)
 
-    def get_image_info(self, img_path, img_id, save_img_dir):
-        img_path = Path(img_path)
-        if self.raw_data_dir.as_posix() not in img_path.as_posix():
-            # relative path (relative to the raw_data_dir)
-            # e.g. images/images(3).jpg
-            img_path = self.raw_data_dir / img_path
+            img_info = {
+                "date_captured": str(self.cur_year),
+                "file_name": new_img_name,
+                "id": img_id,
+                "height": raw_json_data.get("imageHeight"),
+                "width": raw_json_data.get("imageWidth"),
+            }
+            anno["images"].append(img_info)
 
-        self.verify_exists(img_path)
+            shapes = raw_json_data.get("shapes", [])
+            anno_list = []
+            for shape in shapes:
+                label_name = shape.get("label")
+                label_id = self.cls_to_idx[label_name]
 
-        new_img_name = f"{img_id:012d}.jpg"
-        save_img_path = save_img_dir / new_img_name
-        img_src = cv2.imread(str(img_path))
-        if img_path.suffix.lower() == ".jpg":
-            shutil.copyfile(img_path, save_img_path)
-        else:
-            cv2.imwrite(str(save_img_path), img_src)
+                points = np.array(shape.get("points"))
+                x0, y0 = np.min(points, axis=0)
+                x1, y1 = np.max(points, axis=0)
+                area = (x1 - x0) * (y1 - y0)
 
-        height, width = img_src.shape[:2]
-        image_info = {
-            "date_captured": self.cur_year,
-            "file_name": new_img_name,
-            "id": img_id,
-            "height": height,
-            "width": width,
-        }
-        return image_info
-
-    def get_annotation(self, label_path: Path, img_id, height, width):
-        def get_box_info(vertex_info, height, width):
-            cx, cy, w, h = [float(i) for i in vertex_info]
-
-            cx = cx * width
-            cy = cy * height
-            box_w = w * width
-            box_h = h * height
-
-            # left top
-            x0 = max(cx - box_w / 2, 0)
-            y0 = max(cy - box_h / 2, 0)
-
-            # right bottom
-            x1 = min(x0 + box_w, width)
-            y1 = min(y0 + box_h, height)
-
-            segmentation = [[x0, y0, x1, y0, x1, y1, x0, y1]]
-            bbox = [x0, y0, box_w, box_h]
-            area = box_w * box_h
-            return segmentation, bbox, area
-
-        if not label_path.exists():
-            annotation = [
-                {
-                    "segmentation": [],
-                    "area": 0,
-                    "iscrowd": 0,
-                    "image_id": img_id,
-                    "bbox": [],
-                    "category_id": -1,
-                    "id": self.annotation_id,
-                }
-            ]
-            self.annotation_id += 1
-            return annotation
-
-        annotation = []
-        label_list = self.read_txt(str(label_path))
-        for i, one_line in enumerate(label_list):
-            label_info = one_line.split(" ")
-            if len(label_info) < 5:
-                warnings.warn(f"The {i+1} line of the {label_path} has been corrupted.")
-                continue
-
-            category_id, vertex_info = label_info[0], label_info[1:]
-            segmentation, bbox, area = get_box_info(vertex_info, height, width)
-            annotation.append(
-                {
-                    "segmentation": segmentation,
+                seg_points = [np.ravel(points, order="C").tolist()]
+                one_anno_dict = {
+                    "segmentation": seg_points,
                     "area": area,
                     "iscrowd": 0,
                     "image_id": img_id,
-                    "bbox": bbox,
-                    "category_id": int(category_id) + 1,
-                    "id": self.annotation_id,
+                    "bbox": [x0, y0, x1, y1],
+                    "category_id": label_id,
+                    "id": self.object_id,
                 }
-            )
-            self.annotation_id += 1
-        return annotation
-
-    @staticmethod
-    def read_txt(txt_path):
-        with open(str(txt_path), "r", encoding="utf-8") as f:
-            data = list(map(lambda x: x.rstrip("\n"), f))
-        return data
+                anno_list.append(one_anno_dict)
+                self.object_id += 1
+            anno["annotations"].extend(anno_list)
+        return anno
 
     @staticmethod
     def read_json(json_path: Union[str, Path]):
@@ -313,7 +227,7 @@ class LabelmeToCOCO:
             raise FileNotFoundError(f"The {file_path} is not exists!!!")
 
     @staticmethod
-    def write_json(json_path, content: dict):
+    def write_json(json_path: Union[str, Path], content: dict):
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump(content, f, ensure_ascii=False)
 

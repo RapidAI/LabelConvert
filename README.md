@@ -28,6 +28,7 @@ D(COCO) --> A
 B --> D
 E(YOLOv5 YAML) --> D
 F(darknet) --> D
+G(labelme) --> D
 ```
 
 ## Installation

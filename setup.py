@@ -44,9 +44,7 @@ if len(sys.argv) > 2:
         VERSION_NUM = matched_versions
 sys.argv = sys.argv[:2]
 
-project_urls = {
-    'Documentation': 'https://rapidai.github.io/LabelConvert/docs'
-}
+project_urls = {"Documentation": "https://rapidai.github.io/LabelConvert/docs"}
 
 setuptools.setup(
     name=MODULE_NAME,
@@ -82,7 +80,8 @@ setuptools.setup(
             f"labelImg_to_yolov5={MODULE_NAME}.labelImg_to_yolov5:main",
             f"yolov5_to_coco={MODULE_NAME}.yolov5_to_coco:main",
             f"yolov5_yaml_to_coco={MODULE_NAME}.yolov5_yaml_to_coco:main",
-            f'labelImg_to_publaynet={MODULE_NAME}.labelImg_to_publaynet:main',
+            f"labelImg_to_publaynet={MODULE_NAME}.labelImg_to_publaynet:main",
+            f"labelme_to_coco={MODULE_NAME}.labelme_to_coco:main",
         ],
     },
 )
