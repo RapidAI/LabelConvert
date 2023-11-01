@@ -10,6 +10,12 @@ description: ""
 publishdate: "2023-09-08"
 ---
 
+#### 2023-11-01 v0.0.7 update:
+- 修复[Issue #9](https://github.com/RapidAI/LabelConvert/issues/9)
+
+#### 2023-11-01 v0.0.6 update:
+- 添加`labelme_to_coco`的支持，详情参见：[labelme_to_coco](./SupportConversions/labelme_to_coco.md)
+
 #### 2023-10-25 v0.0.4~v0.0.5 update:
 - 修复命令行模式下，参数类型错误
 - 更新文档内容，优化文档表达
