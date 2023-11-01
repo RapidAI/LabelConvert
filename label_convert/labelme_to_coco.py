@@ -250,7 +250,7 @@ def main():
     converter = LabelmeToCOCO(
         args.src_dir, args.out_dir, args.val_ratio, args.have_test, args.test_ratio
     )
-    converter(mode_list=args.mode_list.split(","))
+    converter()
 
 
 if __name__ == "__main__":
