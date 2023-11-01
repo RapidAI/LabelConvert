@@ -18,7 +18,7 @@ enableGitInfo = true # N.B. .GitInfo does not currently function with submodule 
 [markup]
   defaultMarkdownHandler = "goldmark"
     [markup.tableOfContents]
-      endLevel = 3
+      endLevel = 6
       startLevel = 1
   [markup.goldmark]
     [markup.goldmark.renderer]

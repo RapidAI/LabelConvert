@@ -64,5 +64,5 @@ publishdate: "2022-09-30T05:33:22+01:00"
 }
 ```
 
-#### Related information
-- [MSCOCO Data Annotation Details](https://blog.csdn.net/wc781708249/article/details/79603522)
+#### 相关信息
+- [MSCOCO数据标注详解](https://blog.csdn.net/wc781708249/article/details/79603522)
