@@ -13,10 +13,10 @@
       <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
       
       <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_yolov5/</guid>
-      <description>Convert the yolo data format marked by the labelImg library to YOLOV5 format data with one click.
-The labelImg label data directory structure is as follows (see dataset/labelImg_dataset for details):
-labelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt Convert
-labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelImg_dataset_output \ --val_ratio 0.2 \ --have_test \ --test_ratio 0.</description>
+      <description>简介 link一键将labelImg标注的数据格式转为YOLO格式
+labelImg目录格式 link详情参见：dataset/labelImg_dataset
+labelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt 转换 link labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \ --out_dir dataset/labelImg_dataset_output \ --val_ratio 0.2 \ --have_test \ --test_ratio 0.2 --src_dir: labelme标注的数据所在路径 --out_dir: 转换后数据存储路径 --val_ratio: 验证集所占比例，默认是总量的0.2 --have_test: 是否划出测试集，默认是False，如果想要划分测试集，直接加上该参数即可。 --test_ratio: 测试集的比例，默认是总量的0.2 转换后目录结构 link详情参见：dataset/labelImg_dataset_output
+labelImg_dataset_output/ ├── classes.txt ├── images │ ├── images(13).jpg │ ├── images(3).jpg │ ├── images4.</description>
     </item>
     
     <item>
@@ -58,7 +58,9 @@ YOLOV5 ├── classes.txt ├── background_images # usually images that a
       <pubDate>Tue, 31 Oct 2023 00:00:00 +0000</pubDate>
       
       <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/labelme_to_coco/</guid>
-      <description>TODO link</description>
+      <description>简介 link一键转换labelme标注的数据格式为COCO格式
+labelme标注后目录结构 link dataset/labelme_dataset ├── val_0001.jpg ├── val_0001.json ├── val_0002.jpg └── val_0002.json 转换 link labelme_to_coco --src_dir dataset/labelme_dataset \ --out_dir dataset/coco_dataset \ --val_ratio 0.2 \ --have_test \ --test_ratio 0.2 --src_dir: labelme标注的数据所在路径 --out_dir: 转换后数据存储路径 --val_ratio: 验证集所占比例，默认是总量的0.2 --have_test: 是否划出测试集，默认是False，如果想要划分测试集，直接加上该参数即可。 --test_ratio: 测试集的比例，默认是总量的0.2 转换后的目录结构 link详情参见：COCO_format
+dataset/COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 </description>
     </item>
     
     <item>
