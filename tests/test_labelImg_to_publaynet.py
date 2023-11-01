@@ -18,22 +18,22 @@ convert = LabelImgToPubLayNet()
 
 
 def test_normal():
-    data_dir = test_file_dir / 'labelImg_dataset'
+    data_dir = test_file_dir / "labelImg_dataset"
 
     convert(data_dir)
 
-    new_data_dir = test_file_dir / 'labelImg_dataset_publaynet'
+    new_data_dir = test_file_dir / "labelImg_dataset_publaynet"
 
-    train_data_dir = new_data_dir / 'train'
+    train_data_dir = new_data_dir / "train"
     assert train_data_dir.exists()
 
-    train_json_path = new_data_dir / 'train.json'
+    train_json_path = new_data_dir / "train.json"
     assert train_json_path.exists()
 
-    train_data_dir = new_data_dir / 'test'
-    assert train_data_dir.exists()
+    test_data_dir = new_data_dir / "test"
+    assert test_data_dir.exists()
 
-    train_json_path = new_data_dir / 'test.json'
-    assert train_json_path.exists()
+    test_json_path = new_data_dir / "test.json"
+    assert test_json_path.exists()
 
     shutil.rmtree(new_data_dir)

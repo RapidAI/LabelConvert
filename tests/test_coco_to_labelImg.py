@@ -20,7 +20,7 @@ def test_normal():
     converter = COCO2labelImg(data_dir)
     converter()
 
-    save_dir: Path = test_file_dir / "COCO_labelImg_format"
+    save_dir: Path = test_file_dir / "YOLOV5_COCO_format_labelImg_format"
     assert save_dir.exists()
 
     train_dir: Path = save_dir / "train"
