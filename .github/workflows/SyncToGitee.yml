@@ -19,6 +19,6 @@ jobs:
           dst_token:  ${{ secrets.GITEE_TOKEN }}
           force_update: true
           # only sync this repo
-          static_list: "YOLO2COCO"
+          static_list: "LabelConvert"
           debug: true
 
