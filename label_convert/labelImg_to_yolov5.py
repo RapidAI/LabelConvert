@@ -10,20 +10,32 @@ from typing import Union
 
 from tqdm import tqdm
 
+ValueType = Union[str, Path, None]
+
 
 class LabelImgToYOLOV5:
-    def __init__(self, root_dir, out_dir, val_ratio, have_test, test_ratio):
-        self.root_dir = Path(root_dir)
-        self.verify_exists(self.root_dir)
+    def __init__(
+        self,
+        data_dir: ValueType = None,
+        save_dir: ValueType = None,
+        val_ratio: float = 0.2,
+        have_test: bool = False,
+        test_ratio: float = 0.2,
+    ):
+        self.data_dir = Path(data_dir)
+        self.verify_exists(self.data_dir)
 
-        self.out_dir = Path(out_dir)
-        self.out_img_dir = self.out_dir / "images"
-        self.out_label_dir = self.out_dir / "labels"
-        self.out_non_label_dir = self.out_dir / "non_labels"
+        if save_dir is None:
+            save_dir = self.data_dir.parent / f"{self.data_dir.name}_yolov5"
+        self.save_dir = Path(save_dir)
 
-        self.classes_path = self.root_dir / "classes.txt"
+        self.out_img_dir = self.save_dir / "images"
+        self.out_label_dir = self.save_dir / "labels"
+        self.out_non_label_dir = self.save_dir / "non_labels"
+
+        self.classes_path = self.data_dir / "classes.txt"
         self.verify_exists(self.classes_path)
-        self.cp_file(self.classes_path, dst_dir=self.out_dir)
+        self.cp_file(self.classes_path, dst_dir=self.save_dir)
 
         self.val_ratio = val_ratio
         self.have_test = have_test
@@ -32,7 +44,7 @@ class LabelImgToYOLOV5:
     def __call__(self):
         img_list = self.get_img_list()
         if not img_list:
-            raise ValueError(f"{self.root_dir} is corrupted.")
+            raise ValueError(f"{self.data_dir} is corrupted.")
 
         img_list = self.gen_image_label_dir(img_list)
         split_list = self.get_train_val_test_list(
@@ -42,11 +54,11 @@ class LabelImgToYOLOV5:
             test_ratio=self.test_ratio,
         )
         train_list, val_list, test_list = split_list
-        self.write_txt(self.out_dir / "train.txt", train_list)
-        self.write_txt(self.out_dir / "val.txt", val_list)
+        self.write_txt(self.save_dir / "train.txt", train_list)
+        self.write_txt(self.save_dir / "val.txt", val_list)
         if test_list:
-            self.write_txt(self.out_dir / "test.txt", test_list)
-        print(f"Successfully convert, detail in {self.out_dir}")
+            self.write_txt(self.save_dir / "test.txt", test_list)
+        print(f"Successfully convert, detail in {self.save_dir}")
 
     @staticmethod
     def verify_exists(file_path: Union[Path, str]):
@@ -54,7 +66,7 @@ class LabelImgToYOLOV5:
             raise FileNotFoundError(f"The {file_path} is not exists!!!")
 
     def get_img_list(self):
-        all_list = self.raw_data_dir.glob("*.*")
+        all_list = self.data_dir.glob("*.*")
         img_list = [v for v in all_list if v.suffix != ".txt"]
         return img_list
 
@@ -128,18 +140,18 @@ class LabelImgToYOLOV5:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--src_dir", type=str)
-    parser.add_argument("--out_dir", type=str)
+    parser.add_argument("--src_dir", type=str, default=None)
+    parser.add_argument("--save_dir", type=str, default=None)
     parser.add_argument("--val_ratio", type=float, default=0.2)
     parser.add_argument("--have_test", action="store_true", default=False)
     parser.add_argument("--test_ratio", type=float, default=0.2)
     args = parser.parse_args()
 
     converter = LabelImgToYOLOV5(
-        args.src_dir, args.out_dir, args.val_ratio, args.have_test, args.test_ratio
+        args.src_dir, args.save_dir, args.val_ratio, args.have_test, args.test_ratio
     )
     converter()
-    print(f"Successfully output to the {args.out_dir}")
+    print(f"Successfully output to the {args.save_dir}")
 
 
 if __name__ == "__main__":

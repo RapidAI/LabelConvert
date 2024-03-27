@@ -10,17 +10,19 @@ root_dir = cur_dir.parent
 
 sys.path.append(str(root_dir))
 
-from label_convert.coco_to_labelImg import COCO2labelImg
+from label_convert.coco_to_labelImg import COCOTolabelImg
 
 test_file_dir = cur_dir / "test_files"
 
+data_dir_name = "COCO_format"
+
 
 def test_normal():
-    data_dir = test_file_dir / "COCO_format"
-    converter = COCO2labelImg(data_dir)
+    data_dir = test_file_dir / data_dir_name
+    converter = COCOTolabelImg(data_dir)
     converter()
 
-    save_dir: Path = test_file_dir / "labelImg_format"
+    save_dir: Path = test_file_dir / f"{data_dir_name}_labelImg"
     assert save_dir.exists()
 
     train_dir: Path = save_dir / "train"

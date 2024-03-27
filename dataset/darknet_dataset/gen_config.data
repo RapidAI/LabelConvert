@@ -1,0 +1,4 @@
+classes=1
+train=dataset/darknet_dataset/gen_train.txt
+valid=dataset/darknet_dataset/gen_valid.txt
+names=dataset/darknet_dataset/class.names

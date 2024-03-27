@@ -6,34 +6,50 @@ import configparser as cfg
 import json
 import os
 import shutil
+from datetime import datetime
 from pathlib import Path
+from typing import Union
 
 import cv2 as cv
 
+ValueType = Union[str, Path, None]
 
-class DARKNET2COCO:
-    def __init__(self, genconfig_data):
-        self.src_data = genconfig_data
-        self.src = Path(self.src_data).parent
-        self.dst = Path(self.src) / "coco_dataset"
-        self.coco_train = "train2017"
-        self.coco_valid = "val2017"
-        self.coco_images = "images"
-        self.coco_annotation = "annotations"
-        self.coco_train_json = (
-            Path(self.dst) / self.coco_annotation / f"instances_{self.coco_train}.json"
-        )
-        self.coco_valid_json = (
-            Path(self.dst) / self.coco_annotation / f"instances_{self.coco_valid}.json"
-        )
+
+class DarknetToCOCO:
+    def __init__(self, config_path: ValueType = None, save_dir: ValueType = None):
+        if config_path is None:
+            raise ValueError("config_path must not be empty.")
+
+        self.config_path = Path(config_path)
+        self.data_dir = self.config_path.parent
+
+        if save_dir is None:
+            save_dir = self.data_dir.parent / f"{self.data_dir.name}_coco"
+        self.save_dir = Path(save_dir)
+        self.mkdir(self.save_dir)
+
+        anno_dir = self.save_dir / "annotations"
+        self.mkdir(anno_dir)
+
+        self.train_json = anno_dir / "instances_train2017.json"
+        self.val_json = anno_dir / "instances_val2017.json"
+
+        img_dir = self.save_dir / "images"
+        self.train2017_dir = img_dir / "train2017"
+        self.val2017_dir = img_dir / "val2017"
+        self.mkdir(self.train2017_dir)
+        self.mkdir(self.val2017_dir)
+
         self.type = "instances"
         self.categories = []
         self.annotation_id = 1
+
+        cur_year = datetime.strftime(datetime.now(), "%Y")
         self.info = {
-            "year": 2021,
+            "year": int(cur_year),
             "version": "1.0",
             "description": "For object detection",
-            "date_created": "2021",
+            "date_created": cur_year,
         }
         self.licenses = [
             {
@@ -43,22 +59,7 @@ class DARKNET2COCO:
             }
         ]
 
-        if not Path(self.dst).is_dir():
-            Path(self.dst).mkdir()
-
-        if not Path(self.dst / self.coco_images).is_dir():
-            Path(self.dst / self.coco_images).mkdir()
-
-        if not (Path(self.dst) / self.coco_images / self.coco_train).is_dir():
-            (Path(self.dst) / self.coco_images / self.coco_train).mkdir()
-
-        if not Path(self.dst / self.coco_images / self.coco_valid).is_dir():
-            (Path(self.dst) / self.coco_images / self.coco_valid).mkdir()
-
-        if not (Path(self.dst) / self.coco_annotation).is_dir():
-            (Path(self.dst) / self.coco_annotation).mkdir()
-
-        if Path(self.src_data).is_file():
+        if Path(self.config_path).is_file():
             self.ready = True
             self.initcfg()
         else:
@@ -68,7 +69,7 @@ class DARKNET2COCO:
         if not self.ready:
             return
         self.cnf = cfg.RawConfigParser()
-        with open(self.src_data) as f:
+        with open(self.config_path, "r", encoding="utf-8") as f:
             file_content = "[dummy_section]\n" + f.read()
         self.cnf.read_string(file_content)
 
@@ -88,7 +89,7 @@ class DARKNET2COCO:
             allfiles = f.readlines()
         for file in allfiles:
             if not os.path.isabs(file):
-                this_path = Path(self.src) / file.strip()
+                this_path = Path(self.data_dir) / file.strip()
                 content.append(str(this_path))
             else:
                 content.append(file.strip())
@@ -96,12 +97,20 @@ class DARKNET2COCO:
 
     def get_list(self, name):
         content = []
-        with open(name) as f:
+        with open(name, "r", encoding="utf-8") as f:
             allfiles = f.readlines()
         for file in allfiles:
             content.append(file.strip())
-
         return content
+
+    @staticmethod
+    def verify_exists(file_path: Union[str, Path]) -> None:
+        if not Path(file_path).exists():
+            raise FileNotFoundError(f"The {file_path} is not exists!!!")
+
+    @staticmethod
+    def mkdir(dir_path: Union[str, Path]):
+        Path(dir_path).mkdir(parents=True, exist_ok=True)
 
     def _get_annotation(self, vertex_info, height, width):
         """
@@ -126,7 +135,8 @@ class DARKNET2COCO:
         annotation = []
         if not Path(txtfile).exists():
             return {}, 0
-        with open(txtfile) as f:
+
+        with open(txtfile, "r", encoding="utf-8") as f:
             allinfo = f.readlines()
 
         for line in allinfo:
@@ -154,10 +164,10 @@ class DARKNET2COCO:
         return annotation
 
     def get_category(self):
-        for id, category in enumerate(self.name_lists, 1):
+        for i, category in enumerate(self.name_lists, 1):
             self.categories.append(
                 {
-                    "id": id,
+                    "id": i,
                     "name": category,
                     "supercategory": category,
                 }
@@ -165,9 +175,9 @@ class DARKNET2COCO:
 
     def generate(self):
         self.classnum = self.getint("classes")
-        self.train = Path(self.src_data).parent / Path(self.getstring("train")).name
-        self.valid = Path(self.src_data).parent / Path(self.getstring("valid")).name
-        self.names = Path(self.src_data).parent / Path(self.getstring("names")).name
+        self.train = Path(self.config_path).parent / Path(self.getstring("train")).name
+        self.valid = Path(self.config_path).parent / Path(self.getstring("valid")).name
+        self.names = Path(self.config_path).parent / Path(self.getstring("names")).name
 
         self.train_files = self.get_path(self.train)
         if os.path.exists(self.valid):
@@ -176,14 +186,12 @@ class DARKNET2COCO:
         self.name_lists = self.get_list(self.names)
         self.get_category()
 
-        dest_path_train = Path(self.dst) / self.coco_images / self.coco_train
-        self.gen_dataset(self.train_files, dest_path_train, self.coco_train_json)
+        self.gen_dataset(self.train_files, self.train2017_dir, self.train_json)
 
-        dest_path_valid = Path(self.dst) / self.coco_images / self.coco_valid
         if os.path.exists(self.valid):
-            self.gen_dataset(self.valid_files, dest_path_valid, self.coco_valid_json)
+            self.gen_dataset(self.valid_files, self.val2017_dir, self.valid_json)
 
-        print("The output directory is :", str(self.dst))
+        print("The output directory is :", str(self.save_dir))
 
     def gen_dataset(self, file_lists, target_img_path, target_json):
         """
@@ -195,6 +203,7 @@ class DARKNET2COCO:
         for img_id, file in enumerate(file_lists, 1):
             if not Path(file).exists():
                 continue
+
             txt = str(Path(file).parent / Path(file).stem) + ".txt"
 
             tmpname = str(img_id)
@@ -240,9 +249,11 @@ class DARKNET2COCO:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--data_path", default="data/getn_config.data", help="Dataset root path"
+        "--data_path",
+        default="dataset/darknet_dataset/gen_config.data",
+        help="Dataset root path",
     )
     args = parser.parse_args()
 
-    converter = DARKNET2COCO(args.data_path)
+    converter = DarknetToCOCO(args.data_path)
     converter.generate()

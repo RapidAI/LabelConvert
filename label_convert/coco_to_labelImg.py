@@ -5,14 +5,16 @@ import argparse
 import json
 import shutil
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Tuple, Union
 
 import numpy as np
 from tqdm import tqdm
 
+ValueType = Union[str, Path, None]
 
-class COCO2labelImg:
-    def __init__(self, data_dir: Optional[str] = None, save_dir: Optional[str] = None):
+
+class COCOTolabelImg:
+    def __init__(self, data_dir: ValueType = None, save_dir: ValueType = None):
         self.data_dir = Path(data_dir)
         self.verify_exists(self.data_dir)
 
@@ -29,12 +31,9 @@ class COCO2labelImg:
         self.verify_exists(self.train2017_dir)
         self.verify_exists(self.val2017_dir)
 
-        self.save_dir = save_dir
         if save_dir is None:
-            self.save_dir = (
-                self.data_dir.parent / f"{self.data_dir.name}_labelImg_format"
-            )
-
+            save_dir = self.data_dir.parent / f"{self.data_dir.name}_labelImg"
+        self.save_dir = Path(save_dir)
         self.mkdir(self.save_dir)
 
         self.save_train_dir = self.save_dir / "train"
@@ -145,7 +144,7 @@ def main():
     parser.add_argument(
         "--data_dir",
         type=str,
-        default="dataset/YOLOV5_COCO_format",
+        default=None,
         help="Dataset root path",
     )
     parser.add_argument(
@@ -153,7 +152,7 @@ def main():
     )
     args = parser.parse_args()
 
-    converter = COCO2labelImg(args.data_dir, args.save_dir)
+    converter = COCOTolabelImg(args.data_dir, args.save_dir)
     converter()
 
 
