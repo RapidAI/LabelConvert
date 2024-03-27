@@ -16,11 +16,11 @@ test_file_dir = cur_dir / "test_files"
 
 
 def test_normal():
-    data_dir = test_file_dir / "YOLOV5_COCO_format"
+    data_dir = test_file_dir / "COCO_format"
     converter = COCO2labelImg(data_dir)
     converter()
 
-    save_dir: Path = test_file_dir / "YOLOV5_COCO_format_labelImg_format"
+    save_dir: Path = test_file_dir / "labelImg_format"
     assert save_dir.exists()
 
     train_dir: Path = save_dir / "train"
