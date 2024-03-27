@@ -68,6 +68,7 @@ class DarknetToCOCO:
     def initcfg(self):
         if not self.ready:
             return
+
         self.cnf = cfg.RawConfigParser()
         with open(self.config_path, "r", encoding="utf-8") as f:
             file_content = "[dummy_section]\n" + f.read()
