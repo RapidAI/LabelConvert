@@ -1,4 +1,4 @@
 classes=1
-train=dataset/darknet/gen_train.txt
-valid=dataset/darknet/gen_valid.txt
-names=dataset/darknet/class.names
+train=gen_train.txt
+valid=gen_valid.txt
+names=class.names
