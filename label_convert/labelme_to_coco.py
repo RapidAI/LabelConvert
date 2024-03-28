@@ -12,42 +12,44 @@ from typing import List, Optional, Union
 import numpy as np
 from tqdm import tqdm
 
+ValueType = Union[str, Path, None]
+
 
 class LabelmeToCOCO:
+
     def __init__(
         self,
-        data_dir: str,
-        out_dir: Optional[str] = None,
+        data_dir: ValueType = None,
+        save_dir: ValueType = None,
         val_ratio: float = 0.2,
         have_test: bool = False,
         test_ratio: float = 0.2,
     ):
-        self.raw_data_dir = Path(data_dir)
+        self.data_dir = Path(data_dir)
+
         self.val_ratio = val_ratio
         self.test_ratio = test_ratio
         self.have_test = have_test
 
-        self.verify_exists(self.raw_data_dir)
+        self.verify_exists(self.data_dir)
 
-        if out_dir is None:
-            save_dir_name = f"{Path(self.raw_data_dir).name}_COCO_format"
-            self.output_dir = self.raw_data_dir.parent / save_dir_name
-        else:
-            self.output_dir = Path(out_dir)
-        self.mkdir(self.output_dir)
+        if save_dir is None:
+            save_dir = self.data_dir.parent / f"{Path(self.data_dir).name}_coco"
+        self.save_dir = Path(save_dir)
+        self.mkdir(self.save_dir)
 
-        self.anno_dir = self.output_dir / "annotations"
+        self.anno_dir = self.save_dir / "annotations"
         self.mkdir(self.anno_dir)
 
-        self.train_dir = self.output_dir / "train2017"
+        self.train_dir = self.save_dir / "train2017"
         self.mkdir(self.train_dir)
 
-        self.val_dir = self.output_dir / "val2017"
+        self.val_dir = self.save_dir / "val2017"
         self.mkdir(self.val_dir)
 
         self.test_dir = None
         if have_test:
-            self.test_dir = self.output_dir / "test2017"
+            self.test_dir = self.save_dir / "test2017"
             self.mkdir(self.test_dir)
 
         self.cur_year = time.strftime("%Y", time.localtime(time.time()))
@@ -62,7 +64,7 @@ class LabelmeToCOCO:
     ):
         img_list = self.get_img_list()
         if not img_list:
-            raise ValueError(f"{self.raw_data_dir} is empty!")
+            raise ValueError(f"{self.data_dir} is empty!")
 
         img_list = self.gen_image_label_dir(img_list)
         split_list = self.get_train_val_test_list(
@@ -82,10 +84,10 @@ class LabelmeToCOCO:
         if test_list:
             test_anno = self.generate_json(test_list, self.test_dir)
             self.write_json(self.anno_dir / "instances_test2017.json", test_anno)
-        print(f"Successfully convert, detail in {self.output_dir}")
+        print(f"Successfully convert, detail in {self.save_dir}")
 
     def get_img_list(self):
-        all_list = self.raw_data_dir.glob("*.*")
+        all_list = self.data_dir.glob("*.*")
         img_list = [v for v in all_list if v.suffix != ".json"]
         return img_list
 
@@ -142,7 +144,7 @@ class LabelmeToCOCO:
     def _get_category(
         self,
     ):
-        json_list = Path(self.raw_data_dir).glob("*.json")
+        json_list = Path(self.data_dir).glob("*.json")
         all_categories = []
         for json_path in json_list:
             json_info = self.read_json(json_path)
@@ -240,15 +242,15 @@ class LabelmeToCOCO:
 
 def main():
     parser = argparse.ArgumentParser("Datasets converter from YOLOV5 to COCO")
-    parser.add_argument("--src_dir", type=str)
-    parser.add_argument("--out_dir", type=str)
+    parser.add_argument("--data_dir", type=str, default=None)
+    parser.add_argument("--save_dir", type=str, default=None)
     parser.add_argument("--val_ratio", type=float, default=0.2)
     parser.add_argument("--have_test", action="store_true", default=False)
     parser.add_argument("--test_ratio", type=float, default=0.2)
     args = parser.parse_args()
 
     converter = LabelmeToCOCO(
-        args.src_dir, args.out_dir, args.val_ratio, args.have_test, args.test_ratio
+        args.data_dir, args.save_dir, args.val_ratio, args.have_test, args.test_ratio
     )
     converter()
 

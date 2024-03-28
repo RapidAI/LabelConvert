@@ -1,0 +1,11 @@
+# 该配置文件和yolov5项目使用的一样
+
+path: tests/test_files/yolov5_yaml_dataset
+train:
+  - images/train
+val:
+  - images/val
+
+# Classes
+nc: 1  # number of classes
+names: ['stamp']  # class names

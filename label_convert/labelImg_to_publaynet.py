@@ -11,42 +11,58 @@ from typing import Dict, List, Tuple, Union
 import cv2
 from tqdm import tqdm
 
+ValueType = Union[str, Path, None]
+
 
 class LabelImgToPubLayNet:
     def __init__(
-        self, val_ratio: float = 0.2, have_test: bool = True, test_ratio: float = 0.2
+        self,
+        data_dir: ValueType = None,
+        save_dir: ValueType = None,
+        val_ratio: float = 0.2,
+        have_test: bool = True,
+        test_ratio: float = 0.2,
     ):
-        self.val_ratio = val_ratio
+        self.data_dir = Path(data_dir)
+        self.verify_exists(data_dir)
 
+        if save_dir is None:
+            save_dir = self.data_dir.with_name(f"{self.data_dir.stem}_publaynet")
+        self.save_dir = Path(save_dir)
+
+        self.val_ratio = val_ratio
         self.have_test = have_test
         self.test_ratio = test_ratio
 
-    def __call__(self, data_dir: Union[Path, str]):
-        self.verify_exists(data_dir)
-
-        cls_path = Path(data_dir) / "classes.txt"
+    def __call__(
+        self,
+    ):
+        cls_path = self.data_dir / "classes.txt"
         cls_info = self.read_txt(cls_path)
 
-        train_list, val_list, test_list = self.get_train_val_test_list(data_dir)
+        train_list, val_list, test_list = self.get_train_val_test_list()
 
-        new_data_dir = Path(data_dir).with_name(f"{Path(data_dir).stem}_publaynet")
-        train_data_dir = new_data_dir / "train"
+        train_data_dir = self.save_dir / "train"
         self.generate_full_one(train_list, train_data_dir, cls_info)
 
-        val_data_dir = new_data_dir / "val"
+        val_data_dir = self.save_dir / "val"
         self.generate_full_one(val_list, val_data_dir, cls_info)
 
         if self.have_test:
-            test_data_dir = new_data_dir / "test"
+            test_data_dir = self.save_dir / "test"
             self.generate_full_one(test_list, test_data_dir, cls_info)
+
+        print(f"Successfully convert, detail in {self.save_dir}")
 
     @staticmethod
     def verify_exists(file_path: Union[str, Path]) -> None:
         if not Path(file_path).exists():
             raise FileNotFoundError(f"The {file_path} is not exists!!!")
 
-    def get_train_val_test_list(self, data_dir: Union[Path, str]):
-        img_list = [p for p in Path(data_dir).iterdir() if p.suffix != ".txt"]
+    def get_train_val_test_list(
+        self,
+    ):
+        img_list = [p for p in self.data_dir.iterdir() if p.suffix != ".txt"]
         random.shuffle(img_list)
 
         len_img = len(img_list)

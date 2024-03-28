@@ -7,53 +7,53 @@ import shutil
 import time
 import warnings
 from pathlib import Path
-from typing import Union
+from typing import List, Tuple, Union
 
 import cv2
 from tqdm import tqdm
 
+ValueType = Union[str, Path, None]
+
 
 class YOLOV5ToCOCO:
-    def __init__(self, data_dir):
-        self.raw_data_dir = Path(data_dir)
+    def __init__(self, data_dir: ValueType = None, save_dir: ValueType = None):
+        self.data_dir = Path(data_dir)
 
-        self.verify_exists(self.raw_data_dir / "images")
-        self.verify_exists(self.raw_data_dir / "labels")
+        self.verify_exists(self.data_dir / "images")
+        self.verify_exists(self.data_dir / "labels")
 
-        save_dir_name = f"{Path(self.raw_data_dir).name}_COCO_format"
-        self.output_dir = self.raw_data_dir.parent / save_dir_name
-        self.mkdir(self.output_dir)
+        if save_dir is None:
+            save_dir = self.data_dir.parent / f"{Path(self.data_dir).name}_coco"
+        self.save_dir = save_dir
+        self.mkdir(self.save_dir)
 
         self._init_json()
 
-    def __call__(self, mode_list: list):
+    def __call__(self, mode_list: Tuple[str] = ("train", "val")):
         if not mode_list:
             raise ValueError("mode_list is empty!!")
 
         for mode in mode_list:
-            # Read the image txt.
-            txt_path = self.raw_data_dir / f"{mode}.txt"
+            txt_path = self.data_dir / f"{mode}.txt"
             self.verify_exists(txt_path)
             img_list = self.read_txt(txt_path)
             if mode == "train":
                 img_list = self.append_bg_img(img_list)
 
-            # Create the directory of saving the new image.
-            save_img_dir = self.output_dir / f"{mode}2017"
+            save_img_dir = self.save_dir / f"{mode}2017"
             self.mkdir(save_img_dir)
 
-            # Generate json file.
-            anno_dir = self.output_dir / "annotations"
+            anno_dir = self.save_dir / "annotations"
             self.mkdir(anno_dir)
 
             save_json_path = anno_dir / f"instances_{mode}2017.json"
             json_data = self.convert(img_list, save_img_dir, mode)
 
             self.write_json(save_json_path, json_data)
-        print(f"Successfully convert, detail in {self.output_dir}")
+        print(f"Successfully convert, detail in {self.save_dir}")
 
     def _init_json(self):
-        classes_path = self.raw_data_dir / "classes.txt"
+        classes_path = self.data_dir / "classes.txt"
         self.verify_exists(classes_path)
         self.categories = self._get_category(classes_path)
 
@@ -77,7 +77,7 @@ class YOLOV5ToCOCO:
         ]
 
     def append_bg_img(self, img_list):
-        bg_dir = self.raw_data_dir / "background_images"
+        bg_dir = self.data_dir / "background_images"
         if bg_dir.exists():
             bg_img_list = list(bg_dir.iterdir())
             for bg_img_path in bg_img_list:
@@ -103,7 +103,7 @@ class YOLOV5ToCOCO:
             image_dict = self.get_image_info(img_path, img_id, save_img_dir)
             images.append(image_dict)
 
-            label_path = self.raw_data_dir / "labels" / f"{Path(img_path).stem}.txt"
+            label_path = self.data_dir / "labels" / f"{Path(img_path).stem}.txt"
             annotation = self.get_annotation(
                 label_path, img_id, image_dict["height"], image_dict["width"]
             )
@@ -121,10 +121,10 @@ class YOLOV5ToCOCO:
 
     def get_image_info(self, img_path, img_id, save_img_dir):
         img_path = Path(img_path)
-        if self.raw_data_dir.as_posix() not in img_path.as_posix():
-            # relative path (relative to the raw_data_dir)
+        if self.data_dir.as_posix() not in img_path.as_posix():
+            # relative path (relative to the data_dir)
             # e.g. images/images(3).jpg
-            img_path = self.raw_data_dir / img_path
+            img_path = self.data_dir / img_path
 
         self.verify_exists(img_path)
 
@@ -231,7 +231,7 @@ class YOLOV5ToCOCO:
 def main():
     parser = argparse.ArgumentParser("Datasets converter from YOLOV5 to COCO")
     parser.add_argument(
-        "--data_dir", type=str, default="datasets/YOLOV5", help="Dataset root path"
+        "--data_dir", type=str, default="dataset/YOLOV5", help="Dataset root path"
     )
     parser.add_argument(
         "--mode_list", type=str, default="train,val", help="generate which mode"
