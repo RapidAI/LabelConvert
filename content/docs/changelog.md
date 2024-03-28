@@ -10,6 +10,11 @@ description: ""
 publishdate: "2023-09-08"
 ---
 
+#### 2024-03-28 v0.0.8 update:
+- 优化各个模块代码
+- 添加单元测试
+- 去除无效数据集文件
+
 #### 2023-11-01 v0.0.7 update:
 - 修复[Issue #9](https://github.com/RapidAI/LabelConvert/issues/9)
 

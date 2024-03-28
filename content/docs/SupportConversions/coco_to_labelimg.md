@@ -10,43 +10,57 @@ description: ""
 publishdate: "2022-09-30T05:33:22+01:00"
 ---
 
-- One-click conversion of COCO format data to labelImg labeled yolo format data.
-- COCO format directory structure（see `dataset/COCO_format` for details）：
-    ```text {linenos=table}
-    COCO_format
-    ├── annotations
-    │   ├── instances_train2017.json
-    │   └── instances_val2017.json
-    ├── train2017
-    │   ├── 000000000001.jpg
-    │   └── 000000000002.jpg
-    └── val2017
-        └── 000000000001.jpg
-    ```
-- Convert
-    ```bash {linenos=table}
-    coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format
-    ```
-  - `--data_dir`: the directory where the COCO format dataset is located. Default is `dataset/COCO_format`.
-  - `--save_dir`: Path to save the converted dataset. Default is `f"{data_dir.name}_labelImg_format"`
-- Converted directory structure (see `dataset/labelImg_format` for details):
-  ```text {linenos=table}
-  labelImg_format
-    ├── train
-    │   ├── 000000000001.jpg
-    │   ├── 000000000001.txt
-    │   ├── 000000000002.jpg
-    │   └── classes.txt
-    └── val
-        ├── 000000000001.jpg
-        ├── 000000000001.txt
-        └── classes.txt
-  ```
-- For the converted directory, you can directly use the [labelImg](https://github.com/tzutalin/labelImg)  library to open it directly and change the label. The specific commands are as follows:
-  ```bash {linenos=table}
-  $ cd dataset/labelImg_format
-  $ labelImg train train/classes.txt
+#### 简介
+将COCO格式数据集转换为可以直接用[labelImg](https://github.com/HumanSignal/labelImg)工具可视化标注的YOLO格式。
 
-  # or
-  $ labelImg val val/classes.txt
-  ```
+
+#### COCO格式如下：
+
+{{< alert text="具体结构示例文件，可移步：[COCO_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/COCO_dataset)" />}}
+
+```text {linenos=table}
+COCO_format
+├── annotations
+│   ├── instances_train2017.json
+│   └── instances_val2017.json
+├── train2017
+│   ├── 000000000001.jpg
+│   └── 000000000002.jpg
+└── val2017
+    └── 000000000001.jpg
+```
+
+#### 转换
+```bash {linenos=table}
+coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format
+```
+
+- `--data_dir`: COCO格式数据集所在目录。默认是`dataset/COCO_format`
+- `--save_dir`: 保存转换后的数据集目录。默认是COCO数据集同级目录下
+
+#### 转换后结构如下：
+
+{{< alert text="具体结构示例文件，可移步：[labelImg_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/labelImg_dataset)" />}}
+
+
+```text {linenos=table}
+labelImg_format
+  ├── train
+  │   ├── 000000000001.jpg
+  │   ├── 000000000001.txt
+  │   ├── 000000000002.jpg
+  │   └── classes.txt
+  └── val
+      ├── 000000000001.jpg
+      ├── 000000000001.txt
+      └── classes.txt
+```
+
+#### labelImg可视化
+```bash {linenos=table}
+$ cd dataset/labelImg_format
+$ labelImg train train/classes.txt
+
+# or
+$ labelImg val val/classes.txt
+```
