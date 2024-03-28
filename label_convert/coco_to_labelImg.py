@@ -29,7 +29,7 @@ class COCO2labelImg:
         self.verify_exists(self.train2017_dir)
         self.verify_exists(self.val2017_dir)
 
-        self.save_dir = save_dir
+        self.save_dir = Path(save_dir)
         if save_dir is None:
             self.save_dir = (
                 self.data_dir.parent / f"{self.data_dir.name}_labelImg_format"
