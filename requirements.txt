@@ -1,3 +1,4 @@
 opencv_python
 tqdm
 numpy
+PyYAML
