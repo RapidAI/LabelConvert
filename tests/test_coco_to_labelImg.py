@@ -14,7 +14,7 @@ from label_convert.coco_to_labelImg import COCOTolabelImg
 
 test_file_dir = cur_dir / "test_files"
 
-data_dir_name = "COCO_format"
+data_dir_name = "COCO_dataset"
 
 
 def test_normal():
