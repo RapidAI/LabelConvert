@@ -37,7 +37,10 @@ labelImg_to_publaynet --data_dir dataset/labelImg_dataset \ --val_ratio 0.2 \ --
       <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
       
       <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_to_labelimg/</guid>
-      <description>One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/COCO_format for details）： COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/COCO_format. --save_dir: Path to save the converted dataset. Default is f&amp;quot;{data_dir.name}_labelImg_format&amp;quot; Converted directory structure (see dataset/labelImg_format for details): labelImg_format ├── train │ ├── 000000000001.</description>
+      <description>简介 link将COCO格式数据集转换为可以直接用labelImg工具可视化标注的YOLO格式。
+COCO格式如下： link notifications 具体结构示例文件，可移步：COCO_dataset
+COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg 转换 link coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: COCO格式数据集所在目录。默认是dataset/COCO_format --save_dir: 保存转换后的数据集目录。默认是COCO数据集同级目录下 转换后结构如下： link notifications 具体结构示例文件，可移步：labelImg_dataset
+labelImg_format ├── train │ ├── 000000000001.jpg │ ├── 000000000001.txt │ ├── 000000000002.jpg │ └── classes.txt └── val ├── 000000000001.jpg ├── 000000000001.txt └── classes.txt labelImg可视化 link $ cd dataset/labelImg_format $ labelImg train train/classes.</description>
     </item>
     
     <item>
@@ -84,7 +87,7 @@ yolov5_yaml_to_coco --yaml_path dataset/YOLOV5_yaml/sample.yaml </description>
     </item>
     
     <item>
-      <title>Visualize COCO image</title>
+      <title>可视化COCO数据集</title>
       <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_visual/</link>
       <pubDate>Fri, 30 Sep 2022 05:33:22 +0100</pubDate>
       

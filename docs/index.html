@@ -147,7 +147,7 @@
                                     
                                         
                                         
-                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_visual/">Visualize COCO image</a></li>
+                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_visual/">可视化COCO数据集</a></li>
                                         
                                     
                                         
@@ -413,7 +413,7 @@
                 <div class="text-sm-start text-center mx-md-2">
                     <p class="mb-0">
                         
-                        © 2023 SWHL. Built with <a href="https://github.com/colinwilson/lotusdocs"><strong>Lotus Docs</strong></a>
+                        © 2024 SWHL. Built with <a href="https://github.com/colinwilson/lotusdocs"><strong>Lotus Docs</strong></a>
                     </p>
                 </div>
             </div>
@@ -690,8 +690,8 @@
                 id:  3 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/coco_to_labelimg\/",
                 title: "COCO → labelImg yolo",
-                description: "One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/COCO_format for details）： COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/COCO_format. --save_dir: Path to save the converted dataset. Default is f\"{data_dir.name}_labelImg_format\" Converted directory structure (see dataset/labelImg_format for details): labelImg_format ├── train │ ├── 000000000001.",
-                content: " One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/COCO_format for details）： COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/COCO_format. --save_dir: Path to save the converted dataset. Default is f\"{data_dir.name}_labelImg_format\" Converted directory structure (see dataset/labelImg_format for details): labelImg_format ├── train │ ├── 000000000001.jpg │ ├── 000000000001.txt │ ├── 000000000002.jpg │ └── classes.txt └── val ├── 000000000001.jpg ├── 000000000001.txt └── classes.txt For the converted directory, you can directly use the labelImg library to open it directly and change the label. The specific commands are as follows: $ cd dataset/labelImg_format $ labelImg train train/classes.txt # or $ labelImg val val/classes.txt "
+                description: "简介 link将COCO格式数据集转换为可以直接用labelImg工具可视化标注的YOLO格式。\nCOCO格式如下： link notifications 具体结构示例文件，可移步：COCO_dataset\nCOCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg 转换 link coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: COCO格式数据集所在目录。默认是dataset/COCO_format --save_dir: 保存转换后的数据集目录。默认是COCO数据集同级目录下 转换后结构如下： link notifications 具体结构示例文件，可移步：labelImg_dataset\nlabelImg_format ├── train │ ├── 000000000001.jpg │ ├── 000000000001.txt │ ├── 000000000002.jpg │ └── classes.txt └── val ├── 000000000001.jpg ├── 000000000001.txt └── classes.txt labelImg可视化 link $ cd dataset/labelImg_format $ labelImg train train/classes.",
+                content: "简介 link将COCO格式数据集转换为可以直接用labelImg工具可视化标注的YOLO格式。\nCOCO格式如下： link notifications 具体结构示例文件，可移步：COCO_dataset\nCOCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg 转换 link coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: COCO格式数据集所在目录。默认是dataset/COCO_format --save_dir: 保存转换后的数据集目录。默认是COCO数据集同级目录下 转换后结构如下： link notifications 具体结构示例文件，可移步：labelImg_dataset\nlabelImg_format ├── train │ ├── 000000000001.jpg │ ├── 000000000001.txt │ ├── 000000000002.jpg │ └── classes.txt └── val ├── 000000000001.jpg ├── 000000000001.txt └── classes.txt labelImg可视化 link $ cd dataset/labelImg_format $ labelImg train train/classes.txt # or $ labelImg val val/classes.txt "
             }
         );
     index.add(
@@ -717,8 +717,8 @@
                 id:  6 ,
                 href: "\/LabelConvert\/docs\/overview\/",
                 title: "Overview",
-                description: "Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats. Supported conversions linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A B --\u003e D E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D G(labelme) --\u003e D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.",
-                content: " Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.\nSupported conversions linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A B --\u003e D E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D G(labelme) --\u003e D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.\nPlease make sure to update tests as appropriate.\n"
+                description: " 目标检测和图像分割的数据集格式转换工具，支持labelme、labelImg与YOLO、VOC和COCO 数据集格式之间的相互转换。 支持的转换 linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A B --\u003e D E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D G(labelme) --\u003e D 安装 link pip install label_convert ",
+                content: " 目标检测和图像分割的数据集格式转换工具，支持labelme、labelImg与YOLO、VOC和COCO 数据集格式之间的相互转换。\n支持的转换 linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A B --\u003e D E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D G(labelme) --\u003e D 安装 link pip install label_convert "
             }
         );
     index.add(
@@ -744,8 +744,8 @@
                 id:  9 ,
                 href: "\/LabelConvert\/docs\/changelog\/",
                 title: "Changelog",
-                description: "2023-11-01 v0.0.7 update: link 修复Issue #9 2023-11-01 v0.0.6 update: link 添加labelme_to_coco的支持，详情参见：labelme_to_coco 2023-10-25 v0.0.4~v0.0.5 update: link 修复命令行模式下，参数类型错误 更新文档内容，优化文档表达 2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. ",
-                content: "2023-11-01 v0.0.7 update: link 修复Issue #9 2023-11-01 v0.0.6 update: link 添加labelme_to_coco的支持，详情参见：labelme_to_coco 2023-10-25 v0.0.4~v0.0.5 update: link 修复命令行模式下，参数类型错误 更新文档内容，优化文档表达 2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. "
+                description: "2024-03-28 v0.0.8 update: link 优化各个模块代码 添加单元测试 去除无效数据集文件 2023-11-01 v0.0.7 update: link 修复Issue #9 2023-11-01 v0.0.6 update: link 添加labelme_to_coco的支持，详情参见：labelme_to_coco 2023-10-25 v0.0.4~v0.0.5 update: link 修复命令行模式下，参数类型错误 更新文档内容，优化文档表达 2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. ",
+                content: "2024-03-28 v0.0.8 update: link 优化各个模块代码 添加单元测试 去除无效数据集文件 2023-11-01 v0.0.7 update: link 修复Issue #9 2023-11-01 v0.0.6 update: link 添加labelme_to_coco的支持，详情参见：labelme_to_coco 2023-10-25 v0.0.4~v0.0.5 update: link 修复命令行模式下，参数类型错误 更新文档内容，优化文档表达 2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. "
             }
         );
     index.add(
@@ -761,7 +761,7 @@
             {
                 id:  11 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/coco_visual\/",
-                title: "Visualize COCO image",
+                title: "可视化COCO数据集",
                 description: " coco_visual --vis_num 1 \\ --json_path dataset/COCO_format/annotations/instances_train2017.json \\ --img_dir dataset/COCO_format/train2017 --vis_num: specify the index of the image to be viewed --json_path: path to the json file of the image to view --img_dir: view the directory where the image is located ",
                 content: " coco_visual --vis_num 1 \\ --json_path dataset/COCO_format/annotations/instances_train2017.json \\ --img_dir dataset/COCO_format/train2017 --vis_num: specify the index of the image to be viewed --json_path: path to the json file of the image to view --img_dir: view the directory where the image is located "
             }

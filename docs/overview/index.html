@@ -33,16 +33,16 @@
 <link rel="icon" type="image/png" sizes="16x16" href="https://rapidai.github.io/LabelConvert/favicon-16x16.png">
 <link rel="manifest" crossorigin="use-credentials" href="https://rapidai.github.io/LabelConvert/site.webmanifest">
 <meta property="og:title" content="Overview" />
-<meta property="og:description" content="Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.
-Supported conversions linkflowchart LR A(labelImg) --&gt; B(YOLOv5) A --&gt; C(PubLayNet) D(COCO) --&gt; A B --&gt; D E(YOLOv5 YAML) --&gt; D F(darknet) --&gt; D G(labelme) --&gt; D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change." />
+<meta property="og:description" content=" 目标检测和图像分割的数据集格式转换工具，支持labelme、labelImg与YOLO、VOC和COCO 数据集格式之间的相互转换。
+支持的转换 linkflowchart LR A(labelImg) --&gt; B(YOLOv5) A --&gt; C(PubLayNet) D(COCO) --&gt; A B --&gt; D E(YOLOv5 YAML) --&gt; D F(darknet) --&gt; D G(labelme) --&gt; D 安装 link pip install label_convert " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://rapidai.github.io/LabelConvert/docs/overview/" /><meta property="og:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_16313774277857495356.png"/><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-09-08T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-10-31T22:26:25+08:00" /><meta name="twitter:card" content="summary_large_image"/>
+<meta property="article:modified_time" content="2024-03-28T22:31:33+08:00" /><meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_16313774277857495356.png"/>
 <meta name="twitter:title" content="Overview"/>
-<meta name="twitter:description" content="Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.
-Supported conversions linkflowchart LR A(labelImg) --&gt; B(YOLOv5) A --&gt; C(PubLayNet) D(COCO) --&gt; A B --&gt; D E(YOLOv5 YAML) --&gt; D F(darknet) --&gt; D G(labelme) --&gt; D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change."/>
+<meta name="twitter:description" content=" 目标检测和图像分割的数据集格式转换工具，支持labelme、labelImg与YOLO、VOC和COCO 数据集格式之间的相互转换。
+支持的转换 linkflowchart LR A(labelImg) --&gt; B(YOLOv5) A --&gt; C(PubLayNet) D(COCO) --&gt; A B --&gt; D E(YOLOv5 YAML) --&gt; D F(darknet) --&gt; D G(labelme) --&gt; D 安装 link pip install label_convert "/>
 
     
     <script>(()=>{var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,e=localStorage.getItem("theme");t&&e===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),t&&e==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),e==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script>
@@ -151,7 +151,7 @@ Supported conversions linkflowchart LR A(labelImg) --&gt; B(YOLOv5) A --&gt; C(P
                                     
                                         
                                         
-                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_visual/">Visualize COCO image</a></li>
+                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_visual/">可视化COCO数据集</a></li>
                                         
                                     
                                         
@@ -337,11 +337,10 @@ Supported conversions linkflowchart LR A(labelImg) --&gt; B(YOLOv5) A --&gt; C(P
   <ul>
     <li>
       <ul>
-        <li><a href="#label-convert">Label Convert</a>
+        <li>
           <ul>
-            <li><a href="#supported-conversions">Supported conversions</a></li>
-            <li><a href="#installation">Installation</a></li>
-            <li><a href="#contributing">Contributing</a></li>
+            <li><a href="#支持的转换">支持的转换</a></li>
+            <li><a href="#安装">安装</a></li>
           </ul>
         </li>
       </ul>
@@ -359,11 +358,10 @@ Supported conversions linkflowchart LR A(labelImg) --&gt; B(YOLOv5) A --&gt; C(P
   <ul class="dropdown-menu">
     <li>
       <ul>
-        <li><a href="#label-convert">Label Convert</a>
+        <li>
           <ul>
-            <li><a href="#supported-conversions">Supported conversions</a></li>
-            <li><a href="#installation">Installation</a></li>
-            <li><a href="#contributing">Contributing</a></li>
+            <li><a href="#支持的转换">支持的转换</a></li>
+            <li><a href="#安装">安装</a></li>
           </ul>
         </li>
       </ul>
@@ -386,21 +384,22 @@ Supported conversions linkflowchart LR A(labelImg) --&gt; B(YOLOv5) A --&gt; C(P
     
     <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
         <div align="center">
-  <img src="https://github.com/RapidAI/LabelConvert/releases/download/v0/LabelConvertv3.png" width="55%" height="55%"/>
+  <div align="center">
+    <img src="https://github.com/RapidAI/LabelConvert/releases/download/v0/LabelConvertv3.png" width="55%" height="55%"/>
+  </div>
+  <br/>
+<p><a href=""><img src="https://img.shields.io/badge/Python->=3.6,<3.12-aff.svg"></a>
+<a href=""><img src="https://img.shields.io/badge/OS-Linux%2C%20Win%2C%20Mac-pink.svg"></a>
+<a href="https://github.com/RapidAI/LabelConvert/graphs/contributors"><img src="https://img.shields.io/github/contributors/RapidAI/LabelConvert?color=9ea"></a>
+<a href="https://github.com/RapidAI/LabelConvert/stargazers"><img src="https://img.shields.io/github/stars/RapidAI/LabelConvert?color=ccf" ></a>
+<a href="https://pepy.tech/project/label_convert"><img src="https://static.pepy.tech/badge/label_convert?period=total&units=abbreviation&left_color=grey&right_color=blue&left_text=Downloads"></a>
+<a href="https://pypi.org/project/label_convert/"><img alt="PyPI" src="https://img.shields.io/pypi/v/label_convert"></a>
+<a href="https://choosealicense.com/licenses/apache-2.0/"><img src="https://img.shields.io/badge/License-Apache%202-dfd.svg"></a>
+<a href="https://semver.org/"><img alt="SemVer2.0" src="https://img.shields.io/badge/SemVer-2.0-brightgreen"></a>
+<a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg"></a></p>
 </div>
-<h2 id="label-convert">Label Convert <a href="#label-convert" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h2><p align="left">
-    <a href=""><img src="https://img.shields.io/badge/Python->=3.6,<3.12-aff.svg"></a>
-    <a href=""><img src="https://img.shields.io/badge/OS-Linux%2C%20Win%2C%20Mac-pink.svg"></a>
-    <a href="https://github.com/RapidAI/LabelConvert/graphs/contributors"><img src="https://img.shields.io/github/contributors/RapidAI/LabelConvert?color=9ea"></a>
-    <a href="https://github.com/RapidAI/LabelConvert/stargazers"><img src="https://img.shields.io/github/stars/RapidAI/LabelConvert?color=ccf" ></a>
-    <a href="https://pepy.tech/project/label_convert"><img src="https://static.pepy.tech/badge/label_convert?period=total&units=abbreviation&left_color=grey&right_color=blue&left_text=Downloads"></a>
-    <a href="https://pypi.org/project/label_convert/"><img alt="PyPI" src="https://img.shields.io/pypi/v/label_convert"></a>
-    <a href="https://choosealicense.com/licenses/apache-2.0/"><img src="https://img.shields.io/badge/License-Apache%202-dfd.svg"></a>
-    <a href="https://semver.org/"><img alt="SemVer2.0" src="https://img.shields.io/badge/SemVer-2.0-brightgreen"></a>
-    <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
-</p>
-<p>A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between <strong>labelme, labelImg tools and YOLO, VOC, and COCO</strong> dataset formats.</p>
-<h3 id="supported-conversions">Supported conversions <a href="#supported-conversions" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><pre class="mermaid">flowchart LR
+<p>目标检测和图像分割的数据集格式转换工具，支持<strong>labelme、labelImg与YOLO、VOC和COCO</strong> 数据集格式之间的相互转换。</p>
+<h3 id="支持的转换">支持的转换 <a href="#%e6%94%af%e6%8c%81%e7%9a%84%e8%bd%ac%e6%8d%a2" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><pre class="mermaid">flowchart LR
 
 A(labelImg) --&gt; B(YOLOv5)
 A --&gt; C(PubLayNet)
@@ -410,7 +409,7 @@ E(YOLOv5 YAML) --&gt; D
 F(darknet) --&gt; D
 G(labelme) --&gt; D
 </pre>
-<h3 id="installation">Installation <a href="#installation" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3>
+<h3 id="安装">安装 <a href="#%e5%ae%89%e8%a3%85" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3>
 
 
   
@@ -432,9 +431,6 @@ G(labelme) --&gt; D
   <code>pip install label_convert</code>
   </pre>
   </div>
-<h3 id="contributing">Contributing <a href="#contributing" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h3><p>Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.</p>
-<p>Please make sure to update tests as appropriate.</p>
 
     </div>
 
@@ -472,9 +468,9 @@ to discuss what you would like to change.</p>
     <div id="last-modified" class="mt-1">
         <p class="mb-0 fw-semibold">Last updated <span
             id="relativetime"
-            data-authdate="2023-10-31T22:26:25&#43;0800"
-            title="31 Oct 2023, 22:26 &#43;0800">
-            31 Oct 2023, 22:26 &#43;0800
+            data-authdate="2024-03-28T22:31:33&#43;0800"
+            title="28 Mar 2024, 22:31 &#43;0800">
+            28 Mar 2024, 22:31 &#43;0800
         </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
         </p>
     </div>
@@ -486,7 +482,7 @@ to discuss what you would like to change.</p>
     
         
     
-    <script src="/LabelConvert/docs/js/mermaid.min.23930b91c7738617bc6a0297457d45441f5c94750458c821d3aa2048ec33906c512e83c4c6bb66d27490da3bb4079b9b.js" integrity="sha384-I5MLkcdzhhe8agKXRX1FRB9clHUEWMgh06ogSOwzkGxRLoPExrtm0nSQ2ju0B5ub"></script>
+    <script src="/LabelConvert/docs/js/mermaid.min.a4a583544e57b0ee421947966ee3a1ece84217be936d80e4ebb1ab6e798219816de5512403f79735bfef34e4d955e6cd.js" integrity="sha384-pKWDVE5XsO5CGUeWbuOh7OhCF76TbYDk67GrbnmCGYFt5VEkA/eXNb/vNOTZVebN"></script>
     <script>
         const config = {
             startOnLoad:true,
@@ -539,7 +535,7 @@ to discuss what you would like to change.</p>
                 <div class="text-sm-start text-center mx-md-2">
                     <p class="mb-0">
                         
-                        © 2023 SWHL. Built with <a href="https://github.com/colinwilson/lotusdocs"><strong>Lotus Docs</strong></a>
+                        © 2024 SWHL. Built with <a href="https://github.com/colinwilson/lotusdocs"><strong>Lotus Docs</strong></a>
                     </p>
                 </div>
             </div>
@@ -816,8 +812,8 @@ to discuss what you would like to change.</p>
                 id:  3 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/coco_to_labelimg\/",
                 title: "COCO → labelImg yolo",
-                description: "One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/COCO_format for details）： COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/COCO_format. --save_dir: Path to save the converted dataset. Default is f\"{data_dir.name}_labelImg_format\" Converted directory structure (see dataset/labelImg_format for details): labelImg_format ├── train │ ├── 000000000001.",
-                content: " One-click conversion of COCO format data to labelImg labeled yolo format data. COCO format directory structure（see dataset/COCO_format for details）： COCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg Convert coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: the directory where the COCO format dataset is located. Default is dataset/COCO_format. --save_dir: Path to save the converted dataset. Default is f\"{data_dir.name}_labelImg_format\" Converted directory structure (see dataset/labelImg_format for details): labelImg_format ├── train │ ├── 000000000001.jpg │ ├── 000000000001.txt │ ├── 000000000002.jpg │ └── classes.txt └── val ├── 000000000001.jpg ├── 000000000001.txt └── classes.txt For the converted directory, you can directly use the labelImg library to open it directly and change the label. The specific commands are as follows: $ cd dataset/labelImg_format $ labelImg train train/classes.txt # or $ labelImg val val/classes.txt "
+                description: "简介 link将COCO格式数据集转换为可以直接用labelImg工具可视化标注的YOLO格式。\nCOCO格式如下： link notifications 具体结构示例文件，可移步：COCO_dataset\nCOCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg 转换 link coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: COCO格式数据集所在目录。默认是dataset/COCO_format --save_dir: 保存转换后的数据集目录。默认是COCO数据集同级目录下 转换后结构如下： link notifications 具体结构示例文件，可移步：labelImg_dataset\nlabelImg_format ├── train │ ├── 000000000001.jpg │ ├── 000000000001.txt │ ├── 000000000002.jpg │ └── classes.txt └── val ├── 000000000001.jpg ├── 000000000001.txt └── classes.txt labelImg可视化 link $ cd dataset/labelImg_format $ labelImg train train/classes.",
+                content: "简介 link将COCO格式数据集转换为可以直接用labelImg工具可视化标注的YOLO格式。\nCOCO格式如下： link notifications 具体结构示例文件，可移步：COCO_dataset\nCOCO_format ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg 转换 link coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format --data_dir: COCO格式数据集所在目录。默认是dataset/COCO_format --save_dir: 保存转换后的数据集目录。默认是COCO数据集同级目录下 转换后结构如下： link notifications 具体结构示例文件，可移步：labelImg_dataset\nlabelImg_format ├── train │ ├── 000000000001.jpg │ ├── 000000000001.txt │ ├── 000000000002.jpg │ └── classes.txt └── val ├── 000000000001.jpg ├── 000000000001.txt └── classes.txt labelImg可视化 link $ cd dataset/labelImg_format $ labelImg train train/classes.txt # or $ labelImg val val/classes.txt "
             }
         );
     index.add(
@@ -843,8 +839,8 @@ to discuss what you would like to change.</p>
                 id:  6 ,
                 href: "\/LabelConvert\/docs\/overview\/",
                 title: "Overview",
-                description: "Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats. Supported conversions linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A B --\u003e D E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D G(labelme) --\u003e D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.",
-                content: " Label Convert link A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.\nSupported conversions linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A B --\u003e D E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D G(labelme) --\u003e D Installation link pip install label_convert Contributing linkPull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.\nPlease make sure to update tests as appropriate.\n"
+                description: " 目标检测和图像分割的数据集格式转换工具，支持labelme、labelImg与YOLO、VOC和COCO 数据集格式之间的相互转换。 支持的转换 linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A B --\u003e D E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D G(labelme) --\u003e D 安装 link pip install label_convert ",
+                content: " 目标检测和图像分割的数据集格式转换工具，支持labelme、labelImg与YOLO、VOC和COCO 数据集格式之间的相互转换。\n支持的转换 linkflowchart LR A(labelImg) --\u003e B(YOLOv5) A --\u003e C(PubLayNet) D(COCO) --\u003e A B --\u003e D E(YOLOv5 YAML) --\u003e D F(darknet) --\u003e D G(labelme) --\u003e D 安装 link pip install label_convert "
             }
         );
     index.add(
@@ -870,8 +866,8 @@ to discuss what you would like to change.</p>
                 id:  9 ,
                 href: "\/LabelConvert\/docs\/changelog\/",
                 title: "Changelog",
-                description: "2023-11-01 v0.0.7 update: link 修复Issue #9 2023-11-01 v0.0.6 update: link 添加labelme_to_coco的支持，详情参见：labelme_to_coco 2023-10-25 v0.0.4~v0.0.5 update: link 修复命令行模式下，参数类型错误 更新文档内容，优化文档表达 2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. ",
-                content: "2023-11-01 v0.0.7 update: link 修复Issue #9 2023-11-01 v0.0.6 update: link 添加labelme_to_coco的支持，详情参见：labelme_to_coco 2023-10-25 v0.0.4~v0.0.5 update: link 修复命令行模式下，参数类型错误 更新文档内容，优化文档表达 2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. "
+                description: "2024-03-28 v0.0.8 update: link 优化各个模块代码 添加单元测试 去除无效数据集文件 2023-11-01 v0.0.7 update: link 修复Issue #9 2023-11-01 v0.0.6 update: link 添加labelme_to_coco的支持，详情参见：labelme_to_coco 2023-10-25 v0.0.4~v0.0.5 update: link 修复命令行模式下，参数类型错误 更新文档内容，优化文档表达 2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. ",
+                content: "2024-03-28 v0.0.8 update: link 优化各个模块代码 添加单元测试 去除无效数据集文件 2023-11-01 v0.0.7 update: link 修复Issue #9 2023-11-01 v0.0.6 update: link 添加labelme_to_coco的支持，详情参见：labelme_to_coco 2023-10-25 v0.0.4~v0.0.5 update: link 修复命令行模式下，参数类型错误 更新文档内容，优化文档表达 2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. "
             }
         );
     index.add(
@@ -887,7 +883,7 @@ to discuss what you would like to change.</p>
             {
                 id:  11 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/coco_visual\/",
-                title: "Visualize COCO image",
+                title: "可视化COCO数据集",
                 description: " coco_visual --vis_num 1 \\ --json_path dataset/COCO_format/annotations/instances_train2017.json \\ --img_dir dataset/COCO_format/train2017 --vis_num: specify the index of the image to be viewed --json_path: path to the json file of the image to view --img_dir: view the directory where the image is located ",
                 content: " coco_visual --vis_num 1 \\ --json_path dataset/COCO_format/annotations/instances_train2017.json \\ --img_dir dataset/COCO_format/train2017 --vis_num: specify the index of the image to be viewed --json_path: path to the json file of the image to view --img_dir: view the directory where the image is located "
             }
