@@ -2,9 +2,7 @@
 # @Author: SWHL
 # @Contact: liekkaskono@163.com
 import argparse
-import glob
 import json
-import os
 import shutil
 import time
 from pathlib import Path
@@ -29,43 +27,50 @@ class YOLOV5CfgToCOCO:
             self.cfg = yaml.safe_load(f)
 
         self.data_dir = Path(self.cfg.get("path"))
-        self.train_path = self.data_dir / self.cfg.get("train")
-        self.val_path = self.data_dir / self.cfg.get("val")
+        self.train_dir = self.data_dir / self.cfg.get("train")[0]
+        self.val_dir = self.data_dir / self.cfg.get("val")[0]
 
         nc = self.cfg.get("nc")
         self.names = self.cfg.get("names")
         assert nc == len(self.names)
 
         if save_dir is None:
-            save_dir = self.data_dir / f"{self.data_dir.name}_coco"
+            save_dir = self.data_dir.parent / f"{self.data_dir.name}_coco"
         self.save_dir = Path(save_dir)
 
-        self.train_dir = self.save_dir / "train2017"
-        self.val_dir = self.save_dir / "val2017"
+        self.coco_train_dir = self.save_dir / "train2017"
+        self.coco_val_dir = self.save_dir / "val2017"
         self.anno_dir = self.save_dir / "annotations"
 
-        self.train_json = self.anno_dir / f"instances_{self.train_dir}.json"
-        self.val_json = self.anno_dir / f"instances_{self.val_dir}.json"
+        self.train_json = self.anno_dir / f"instances_{self.coco_train_dir.name}.json"
+        self.val_json = self.anno_dir / f"instances_{self.coco_val_dir.name}.json"
 
-        self.mkdir(self.train_dir)
-        self.mkdir(self.val_dir)
+        self.mkdir(self.coco_train_dir)
+        self.mkdir(self.coco_val_dir)
         self.mkdir(self.anno_dir)
 
         self._init_json()
 
+        self.IMG_FORMATS = [
+            "bmp",
+            "dng",
+            "jpeg",
+            "jpg",
+            "mpo",
+            "png",
+            "tif",
+            "tiff",
+            "webp",
+        ]
+
     def __call__(self):
-        self.train_files = self.get_files(self.train_path)
-        self.valid_files = self.get_files(self.val_path)
+        train_imgs = self.get_img_list(self.train_dir)
+        self.gen_dataset(train_imgs, self.coco_train_dir, self.train_json, mode="train")
 
-        train_dest_dir = Path(self.save_dir) / self.train_dir
-        self.gen_dataset(
-            self.train_files, train_dest_dir, self.train_json, mode="train"
-        )
+        val_imgs = self.get_img_list(self.val_dir)
+        self.gen_dataset(val_imgs, self.coco_val_dir, self.val_json, mode="val")
 
-        val_dest_dir = Path(self.save_dir) / self.val_dir
-        self.gen_dataset(self.valid_files, val_dest_dir, self.val_json, mode="val")
-
-        print(f"The output directory is: {self.save_dir}")
+        print(f"Successfully convert, detail in {self.save_dir}")
 
     def _init_json(self):
         self.type = "instances"
@@ -88,27 +93,8 @@ class YOLOV5CfgToCOCO:
             }
         ]
 
-    def get_files(self, path):
-        IMG_FORMATS = ["bmp", "dng", "jpeg", "jpg", "mpo", "png", "tif", "tiff", "webp"]
-        f = []
-        for p in path:
-            p = Path(p)
-            if p.is_dir():
-                f += glob.glob(str(p / "**" / "*.*"), recursive=True)
-            elif p.is_file():  # file
-                with open(p, "r", encoding="utf-8") as t:
-                    t = t.read().strip().splitlines()
-                    parent = str(p.parent) + os.sep
-                    f += [
-                        x.replace("./", parent) if x.startswith("./") else x for x in t
-                    ]
-            else:
-                raise FileExistsError(f"{p} does not exist")
-
-        im_files = sorted(
-            x.replace("/", os.sep) for x in f if x.split(".")[-1].lower() in IMG_FORMATS
-        )
-        return im_files
+    def get_img_list(self, data_dir: Path):
+        return list(data_dir.rglob("*.*"))
 
     def _get_data_dir(self, mode):
         data_dir = self.cfg.get(mode)
@@ -136,22 +122,11 @@ class YOLOV5CfgToCOCO:
         return categories
 
     def gen_dataset(self, img_paths, target_img_path, target_json, mode):
-        images = []
-        annotations = []
-        sa, sb = (
-            os.sep + "images" + os.sep,
-            os.sep + "labels" + os.sep,
-        )  # /images/, /labels/ substrings
-
+        images, annotations = [], []
         for img_id, img_path in enumerate(tqdm(img_paths, desc=mode), 1):
-            label_path = sb.join(img_path.rsplit(sa, 1)).rsplit(".", 1)[0] + ".txt"
-
-            img_path = Path(img_path)
-
             self.verify_exists(img_path)
-
-            imgsrc = cv2.imread(str(img_path))
-            height, width = imgsrc.shape[:2]
+            img = cv2.imread(str(img_path))
+            height, width = img.shape[:2]
 
             dest_file_name = f"{img_id:012d}.jpg"
             save_img_path = target_img_path / dest_file_name
@@ -159,7 +134,7 @@ class YOLOV5CfgToCOCO:
             if img_path.suffix.lower() == ".jpg":
                 shutil.copyfile(img_path, save_img_path)
             else:
-                cv2.imwrite(str(save_img_path), imgsrc)
+                cv2.imwrite(str(save_img_path), img)
 
             images.append(
                 {
@@ -171,14 +146,15 @@ class YOLOV5CfgToCOCO:
                 }
             )
 
-            if Path(label_path).exists():
-                new_anno = self.read_annotation(label_path, img_id, height, width)
-                if len(new_anno) > 0:
-                    annotations.extend(new_anno)
-                else:
-                    raise ValueError(f"{label_path} is empty")
-            else:
+            label_name = f"{img_path.stem}.txt"
+            label_path = self.data_dir / "labels" / img_path.parent.name / label_name
+            if not label_path.exists():
                 raise FileNotFoundError(f"{label_path} not exists")
+
+            new_anno = self.read_annotation(label_path, img_id, height, width)
+            if len(new_anno) <= 0:
+                raise ValueError(f"{label_path} is empty")
+            annotations.extend(new_anno)
 
         json_data = {
             "info": self.info,
@@ -195,7 +171,6 @@ class YOLOV5CfgToCOCO:
         annotation = []
         all_info = self.read_txt(txt_file)
         for label_info in all_info:
-            # 遍历一张图中不同标注对象
             label_info = label_info.split(" ")
             if len(label_info) < 5:
                 continue
