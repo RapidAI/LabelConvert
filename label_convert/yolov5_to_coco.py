@@ -7,7 +7,7 @@ import shutil
 import time
 import warnings
 from pathlib import Path
-from typing import List, Union
+from typing import List, Tuple, Union
 
 import cv2
 from tqdm import tqdm
@@ -29,7 +29,7 @@ class YOLOV5ToCOCO:
 
         self._init_json()
 
-    def __call__(self, mode_list: List[str] = ["train", "val"]):
+    def __call__(self, mode_list: Tuple[str] = ("train", "val")):
         if not mode_list:
             raise ValueError("mode_list is empty!!")
 
