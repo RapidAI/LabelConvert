@@ -18,7 +18,9 @@
 
 ## Introduction
 
-A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between **labelme, labelImg tools and YOLO, VOC, and COCO** dataset formats.
+A tool for object detection and image segmentation dataset format conversion. 
+
+Supports conversion between labelme tool annotated data, labelImg tool annotated data, YOLO, PubLayNet and COCO data set formats.
 
 ## Supported conversions
 ```mermaid
