@@ -1,27 +1,52 @@
 ---
 weight: 50
-date: "2022-09-30T05:33:22+01:00"
+date: "2022-09-30"
 draft: false
 author: "SWHL"
-title: "darknet → COCO"
+title: "Darknet → COCO"
 icon: "circle"
 toc: true
 description: ""
-publishdate: "2022-09-30T05:33:22+01:00"
+publishdate: "2022-09-30"
 ---
 
-- Darknet training data directory structure (see `dataset/darknet` for details).
-    ```text {linenos=table}
-    darknet
-    ├── class.names
-    ├── gen_config.data
-    ├── gen_train.txt
-    ├── gen_valid.txt
-    └── images
-        ├── train
-        └── valid
-    ```
-- Convert
-    ```bash {linenos=table}
-    darknet_to_coco --data_path dataset/darknet/gen_config.data
-    ```
+
+#### 简介
+将Darnet格式数据集转化为COCO格式数据集。
+
+
+#### Darknet结构如下：
+
+{{< alert text="具体结构示例文件，可移步：[darknet_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/darknet_dataset)" />}}
+
+```text {linenos=table}
+darknet_dataset
+├── class.names
+├── gen_config.data
+├── gen_train.txt
+├── gen_valid.txt
+└── images
+    ├── train
+    └── valid
+```
+
+#### 转换
+```bash {linenos=table}
+darknet_to_coco --data_path dataset/darknet/gen_config.data
+```
+
+#### 转换后结构如下：
+
+{{< alert text="具体结构示例文件，可移步：[COCO_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/COCO_dataset)" />}}
+
+```text {linenos=table}
+COCO_dataset
+├── annotations
+│   ├── instances_train2017.json
+│   └── instances_val2017.json
+├── train2017
+│   ├── 000000000001.jpg
+│   └── 000000000002.jpg
+└── val2017
+    └── 000000000001.jpg
+```

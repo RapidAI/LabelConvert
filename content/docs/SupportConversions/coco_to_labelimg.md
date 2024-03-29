@@ -1,20 +1,20 @@
 ---
 weight: 20
-date: "2022-09-30T05:33:22+01:00"
+date: "2022-09-30"
 draft: false
 author: "SWHL"
 title: "COCO → labelImg yolo"
 icon: "circle"
 toc: true
 description: ""
-publishdate: "2022-09-30T05:33:22+01:00"
+publishdate: "2022-09-30"
 ---
 
 #### 简介
 将COCO格式数据集转换为可以直接用[labelImg](https://github.com/HumanSignal/labelImg)工具可视化标注的YOLO格式。
 
 
-#### COCO格式如下：
+#### COCO结构如下：
 
 {{< alert text="具体结构示例文件，可移步：[COCO_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/COCO_dataset)" />}}
 

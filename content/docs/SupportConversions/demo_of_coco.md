@@ -1,13 +1,13 @@
 ---
 weight: 70
-date: "2022-09-30T05:33:22+01:00"
+date: "2022-09-30"
 draft: false
 author: "SWHL"
-title: "Demo of COCO json"
+title: "COCO格式JSON示例"
 icon: "circle"
 toc: true
 description: ""
-publishdate: "2022-09-30T05:33:22+01:00"
+publishdate: "2022-09-30"
 ---
 
 

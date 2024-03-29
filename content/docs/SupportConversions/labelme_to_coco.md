@@ -14,9 +14,12 @@ publishdate: "2023-10-31"
 #### 简介
 一键转换[labelme](https://github.com/wkentaro/labelme)标注的数据格式为COCO格式
 
-#### labelme标注后目录结构
+#### labelme结构如下：
+
+{{< alert text="具体结构示例文件，可移步：[labelme_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/labelme_dataset)" />}}
+
 ```text {linenos=table}
-dataset/labelme_dataset
+labelme_dataset
 ├── val_0001.jpg
 ├── val_0001.json
 ├── val_0002.jpg
@@ -37,11 +40,13 @@ labelme_to_coco --src_dir dataset/labelme_dataset \
 - `--have_test`: 是否划出测试集，默认是False，如果想要划分测试集，直接加上该参数即可。
 - `--test_ratio`: 测试集的比例，默认是总量的0.2
 
-#### 转换后的目录结构
-详情参见：[COCO_format](https://github.com/RapidAI/LabelConvert/tree/d364199d87e13dd8267efc41cb4a5ea2bb0a370c/dataset/COCO_format)
+#### 转换后结构如下：
+
+{{< alert text="具体结构示例文件，可移步：[COCO_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/COCO_dataset)" />}}
+
 
 ```text
-dataset/COCO_format
+COCO_dataset
 ├── annotations
 │   ├── instances_train2017.json
 │   └── instances_val2017.json
@@ -49,4 +54,5 @@ dataset/COCO_format
 │   ├── 000000000001.jpg
 │   └── 000000000002.jpg
 └── val2017
+    └── 000000000002.jpg
 ```

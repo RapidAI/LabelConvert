@@ -3,7 +3,7 @@ weight: 43
 date: "2023-09-15"
 draft: false
 author: "SWHL"
-title: "Changelog"
+title: "更新日志"
 icon: "update"
 toc: true
 description: ""
