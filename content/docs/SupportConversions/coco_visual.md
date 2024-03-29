@@ -17,6 +17,6 @@ coco_visual --vis_num 1 \
             --img_dir dataset/COCO_format/train2017
 ```
 
-- `--vis_num`: specify the index of the image to be viewed
-- `--json_path`: path to the json file of the image to view
-- `--img_dir`: view the directory where the image is located
+- `--vis_num`: 指定显示图像的索引值
+- `--json_path`: 图像所在的json路径
+- `--img_dir`: 图像所在的目录
