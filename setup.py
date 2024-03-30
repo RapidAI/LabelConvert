@@ -50,7 +50,7 @@ setuptools.setup(
     name=MODULE_NAME,
     version=VERSION_NUM,
     platforms="Any",
-    description="A dataset format conversion tool for object detection and image segmentation, which supports mutual conversion between labelme, labelImg tools and YOLO, VOC, and COCO dataset formats.",
+    description="A tool for object detection and image segmentation dataset format conversion. Supports conversion between labelme tool annotated data, labelImg tool annotated data, YOLO, PubLayNet and COCO data set formats.",
     long_description=get_readme(),
     long_description_content_type="text/markdown",
     author="SWHL",
@@ -75,7 +75,7 @@ setuptools.setup(
     entry_points={
         "console_scripts": [
             f"coco_to_labelImg={MODULE_NAME}.coco_to_labelImg:main",
-            f"coco_visual={MODULE_NAME}.coco_visual:main",
+            f"vis_coco={MODULE_NAME}.vis_coco:main",
             f"darknet_to_coco={MODULE_NAME}.darknet_to_coco:main",
             f"labelImg_to_yolov5={MODULE_NAME}.labelImg_to_yolov5:main",
             f"yolov5_to_coco={MODULE_NAME}.yolov5_to_coco:main",
