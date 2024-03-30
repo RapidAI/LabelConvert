@@ -22,6 +22,9 @@ class LabelImgToYOLOV5:
         have_test: bool = False,
         test_ratio: float = 0.2,
     ):
+        if data_dir is None:
+            raise ValueError("data_dir must not be None")
+
         self.data_dir = Path(data_dir)
         self.verify_exists(self.data_dir)
 

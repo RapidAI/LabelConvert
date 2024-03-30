@@ -18,8 +18,10 @@ ValueType = Union[str, Path, None]
 
 class YOLOV5ToCOCO:
     def __init__(self, data_dir: ValueType = None, save_dir: ValueType = None):
+        if data_dir is None:
+            raise ValueError("data_dir must not be None")
         self.data_dir = Path(data_dir)
-
+        self.verify_exists(self.data_dir)
         self.verify_exists(self.data_dir / "images")
         self.verify_exists(self.data_dir / "labels")
 

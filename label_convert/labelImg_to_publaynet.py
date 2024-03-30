@@ -23,6 +23,9 @@ class LabelImgToPubLayNet:
         have_test: bool = True,
         test_ratio: float = 0.2,
     ):
+        if data_dir is None:
+            raise ValueError("data_dir must not be None")
+
         self.data_dir = Path(data_dir)
         self.verify_exists(data_dir)
 
@@ -132,7 +135,7 @@ class LabelImgToPubLayNet:
             label_path = img_path.with_name(f"{img_path.stem}.txt")
             try:
                 label_datas = self.read_txt(label_path)
-            except Exception as e:
+            except Exception:
                 print(f"{label_path} meets error.")
                 continue
 
@@ -204,16 +207,17 @@ class LabelImgToPubLayNet:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--data_dir", type=str, required=True, help="The directory from labelImg."
-    )
+    parser.add_argument("--data_dir", type=str, default=None)
+    parser.add_argument("--save_dir", type=str, default=None)
     parser.add_argument("--val_ratio", type=float, default=0.2)
     parser.add_argument("--have_test", action="store_true", default=False)
     parser.add_argument("--test_ratio", type=float, default=0.2)
     args = parser.parse_args()
 
-    converter = LabelImgToPubLayNet(args.val_ratio, args.have_test, args.test_ratio)
-    converter(args.data_dir)
+    converter = LabelImgToPubLayNet(
+        args.data_dir, args.save_dir, args.val_ratio, args.have_test, args.test_ratio
+    )
+    converter()
     print(f"Successfully output to the {args.out_dir}")
 
 

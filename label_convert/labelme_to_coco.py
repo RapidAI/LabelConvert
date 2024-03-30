@@ -7,7 +7,7 @@ import random
 import shutil
 import time
 from pathlib import Path
-from typing import List, Optional, Union
+from typing import Union
 
 import numpy as np
 from tqdm import tqdm
@@ -16,7 +16,6 @@ ValueType = Union[str, Path, None]
 
 
 class LabelmeToCOCO:
-
     def __init__(
         self,
         data_dir: ValueType = None,
@@ -25,7 +24,10 @@ class LabelmeToCOCO:
         have_test: bool = False,
         test_ratio: float = 0.2,
     ):
+        if data_dir is None:
+            raise ValueError("data_dir must not be None")
         self.data_dir = Path(data_dir)
+        self.verify_exists(self.data_dir)
 
         self.val_ratio = val_ratio
         self.test_ratio = test_ratio
