@@ -1,16 +1,27 @@
 ---
-weight: 70
-date: "2022-09-30"
+weight: 60
+date: "2022-09-30T"
 draft: false
 author: "SWHL"
-title: "COCO格式JSON示例"
-icon: "circle"
+title: "可视化COCO数据集"
+icon: "bike_scooter"
 toc: true
 description: ""
 publishdate: "2022-09-30"
 ---
 
 
+#### 可视化
+```bash {linenos=table}
+vis_coco --img_id 1 --json_path dataset/COCO_format/annotations/instances_train2017.json -img_dir dataset/COCO_format/train2017
+```
+
+- `--img_id`: 指定显示图像的索引值，默认为1
+- `--json_path`: 图像所在的json路径
+- `--img_dir`: 图像所在的目录
+
+
+#### JSON格式示例
 ```json {linenos=table}
 {
     "info": {
