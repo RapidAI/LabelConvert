@@ -10,9 +10,10 @@ description: ""
 publishdate: "2022-09-30T"
 ---
 
-
 #### 简介
 将以yaml文件给出的YOLOv5格式数据集转换为COCO格式
+
+支持标注格式为矩形框和多边形框。
 
 #### YOLOv5 yaml结构如下：
 
@@ -39,8 +40,11 @@ yolov5_yaml_dataset
 
 #### 转换
 ```bash {linenos=table}
-yolov5_yaml_to_coco --yaml_path dataset/YOLOV5_yaml/sample.yaml
+yolov5_yaml_to_coco --yaml_path dataset/yolov5_yaml_dataset/sample.yaml
 ```
+- `--yaml_path`: yaml文件路径
+- `--save_dir`: 保存转换后的数据集目录。默认为`dataset/yolov5_yaml_dataset_coco`
+
 
 #### 转换后结构如下：
 

@@ -16,7 +16,7 @@ publishdate: "2022-09-30"
 vis_coco --img_id 1 --json_path dataset/COCO_format/annotations/instances_train2017.json -img_dir dataset/COCO_format/train2017
 ```
 
-- `--img_id`: 指定显示图像的索引值，默认为1
+- `--img_id`: 指定显示图像的索引值，示例为1
 - `--json_path`: 图像所在的json路径
 - `--img_dir`: 图像所在的目录
 

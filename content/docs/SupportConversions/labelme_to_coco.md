@@ -28,17 +28,17 @@ labelme_dataset
 
 #### 转换
 ```bash {linenos=table}
-labelme_to_coco --src_dir dataset/labelme_dataset \
-                --out_dir dataset/coco_dataset \
+labelme_to_coco --data_dir dataset/labelme_dataset \
+                --save_dir dataset/coco_dataset \
                 --val_ratio 0.2 \
                 --have_test \
                 --test_ratio 0.2
 ```
-- `--src_dir`: labelme标注的数据所在路径
-- `--out_dir`: 转换后数据存储路径
-- `--val_ratio`: 验证集所占比例，默认是总量的0.2
-- `--have_test`: 是否划出测试集，默认是False，如果想要划分测试集，直接加上该参数即可。
-- `--test_ratio`: 测试集的比例，默认是总量的0.2
+- `--data_dir`: 数据集所在目录。示例为`dataset/labelme_dataset`
+- `--save_dir`: 保存转换后的数据集目录。默认为`dataset/labelme_dataset_coco`
+- `--val_ratio`: 验证集所占比例，示例为总量的0.2
+- `--have_test`: 是否划出测试集，示例为`False`，如果想要划分测试集，直接加上该参数即可。
+- `--test_ratio`: 测试集的比例，示例为总量的0.2
 
 #### 转换后结构如下：
 

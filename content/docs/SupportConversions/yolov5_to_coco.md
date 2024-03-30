@@ -13,6 +13,8 @@ publishdate: "2022-09-30T"
 #### 简介
 将YOLOv5格式数据集转换为COCO格式。
 
+支持标注格式为矩形框和多边形框。
+
 #### YOLOV5数据结构如下
 
 {{< alert text="具体结构示例文件，可移步：[yolov5_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/yolov5_dataset)" />}}
@@ -35,10 +37,11 @@ yolov5_dataset
 
 #### 转换
 ```bash {linenos=table}
-yolov5_to_coco --data_dir dataset/YOLOV5 --mode_list train,val
+yolov5_to_coco --data_dir dataset/yolov5_dataset --mode_list train,val
 ```
 
-- `--data_dir`: 数据集存放目录
+- `--data_dir`: 数据集所在目录。示例为`dataset/yolov5_dataset`
+- `--save_dir`: 保存转换后的数据集目录。默认为`dataset/yolov5_dataset_coco`
 - `--mode_list`: 指定划分的数据集种类。 (例如：`train,val,test` / `train,val`)
 
 #### 转换后结构如下：

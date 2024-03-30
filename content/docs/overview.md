@@ -35,13 +35,15 @@ publishdate: "2023-09-08"
 ```mermaid
 flowchart LR
 
-A(labelImg) --> B(YOLOv5)
-A --> C(PubLayNet)
-D(COCO) --> A
-B --> D
-E(YOLOv5 YAML) --> D
-F(darknet) --> D
-G(labelme) --> D
+A(YOLO) --> B(COCO)
+
+C(YOLO YMAL) --> B
+D(darknet) --> B
+E(labelme) --> B
+
+B --> F(labelImg)
+F --> G(PubLayNet)
+F --> J(YOLO)
 ```
 
 ### 安装

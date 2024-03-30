@@ -19,7 +19,7 @@ publishdate: "2022-09-30"
 {{< alert text="具体结构示例文件，可移步：[labelImg_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/labelImg_dataset)" />}}
 
 ```text {linenos=table}
-labelImg_format
+labelImg_dataset
 ├── classes.txt
 ├── images(13).jpg
 ├── images(13).txt
@@ -44,11 +44,11 @@ labelImg_to_publaynet --data_dir dataset/labelImg_dataset \
 ```
 
 
-- `--data_dir`: COCO格式数据集所在目录。默认是`dataset/labelImg_dataset`
-- `--save_dir`: 保存转换后的数据集目录。默认是COCO数据集同级目录下
-- `--val_ratio`: 验证集数目占数据集总数比例，默认是`0.2`.
+- `--data_dir`: COCO格式数据集所在目录。示例为`dataset/labelImg_dataset`
+- `--save_dir`: 保存转换后的数据集目录。默认为`dataset/labelImg_dataset_publaynet`
+- `--val_ratio`: 验证集数目占数据集总数比例，默认为`0.2`.
 - `--have_test`: 是否有测试集。默认为`False`，如果出现，则为`True`
-- `--test_ratio`: 测试集数目占数据集总数比例，默认是`0.2`
+- `--test_ratio`: 测试集数目占数据集总数比例，默认为`0.2`
 
 
 #### 转换后结构如下：
@@ -57,7 +57,7 @@ labelImg_to_publaynet --data_dir dataset/labelImg_dataset \
 
 
 ````text {linenos=table}
-publaynet_format
+publaynet_dataset
 ├── test
 │   ├── images5.jpg
 │   └── images5.txt

@@ -19,7 +19,7 @@ publishdate: "2022-09-30"
 {{< alert text="具体结构示例文件，可移步：[COCO_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/COCO_dataset)" />}}
 
 ```text {linenos=table}
-COCO_format
+COCO_dataset
 ├── annotations
 │   ├── instances_train2017.json
 │   └── instances_val2017.json
@@ -32,11 +32,11 @@ COCO_format
 
 #### 转换
 ```bash {linenos=table}
-coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_format
+coco_to_labelImg --data_dir dataset/COCO_dataset --save_dir dataset/labelImg_format
 ```
 
-- `--data_dir`: COCO格式数据集所在目录。默认是`dataset/COCO_format`
-- `--save_dir`: 保存转换后的数据集目录。默认是COCO数据集同级目录下
+- `--data_dir`: COCO格式数据集所在目录。示例为`dataset/COCO_dataset`
+- `--save_dir`: 保存转换后的数据集目录。默认为`dataset/COCO_dataset_labelImg`
 
 #### 转换后结构如下：
 
@@ -44,7 +44,7 @@ coco_to_labelImg --data_dir dataset/COCO_format --save_dir dataset/labelImg_form
 
 
 ```text {linenos=table}
-labelImg_format
+labelImg_dataset
   ├── train
   │   ├── 000000000001.jpg
   │   ├── 000000000001.txt
@@ -58,7 +58,7 @@ labelImg_format
 
 #### labelImg可视化
 ```bash {linenos=table}
-$ cd dataset/labelImg_format
+$ cd dataset/labelImg_dataset
 $ labelImg train train/classes.txt
 
 # or

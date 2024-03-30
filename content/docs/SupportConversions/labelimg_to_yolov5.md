@@ -36,18 +36,18 @@ labelImg_dataset
 
 #### 转换
 ```bash {linenos=table}
-labelImg_to_yolov5 --src_dir dataset/labelImg_dataset \
+labelImg_to_yolov5 --data_dir dataset/labelImg_dataset \
                    --save_dir dataset/labelImg_dataset_output \
                    --val_ratio 0.2 \
                    --have_test \
                    --test_ratio 0.2
 ```
 
-- `--src_dir`: labelme标注的数据所在路径
-- `--save_dir`: 转换后数据存储路径
-- `--val_ratio`: 验证集所占比例，默认是总量的0.2
-- `--have_test`: 是否划出测试集，默认是False，如果想要划分测试集，直接加上该参数即可。
-- `--test_ratio`: 测试集的比例，默认是总量的0.2
+- `--data_dir`: labelme标注的数据所在路径，示例为`dataset/labelImg_dataset`
+- `--save_dir`: 转换后数据存储路径，默认为`dataset/labelImg_dataset_publaynet`
+- `--val_ratio`: 验证集所占比例，默认为总量的0.2
+- `--have_test`: 是否划出测试集，默认为`False`，如果想要划分测试集，直接加上该参数即可。
+- `--test_ratio`: 测试集的比例，默认为总量的0.2
 
 #### 转换后结构如下：
 

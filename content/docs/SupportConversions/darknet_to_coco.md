@@ -32,8 +32,11 @@ darknet_dataset
 
 #### 转换
 ```bash {linenos=table}
-darknet_to_coco --data_path dataset/darknet/gen_config.data
+darknet_to_coco --data_dir dataset/darknet_dataset
 ```
+
+- `--data_dir`: COCO格式数据集所在目录。示例为`dataset/darknet_dataset`
+- `--save_dir`: 保存转换后的数据集目录。默认为`dataset/darknet_dataset_coco`
 
 #### 转换后结构如下：
 
