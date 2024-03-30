@@ -143,7 +143,7 @@ class LabelImgToYOLOV5:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--src_dir", type=str, default=None)
+    parser.add_argument("--data_dir", type=str, default=None)
     parser.add_argument("--save_dir", type=str, default=None)
     parser.add_argument("--val_ratio", type=float, default=0.2)
     parser.add_argument("--have_test", action="store_true", default=False)
@@ -151,10 +151,9 @@ def main():
     args = parser.parse_args()
 
     converter = LabelImgToYOLOV5(
-        args.src_dir, args.save_dir, args.val_ratio, args.have_test, args.test_ratio
+        args.data_dir, args.save_dir, args.val_ratio, args.have_test, args.test_ratio
     )
     converter()
-    print(f"Successfully output to the {args.save_dir}")
 
 
 if __name__ == "__main__":

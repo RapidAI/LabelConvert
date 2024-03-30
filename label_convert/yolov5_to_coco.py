@@ -255,12 +255,13 @@ def main():
         default="tests/test_files/yolov5_dataset",
         help="Dataset root path",
     )
+    parser.add_argument("--save_dir", type=str, default=None)
     parser.add_argument(
         "--mode_list", type=str, default="train,val", help="generate which mode"
     )
     args = parser.parse_args()
 
-    converter = YOLOV5ToCOCO(args.data_dir)
+    converter = YOLOV5ToCOCO(args.data_dir, args.save_dir)
     converter(mode_list=args.mode_list.split(","))
 
 

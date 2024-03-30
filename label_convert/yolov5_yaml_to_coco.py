@@ -263,9 +263,10 @@ def main():
         default="tests/test_files/crack.v1i.yolov7pytorch/data.yaml",
         help="Dataset cfg file",
     )
+    parser.add_argument("--save_dir", type=str, default=None)
     args = parser.parse_args()
 
-    converter = YOLOV5CfgToCOCO(args.yaml_path)
+    converter = YOLOV5CfgToCOCO(args.yaml_path, args.save_dir)
     converter()
 
 

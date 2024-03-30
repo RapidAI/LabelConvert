@@ -218,7 +218,6 @@ def main():
         args.data_dir, args.save_dir, args.val_ratio, args.have_test, args.test_ratio
     )
     converter()
-    print(f"Successfully output to the {args.out_dir}")
 
 
 if __name__ == "__main__":

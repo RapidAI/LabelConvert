@@ -216,14 +216,21 @@ class DarknetToCOCO:
         return data
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--data_dir",
         default="dataset/darknet_dataset",
         help="Dataset root path",
     )
+    parser.add_argument(
+        "--save_dir", type=str, default=None, help="Path to save the converted dataset."
+    )
     args = parser.parse_args()
 
-    converter = DarknetToCOCO(args.data_dir)
+    converter = DarknetToCOCO(args.data_dir, args.save_dir)
     converter()
+
+
+if __name__ == "__main__":
+    main()
