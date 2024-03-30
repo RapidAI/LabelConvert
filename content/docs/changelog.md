@@ -10,6 +10,13 @@ description: ""
 publishdate: "2023-09-08"
 ---
 
+#### 2024-03-30 v0.0.10 update:
+- 修复各个转换模块命令行参数不统一问题
+- 撰写文档
+
+#### 2024-03-30 v0.0.9 update:
+- 修复[issue #16](https://github.com/RapidAI/LabelConvert/issues/16)
+
 #### 2024-03-28 v0.0.8 update:
 - 优化各个模块代码
 - 添加单元测试
