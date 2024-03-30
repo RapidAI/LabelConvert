@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import List, Tuple, Union
 
 import cv2
+import numpy as np
 from tqdm import tqdm
 
 ValueType = Union[str, Path, None]
@@ -104,7 +105,11 @@ class YOLOV5ToCOCO:
             images.append(image_dict)
 
             label_path = self.data_dir / "labels" / f"{Path(img_path).stem}.txt"
-            annotation = self.get_annotation(
+            if not label_path.exists():
+                warnings.warn(f"{label_path} not exists. Skip")
+                continue
+
+            annotation = self.read_annotation(
                 label_path, img_id, image_dict["height"], image_dict["width"]
             )
             annotations.extend(annotation)
@@ -122,8 +127,6 @@ class YOLOV5ToCOCO:
     def get_image_info(self, img_path, img_id, save_img_dir):
         img_path = Path(img_path)
         if self.data_dir.as_posix() not in img_path.as_posix():
-            # relative path (relative to the data_dir)
-            # e.g. images/images(3).jpg
             img_path = self.data_dir / img_path
 
         self.verify_exists(img_path)
@@ -146,43 +149,7 @@ class YOLOV5ToCOCO:
         }
         return image_info
 
-    def get_annotation(self, label_path: Path, img_id, height, width):
-        def get_box_info(vertex_info, height, width):
-            cx, cy, w, h = [float(i) for i in vertex_info]
-
-            cx = cx * width
-            cy = cy * height
-            box_w = w * width
-            box_h = h * height
-
-            # left top
-            x0 = max(cx - box_w / 2, 0)
-            y0 = max(cy - box_h / 2, 0)
-
-            # right bottom
-            x1 = min(x0 + box_w, width)
-            y1 = min(y0 + box_h, height)
-
-            segmentation = [[x0, y0, x1, y0, x1, y1, x0, y1]]
-            bbox = [x0, y0, box_w, box_h]
-            area = box_w * box_h
-            return segmentation, bbox, area
-
-        if not label_path.exists():
-            annotation = [
-                {
-                    "segmentation": [],
-                    "area": 0,
-                    "iscrowd": 0,
-                    "image_id": img_id,
-                    "bbox": [],
-                    "category_id": -1,
-                    "id": self.annotation_id,
-                }
-            ]
-            self.annotation_id += 1
-            return annotation
-
+    def read_annotation(self, label_path: Path, img_id, height, width):
         annotation = []
         label_list = self.read_txt(str(label_path))
         for i, one_line in enumerate(label_list):
@@ -192,7 +159,19 @@ class YOLOV5ToCOCO:
                 continue
 
             category_id, vertex_info = label_info[0], label_info[1:]
-            segmentation, bbox, area = get_box_info(vertex_info, height, width)
+            point_nums = len(vertex_info)
+            if point_nums == 4:
+                segmentation, bbox, area = self.get_annotation_from_rectangle(
+                    vertex_info, height, width
+                )
+            elif point_nums > 4:
+                segmentation, bbox, area = self.get_annotation_from_poly(
+                    vertex_info, height, width
+                )
+            else:
+                warnings.warn("The nums of points are less than 4. Skip")
+                continue
+
             annotation.append(
                 {
                     "segmentation": segmentation,
@@ -206,6 +185,44 @@ class YOLOV5ToCOCO:
             )
             self.annotation_id += 1
         return annotation
+
+    @staticmethod
+    def get_annotation_from_rectangle(vertex_info, height, width):
+        cx, cy, w, h = [float(i) for i in vertex_info]
+
+        cx = cx * width
+        cy = cy * height
+        box_w = w * width
+        box_h = h * height
+
+        x0 = max(cx - box_w / 2, 0)
+        y0 = max(cy - box_h / 2, 0)
+        x1 = min(x0 + box_w, width)
+        y1 = min(y0 + box_h, height)
+
+        segmentation = [[x0, y0, x1, y0, x1, y1, x0, y1]]
+        bbox = [x0, y0, box_w, box_h]
+        area = box_w * box_h
+        return segmentation, bbox, area
+
+    @staticmethod
+    def get_annotation_from_poly(vertex_info: List[str], height, width):
+        points = np.array(vertex_info).astype(np.float64).reshape(-1, 2)
+
+        new_points = np.copy(points)
+        new_points[:, 0] = points[:, 0] * width
+        new_points[:, 1] = points[:, 1] * height
+
+        segmentation = new_points.tolist()
+
+        x0, y0 = np.min(new_points, axis=0)
+        x1, y1 = np.max(new_points, axis=0)
+        box_w = x1 - x0
+        box_h = y1 - y0
+        bbox = [x0, y0, box_w, box_h]
+
+        area = box_w * box_h
+        return segmentation, bbox, area
 
     @staticmethod
     def read_txt(txt_path):
@@ -231,7 +248,10 @@ class YOLOV5ToCOCO:
 def main():
     parser = argparse.ArgumentParser("Datasets converter from YOLOV5 to COCO")
     parser.add_argument(
-        "--data_dir", type=str, default="dataset/YOLOV5", help="Dataset root path"
+        "--data_dir",
+        type=str,
+        default="tests/test_files/yolov5_dataset",
+        help="Dataset root path",
     )
     parser.add_argument(
         "--mode_list", type=str, default="train,val", help="generate which mode"

@@ -5,10 +5,12 @@ import argparse
 import json
 import shutil
 import time
+import warnings
 from pathlib import Path
-from typing import Union
+from typing import List, Union
 
 import cv2
+import numpy as np
 import yaml
 from tqdm import tqdm
 
@@ -26,9 +28,13 @@ class YOLOV5CfgToCOCO:
         with open(yaml_path, "r", encoding="utf-8") as f:
             self.cfg = yaml.safe_load(f)
 
-        self.data_dir = Path(self.cfg.get("path"))
-        self.train_dir = self.data_dir / self.cfg.get("train")[0]
-        self.val_dir = self.data_dir / self.cfg.get("val")[0]
+        data_dir = self.cfg.get("path", None)
+        if data_dir is None:
+            data_dir = ""
+
+        self.data_dir = Path(data_dir)
+        self.train_dir = self.data_dir / self.cfg.get("train")
+        self.val_dir = self.data_dir / self.cfg.get("val")
 
         nc = self.cfg.get("nc")
         self.names = self.cfg.get("names")
@@ -96,19 +102,6 @@ class YOLOV5CfgToCOCO:
     def get_img_list(self, data_dir: Path):
         return list(data_dir.rglob("*.*"))
 
-    def _get_data_dir(self, mode):
-        data_dir = self.cfg.get(mode)
-        if data_dir:
-            if isinstance(data_dir, str):
-                full_path = [str(self.data_dir / data_dir)]
-            elif isinstance(data_dir, list):
-                full_path = [str(self.data_dir / one_dir) for one_dir in data_dir]
-            else:
-                raise TypeError(f"{data_dir} is not str or list.")
-        else:
-            raise ValueError(f"{mode} dir is not in the yaml.")
-        return full_path
-
     def _get_category(self):
         categories = []
         for i, category in enumerate(self.names, start=1):
@@ -149,11 +142,13 @@ class YOLOV5CfgToCOCO:
             label_name = f"{img_path.stem}.txt"
             label_path = self.data_dir / "labels" / img_path.parent.name / label_name
             if not label_path.exists():
-                raise FileNotFoundError(f"{label_path} not exists")
+                warnings.warn(f"{label_path} not exists. Skip")
+                continue
 
             new_anno = self.read_annotation(label_path, img_id, height, width)
             if len(new_anno) <= 0:
-                raise ValueError(f"{label_path} is empty")
+                warnings.warn(f"{label_path} is empty. Skip")
+                continue
             annotations.extend(new_anno)
 
         json_data = {
@@ -167,16 +162,30 @@ class YOLOV5CfgToCOCO:
         with open(target_json, "w", encoding="utf-8") as f:
             json.dump(json_data, f, ensure_ascii=False)
 
-    def read_annotation(self, txt_file, img_id, height, width):
+    def read_annotation(self, label_path, img_id, height, width):
         annotation = []
-        all_info = self.read_txt(txt_file)
+        all_info = self.read_txt(label_path)
         for label_info in all_info:
             label_info = label_info.split(" ")
-            if len(label_info) < 5:
+            label_len = len(label_info)
+            if label_len < 5:
                 continue
 
             category_id, vertex_info = label_info[0], label_info[1:]
-            segmentation, bbox, area = self._get_annotation(vertex_info, height, width)
+
+            point_nums = len(vertex_info)
+            if point_nums == 4:
+                segmentation, bbox, area = self.get_annotation_from_rectangle(
+                    vertex_info, height, width
+                )
+            elif point_nums > 4:
+                segmentation, bbox, area = self.get_annotation_from_poly(
+                    vertex_info, height, width
+                )
+            else:
+                warnings.warn("The nums of points are less than 4. Skip")
+                continue
+
             annotation.append(
                 {
                     "segmentation": segmentation,
@@ -192,7 +201,7 @@ class YOLOV5CfgToCOCO:
         return annotation
 
     @staticmethod
-    def _get_annotation(vertex_info, height, width):
+    def get_annotation_from_rectangle(vertex_info, height, width):
         cx, cy, w, h = [float(i) for i in vertex_info]
 
         cx = cx * width
@@ -207,6 +216,25 @@ class YOLOV5CfgToCOCO:
 
         segmentation = [[x0, y0, x1, y0, x1, y1, x0, y1]]
         bbox = [x0, y0, box_w, box_h]
+        area = box_w * box_h
+        return segmentation, bbox, area
+
+    @staticmethod
+    def get_annotation_from_poly(vertex_info: List[str], height, width):
+        points = np.array(vertex_info).astype(np.float64).reshape(-1, 2)
+
+        new_points = np.copy(points)
+        new_points[:, 0] = points[:, 0] * width
+        new_points[:, 1] = points[:, 1] * height
+
+        segmentation = new_points.tolist()
+
+        x0, y0 = np.min(new_points, axis=0)
+        x1, y1 = np.max(new_points, axis=0)
+        box_w = x1 - x0
+        box_h = y1 - y0
+        bbox = [x0, y0, box_w, box_h]
+
         area = box_w * box_h
         return segmentation, bbox, area
 
@@ -232,7 +260,7 @@ def main():
     parser.add_argument(
         "--yaml_path",
         type=str,
-        default="dataset/YOLOV5_yaml/sample.yaml",
+        default="tests/test_files/crack.v1i.yolov7pytorch/data.yaml",
         help="Dataset cfg file",
     )
     args = parser.parse_args()

@@ -4,10 +4,11 @@
 import argparse
 import json
 import platform
-from pathlib import Path
 import random
+from pathlib import Path
 
 import cv2
+import numpy as np
 
 
 class VisCOCO:
@@ -56,7 +57,14 @@ class VisCOCO:
             class_name = categories_dict[class_id]
             class_color = color[class_id - 1]
 
-            x, y, w, h = list(map(int, anno["bbox"]))
+            # plot sgmentations
+            segs = anno.get("segmentation", None)
+            if segs is not None:
+                segs = np.array(segs).reshape(-1, 2)
+                cv2.polylines(image, np.int32([segs]), 2, class_color)
+
+            # plot rectangle
+            x, y, w, h = [round(v) for v in anno["bbox"]]
             cv2.rectangle(
                 image, (int(x), int(y)), (int(x + w), int(y + h)), class_color, 2
             )
@@ -101,10 +109,10 @@ def main():
     parser.add_argument(
         "--json_path",
         type=str,
-        default="tests/test_files/COCO_dataset/annotations/instances_train2017.json",
+        default="tests/test_files/yolov5_dataset_coco/annotations/instances_train2017.json",
     )
     parser.add_argument(
-        "--img_dir", type=str, default="tests/test_files/COCO_dataset/train2017"
+        "--img_dir", type=str, default="tests/test_files/yolov5_dataset_coco/train2017"
     )
     args = parser.parse_args()
 
