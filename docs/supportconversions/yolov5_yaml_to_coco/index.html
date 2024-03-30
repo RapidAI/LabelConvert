@@ -112,7 +112,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
                     
                         <li class="sidebar-dropdown  current active">
                             <button class="btn">
-                                <i class="material-icons me-2">menu_book</i>
+                                <i class="material-icons me-2">recycling</i>
                                 支持转换格式
                             </button>
                             <div class="sidebar-submenu d-block">
@@ -155,12 +155,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
                                     
                                         
                                         
-                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/coco_visual/">可视化COCO数据集</a></li>
-                                        
-                                    
-                                        
-                                        
-                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/demo_of_coco/">COCO格式JSON示例</a></li>
+                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/vis_coco/">可视化COCO数据集</a></li>
                                         
                                     
                                 </ul>
@@ -840,13 +835,6 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
     
     
     
-    
-    
-    
-    
-    
-    
-    
 
 
     
@@ -955,19 +943,10 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
     index.add(
             {
                 id:  11 ,
-                href: "\/LabelConvert\/docs\/supportconversions\/coco_visual\/",
+                href: "\/LabelConvert\/docs\/supportconversions\/vis_coco\/",
                 title: "可视化COCO数据集",
-                description: " coco_visual --vis_num 1 \\ --json_path dataset/COCO_format/annotations/instances_train2017.json \\ --img_dir dataset/COCO_format/train2017 --vis_num: 指定显示图像的索引值 --json_path: 图像所在的json路径 --img_dir: 图像所在的目录 ",
-                content: " coco_visual --vis_num 1 \\ --json_path dataset/COCO_format/annotations/instances_train2017.json \\ --img_dir dataset/COCO_format/train2017 --vis_num: 指定显示图像的索引值 --json_path: 图像所在的json路径 --img_dir: 图像所在的目录 "
-            }
-        );
-    index.add(
-            {
-                id:  12 ,
-                href: "\/LabelConvert\/docs\/supportconversions\/demo_of_coco\/",
-                title: "COCO格式JSON示例",
-                description: "{ \"info\": { \"year\": 2022, \"version\": \"1.0\", \"description\": \"For object detection\", \"date_created\": \"2022\" }, \"licenses\": [{ \"id\": 1, \"name\": \"Apache License v2.0\", \"url\": \"https://github.com/RapidAI/YOLO2COCO/LICENSE\" }], \"images\": [{ \"date_captured\": \"2022\", \"file_name\": \"000000000001.jpg\", \"id\": 1, \"height\": 224, \"width\": 224 }, { \"date_captured\": \"2022\", \"file_name\": \"000000000002.jpg\", \"id\": 2, \"height\": 424, \"width\": 550 }], \"annotations\": [{ \"segmentation\": [[18.00, 2.99, 105.00, 2.99, 105.00, 89.00, 18.00, 89.00]], \"area\": 7482.011, \"iscrowd\": 0, \"image_id\": 1, // Corresponding to the ID in images \"bbox\": [18.",
-                content: " { \"info\": { \"year\": 2022, \"version\": \"1.0\", \"description\": \"For object detection\", \"date_created\": \"2022\" }, \"licenses\": [{ \"id\": 1, \"name\": \"Apache License v2.0\", \"url\": \"https://github.com/RapidAI/YOLO2COCO/LICENSE\" }], \"images\": [{ \"date_captured\": \"2022\", \"file_name\": \"000000000001.jpg\", \"id\": 1, \"height\": 224, \"width\": 224 }, { \"date_captured\": \"2022\", \"file_name\": \"000000000002.jpg\", \"id\": 2, \"height\": 424, \"width\": 550 }], \"annotations\": [{ \"segmentation\": [[18.00, 2.99, 105.00, 2.99, 105.00, 89.00, 18.00, 89.00]], \"area\": 7482.011, \"iscrowd\": 0, \"image_id\": 1, // Corresponding to the ID in images \"bbox\": [18.00, 2.99, 87.00, 86.00], // [x, y, w, h], (x,y) is the left top point of the box. w,h is the width and height of the box. \"category_id\": 1, // Corresponding to the ID in categories. \"id\": 1 // Number that uniquely distinguishes different dimension instances }, { \"segmentation\": [ [126.99, 3.99, 210.99, 3.99, 210.99, 88.99, 126.99, 88.99] ], \"area\": 7139.994, \"iscrowd\": 0, \"image_id\": 1, \"bbox\": [126.99, 3.99, 84.0, 84.99], \"category_id\": 1, \"id\": 2 }], \"categories\": [{ \"supercategory\": \"stamp\", \"id\": 1, \"name\": \"stamp\" }] } 相关信息 link MSCOCO数据标注详解 "
+                description: "可视化 link vis_coco --img_id 1 --json_path dataset/COCO_format/annotations/instances_train2017.json -img_dir dataset/COCO_format/train2017 --img_id: 指定显示图像的索引值，默认为1 --json_path: 图像所在的json路径 --img_dir: 图像所在的目录 JSON格式示例 link { \"info\": { \"year\": 2022, \"version\": \"1.0\", \"description\": \"For object detection\", \"date_created\": \"2022\" }, \"licenses\": [{ \"id\": 1, \"name\": \"Apache License v2.0\", \"url\": \"https://github.com/RapidAI/YOLO2COCO/LICENSE\" }], \"images\": [{ \"date_captured\": \"2022\", \"file_name\": \"000000000001.jpg\", \"id\": 1, \"height\": 224, \"width\": 224 }, { \"date_captured\": \"2022\", \"file_name\": \"000000000002.jpg\", \"id\": 2, \"height\": 424, \"width\": 550 }], \"annotations\": [{ \"segmentation\": [[18.",
+                content: "可视化 link vis_coco --img_id 1 --json_path dataset/COCO_format/annotations/instances_train2017.json -img_dir dataset/COCO_format/train2017 --img_id: 指定显示图像的索引值，默认为1 --json_path: 图像所在的json路径 --img_dir: 图像所在的目录 JSON格式示例 link { \"info\": { \"year\": 2022, \"version\": \"1.0\", \"description\": \"For object detection\", \"date_created\": \"2022\" }, \"licenses\": [{ \"id\": 1, \"name\": \"Apache License v2.0\", \"url\": \"https://github.com/RapidAI/YOLO2COCO/LICENSE\" }], \"images\": [{ \"date_captured\": \"2022\", \"file_name\": \"000000000001.jpg\", \"id\": 1, \"height\": 224, \"width\": 224 }, { \"date_captured\": \"2022\", \"file_name\": \"000000000002.jpg\", \"id\": 2, \"height\": 424, \"width\": 550 }], \"annotations\": [{ \"segmentation\": [[18.00, 2.99, 105.00, 2.99, 105.00, 89.00, 18.00, 89.00]], \"area\": 7482.011, \"iscrowd\": 0, \"image_id\": 1, // Corresponding to the ID in images \"bbox\": [18.00, 2.99, 87.00, 86.00], // [x, y, w, h], (x,y) is the left top point of the box. w,h is the width and height of the box. \"category_id\": 1, // Corresponding to the ID in categories. \"id\": 1 // Number that uniquely distinguishes different dimension instances }, { \"segmentation\": [ [126.99, 3.99, 210.99, 3.99, 210.99, 88.99, 126.99, 88.99] ], \"area\": 7139.994, \"iscrowd\": 0, \"image_id\": 1, \"bbox\": [126.99, 3.99, 84.0, 84.99], \"category_id\": 1, \"id\": 2 }], \"categories\": [{ \"supercategory\": \"stamp\", \"id\": 1, \"name\": \"stamp\" }] } 相关信息 link MSCOCO数据标注详解 "
             }
         );
     search.addEventListener('input', show_results, true);
