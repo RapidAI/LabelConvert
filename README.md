@@ -18,7 +18,7 @@
 
 ## Introduction
 
-A tool for object detection and image segmentation dataset format conversion. 
+A tool for object detection and image segmentation dataset format conversion.
 
 Supports conversion between labelme tool annotated data, labelImg tool annotated data, YOLO, PubLayNet and COCO data set formats.
 
@@ -34,6 +34,9 @@ E(labelme) --> B
 B --> F(labelImg)
 F --> G(PubLayNet)
 F --> J(YOLOv5)
+
+J --> H(YOLOv8)
+H --> J
 ```
 
 ## Installation
