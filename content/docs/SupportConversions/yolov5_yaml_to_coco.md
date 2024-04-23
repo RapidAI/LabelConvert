@@ -3,7 +3,7 @@ weight: 40
 date: "2022-09-30T"
 draft: false
 author: "SWHL"
-title: "YOLOV5 YAML → COCO"
+title: "YOLOv5 YAML → COCO"
 icon: "circle"
 toc: true
 description: ""

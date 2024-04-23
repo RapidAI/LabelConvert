@@ -43,6 +43,9 @@ E(labelme) --> B
 B --> F(labelImg)
 F --> G(PubLayNet)
 F --> J(YOLOv5)
+
+J --> H(YOLOv8)
+H --> J
 ```
 
 ### 安装

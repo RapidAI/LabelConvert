@@ -3,7 +3,7 @@ weight: 10
 date: "2022-09-30"
 draft: false
 author: "SWHL"
-title: "labelImg → YOLOV5"
+title: "labelImg → YOLOv5"
 icon: "circle"
 toc: true
 description: ""
