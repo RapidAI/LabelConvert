@@ -18,7 +18,7 @@
 
 <html lang="en-us"><head>
     <meta charset="utf-8" />
-    <title>YOLOV5 → COCO | Label Convert Documentation</title>
+    <title>YOLOv5 → COCO | Label Convert Documentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Documentation, Hugo, Hugo Theme, Bootstrap" />
     <meta name="author" content="Colin Wilson - Lotus Labs" />
@@ -32,21 +32,21 @@
 <link rel="icon" type="image/png" sizes="32x32" href="https://rapidai.github.io/LabelConvert/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://rapidai.github.io/LabelConvert/favicon-16x16.png">
 <link rel="manifest" crossorigin="use-credentials" href="https://rapidai.github.io/LabelConvert/site.webmanifest">
-<meta property="og:title" content="YOLOV5 → COCO" />
+<meta property="og:title" content="YOLOv5 → COCO" />
 <meta property="og:description" content="简介 link将YOLOv5格式数据集转换为COCO格式。
 支持标注格式为矩形框和多边形框。
-YOLOV5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset
+YOLOv5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset
 yolov5_dataset ├── classes.txt ├── non_labels # 通常用来放负样本 │ └── bg1.jpeg ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt 转换 link yolov5_to_coco --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_dataset_coco --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) 转换后结构如下： link notifications 具体结构示例文件，可移步：COCO_dataset
 COCO_dataset ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_coco/" /><meta property="og:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_3105277787382691973.png"/><meta property="article:section" content="docs" />
+<meta property="og:url" content="https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_coco/" /><meta property="og:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_5106483246933336434.png"/><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2024-03-30T16:41:16+08:00" /><meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_3105277787382691973.png"/>
-<meta name="twitter:title" content="YOLOV5 → COCO"/>
+<meta property="article:modified_time" content="2024-04-23T21:49:04+08:00" /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_5106483246933336434.png"/>
+<meta name="twitter:title" content="YOLOv5 → COCO"/>
 <meta name="twitter:description" content="简介 link将YOLOv5格式数据集转换为COCO格式。
 支持标注格式为矩形框和多边形框。
-YOLOV5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset
+YOLOv5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset
 yolov5_dataset ├── classes.txt ├── non_labels # 通常用来放负样本 │ └── bg1.jpeg ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt 转换 link yolov5_to_coco --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_dataset_coco --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) 转换后结构如下： link notifications 具体结构示例文件，可移步：COCO_dataset
 COCO_dataset ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001."/>
 
@@ -122,7 +122,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
                                     
                                         
                                         
-                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_yolov5/">labelImg → YOLOV5</a></li>
+                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_yolov5/">labelImg → YOLOv5</a></li>
                                         
                                     
                                         
@@ -137,7 +137,17 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
                                     
                                         
                                         
-                                            <li class="current "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_coco/">YOLOV5 → COCO</a></li>
+                                            <li class="current "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_coco/">YOLOv5 → COCO</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_yolov8/">YOLOv5 → YOLOv8</a></li>
+                                        
+                                    
+                                        
+                                        
+                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov8_to_yolov5/">YOLOv8 → YOLOv5</a></li>
                                         
                                     
                                         
@@ -147,7 +157,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
                                     
                                         
                                         
-                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_yaml_to_coco/">YOLOV5 YAML → COCO</a></li>
+                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_yaml_to_coco/">YOLOv5 YAML → COCO</a></li>
                                         
                                     
                                         
@@ -331,7 +341,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
             
         
             <li class="breadcrumb-item text-capitalize active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <span itemprop="name">YOLOV5 → COCO</span>
+                <span itemprop="name">YOLOv5 → COCO</span>
                 <meta itemprop="position" content='3' />
             </li>
         
@@ -351,7 +361,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
             <li>
               <ul>
                 <li><a href="#简介">简介</a></li>
-                <li><a href="#yolov5数据结构如下">YOLOV5数据结构如下</a></li>
+                <li><a href="#yolov5数据结构如下">YOLOv5数据结构如下</a></li>
                 <li><a href="#转换">转换</a></li>
                 <li><a href="#转换后结构如下">转换后结构如下：</a></li>
               </ul>
@@ -378,7 +388,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
             <li>
               <ul>
                 <li><a href="#简介">简介</a></li>
-                <li><a href="#yolov5数据结构如下">YOLOV5数据结构如下</a></li>
+                <li><a href="#yolov5数据结构如下">YOLOv5数据结构如下</a></li>
                 <li><a href="#转换">转换</a></li>
                 <li><a href="#转换后结构如下">转换后结构如下：</a></li>
               </ul>
@@ -393,7 +403,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
                                             <div class="mb-0 d-flex">
                                                 
                                                 <h1 class="content-title mb-0">
-                                                    YOLOV5 → COCO
+                                                    YOLOv5 → COCO
                                                     
                                                 </h1>
                                             </div>
@@ -406,7 +416,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
     <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
         <h4 id="简介">简介 <a href="#%e7%ae%80%e4%bb%8b" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h4><p>将YOLOv5格式数据集转换为COCO格式。</p>
 <p>支持标注格式为矩形框和多边形框。</p>
-<h4 id="yolov5数据结构如下">YOLOV5数据结构如下 <a href="#yolov5%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e5%a6%82%e4%b8%8b" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h4>
+<h4 id="yolov5数据结构如下">YOLOv5数据结构如下 <a href="#yolov5%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e5%a6%82%e4%b8%8b" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h4>
 <div class="alert alert-default d-flex" role="alert">
   <div class="flex-shrink-1 alert-icon">
   
@@ -537,7 +547,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
 
 <div class="gitinfo d-flex flex-wrap justify-content-between align-items-center opacity-85 pt-3">
     <div id="edit-this-page" class="mt-1">
-        <a href="https://github.com/RapidAI/LabelConvert/blob/main/content/docs/SupportConversions/yolov5_to_coco.md" alt="YOLOV5 → COCO" rel="noopener noreferrer" target="_blank">
+        <a href="https://github.com/RapidAI/LabelConvert/blob/main/content/docs/SupportConversions/yolov5_to_coco.md" alt="YOLOv5 → COCO" rel="noopener noreferrer" target="_blank">
             
             <span class="me-1 align-text-bottom">
                 
@@ -555,9 +565,9 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
     <div id="last-modified" class="mt-1">
         <p class="mb-0 fw-semibold">Last updated <span
             id="relativetime"
-            data-authdate="2024-03-30T16:41:16&#43;0800"
-            title="30 Mar 2024, 16:41 &#43;0800">
-            30 Mar 2024, 16:41 &#43;0800
+            data-authdate="2024-04-23T21:49:04&#43;0800"
+            title="23 Apr 2024, 21:49 &#43;0800">
+            23 Apr 2024, 21:49 &#43;0800
         </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
         </p>
     </div>
@@ -584,10 +594,10 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
 		</a>
         </div>
 	<div class="col-sm-6 pt-2 doc-prev">
-		<a class="ms-auto" href="/LabelConvert/docs/supportconversions/labelme_to_coco/">
+		<a class="ms-auto" href="/LabelConvert/docs/supportconversions/yolov5_to_yolov8/">
 			<div class="card h-100 my-1 text-end">
 				<div class="card-body py-2">
-                    <p class="card-title fs-5 fw-semibold lh-base mb-0">labelme → COCO <i class="material-icons align-middle">navigate_next</i></p>
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0">YOLOv5 → YOLOv8 <i class="material-icons align-middle">navigate_next</i></p>
 					<p class="card-text me-2"></p>
 					
 				</div>
@@ -839,6 +849,20 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
     
@@ -858,7 +882,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
             {
                 id:  1 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/labelimg_to_yolov5\/",
-                title: "labelImg → YOLOV5",
+                title: "labelImg → YOLOv5",
                 description: "简介 link将labelImg标注的数据集格式转换为YOLO格式。\nlabelImg结构如下： link notifications 具体结构示例文件，可移步：labelImg_dataset\nlabelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt 转换 link labelImg_to_yolov5 --data_dir dataset/labelImg_dataset \\ --save_dir dataset/labelImg_dataset_output \\ --val_ratio 0.2 \\ --have_test \\ --test_ratio 0.2 --data_dir: labelme标注的数据所在路径，示例为dataset/labelImg_dataset --save_dir: 转换后数据存储路径，默认为dataset/labelImg_dataset_publaynet --val_ratio: 验证集所占比例，默认为总量的0.2 --have_test: 是否划出测试集，默认为False，如果想要划分测试集，直接加上该参数即可。 --test_ratio: 测试集的比例，默认为总量的0.2 转换后结构如下： link notifications 具体结构示例文件，可移步：yolov5_dataset\nlabelImg_dataset_output/ ├── classes.txt ├── images │ ├── images(13).jpg │ ├── images(3).",
                 content: "简介 link将labelImg标注的数据集格式转换为YOLO格式。\nlabelImg结构如下： link notifications 具体结构示例文件，可移步：labelImg_dataset\nlabelImg_dataset ├── classes.txt ├── images(13).jpg ├── images(13).txt ├── images(3).jpg ├── images(3).txt ├── images4.jpg ├── images4.txt ├── images5.jpg ├── images5.txt ├── images6.jpg ├── images7.jpg └── images7.txt 转换 link labelImg_to_yolov5 --data_dir dataset/labelImg_dataset \\ --save_dir dataset/labelImg_dataset_output \\ --val_ratio 0.2 \\ --have_test \\ --test_ratio 0.2 --data_dir: labelme标注的数据所在路径，示例为dataset/labelImg_dataset --save_dir: 转换后数据存储路径，默认为dataset/labelImg_dataset_publaynet --val_ratio: 验证集所占比例，默认为总量的0.2 --have_test: 是否划出测试集，默认为False，如果想要划分测试集，直接加上该参数即可。 --test_ratio: 测试集的比例，默认为总量的0.2 转换后结构如下： link notifications 具体结构示例文件，可移步：yolov5_dataset\nlabelImg_dataset_output/ ├── classes.txt ├── images │ ├── images(13).jpg │ ├── images(3).jpg │ ├── images4.jpg │ ├── images5.jpg │ └── images7.jpg ├── labels │ ├── images(13).txt │ ├── images(3).txt │ ├── images4.txt │ ├── images5.txt │ └── images7.txt ├── non_labels # 这个是没有标签的图像目录 │ └── images6.jpg ├── test.txt ├── train.txt └── val.txt 进一步转换为COCO格式 link yolov5_to_coco --data_dir dataset/labellImg_dataset_output "
             }
@@ -885,14 +909,32 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
             {
                 id:  4 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/yolov5_to_coco\/",
-                title: "YOLOV5 → COCO",
-                description: "简介 link将YOLOv5格式数据集转换为COCO格式。\n支持标注格式为矩形框和多边形框。\nYOLOV5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset\nyolov5_dataset ├── classes.txt ├── non_labels # 通常用来放负样本 │ └── bg1.jpeg ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt 转换 link yolov5_to_coco --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_dataset_coco --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) 转换后结构如下： link notifications 具体结构示例文件，可移步：COCO_dataset\nCOCO_dataset ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.",
-                content: "简介 link将YOLOv5格式数据集转换为COCO格式。\n支持标注格式为矩形框和多边形框。\nYOLOV5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset\nyolov5_dataset ├── classes.txt ├── non_labels # 通常用来放负样本 │ └── bg1.jpeg ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt 转换 link yolov5_to_coco --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_dataset_coco --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) 转换后结构如下： link notifications 具体结构示例文件，可移步：COCO_dataset\nCOCO_dataset ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg "
+                title: "YOLOv5 → COCO",
+                description: "简介 link将YOLOv5格式数据集转换为COCO格式。\n支持标注格式为矩形框和多边形框。\nYOLOv5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset\nyolov5_dataset ├── classes.txt ├── non_labels # 通常用来放负样本 │ └── bg1.jpeg ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt 转换 link yolov5_to_coco --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_dataset_coco --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) 转换后结构如下： link notifications 具体结构示例文件，可移步：COCO_dataset\nCOCO_dataset ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.",
+                content: "简介 link将YOLOv5格式数据集转换为COCO格式。\n支持标注格式为矩形框和多边形框。\nYOLOv5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset\nyolov5_dataset ├── classes.txt ├── non_labels # 通常用来放负样本 │ └── bg1.jpeg ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt 转换 link yolov5_to_coco --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_dataset_coco --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) 转换后结构如下： link notifications 具体结构示例文件，可移步：COCO_dataset\nCOCO_dataset ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg "
             }
         );
     index.add(
             {
                 id:  5 ,
+                href: "\/LabelConvert\/docs\/supportconversions\/yolov5_to_yolov8\/",
+                title: "YOLOv5 → YOLOv8",
+                description: "简介 link将YOLOv5格式数据集转换为YOLOv8格式。\n支持标注格式为矩形框和多边形框。\nYOLOv5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset\nyolov5_dataset ├── classes.txt ├── non_labels # 通常用来放负样本 │ └── bg1.jpeg ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt 转换 link yolov5_to_yolov8 --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_dataset_yolov8 --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) 转换后结构如下： link notifications 具体结构示例文件，可移步：yolov8_dataset\nyolov8_dataset ├── images │ ├── train │ │ ├── 0dcddf72.jpg │ │ └── images(3).",
+                content: "简介 link将YOLOv5格式数据集转换为YOLOv8格式。\n支持标注格式为矩形框和多边形框。\nYOLOv5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset\nyolov5_dataset ├── classes.txt ├── non_labels # 通常用来放负样本 │ └── bg1.jpeg ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt 转换 link yolov5_to_yolov8 --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_dataset_yolov8 --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) 转换后结构如下： link notifications 具体结构示例文件，可移步：yolov8_dataset\nyolov8_dataset ├── images │ ├── train │ │ ├── 0dcddf72.jpg │ │ └── images(3).jpg │ └── val │ ├── 8ae4af51.jpg │ └── images(13).jpg └── labels ├── train │ ├── 0dcddf72.txt │ └── images(3).txt └── val ├── 8ae4af51.txt └── images(13).txt "
+            }
+        );
+    index.add(
+            {
+                id:  6 ,
+                href: "\/LabelConvert\/docs\/supportconversions\/yolov8_to_yolov5\/",
+                title: "YOLOv8 → YOLOv5",
+                description: "简介 link将YOLOv8格式数据集转换为YOLOv5格式。\n支持标注格式为矩形框和多边形框。\nYOLOv5数据结构如下 link notifications 具体结构示例文件，可移步：yolov8_dataset\nyolov8_dataset ├── images │ ├── train │ │ ├── 0dcddf72.jpg │ │ └── images(3).jpg │ └── val │ ├── 8ae4af51.jpg │ └── images(13).jpg └── labels ├── train │ ├── 0dcddf72.txt │ └── images(3).txt └── val ├── 8ae4af51.txt └── images(13).txt 转换 link yolov8_to_yolov5 --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov8_dataset_yolov5 --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) --yaml_path: 指定的yaml配置文件，用于读取其中names类名 转换后结构如下： link notifications 具体结构示例文件，可移步：yolov5_dataset\nyolov5_dataset ├── classes.",
+                content: "简介 link将YOLOv8格式数据集转换为YOLOv5格式。\n支持标注格式为矩形框和多边形框。\nYOLOv5数据结构如下 link notifications 具体结构示例文件，可移步：yolov8_dataset\nyolov8_dataset ├── images │ ├── train │ │ ├── 0dcddf72.jpg │ │ └── images(3).jpg │ └── val │ ├── 8ae4af51.jpg │ └── images(13).jpg └── labels ├── train │ ├── 0dcddf72.txt │ └── images(3).txt └── val ├── 8ae4af51.txt └── images(13).txt 转换 link yolov8_to_yolov5 --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov8_dataset_yolov5 --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) --yaml_path: 指定的yaml配置文件，用于读取其中names类名 转换后结构如下： link notifications 具体结构示例文件，可移步：yolov5_dataset\nyolov5_dataset ├── classes.txt ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt "
+            }
+        );
+    index.add(
+            {
+                id:  7 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/labelme_to_coco\/",
                 title: "labelme → COCO",
                 description: "简介 link一键转换labelme标注的数据格式为COCO格式\nlabelme结构如下： link notifications 具体结构示例文件，可移步：labelme_dataset\nlabelme_dataset ├── val_0001.jpg ├── val_0001.json ├── val_0002.jpg └── val_0002.json 转换 link labelme_to_coco --data_dir dataset/labelme_dataset \\ --save_dir dataset/coco_dataset \\ --val_ratio 0.2 \\ --have_test \\ --test_ratio 0.2 --data_dir: 数据集所在目录。示例为dataset/labelme_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/labelme_dataset_coco --val_ratio: 验证集所占比例，示例为总量的0.2 --have_test: 是否划出测试集，示例为False，如果想要划分测试集，直接加上该参数即可。 --test_ratio: 测试集的比例，示例为总量的0.2 转换后结构如下： link notifications 具体结构示例文件，可移步：COCO_dataset\nCOCO_dataset ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000002.jpg ",
@@ -901,25 +943,25 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
         );
     index.add(
             {
-                id:  6 ,
+                id:  8 ,
                 href: "\/LabelConvert\/docs\/overview\/",
                 title: "概览",
-                description: " 目标检测和图像分割的数据集格式转换工具，支持labelme、labelImg与YOLO、VOC和COCO 数据集格式之间的相互转换。 支持的转换 linkflowchart LR A(YOLOv5) --\u003e B(COCO) C(YOLOv5 YMAL) --\u003e B D(darknet) --\u003e B E(labelme) --\u003e B B --\u003e F(labelImg) F --\u003e G(PubLayNet) F --\u003e J(YOLOv5) 安装 link pip install label_convert ",
-                content: " 目标检测和图像分割的数据集格式转换工具，支持labelme、labelImg与YOLO、VOC和COCO 数据集格式之间的相互转换。\n支持的转换 linkflowchart LR A(YOLOv5) --\u003e B(COCO) C(YOLOv5 YMAL) --\u003e B D(darknet) --\u003e B E(labelme) --\u003e B B --\u003e F(labelImg) F --\u003e G(PubLayNet) F --\u003e J(YOLOv5) 安装 link pip install label_convert "
+                description: " 目标检测和图像分割的数据集格式转换工具，支持labelme、labelImg与YOLO、VOC和COCO 数据集格式之间的相互转换。 支持的转换 linkflowchart LR A(YOLOv5) --\u003e B(COCO) C(YOLOv5 YMAL) --\u003e B D(darknet) --\u003e B E(labelme) --\u003e B B --\u003e F(labelImg) F --\u003e G(PubLayNet) F --\u003e J(YOLOv5) J --\u003e H(YOLOv8) H --\u003e J 安装 link pip install label_convert ",
+                content: " 目标检测和图像分割的数据集格式转换工具，支持labelme、labelImg与YOLO、VOC和COCO 数据集格式之间的相互转换。\n支持的转换 linkflowchart LR A(YOLOv5) --\u003e B(COCO) C(YOLOv5 YMAL) --\u003e B D(darknet) --\u003e B E(labelme) --\u003e B B --\u003e F(labelImg) F --\u003e G(PubLayNet) F --\u003e J(YOLOv5) J --\u003e H(YOLOv8) H --\u003e J 安装 link pip install label_convert "
             }
         );
     index.add(
             {
-                id:  7 ,
+                id:  9 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/yolov5_yaml_to_coco\/",
-                title: "YOLOV5 YAML → COCO",
+                title: "YOLOv5 YAML → COCO",
                 description: "简介 link将以yaml文件给出的YOLOv5格式数据集转换为COCO格式\n支持标注格式为矩形框和多边形框。\nYOLOv5 yaml结构如下： link notifications 具体结构示例文件，可移步：yolov5_yaml_dataset\nyolov5_yaml_dataset ├── images │ ├── train │ │ ├── images(13).jpg │ │ └── images(3).jpg │ └── val │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── train │ │ ├── images(13).txt │ │ └── images(3).txt │ └── val │ ├── images(13).txt │ └── images(3).txt └── sample.yaml 转换 link yolov5_yaml_to_coco --yaml_path dataset/yolov5_yaml_dataset/sample.yaml --yaml_path: yaml文件路径 --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_yaml_dataset_coco 转换后结构如下： link notifications 具体结构示例文件，可移步：COCO_dataset\nCOCO_dataset ├── annotations │ ├── instances_train2017.",
                 content: "简介 link将以yaml文件给出的YOLOv5格式数据集转换为COCO格式\n支持标注格式为矩形框和多边形框。\nYOLOv5 yaml结构如下： link notifications 具体结构示例文件，可移步：yolov5_yaml_dataset\nyolov5_yaml_dataset ├── images │ ├── train │ │ ├── images(13).jpg │ │ └── images(3).jpg │ └── val │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── train │ │ ├── images(13).txt │ │ └── images(3).txt │ └── val │ ├── images(13).txt │ └── images(3).txt └── sample.yaml 转换 link yolov5_yaml_to_coco --yaml_path dataset/yolov5_yaml_dataset/sample.yaml --yaml_path: yaml文件路径 --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_yaml_dataset_coco 转换后结构如下： link notifications 具体结构示例文件，可移步：COCO_dataset\nCOCO_dataset ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg "
             }
         );
     index.add(
             {
-                id:  8 ,
+                id:  10 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/",
                 title: "支持转换格式",
                 description: "",
@@ -928,7 +970,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
         );
     index.add(
             {
-                id:  9 ,
+                id:  11 ,
                 href: "\/LabelConvert\/docs\/changelog\/",
                 title: "更新日志",
                 description: "2024-03-30 v0.0.10 update: link 修复各个转换模块命令行参数不统一问题 撰写文档 2024-03-30 v0.0.9 update: link 修复issue #16 2024-03-28 v0.0.8 update: link 优化各个模块代码 添加单元测试 去除无效数据集文件 2023-11-01 v0.0.7 update: link 修复Issue #9 2023-11-01 v0.0.6 update: link 添加labelme_to_coco的支持，详情参见：labelme_to_coco 2023-10-25 v0.0.4~v0.0.5 update: link 修复命令行模式下，参数类型错误 更新文档内容，优化文档表达 2023-09-15 v0.0.3 update: link Add labelImg to publaynet format. ",
@@ -937,7 +979,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
         );
     index.add(
             {
-                id:  10 ,
+                id:  12 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/darknet_to_coco\/",
                 title: "Darknet → COCO",
                 description: "简介 link将Darnet格式数据集转化为COCO格式数据集。\nDarknet结构如下： link notifications 具体结构示例文件，可移步：darknet_dataset\ndarknet_dataset ├── class.names ├── gen_config.data ├── gen_train.txt ├── gen_valid.txt └── images ├── train └── valid 转换 link darknet_to_coco --data_dir dataset/darknet_dataset --data_dir: COCO格式数据集所在目录。示例为dataset/darknet_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/darknet_dataset_coco 转换后结构如下： link notifications 具体结构示例文件，可移步：COCO_dataset\nCOCO_dataset ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000001.jpg ",
@@ -946,7 +988,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
         );
     index.add(
             {
-                id:  11 ,
+                id:  13 ,
                 href: "\/LabelConvert\/docs\/supportconversions\/vis_coco\/",
                 title: "可视化COCO数据集",
                 description: "可视化 link vis_coco --img_id 1 --json_path dataset/COCO_format/annotations/instances_train2017.json -img_dir dataset/COCO_format/train2017 --img_id: 指定显示图像的索引值，示例为1 --json_path: 图像所在的json路径 --img_dir: 图像所在的目录 JSON格式示例 link { \"info\": { \"year\": 2022, \"version\": \"1.0\", \"description\": \"For object detection\", \"date_created\": \"2022\" }, \"licenses\": [{ \"id\": 1, \"name\": \"Apache License v2.0\", \"url\": \"https://github.com/RapidAI/YOLO2COCO/LICENSE\" }], \"images\": [{ \"date_captured\": \"2022\", \"file_name\": \"000000000001.jpg\", \"id\": 1, \"height\": 224, \"width\": 224 }, { \"date_captured\": \"2022\", \"file_name\": \"000000000002.jpg\", \"id\": 2, \"height\": 424, \"width\": 550 }], \"annotations\": [{ \"segmentation\": [[18.",

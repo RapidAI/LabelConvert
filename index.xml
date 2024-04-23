@@ -6,9 +6,9 @@
     <description>Recent content on Label Convert Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 31 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://rapidai.github.io/LabelConvert/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://rapidai.github.io/LabelConvert/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>labelImg → YOLOV5</title>
+      <title>labelImg → YOLOv5</title>
       <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/labelimg_to_yolov5/</link>
       <pubDate>Fri, 30 Sep 2022 00:00:00 +0000</pubDate>
       
@@ -44,16 +44,42 @@ labelImg_dataset ├── train │ ├── 000000000001.jpg │ ├── 00
     </item>
     
     <item>
-      <title>YOLOV5 → COCO</title>
+      <title>YOLOv5 → COCO</title>
       <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_coco/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_coco/</guid>
       <description>简介 link将YOLOv5格式数据集转换为COCO格式。
 支持标注格式为矩形框和多边形框。
-YOLOV5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset
+YOLOv5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset
 yolov5_dataset ├── classes.txt ├── non_labels # 通常用来放负样本 │ └── bg1.jpeg ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt 转换 link yolov5_to_coco --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_dataset_coco --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) 转换后结构如下： link notifications 具体结构示例文件，可移步：COCO_dataset
 COCO_dataset ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.</description>
+    </item>
+    
+    <item>
+      <title>YOLOv5 → YOLOv8</title>
+      <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_yolov8/</link>
+      <pubDate>Tue, 23 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_yolov8/</guid>
+      <description>简介 link将YOLOv5格式数据集转换为YOLOv8格式。
+支持标注格式为矩形框和多边形框。
+YOLOv5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset
+yolov5_dataset ├── classes.txt ├── non_labels # 通常用来放负样本 │ └── bg1.jpeg ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt 转换 link yolov5_to_yolov8 --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_dataset_yolov8 --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) 转换后结构如下： link notifications 具体结构示例文件，可移步：yolov8_dataset
+yolov8_dataset ├── images │ ├── train │ │ ├── 0dcddf72.jpg │ │ └── images(3).</description>
+    </item>
+    
+    <item>
+      <title>YOLOv8 → YOLOv5</title>
+      <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov8_to_yolov5/</link>
+      <pubDate>Tue, 23 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov8_to_yolov5/</guid>
+      <description>简介 link将YOLOv8格式数据集转换为YOLOv5格式。
+支持标注格式为矩形框和多边形框。
+YOLOv5数据结构如下 link notifications 具体结构示例文件，可移步：yolov8_dataset
+yolov8_dataset ├── images │ ├── train │ │ ├── 0dcddf72.jpg │ │ └── images(3).jpg │ └── val │ ├── 8ae4af51.jpg │ └── images(13).jpg └── labels ├── train │ ├── 0dcddf72.txt │ └── images(3).txt └── val ├── 8ae4af51.txt └── images(13).txt 转换 link yolov8_to_yolov5 --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov8_dataset_yolov5 --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) --yaml_path: 指定的yaml配置文件，用于读取其中names类名 转换后结构如下： link notifications 具体结构示例文件，可移步：yolov5_dataset
+yolov5_dataset ├── classes.</description>
     </item>
     
     <item>
@@ -75,11 +101,11 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
       
       <guid>https://rapidai.github.io/LabelConvert/docs/overview/</guid>
       <description> 目标检测和图像分割的数据集格式转换工具，支持labelme、labelImg与YOLO、VOC和COCO 数据集格式之间的相互转换。
-支持的转换 linkflowchart LR A(YOLOv5) --&amp;gt; B(COCO) C(YOLOv5 YMAL) --&amp;gt; B D(darknet) --&amp;gt; B E(labelme) --&amp;gt; B B --&amp;gt; F(labelImg) F --&amp;gt; G(PubLayNet) F --&amp;gt; J(YOLOv5) 安装 link pip install label_convert </description>
+支持的转换 linkflowchart LR A(YOLOv5) --&amp;gt; B(COCO) C(YOLOv5 YMAL) --&amp;gt; B D(darknet) --&amp;gt; B E(labelme) --&amp;gt; B B --&amp;gt; F(labelImg) F --&amp;gt; G(PubLayNet) F --&amp;gt; J(YOLOv5) J --&amp;gt; H(YOLOv8) H --&amp;gt; J 安装 link pip install label_convert </description>
     </item>
     
     <item>
-      <title>YOLOV5 YAML → COCO</title>
+      <title>YOLOv5 YAML → COCO</title>
       <link>https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_yaml_to_coco/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

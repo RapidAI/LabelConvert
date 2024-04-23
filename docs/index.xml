@@ -14,7 +14,7 @@
       
       <guid>https://rapidai.github.io/LabelConvert/docs/overview/</guid>
       <description> 目标检测和图像分割的数据集格式转换工具，支持labelme、labelImg与YOLO、VOC和COCO 数据集格式之间的相互转换。
-支持的转换 linkflowchart LR A(YOLOv5) --&amp;gt; B(COCO) C(YOLOv5 YMAL) --&amp;gt; B D(darknet) --&amp;gt; B E(labelme) --&amp;gt; B B --&amp;gt; F(labelImg) F --&amp;gt; G(PubLayNet) F --&amp;gt; J(YOLOv5) 安装 link pip install label_convert </description>
+支持的转换 linkflowchart LR A(YOLOv5) --&amp;gt; B(COCO) C(YOLOv5 YMAL) --&amp;gt; B D(darknet) --&amp;gt; B E(labelme) --&amp;gt; B B --&amp;gt; F(labelImg) F --&amp;gt; G(PubLayNet) F --&amp;gt; J(YOLOv5) J --&amp;gt; H(YOLOv8) H --&amp;gt; J 安装 link pip install label_convert </description>
     </item>
     
     <item>

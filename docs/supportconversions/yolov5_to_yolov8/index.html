@@ -18,7 +18,7 @@
 
 <html lang="en-us"><head>
     <meta charset="utf-8" />
-    <title>labelme → COCO | Label Convert Documentation</title>
+    <title>YOLOv5 → YOLOv8 | Label Convert Documentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Documentation, Hugo, Hugo Theme, Bootstrap" />
     <meta name="author" content="Colin Wilson - Lotus Labs" />
@@ -32,21 +32,23 @@
 <link rel="icon" type="image/png" sizes="32x32" href="https://rapidai.github.io/LabelConvert/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://rapidai.github.io/LabelConvert/favicon-16x16.png">
 <link rel="manifest" crossorigin="use-credentials" href="https://rapidai.github.io/LabelConvert/site.webmanifest">
-<meta property="og:title" content="labelme → COCO" />
-<meta property="og:description" content="简介 link一键转换labelme标注的数据格式为COCO格式
-labelme结构如下： link notifications 具体结构示例文件，可移步：labelme_dataset
-labelme_dataset ├── val_0001.jpg ├── val_0001.json ├── val_0002.jpg └── val_0002.json 转换 link labelme_to_coco --data_dir dataset/labelme_dataset \ --save_dir dataset/coco_dataset \ --val_ratio 0.2 \ --have_test \ --test_ratio 0.2 --data_dir: 数据集所在目录。示例为dataset/labelme_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/labelme_dataset_coco --val_ratio: 验证集所占比例，示例为总量的0.2 --have_test: 是否划出测试集，示例为False，如果想要划分测试集，直接加上该参数即可。 --test_ratio: 测试集的比例，示例为总量的0.2 转换后结构如下： link notifications 具体结构示例文件，可移步：COCO_dataset
-COCO_dataset ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000002.jpg " />
+<meta property="og:title" content="YOLOv5 → YOLOv8" />
+<meta property="og:description" content="简介 link将YOLOv5格式数据集转换为YOLOv8格式。
+支持标注格式为矩形框和多边形框。
+YOLOv5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset
+yolov5_dataset ├── classes.txt ├── non_labels # 通常用来放负样本 │ └── bg1.jpeg ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt 转换 link yolov5_to_yolov8 --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_dataset_yolov8 --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) 转换后结构如下： link notifications 具体结构示例文件，可移步：yolov8_dataset
+yolov8_dataset ├── images │ ├── train │ │ ├── 0dcddf72.jpg │ │ └── images(3)." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://rapidai.github.io/LabelConvert/docs/supportconversions/labelme_to_coco/" /><meta property="og:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_17261691416152828985.png"/><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-10-31T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-03-30T16:41:16+08:00" /><meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_17261691416152828985.png"/>
-<meta name="twitter:title" content="labelme → COCO"/>
-<meta name="twitter:description" content="简介 link一键转换labelme标注的数据格式为COCO格式
-labelme结构如下： link notifications 具体结构示例文件，可移步：labelme_dataset
-labelme_dataset ├── val_0001.jpg ├── val_0001.json ├── val_0002.jpg └── val_0002.json 转换 link labelme_to_coco --data_dir dataset/labelme_dataset \ --save_dir dataset/coco_dataset \ --val_ratio 0.2 \ --have_test \ --test_ratio 0.2 --data_dir: 数据集所在目录。示例为dataset/labelme_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/labelme_dataset_coco --val_ratio: 验证集所占比例，示例为总量的0.2 --have_test: 是否划出测试集，示例为False，如果想要划分测试集，直接加上该参数即可。 --test_ratio: 测试集的比例，示例为总量的0.2 转换后结构如下： link notifications 具体结构示例文件，可移步：COCO_dataset
-COCO_dataset ├── annotations │ ├── instances_train2017.json │ └── instances_val2017.json ├── train2017 │ ├── 000000000001.jpg │ └── 000000000002.jpg └── val2017 └── 000000000002.jpg "/>
+<meta property="og:url" content="https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_yolov8/" /><meta property="og:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_1268699053836219947.png"/><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2024-04-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-04-23T21:49:04+08:00" /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://rapidai.github.io/LabelConvert/opengraph/card-base-2_hu06b1a92291a380a0d2e0ec03dab66b2f_17642_filter_1268699053836219947.png"/>
+<meta name="twitter:title" content="YOLOv5 → YOLOv8"/>
+<meta name="twitter:description" content="简介 link将YOLOv5格式数据集转换为YOLOv8格式。
+支持标注格式为矩形框和多边形框。
+YOLOv5数据结构如下 link notifications 具体结构示例文件，可移步：yolov5_dataset
+yolov5_dataset ├── classes.txt ├── non_labels # 通常用来放负样本 │ └── bg1.jpeg ├── images │ ├── images(13).jpg │ └── images(3).jpg ├── labels │ ├── images(13).txt │ └── images(3).txt ├── train.txt └── val.txt 转换 link yolov5_to_yolov8 --data_dir dataset/yolov5_dataset --mode_list train,val --data_dir: 数据集所在目录。示例为dataset/yolov5_dataset --save_dir: 保存转换后的数据集目录。默认为dataset/yolov5_dataset_yolov8 --mode_list: 指定划分的数据集种类。 (例如：train,val,test / train,val) 转换后结构如下： link notifications 具体结构示例文件，可移步：yolov8_dataset
+yolov8_dataset ├── images │ ├── train │ │ ├── 0dcddf72.jpg │ │ └── images(3)."/>
 
     
     <script>(()=>{var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,e=localStorage.getItem("theme");t&&e===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),t&&e==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),e==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script>
@@ -140,7 +142,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
                                     
                                         
                                         
-                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_yolov8/">YOLOv5 → YOLOv8</a></li>
+                                            <li class="current "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/yolov5_to_yolov8/">YOLOv5 → YOLOv8</a></li>
                                         
                                     
                                         
@@ -150,7 +152,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
                                     
                                         
                                         
-                                            <li class="current "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/labelme_to_coco/">labelme → COCO</a></li>
+                                            <li class=" "><a class="sidebar-nested-link" href="https://rapidai.github.io/LabelConvert/docs/supportconversions/labelme_to_coco/">labelme → COCO</a></li>
                                         
                                     
                                         
@@ -339,7 +341,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
             
         
             <li class="breadcrumb-item text-capitalize active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <span itemprop="name">labelme → COCO</span>
+                <span itemprop="name">YOLOv5 → YOLOv8</span>
                 <meta itemprop="position" content='3' />
             </li>
         
@@ -359,7 +361,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
             <li>
               <ul>
                 <li><a href="#简介">简介</a></li>
-                <li><a href="#labelme结构如下">labelme结构如下：</a></li>
+                <li><a href="#yolov5数据结构如下">YOLOv5数据结构如下</a></li>
                 <li><a href="#转换">转换</a></li>
                 <li><a href="#转换后结构如下">转换后结构如下：</a></li>
               </ul>
@@ -386,7 +388,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
             <li>
               <ul>
                 <li><a href="#简介">简介</a></li>
-                <li><a href="#labelme结构如下">labelme结构如下：</a></li>
+                <li><a href="#yolov5数据结构如下">YOLOv5数据结构如下</a></li>
                 <li><a href="#转换">转换</a></li>
                 <li><a href="#转换后结构如下">转换后结构如下：</a></li>
               </ul>
@@ -401,7 +403,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
                                             <div class="mb-0 d-flex">
                                                 
                                                 <h1 class="content-title mb-0">
-                                                    labelme → COCO
+                                                    YOLOv5 → YOLOv8
                                                     
                                                 </h1>
                                             </div>
@@ -412,8 +414,9 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
                                                 
     
     <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
-        <h4 id="简介">简介 <a href="#%e7%ae%80%e4%bb%8b" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h4><p>一键转换<a href="https://github.com/wkentaro/labelme" rel="external" target="_blank">labelme<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 5c-.552 0-1-.448-1-1s.448-1 1-1h6c.552 0 1 .448 1 1v6c0 .552-.448 1-1 1s-1-.448-1-1v-3.586l-7.293 7.293c-.391.39-1.024.39-1.414 0-.391-.391-.391-1.024 0-1.414l7.293-7.293h-3.586zm-9 2c-.552 0-1 .448-1 1v11c0 .552.448 1 1 1h11c.552 0 1-.448 1-1v-4.563c0-.552.448-1 1-1s1 .448 1 1v4.563c0 1.657-1.343 3-3 3h-11c-1.657 0-3-1.343-3-3v-11c0-1.657 1.343-3 3-3h4.563c.552 0 1 .448 1 1s-.448 1-1 1h-4.563z"/></svg></a>标注的数据格式为COCO格式</p>
-<h4 id="labelme结构如下">labelme结构如下： <a href="#labelme%e7%bb%93%e6%9e%84%e5%a6%82%e4%b8%8b" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h4>
+        <h4 id="简介">简介 <a href="#%e7%ae%80%e4%bb%8b" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h4><p>将YOLOv5格式数据集转换为YOLOv8格式。</p>
+<p>支持标注格式为矩形框和多边形框。</p>
+<h4 id="yolov5数据结构如下">YOLOv5数据结构如下 <a href="#yolov5%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e5%a6%82%e4%b8%8b" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h4>
 <div class="alert alert-default d-flex" role="alert">
   <div class="flex-shrink-1 alert-icon">
   
@@ -421,7 +424,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
   notifications
   </span></div>
   
-  <div class="w-100"><p>具体结构示例文件，可移步：<a href="https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/labelme_dataset" rel="external" target="_blank">labelme_dataset<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 5c-.552 0-1-.448-1-1s.448-1 1-1h6c.552 0 1 .448 1 1v6c0 .552-.448 1-1 1s-1-.448-1-1v-3.586l-7.293 7.293c-.391.39-1.024.39-1.414 0-.391-.391-.391-1.024 0-1.414l7.293-7.293h-3.586zm-9 2c-.552 0-1 .448-1 1v11c0 .552.448 1 1 1h11c.552 0 1-.448 1-1v-4.563c0-.552.448-1 1-1s1 .448 1 1v4.563c0 1.657-1.343 3-3 3h-11c-1.657 0-3-1.343-3-3v-11c0-1.657 1.343-3 3-3h4.563c.552 0 1 .448 1 1s-.448 1-1 1h-4.563z"/></svg></a></p>
+  <div class="w-100"><p>具体结构示例文件，可移步：<a href="https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/yolov5_dataset" rel="external" target="_blank">yolov5_dataset<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 5c-.552 0-1-.448-1-1s.448-1 1-1h6c.552 0 1 .448 1 1v6c0 .552-.448 1-1 1s-1-.448-1-1v-3.586l-7.293 7.293c-.391.39-1.024.39-1.414 0-.391-.391-.391-1.024 0-1.414l7.293-7.293h-3.586zm-9 2c-.552 0-1 .448-1 1v11c0 .552.448 1 1 1h11c.552 0 1-.448 1-1v-4.563c0-.552.448-1 1-1s1 .448 1 1v4.563c0 1.657-1.343 3-3 3h-11c-1.657 0-3-1.343-3-3v-11c0-1.657 1.343-3 3-3h4.563c.552 0 1 .448 1 1s-.448 1-1 1h-4.563z"/></svg></a></p>
 </div>
   </div>
 
@@ -442,12 +445,19 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
   
 
   <div class="prism-codeblock  linenos">
-  <pre id="43c4d8e" class="language-text  line-numbers">
-  <code>labelme_dataset
-├── val_0001.jpg
-├── val_0001.json
-├── val_0002.jpg
-└── val_0002.json</code>
+  <pre id="c288f3a" class="language-text  line-numbers">
+  <code>yolov5_dataset
+├── classes.txt
+├── non_labels  # 通常用来放负样本
+│   └── bg1.jpeg
+├── images
+│   ├── images(13).jpg
+│   └── images(3).jpg
+├── labels
+│   ├── images(13).txt
+│   └── images(3).txt
+├── train.txt
+└── val.txt</code>
   </pre>
   </div>
 <h4 id="转换">转换 <a href="#%e8%bd%ac%e6%8d%a2" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h4>
@@ -468,20 +478,14 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
   
 
   <div class="prism-codeblock  linenos">
-  <pre id="52bb5b8" class="language-bash  line-numbers">
-  <code>labelme_to_coco --data_dir dataset/labelme_dataset \
-                --save_dir dataset/coco_dataset \
-                --val_ratio 0.2 \
-                --have_test \
-                --test_ratio 0.2</code>
+  <pre id="bee9551" class="language-bash  line-numbers">
+  <code>yolov5_to_yolov8 --data_dir dataset/yolov5_dataset --mode_list train,val</code>
   </pre>
   </div>
 <ul>
-<li><code>--data_dir</code>: 数据集所在目录。示例为<code>dataset/labelme_dataset</code></li>
-<li><code>--save_dir</code>: 保存转换后的数据集目录。默认为<code>dataset/labelme_dataset_coco</code></li>
-<li><code>--val_ratio</code>: 验证集所占比例，示例为总量的0.2</li>
-<li><code>--have_test</code>: 是否划出测试集，示例为<code>False</code>，如果想要划分测试集，直接加上该参数即可。</li>
-<li><code>--test_ratio</code>: 测试集的比例，示例为总量的0.2</li>
+<li><code>--data_dir</code>: 数据集所在目录。示例为<code>dataset/yolov5_dataset</code></li>
+<li><code>--save_dir</code>: 保存转换后的数据集目录。默认为<code>dataset/yolov5_dataset_yolov8</code></li>
+<li><code>--mode_list</code>: 指定划分的数据集种类。 (例如：<code>train,val,test</code> / <code>train,val</code>)</li>
 </ul>
 <h4 id="转换后结构如下">转换后结构如下： <a href="#%e8%bd%ac%e6%8d%a2%e5%90%8e%e7%bb%93%e6%9e%84%e5%a6%82%e4%b8%8b" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h4>
 <div class="alert alert-default d-flex" role="alert">
@@ -491,7 +495,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
   notifications
   </span></div>
   
-  <div class="w-100"><p>具体结构示例文件，可移步：<a href="https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/COCO_dataset" rel="external" target="_blank">COCO_dataset<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 5c-.552 0-1-.448-1-1s.448-1 1-1h6c.552 0 1 .448 1 1v6c0 .552-.448 1-1 1s-1-.448-1-1v-3.586l-7.293 7.293c-.391.39-1.024.39-1.414 0-.391-.391-.391-1.024 0-1.414l7.293-7.293h-3.586zm-9 2c-.552 0-1 .448-1 1v11c0 .552.448 1 1 1h11c.552 0 1-.448 1-1v-4.563c0-.552.448-1 1-1s1 .448 1 1v4.563c0 1.657-1.343 3-3 3h-11c-1.657 0-3-1.343-3-3v-11c0-1.657 1.343-3 3-3h4.563c.552 0 1 .448 1 1s-.448 1-1 1h-4.563z"/></svg></a></p>
+  <div class="w-100"><p>具体结构示例文件，可移步：<a href="https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/yolov8_dataset" rel="external" target="_blank">yolov8_dataset<svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M14 5c-.552 0-1-.448-1-1s.448-1 1-1h6c.552 0 1 .448 1 1v6c0 .552-.448 1-1 1s-1-.448-1-1v-3.586l-7.293 7.293c-.391.39-1.024.39-1.414 0-.391-.391-.391-1.024 0-1.414l7.293-7.293h-3.586zm-9 2c-.552 0-1 .448-1 1v11c0 .552.448 1 1 1h11c.552 0 1-.448 1-1v-4.563c0-.552.448-1 1-1s1 .448 1 1v4.563c0 1.657-1.343 3-3 3h-11c-1.657 0-3-1.343-3-3v-11c0-1.657 1.343-3 3-3h4.563c.552 0 1 .448 1 1s-.448 1-1 1h-4.563z"/></svg></a></p>
 </div>
   </div>
 
@@ -504,21 +508,30 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
   
   
   
+    
+  
   
 
+   
   
 
-  <div class="prism-codeblock ">
-  <pre id="3fc2eff" class="language-text ">
-  <code>COCO_dataset
-├── annotations
-│   ├── instances_train2017.json
-│   └── instances_val2017.json
-├── train2017
-│   ├── 000000000001.jpg
-│   └── 000000000002.jpg
-└── val2017
-    └── 000000000002.jpg</code>
+  <div class="prism-codeblock  linenos">
+  <pre id="f9223e4" class="language-text  line-numbers">
+  <code>yolov8_dataset
+├── images
+│   ├── train
+│   │   ├── 0dcddf72.jpg
+│   │   └── images(3).jpg
+│   └── val
+│       ├── 8ae4af51.jpg
+│       └── images(13).jpg
+└── labels
+    ├── train
+    │   ├── 0dcddf72.txt
+    │   └── images(3).txt
+    └── val
+        ├── 8ae4af51.txt
+        └── images(13).txt</code>
   </pre>
   </div>
 
@@ -540,7 +553,7 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
 
 <div class="gitinfo d-flex flex-wrap justify-content-between align-items-center opacity-85 pt-3">
     <div id="edit-this-page" class="mt-1">
-        <a href="https://github.com/RapidAI/LabelConvert/blob/main/content/docs/SupportConversions/labelme_to_coco.md" alt="labelme → COCO" rel="noopener noreferrer" target="_blank">
+        <a href="https://github.com/RapidAI/LabelConvert/blob/main/content/docs/SupportConversions/yolov5_to_yolov8.md" alt="YOLOv5 → YOLOv8" rel="noopener noreferrer" target="_blank">
             
             <span class="me-1 align-text-bottom">
                 
@@ -558,9 +571,9 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
     <div id="last-modified" class="mt-1">
         <p class="mb-0 fw-semibold">Last updated <span
             id="relativetime"
-            data-authdate="2024-03-30T16:41:16&#43;0800"
-            title="30 Mar 2024, 16:41 &#43;0800">
-            30 Mar 2024, 16:41 &#43;0800
+            data-authdate="2024-04-23T21:49:04&#43;0800"
+            title="23 Apr 2024, 21:49 &#43;0800">
+            23 Apr 2024, 21:49 &#43;0800
         </span>. <span class="material-icons size-20 align-text-bottom opacity-75">history</span>
         </p>
     </div>
@@ -576,10 +589,10 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
 
 	<div class="row flex-xl-nowrap ">
 	<div class="col-sm-6 pt-2 doc-next">
-		<a href="/LabelConvert/docs/supportconversions/yolov8_to_yolov5/">
+		<a href="/LabelConvert/docs/supportconversions/yolov5_to_coco/">
 			<div class="card h-100 my-1">
 				<div class="card-body py-2">
-                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> YOLOv8 → YOLOv5</p>
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0"><i class="material-icons align-middle">navigate_before</i> YOLOv5 → COCO</p>
 					<p class="card-text ms-2"></p>
 					
 				</div>
@@ -587,10 +600,10 @@ COCO_dataset ├── annotations │ ├── instances_train2017.json │ �
 		</a>
         </div>
 	<div class="col-sm-6 pt-2 doc-prev">
-		<a class="ms-auto" href="/LabelConvert/docs/overview/">
+		<a class="ms-auto" href="/LabelConvert/docs/supportconversions/yolov8_to_yolov5/">
 			<div class="card h-100 my-1 text-end">
 				<div class="card-body py-2">
-                    <p class="card-title fs-5 fw-semibold lh-base mb-0">概览 <i class="material-icons align-middle">navigate_next</i></p>
+                    <p class="card-title fs-5 fw-semibold lh-base mb-0">YOLOv8 → YOLOv5 <i class="material-icons align-middle">navigate_next</i></p>
 					<p class="card-text me-2"></p>
 					
 				</div>
