@@ -26,14 +26,14 @@ Supports conversion between labelme tool annotated data, labelImg tool annotated
 ```mermaid
 flowchart LR
 
-A(YOLO) --> B(COCO)
-C(YOLO YMAL) --> B
+A(YOLOv5) --> B(COCO)
+C(YOLOv5 YMAL) --> B
 D(darknet) --> B
 E(labelme) --> B
 
 B --> F(labelImg)
 F --> G(PubLayNet)
-F --> J(YOLO)
+F --> J(YOLOv5)
 ```
 
 ## Installation
