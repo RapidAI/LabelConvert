@@ -80,7 +80,7 @@ class YOLOV5ToCOCO:
         ]
 
     def append_bg_img(self, img_list):
-        bg_dir = self.data_dir / "background_images"
+        bg_dir = self.data_dir / "non_labels"
         if bg_dir.exists():
             bg_img_list = list(bg_dir.iterdir())
             for bg_img_path in bg_img_list:
