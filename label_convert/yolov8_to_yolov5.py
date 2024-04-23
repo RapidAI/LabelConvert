@@ -4,15 +4,21 @@
 import argparse
 import shutil
 from pathlib import Path
-from typing import Tuple, Union
+from typing import List, Tuple, Union
 
+import yaml
 from tqdm import tqdm
 
 ValueType = Union[str, Path, None]
 
 
 class YOLOV8ToYOLOV5:
-    def __init__(self, data_dir: ValueType = None, save_dir: ValueType = None):
+    def __init__(
+        self,
+        data_dir: ValueType = None,
+        save_dir: ValueType = None,
+        yaml_path: ValueType = None,
+    ):
         if data_dir is None:
             raise ValueError("data_dir must not be None")
         self.data_dir = Path(data_dir)
@@ -25,9 +31,11 @@ class YOLOV8ToYOLOV5:
         self.verify_exists(self.label_dir)
 
         if save_dir is None:
-            save_dir = self.data_dir.parent / f"{Path(self.data_dir).name}_yolov8"
+            save_dir = self.data_dir.parent / f"{Path(self.data_dir).name}_yolov5"
         self.save_dir = save_dir
         self.mkdir(self.save_dir)
+
+        self.yaml_path = yaml_path
 
         self.save_img_dir = save_dir / "images"
         self.mkdir(self.save_img_dir)
@@ -40,24 +48,29 @@ class YOLOV8ToYOLOV5:
             raise ValueError("mode_list is empty!!")
 
         for mode in tqdm(mode_list):
-            txt_path = self.data_dir / f"{mode}.txt"
-            self.verify_exists(txt_path)
-            img_list = self.read_txt(txt_path)
+            img_dir = self.img_dir / mode
+            img_list = list(img_dir.iterdir())
 
-            save_mode_img_dir = self.save_img_dir / mode
-            self.mkdir(save_mode_img_dir)
-
-            save_mode_label_dir = self.save_label_dir / mode
-            self.mkdir(save_mode_label_dir)
-
+            img_relative_list = []
             # copy images to new img dir
             for img_path in img_list:
-                img_full_path = self.data_dir / img_path
-                shutil.copy(img_full_path, save_mode_img_dir)
+                shutil.copy(img_path, self.save_img_dir)
 
-                label_path = self.label_dir / Path(img_path).with_suffix(".txt").name
-                shutil.copy(label_path, save_mode_label_dir)
+                label_path = self.label_dir / mode / img_path.with_suffix(".txt").name
+                shutil.copy(label_path, self.save_label_dir)
 
+                new_img_path = Path("images") / img_path.name
+                img_relative_list.append(new_img_path)
+
+            txt_path = self.save_dir / f"{mode}.txt"
+            self.write_txt(txt_path, img_relative_list)
+
+        class_txt_path = self.save_dir / "classes.txt"
+        class_content = ""
+        if self.yaml_path is not None:
+            yaml_data = self.read_yaml(self.yaml_path)
+            class_content = list(yaml_data["names"].values())
+        self.write_txt(class_txt_path, class_content)
         print(f"Successfully convert, detail in {self.save_dir}")
 
     @staticmethod
@@ -75,6 +88,24 @@ class YOLOV8ToYOLOV5:
         if not Path(file_path).exists():
             raise FileNotFoundError(f"The {file_path} is not exists!!!")
 
+    @staticmethod
+    def write_txt(save_path: str, content: List[str], mode="w") -> None:
+        if not isinstance(save_path, str):
+            save_path = str(save_path)
+
+        if isinstance(content, str):
+            content = [content]
+
+        with open(save_path, mode, encoding="utf-8") as f:
+            for value in content:
+                f.write(f"{value}\n")
+
+    @staticmethod
+    def read_yaml(yaml_path):
+        with open(yaml_path, "rb") as f:
+            data = yaml.load(f, Loader=yaml.Loader)
+        return data
+
 
 def main():
     parser = argparse.ArgumentParser("Datasets converter from YOLOV5 to COCO")
@@ -91,7 +122,7 @@ def main():
     parser.add_argument("--yaml_path", type=str, default=None)
     args = parser.parse_args()
 
-    converter = YOLOV8ToYOLOV5(args.data_dir, args.save_dir)
+    converter = YOLOV8ToYOLOV5(args.data_dir, args.save_dir, args.yaml_path)
     converter(mode_list=args.mode_list.split(","))
 
 
