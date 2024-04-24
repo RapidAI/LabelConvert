@@ -10,7 +10,7 @@ root_dir = cur_dir.parent
 
 sys.path.append(str(root_dir))
 
-from label_convert.yolov5_yaml_to_coco import YOLOV5CfgToCOCO
+from label_convert.yolov5_yaml_to_coco import YOLOv5CfgToCOCO
 
 test_file_dir = cur_dir / "test_files"
 
@@ -19,7 +19,7 @@ data_dir_name = "yolov5_yaml_dataset"
 
 def test_normal():
     yaml_path = test_file_dir / data_dir_name / "sample.yaml"
-    converter = YOLOV5CfgToCOCO(yaml_path=yaml_path)
+    converter = YOLOv5CfgToCOCO(yaml_path=yaml_path)
     converter()
 
     save_dir: Path = test_file_dir / f"{data_dir_name}_coco"

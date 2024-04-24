@@ -217,7 +217,7 @@ class DarknetToCOCO:
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser("Datasets convert from darknet to COCO")
     parser.add_argument(
         "--data_dir",
         default="dataset/darknet_dataset",

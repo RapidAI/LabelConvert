@@ -10,7 +10,7 @@ root_dir = cur_dir.parent
 
 sys.path.append(str(root_dir))
 
-from label_convert.yolov8_to_yolov5 import YOLOV8ToYOLOV5
+from label_convert.yolov8_to_yolov5 import YOLOv8ToYOLOv5
 
 test_file_dir = cur_dir / "test_files"
 
@@ -19,7 +19,7 @@ data_dir_name = "yolov8_dataset"
 
 def test_normal():
     data_dir = test_file_dir / data_dir_name
-    converter = YOLOV8ToYOLOV5(data_dir)
+    converter = YOLOv8ToYOLOv5(data_dir)
     converter()
 
     save_dir: Path = test_file_dir / f"{data_dir_name}_yolov5"

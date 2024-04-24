@@ -15,7 +15,7 @@ import yaml
 from tqdm import tqdm
 
 
-class YOLOV5CfgToCOCO:
+class YOLOv5CfgToCOCO:
     def __init__(
         self,
         yaml_path: Union[str, Path, None] = None,
@@ -256,7 +256,7 @@ class YOLOV5CfgToCOCO:
 
 
 def main():
-    parser = argparse.ArgumentParser("Datasets converter from YOLOV5 to COCO")
+    parser = argparse.ArgumentParser("Datasets converter from YOLOv5 YAML to COCO")
     parser.add_argument(
         "--yaml_path",
         type=str,
@@ -266,7 +266,7 @@ def main():
     parser.add_argument("--save_dir", type=str, default=None)
     args = parser.parse_args()
 
-    converter = YOLOV5CfgToCOCO(args.yaml_path, args.save_dir)
+    converter = YOLOv5CfgToCOCO(args.yaml_path, args.save_dir)
     converter()
 
 

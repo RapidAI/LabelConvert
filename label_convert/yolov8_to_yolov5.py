@@ -12,7 +12,7 @@ from tqdm import tqdm
 ValueType = Union[str, Path, None]
 
 
-class YOLOV8ToYOLOV5:
+class YOLOv8ToYOLOv5:
     def __init__(
         self,
         data_dir: ValueType = None,
@@ -108,7 +108,7 @@ class YOLOV8ToYOLOV5:
 
 
 def main():
-    parser = argparse.ArgumentParser("Datasets converter from YOLOV5 to COCO")
+    parser = argparse.ArgumentParser("Datasets converter from YOLOv8 to YOLOv5")
     parser.add_argument(
         "--data_dir",
         type=str,
@@ -122,7 +122,7 @@ def main():
     parser.add_argument("--yaml_path", type=str, default=None)
     args = parser.parse_args()
 
-    converter = YOLOV8ToYOLOV5(args.data_dir, args.save_dir, args.yaml_path)
+    converter = YOLOv8ToYOLOv5(args.data_dir, args.save_dir, args.yaml_path)
     converter(mode_list=args.mode_list.split(","))
 
 

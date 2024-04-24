@@ -243,7 +243,7 @@ class LabelmeToCOCO:
 
 
 def main():
-    parser = argparse.ArgumentParser("Datasets converter from YOLOV5 to COCO")
+    parser = argparse.ArgumentParser("Datasets converter from labelme to COCO")
     parser.add_argument("--data_dir", type=str, default=None)
     parser.add_argument("--save_dir", type=str, default=None)
     parser.add_argument("--val_ratio", type=float, default=0.2)

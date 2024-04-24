@@ -11,7 +11,7 @@ from tqdm import tqdm
 ValueType = Union[str, Path, None]
 
 
-class YOLOV5ToYOLOV8:
+class YOLOv5ToYOLOv8:
     def __init__(self, data_dir: ValueType = None, save_dir: ValueType = None):
         if data_dir is None:
             raise ValueError("data_dir must not be None")
@@ -77,7 +77,7 @@ class YOLOV5ToYOLOV8:
 
 
 def main():
-    parser = argparse.ArgumentParser("Datasets converter from YOLOV5 to COCO")
+    parser = argparse.ArgumentParser("Datasets converter from YOLOv5 to YOLOv8")
     parser.add_argument(
         "--data_dir",
         type=str,
@@ -90,7 +90,7 @@ def main():
     )
     args = parser.parse_args()
 
-    converter = YOLOV5ToYOLOV8(args.data_dir, args.save_dir)
+    converter = YOLOv5ToYOLOv8(args.data_dir, args.save_dir)
     converter(mode_list=args.mode_list.split(","))
 
 

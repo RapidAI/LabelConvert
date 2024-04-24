@@ -13,7 +13,7 @@ from tqdm import tqdm
 ValueType = Union[str, Path, None]
 
 
-class LabelImgToYOLOV5:
+class LabelImgToYOLOv5:
     def __init__(
         self,
         data_dir: ValueType = None,
@@ -142,7 +142,7 @@ class LabelImgToYOLOV5:
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser("Datasets convert from labelImg to YOLOv5")
     parser.add_argument("--data_dir", type=str, default=None)
     parser.add_argument("--save_dir", type=str, default=None)
     parser.add_argument("--val_ratio", type=float, default=0.2)
@@ -150,7 +150,7 @@ def main():
     parser.add_argument("--test_ratio", type=float, default=0.2)
     args = parser.parse_args()
 
-    converter = LabelImgToYOLOV5(
+    converter = LabelImgToYOLOv5(
         args.data_dir, args.save_dir, args.val_ratio, args.have_test, args.test_ratio
     )
     converter()

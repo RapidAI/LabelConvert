@@ -206,7 +206,7 @@ class LabelImgToPubLayNet:
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser("Datasets convert from labelImg to PubLayNet")
     parser.add_argument("--data_dir", type=str, default=None)
     parser.add_argument("--save_dir", type=str, default=None)
     parser.add_argument("--val_ratio", type=float, default=0.2)

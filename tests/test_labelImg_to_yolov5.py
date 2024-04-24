@@ -10,7 +10,7 @@ root_dir = cur_dir.parent
 
 sys.path.append(str(root_dir))
 
-from label_convert.labelImg_to_yolov5 import LabelImgToYOLOV5
+from label_convert.labelImg_to_yolov5 import LabelImgToYOLOv5
 
 test_file_dir = cur_dir / "test_files"
 
@@ -20,7 +20,7 @@ dataset_name = "labelImg_dataset"
 
 def test_normal():
     data_dir = test_file_dir / dataset_name
-    convert = LabelImgToYOLOV5(data_dir)
+    convert = LabelImgToYOLOv5(data_dir)
     convert()
 
     save_dir = test_file_dir / f"{dataset_name}_yolov5"
