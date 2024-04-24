@@ -90,7 +90,9 @@ class LabelImgToYOLOv5:
         self, img_list, ratio=0.2, have_test=True, test_ratio=0.2
     ):
         random.shuffle(img_list)
-        img_list = [f"{self.out_img_dir / img_path.name}" for img_path in img_list]
+        img_list = [
+            f"{Path(self.out_img_dir.name) / img_path.name}" for img_path in img_list
+        ]
         len_img = len(img_list)
         if have_test:
             split_idx_first = int(len_img * ratio)
