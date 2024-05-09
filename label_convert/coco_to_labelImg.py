@@ -78,11 +78,9 @@ class COCOTolabelImg:
                 xywh_str = " ".join([str(v) for v in xywh])
                 label_str = f"{category_id} {xywh_str}"
 
-                # 写入标注的txt文件
                 txt_full_path = save_dir / f"{Path(img_name).stem}.txt"
                 self.write_txt(txt_full_path, label_str, mode="a")
 
-            # 复制图像到转换后目录
             img_full_path = img_dir / img_name
             shutil.copy2(img_full_path, save_dir)
 

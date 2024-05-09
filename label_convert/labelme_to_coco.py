@@ -209,41 +209,30 @@ class LabelmeToCOCO:
                 points = np.array(shape.get("points"))
 
                 if shape_type == RECTANGLE:
+                    seg_points = [np.ravel(points, order="C").tolist()]
+
                     x0, y0 = np.min(points, axis=0)
                     x1, y1 = np.max(points, axis=0)
                     w, h = x1 - x1, y1 - y0
+                    bbox_points = [x0, y0, w, h]
                     area = w * h
 
-                    seg_points = [np.ravel(points, order="C").tolist()]
-
-                    one_anno_dict = {
-                        "segmentation": seg_points,
-                        "area": area,
-                        "iscrowd": 0,
-                        "image_id": img_id,
-                        "bbox": [x0, y0, w, h],
-                        "category_id": label_id,
-                        "id": self.object_id,
-                    }
                 elif shape_type == POLYGON:
-                    mask = np.zeros((img_h, img_w), dtype="uint8")
-                    img_mask = cv2.fillPoly(mask, np.int32([points]), 255)
-                    contours, _ = cv2.findContours(
-                        img_mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE
-                    )
-                    contour = contours[0]
-                    bbox_points = self.get_mini_boxes(contour)
-                    area = cv2.contourArea(contour)
+                    seg_points = points.tolist()
+                    bbox_points, area = self.cvt_poly_to_rect(img_h, img_w, points)
+                else:
+                    print(f"Current {shape_type} is not supported!")
+                    continue
 
-                    one_anno_dict = {
-                        "segmentation": points.tolist(),
-                        "area": area,
-                        "iscrowd": 0,
-                        "image_id": img_id,
-                        "bbox": bbox_points,
-                        "category_id": label_id,
-                        "id": self.object_id,
-                    }
+                one_anno_dict = {
+                    "segmentation": seg_points,
+                    "area": area,
+                    "iscrowd": 0,
+                    "image_id": img_id,
+                    "bbox": bbox_points,
+                    "category_id": label_id,
+                    "id": self.object_id,
+                }
 
                 anno_list.append(one_anno_dict)
                 self.object_id += 1
@@ -276,10 +265,14 @@ class LabelmeToCOCO:
 
         shutil.copy2(str(file_path), dst_dir)
 
-    def convert_polygon_to_rectangle(
-        self,
-    ):
-        pass
+    def cvt_poly_to_rect(self, img_h: int, img_w: int, points):
+        mask = np.zeros((img_h, img_w), dtype="uint8")
+        img_mask = cv2.fillPoly(mask, np.int32([points]), 255)
+        contours, _ = cv2.findContours(img_mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+        contour = contours[0]
+        bbox_points = self.get_mini_boxes(contour)
+        area = cv2.contourArea(contour)
+        return bbox_points, area
 
     @staticmethod
     def get_mini_boxes(contour) -> List[int]:
