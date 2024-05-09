@@ -7,8 +7,9 @@ import random
 import shutil
 import time
 from pathlib import Path
-from typing import Union
+from typing import List, Union
 
+import cv2
 import numpy as np
 from tqdm import tqdm
 
@@ -182,12 +183,14 @@ class LabelmeToCOCO:
             raw_json_path = img_path.with_suffix(".json")
             raw_json_data = self.read_json(raw_json_path)
 
+            img_h = raw_json_data.get("imageHeight")
+            img_w = raw_json_data.get("imageWidth")
             img_info = {
                 "date_captured": str(self.cur_year),
                 "file_name": new_img_name,
                 "id": img_id,
-                "height": raw_json_data.get("imageHeight"),
-                "width": raw_json_data.get("imageWidth"),
+                "height": img_h,
+                "width": img_w,
             }
             anno["images"].append(img_info)
 
@@ -208,7 +211,8 @@ class LabelmeToCOCO:
                 if shape_type == RECTANGLE:
                     x0, y0 = np.min(points, axis=0)
                     x1, y1 = np.max(points, axis=0)
-                    area = (x1 - x0) * (y1 - y0)
+                    w, h = x1 - x1, y1 - y0
+                    area = w * h
 
                     seg_points = [np.ravel(points, order="C").tolist()]
 
@@ -217,12 +221,29 @@ class LabelmeToCOCO:
                         "area": area,
                         "iscrowd": 0,
                         "image_id": img_id,
-                        "bbox": [x0, y0, x1, y1],
+                        "bbox": [x0, y0, w, h],
                         "category_id": label_id,
                         "id": self.object_id,
                     }
                 elif shape_type == POLYGON:
-                    pass
+                    mask = np.zeros((img_h, img_w), dtype="uint8")
+                    img_mask = cv2.fillPoly(mask, np.int32([points]), 255)
+                    contours, _ = cv2.findContours(
+                        img_mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE
+                    )
+                    contour = contours[0]
+                    bbox_points = self.get_mini_boxes(contour)
+                    area = cv2.contourArea(contour)
+
+                    one_anno_dict = {
+                        "segmentation": points.tolist(),
+                        "area": area,
+                        "iscrowd": 0,
+                        "image_id": img_id,
+                        "bbox": bbox_points,
+                        "category_id": label_id,
+                        "id": self.object_id,
+                    }
 
                 anno_list.append(one_anno_dict)
                 self.object_id += 1
@@ -254,6 +275,37 @@ class LabelmeToCOCO:
             raise FileExistsError(file_path)
 
         shutil.copy2(str(file_path), dst_dir)
+
+    def convert_polygon_to_rectangle(
+        self,
+    ):
+        pass
+
+    @staticmethod
+    def get_mini_boxes(contour) -> List[int]:
+        bounding_box = cv2.minAreaRect(contour)
+        points = sorted(list(cv2.boxPoints(bounding_box)), key=lambda x: x[0])
+
+        index_1, index_2, index_3, index_4 = 0, 1, 2, 3
+        if points[1][1] > points[0][1]:
+            index_1 = 0
+            index_4 = 1
+        else:
+            index_1 = 1
+            index_4 = 0
+        if points[3][1] > points[2][1]:
+            index_2 = 2
+            index_3 = 3
+        else:
+            index_2 = 3
+            index_3 = 2
+
+        box = [points[index_1], points[index_2], points[index_3], points[index_4]]
+        box = np.round(box).astype(np.int32).tolist()
+        left_top, right_bottom = box[0], box[2]
+        box_w = right_bottom[0] - left_top[0]
+        box_h = right_bottom[1] - left_top[1]
+        return left_top + [box_w, box_h]
 
 
 def main():
