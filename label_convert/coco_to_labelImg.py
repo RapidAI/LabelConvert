@@ -7,6 +7,7 @@ import shutil
 from pathlib import Path
 from typing import Any, Dict, List, Tuple, Union
 
+import cv2
 import numpy as np
 from tqdm import tqdm
 
@@ -65,21 +66,32 @@ class COCOTolabelImg:
         id_img_dict = {v["id"]: v for v in data.get("images")}
         all_annotaions = data.get("annotations")
         for one_anno in tqdm(all_annotaions):
-            image_info = id_img_dict.get(one_anno["image_id"])
-            img_name = image_info.get("file_name")
-            img_height = image_info.get("height")
-            img_width = image_info.get("width")
+            img_info = id_img_dict.get(one_anno["image_id"])
+            img_name = img_info.get("file_name")
+            img_height = img_info.get("height")
+            img_width = img_info.get("width")
+            category_id = int(one_anno.get("category_id")) - 1
 
-            seg_info = one_anno.get("segmentation")
-            if seg_info:
-                bbox = self.get_bbox(seg_info)
+            bbox_info = one_anno.get("bbox", None)
+            seg_info = one_anno.get("segmentation", None)
+
+            if bbox_info:
+                x0, y0, w, h = bbox_info
+                xyxy_bbox = [x0, y0, x0 + w, y0 + h]
+                xywh = self.xyxy_to_xywh(xyxy_bbox, img_width, img_height)
+            elif seg_info:
+                points = np.array(seg_info).reshape(4, 2)
+                bbox = self.get_bbox_from_poly(img_height, img_width, points)
                 xywh = self.xyxy_to_xywh(bbox, img_width, img_height)
-                category_id = int(one_anno.get("category_id")) - 1
-                xywh_str = " ".join([str(v) for v in xywh])
-                label_str = f"{category_id} {xywh_str}"
+            else:
+                print("The bbox and segmentation are all None, skip current anno.")
+                continue
 
-                txt_full_path = save_dir / f"{Path(img_name).stem}.txt"
-                self.write_txt(txt_full_path, label_str, mode="a")
+            xywh_str = " ".join([str(v) for v in xywh])
+            label_str = f"{category_id} {xywh_str}"
+
+            txt_full_path = save_dir / f"{Path(img_name).stem}.txt"
+            self.write_txt(txt_full_path, label_str, mode="a")
 
             img_full_path = img_dir / img_name
             shutil.copy2(img_full_path, save_dir)
@@ -94,18 +106,42 @@ class COCOTolabelImg:
         class_info = [value["name"] for value in categories_dict]
         self.write_txt(save_dir / "classes.txt", class_info)
 
-    def get_bbox(self, seg_info: List[List[float]]) -> List[float]:
-        seg_info = np.array(seg_info[0]).reshape(4, 2)
-        x0, y0 = np.min(seg_info, axis=0)
-        x1, y1 = np.max(seg_info, axis=0)
-        bbox = [x0, y0, x1, y1]
+    def get_bbox_from_poly(
+        self, img_h: int, img_w: int, points: np.ndarray
+    ) -> List[float]:
+        mask = np.zeros((img_h, img_w), dtype="uint8")
+        img_mask = cv2.fillPoly(mask, np.int32([points]), 255)
+        contours, _ = cv2.findContours(img_mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+        contour = contours[0]
+        bbox = self.get_mini_boxes(contour)
         return bbox
 
     @staticmethod
-    def write_txt(save_path: str, content: List[str], mode="w") -> None:
-        if not isinstance(save_path, str):
-            save_path = str(save_path)
+    def get_mini_boxes(contour) -> List[int]:
+        bounding_box = cv2.minAreaRect(contour)
+        points = sorted(list(cv2.boxPoints(bounding_box)), key=lambda x: x[0])
 
+        index_1, index_2, index_3, index_4 = 0, 1, 2, 3
+        if points[1][1] > points[0][1]:
+            index_1 = 0
+            index_4 = 1
+        else:
+            index_1 = 1
+            index_4 = 0
+        if points[3][1] > points[2][1]:
+            index_2 = 2
+            index_3 = 3
+        else:
+            index_2 = 3
+            index_3 = 2
+
+        box = [points[index_1], points[index_2], points[index_3], points[index_4]]
+        box = np.round(box).astype(np.int32).tolist()
+        left_top, right_bottom = box[0], box[2]
+        return left_top + right_bottom
+
+    @staticmethod
+    def write_txt(save_path: str, content: List[str], mode="w") -> None:
         if isinstance(content, str):
             content = [content]
 
