@@ -13,6 +13,8 @@ import numpy as np
 from tqdm import tqdm
 
 ValueType = Union[str, Path, None]
+RECTANGLE = "rectangle"
+POLYGON = "polygon"
 
 
 class LabelmeToCOCO:
@@ -192,24 +194,36 @@ class LabelmeToCOCO:
             shapes = raw_json_data.get("shapes", [])
             anno_list = []
             for shape in shapes:
+                shape_type = shape.get("shape_type")
+                if shape_type not in [RECTANGLE, POLYGON]:
+                    print(
+                        f"Current shape type is {shape_type}, not between {RECTANGLE} and {POLYGON}, skip"
+                    )
+                    continue
+
                 label_name = shape.get("label")
                 label_id = self.cls_to_idx[label_name]
-
                 points = np.array(shape.get("points"))
-                x0, y0 = np.min(points, axis=0)
-                x1, y1 = np.max(points, axis=0)
-                area = (x1 - x0) * (y1 - y0)
 
-                seg_points = [np.ravel(points, order="C").tolist()]
-                one_anno_dict = {
-                    "segmentation": seg_points,
-                    "area": area,
-                    "iscrowd": 0,
-                    "image_id": img_id,
-                    "bbox": [x0, y0, x1, y1],
-                    "category_id": label_id,
-                    "id": self.object_id,
-                }
+                if shape_type == RECTANGLE:
+                    x0, y0 = np.min(points, axis=0)
+                    x1, y1 = np.max(points, axis=0)
+                    area = (x1 - x0) * (y1 - y0)
+
+                    seg_points = [np.ravel(points, order="C").tolist()]
+
+                    one_anno_dict = {
+                        "segmentation": seg_points,
+                        "area": area,
+                        "iscrowd": 0,
+                        "image_id": img_id,
+                        "bbox": [x0, y0, x1, y1],
+                        "category_id": label_id,
+                        "id": self.object_id,
+                    }
+                elif shape_type == POLYGON:
+                    pass
+
                 anno_list.append(one_anno_dict)
                 self.object_id += 1
             anno["annotations"].extend(anno_list)
@@ -244,7 +258,11 @@ class LabelmeToCOCO:
 
 def main():
     parser = argparse.ArgumentParser("Datasets converter from labelme to COCO")
-    parser.add_argument("--data_dir", type=str, default=None)
+    parser.add_argument(
+        "--data_dir",
+        type=str,
+        default="/Users/joshuawang/projects/_self/LabelConvert/data",
+    )
     parser.add_argument("--save_dir", type=str, default=None)
     parser.add_argument("--val_ratio", type=float, default=0.2)
     parser.add_argument("--have_test", action="store_true", default=False)
