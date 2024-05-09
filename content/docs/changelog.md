@@ -10,6 +10,9 @@ description: ""
 publishdate: "2023-09-08"
 ---
 
+#### 2024-05-09 v0.1.3 update:
+修复issue [#11](https://github.com/RapidAI/LabelConvert/issues/11) [#12](https://github.com/RapidAI/LabelConvert/issues/12) [#13](https://github.com/RapidAI/LabelConvert/issues/13)
+
 #### 2024-04-24 v0.1.0 ~ v0.1.2 update:
 - 支持yolov5到yolov8之间相互转换
 - 修复描述不一致问题
