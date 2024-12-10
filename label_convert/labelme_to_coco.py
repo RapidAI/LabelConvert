@@ -3,19 +3,21 @@
 # @Contact: liekkaskono@163.com
 import argparse
 import json
+import math
 import random
 import shutil
 import time
 from pathlib import Path
-from typing import List, Union
+from typing import List, Tuple, Union
 
 import cv2
 import numpy as np
 from tqdm import tqdm
 
 ValueType = Union[str, Path, None]
-RECTANGLE = "rectangle"
-POLYGON = "polygon"
+RECTANGLE: str = "rectangle"
+POLYGON: str = "polygon"
+CIRCLE: str = "circle"
 
 
 class LabelmeToCOCO:
@@ -64,9 +66,7 @@ class LabelmeToCOCO:
 
         self.categories = self._get_category()
 
-    def __call__(
-        self,
-    ):
+    def __call__(self):
         img_list = self.get_img_list()
         if not img_list:
             raise ValueError(f"{self.data_dir} is empty!")
@@ -146,9 +146,7 @@ class LabelmeToCOCO:
         }
         return annotation_info
 
-    def _get_category(
-        self,
-    ):
+    def _get_category(self):
         json_list = Path(self.data_dir).glob("*.json")
         all_categories = []
         for json_path in json_list:
@@ -198,9 +196,9 @@ class LabelmeToCOCO:
             anno_list = []
             for shape in shapes:
                 shape_type = shape.get("shape_type")
-                if shape_type not in [RECTANGLE, POLYGON]:
+                if shape_type not in [RECTANGLE, POLYGON, CIRCLE]:
                     print(
-                        f"Current shape type is {shape_type}, not between {RECTANGLE} and {POLYGON}, skip"
+                        f"Current shape type is {shape_type}, not between {RECTANGLE}, {CIRCLE} and {POLYGON}, skip"
                     )
                     continue
 
@@ -209,17 +207,25 @@ class LabelmeToCOCO:
                 points = np.array(shape.get("points"))
 
                 if shape_type == RECTANGLE:
-                    seg_points = [np.ravel(points, order="C").tolist()]
-
                     x0, y0 = np.min(points, axis=0)
                     x1, y1 = np.max(points, axis=0)
-                    w, h = x1 - x1, y1 - y0
+                    seg_points = [[x0, y0, x1, y0, x1, y1, x0, y1]]
+
+                    w, h = x1 - x0, y1 - y0
                     bbox_points = [x0, y0, w, h]
                     area = w * h
-
                 elif shape_type == POLYGON:
                     seg_points = points.tolist()
                     bbox_points, area = self.cvt_poly_to_rect(img_h, img_w, points)
+                elif shape_type == CIRCLE:
+                    circle_center, radius_point = points.tolist()
+                    x0, y0, x1, y1 = self.cvt_circle_to_rect(
+                        circle_center, radius_point
+                    )
+                    seg_points = [[x0, y0, x1, y0, x1, y1, x0, y1]]
+                    w, h = x1 - x0, y1 - y0
+                    bbox_points = [x0, y0, w, h]
+                    area = w * h
                 else:
                     print(f"Current {shape_type} is not supported!")
                     continue
@@ -300,13 +306,31 @@ class LabelmeToCOCO:
         box_h = right_bottom[1] - left_top[1]
         return left_top + [box_w, box_h]
 
+    @staticmethod
+    def cvt_circle_to_rect(circle_center: float, radius_point: float) -> Tuple[float]:
+        """
+        根据圆心和圆上一点计算正方形边界框的左上角和右下角坐标。
+        modified from https://blog.csdn.net/jacke121/article/details/137387901
+        """
+        # 计算半径
+        radius = math.sqrt(
+            (circle_center[0] - radius_point[0]) ** 2
+            + (circle_center[1] - radius_point[1]) ** 2
+        )
+
+        # 计算正方形边界框的左上角和右下角坐标
+        x0, y0 = circle_center[0] - radius, circle_center[1] - radius
+        x1, y1 = circle_center[0] + radius, circle_center[1] + radius
+
+        return x0, y0, x1, y1
+
 
 def main():
     parser = argparse.ArgumentParser("Datasets converter from labelme to COCO")
     parser.add_argument(
         "--data_dir",
         type=str,
-        default="/Users/joshuawang/projects/_self/LabelConvert/data",
+        default="/Users/jiahuawang/projects/LabelConvert/tests/test_files/labelme_dataset",
     )
     parser.add_argument("--save_dir", type=str, default=None)
     parser.add_argument("--val_ratio", type=float, default=0.2)
