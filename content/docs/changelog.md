@@ -10,6 +10,8 @@ description: ""
 publishdate: "2023-09-08"
 ---
 
+后续更新日志将会移步到[release](https://github.com/RapidAI/LabelConvert/releases)。当前界面不再更新。
+
 #### 2024-05-09 v0.1.3 update:
 修复issue [#11](https://github.com/RapidAI/LabelConvert/issues/11) [#12](https://github.com/RapidAI/LabelConvert/issues/12) [#13](https://github.com/RapidAI/LabelConvert/issues/13)
 
