@@ -198,7 +198,7 @@ class LabelmeToCOCO:
                 shape_type = shape.get("shape_type")
                 if shape_type not in [RECTANGLE, POLYGON, CIRCLE]:
                     print(
-                        f"Current shape type is {shape_type}, not between {RECTANGLE}, {CIRCLE} and {POLYGON}, skip"
+                        f"Current shape type is {shape_type}, not in [{RECTANGLE},{CIRCLE},{POLYGON}], skip"
                     )
                     continue
 
