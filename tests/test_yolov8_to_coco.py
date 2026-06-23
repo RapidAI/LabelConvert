@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
-# @Author: SWHL
-# @Contact: liekkaskono@163.com
+# @Author: Lwen1243
+# @Contact: 1198807618@qq.com
 import shutil
 import sys
 from pathlib import Path
