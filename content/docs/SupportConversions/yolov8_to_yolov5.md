@@ -15,7 +15,7 @@ publishdate: "2024-04-23"
 
 支持标注格式为矩形框和多边形框。
 
-#### YOLOv5数据结构如下
+#### YOLOv8数据结构如下
 
 {{< alert text="具体结构示例文件，可移步：[yolov8_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/yolov8_dataset)" />}}
 
