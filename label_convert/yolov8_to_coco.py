@@ -190,7 +190,9 @@ class YOLOv8ToCOCO:
         for i, one_line in enumerate(label_list):
             label_info = one_line.split(" ")
             if len(label_info) < 5:
-                warnings.warn(f"The {i+1} line of the {label_path} has been corrupted.")
+                warnings.warn(
+                    f"The {i + 1} line of the {label_path} has been corrupted."
+                )
                 continue
 
             category_id, vertex_info = label_info[0], label_info[1:]

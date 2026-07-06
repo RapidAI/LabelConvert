@@ -1,0 +1,134 @@
+site_name: LabelConvert
+site_url: https://rapidai.github.io/LabelConvert/
+site_author: SWHL
+site_description:
+  目标检测和图像分割的数据集格式转换工具，支持labelme、labelImg与YOLO、VOC和COCO 数据集格式之间的相互转换。
+
+repo_name: RapidAI/LabelConvert
+repo_url: https://github.com/RapidAI/LabelConvert
+
+copyright: Copyright &copy; 2026 Maintained by RapidAI.
+
+theme:
+  name: material
+  language: zh
+  custom_dir: overrides
+  features:
+    - announce.dismiss
+    - content.tooltips
+    - content.code.copy
+    - content.tabs.link
+    - content.footnote.tooltips
+    - navigation.expand  # 默认打开所有的字节
+    - navigation.tabs # 顶级索引被作为tab
+    - navigation.tabs.sticky # tab始终可见
+    - navigation.top # 开启顶部导航栏
+    - navigation.tracking # 导航栏跟踪
+    - navigation.footer
+    - navigation.indexes
+    - search.highlight # 搜索高亮
+    - search.share # 搜索分享
+    - search.suggest # 搜索建议
+    - toc.follow # 目录跟踪-页面右侧的小目录
+
+  palette:
+    - media: "(prefers-color-scheme)" # 系统主题
+      toggle:
+        icon: material/theme-light-dark
+        name: 系统主题
+    - media: "(prefers-color-scheme: light)" # 亮色主题
+      scheme: default
+      primary: white
+      accent: light blue
+      toggle:
+        icon: material/weather-sunny
+        name: 明亮主题
+    - media: "(prefers-color-scheme: dark)" # 暗色主题
+      scheme: slate
+      primary: black
+      accent: yellow
+      toggle:
+        icon: material/weather-night
+        name: 暗黑主题
+
+  favicon: favicon.svg
+  icon:
+    logo: material/trophy
+    previous: fontawesome/solid/angle-left
+    next: fontawesome/solid/angle-right
+    repo: fontawesome/brands/github
+    tag:
+      default-tag: fontawesome/solid/tag
+      hardware-tag: fontawesome/solid/microchip
+      software-tag: fontawesome/solid/laptop-code
+
+plugins:
+  - blog:
+      archive: false
+      post_date_format: short
+      blog_toc: true
+      categories_toc: true
+      pagination: false
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - git-committers:
+      repository: SWHL/AI-Competition-Collections
+      branch: main
+      token: !!python/object/apply:os.getenv ["MKDOCS_GIT_COMMITTERS_APIKEY"]
+  - git-revision-date-localized:
+      enable_creation_date: true
+
+extra_css:
+  - stylesheets/extra.css
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css
+
+markdown_extensions:
+  - abbr
+  - attr_list
+  - pymdownx.snippets
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - footnotes
+  - def_list
+  - md_in_html
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+        anchor_linenums: true
+        line_spans: __span
+        pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+
+nav:
+  - 概览: index.md
+  - 支持的转换格式:
+    - labelImg → YOLOv5: support_conversions/labelimg_to_yolov5.md
+    - labelImg → PubLayout: support_conversions/labelimg_to_publayout.md
+    - COCO → labelImg youlo: support_conversions/coco_to_labelimg.md
+    - YOLOv5 → COCO: support_conversions/yolov5_to_coco.md
+    - YOLOv5 → YOLOv8: support_conversions/yolov5_to_yolov8.md
+    - YOLOv8 → YOLOv5: support_conversions/yolov8_to_yolov5.md
+    - labelme → COCO: support_conversions/labelme_to_coco.md
+    - YOLOv5 YAML → COCO: support_conversions/yolov5_yaml_to_coco.md
+    - Darnet → COCO:  support_conversions/labelme_to_coco.md
+  - 可视化COCO数据集: support_conversions/vis_coco.md

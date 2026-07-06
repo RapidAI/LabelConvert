@@ -1,3 +1,10 @@
+---
+comments: true
+hide:
+  - navigation
+  - toc
+---
+
 <div align="center">
   <div align="center">
     <img src="https://github.com/RapidAI/LabelConvert/releases/download/v0/LabelConvertv3.png" width="55%" height="55%"/>
@@ -16,13 +23,9 @@
 
 </div>
 
-## Introduction
+目标检测和图像分割的数据集格式转换工具，支持 **labelme、labelImg与YOLO、VOC和COCO** 数据集格式之间的相互转换。
 
-A tool for object detection and image segmentation dataset format conversion.
-
-Supports conversion between labelme tool annotated data, labelImg tool annotated data, YOLO, PubLayNet and COCO data set formats.
-
-## Supported conversions
+### 支持的转换
 
 ```mermaid
 flowchart LR
@@ -41,23 +44,8 @@ H --> J
 H --> B
 ```
 
-## Installation
+### 安装
 
-```bash
+```bash {linenos=table}
 pip install label_convert
 ```
-
-## Documentation
-
-Full documentation can be found on [docs](https://rapidai.github.io/LabelConvert/docs) in Chinese.
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-
-[Apache 2.0](https://choosealicense.com/licenses/apache-2.0/)

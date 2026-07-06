@@ -1,0 +1,64 @@
+#### 简介
+
+一键转换 [labelme](https://github.com/wkentaro/labelme) 标注的数据格式为 COCO 格式
+
+#### labelme 结构如下
+
+{{< alert text="具体结构示例文件，可移步：[labelme_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/labelme_dataset)" />}}
+
+```text {linenos=table}
+labelme_dataset
+├── val_0001.jpg
+├── val_0001.json
+├── val_0002.jpg
+└── val_0002.json
+```
+
+#### 转换
+
+```bash {linenos=table}
+labelme_to_coco --data_dir dataset/labelme_dataset \
+                --save_dir dataset/coco_dataset \
+                --val_ratio 0.2 \
+                --have_test \
+                --test_ratio 0.2
+```
+
+- `--data_dir`: 数据集所在目录。示例为 `dataset/labelme_dataset`
+- `--save_dir`: 保存转换后的数据集目录。默认为 `dataset/labelme_dataset_coco`
+- `--val_ratio`: 验证集所占比例，示例为总量的 0.2
+- `--have_test`: 是否划出测试集，示例为 `False`，如果想要划分测试集，直接加上该参数即可。
+- `--test_ratio`: 测试集的比例，示例为总量的 0.2
+
+#### 转换后结构如下
+
+{{< alert text="具体结构示例文件，可移步：[COCO_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/COCO_dataset)" />}}
+
+```text
+COCO_dataset
+├── annotations
+│   ├── instances_train2017.json
+│   └── instances_val2017.json
+├── train2017
+│   ├── 000000000001.jpg
+│   └── 000000000002.jpg
+└── val2017
+    └── 000000000002.jpg
+```
+
+<script src="https://giscus.app/client.js"
+        data-repo="RapidAI/LabelConvert"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzODkwNDExMDY="
+        data-category="Q&A"
+        data-category-id="DIC_kwDOFzBL0s4CYoY-"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
