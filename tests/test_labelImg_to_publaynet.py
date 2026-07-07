@@ -4,6 +4,7 @@
 import sys
 import tempfile
 from pathlib import Path
+from time import sleep
 
 cur_dir = Path(__file__).resolve().parent
 root_dir = cur_dir.parent
@@ -24,6 +25,8 @@ def test_normal():
         save_dir = Path(save_dir)
         convert = LabelImgToPubLayNet(data_dir=data_dir, save_dir=save_dir)
         convert()
+
+        sleep(0.5)
 
         train_data_dir = save_dir / "train"
         assert train_data_dir.exists()
