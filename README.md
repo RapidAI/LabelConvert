@@ -43,7 +43,7 @@ H --> B
 
 ## Installation
 
-```bash
+```bash linenums="1"
 pip install label_convert
 ```
 

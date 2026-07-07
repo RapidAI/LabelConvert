@@ -46,6 +46,6 @@ H --> B
 
 ### 安装
 
-```bash {linenos=table}
+```bash linenums="1"
 pip install label_convert
 ```

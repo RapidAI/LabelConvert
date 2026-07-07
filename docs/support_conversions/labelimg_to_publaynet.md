@@ -1,12 +1,18 @@
+---
+comments: true
+---
+
 #### 简介
 
 将 labelImg 格式数据集转换为 PubLayNet 格式。
 
 #### labelImg 结构如下
 
-{{< alert text="具体结构示例文件，可移步：[labelImg_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/labelImg_dataset)" />}}
+!!! tip
 
-```text {linenos=table}
+    具体结构示例文件，可移步：[labelImg_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/labelImg_dataset)
+
+```text linenums="1"
 labelImg_dataset
 ├── classes.txt
 ├── images(13).jpg
@@ -24,7 +30,7 @@ labelImg_dataset
 
 #### 转换
 
-```bash {linenos=table}
+```bash linenums="1"
 labelImg_to_publaynet --data_dir dataset/labelImg_dataset \
                        --val_ratio 0.2 \
                        --have_test \
@@ -39,9 +45,11 @@ labelImg_to_publaynet --data_dir dataset/labelImg_dataset \
 
 #### 转换后结构如下
 
-{{< alert text="具体结构示例文件，可移步：[publaynet_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/publaynet_dataset)" />}}
+!!! tip
 
-````text {linenos=table}
+    具体结构示例文件，可移步：[publaynet_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/publaynet_dataset)
+
+````text linenums="1"
 publaynet_dataset
 ├── test
 │   ├── images5.jpg
@@ -68,20 +76,3 @@ publaynet_dataset
 │   └── images7.txt
 └── val.json
 ````
-
-<script src="https://giscus.app/client.js"
-        data-repo="RapidAI/LabelConvert"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkzODkwNDExMDY="
-        data-category="Q&A"
-        data-category-id="DIC_kwDOFzBL0s4CYoY-"
-        data-mapping="title"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>

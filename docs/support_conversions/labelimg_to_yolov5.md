@@ -1,12 +1,18 @@
+---
+comments: true
+---
+
 #### 简介
 
 将 [labelImg](https://github.com/tzutalin/labelImg) 标注的数据集格式转换为 YOLO 格式。
 
 #### labelImg 结构如下
 
-{{< alert text="具体结构示例文件，可移步：[labelImg_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/labelImg_dataset)" />}}
+!!! tip
 
-````text {linenos=table}
+    具体结构示例文件，可移步：[labelImg_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/labelImg_dataset)
+
+````text linenums="1"
 labelImg_dataset
 ├── classes.txt
 ├── images(13).jpg
@@ -24,7 +30,7 @@ labelImg_dataset
 
 #### 转换
 
-```bash {linenos=table}
+```bash linenums="1"
 labelImg_to_yolov5 --data_dir dataset/labelImg_dataset \
                    --save_dir dataset/labelImg_dataset_output \
                    --val_ratio 0.2 \
@@ -40,9 +46,11 @@ labelImg_to_yolov5 --data_dir dataset/labelImg_dataset \
 
 #### 转换后结构如下
 
-{{< alert text="具体结构示例文件，可移步：[yolov5_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/yolov5_dataset)" />}}
+!!! tip
 
-````text {linenos=table}
+    具体结构示例文件，可移步：[yolov5_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/yolov5_dataset)
+
+````text linenums="1"
 labelImg_dataset_output/
 ├── classes.txt
 ├── images
@@ -66,23 +74,6 @@ labelImg_dataset_output/
 
 #### 进一步转换为 COCO 格式
 
-```bash {linenos=table}
+```bash linenums="1"
 yolov5_to_coco --data_dir dataset/labellImg_dataset_output
 ````
-
-<script src="https://giscus.app/client.js"
-        data-repo="RapidAI/LabelConvert"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkzODkwNDExMDY="
-        data-category="Q&A"
-        data-category-id="DIC_kwDOFzBL0s4CYoY-"
-        data-mapping="title"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>

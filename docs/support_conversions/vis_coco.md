@@ -1,6 +1,10 @@
+---
+comments: true
+---
+
 #### 可视化
 
-```bash {linenos=table}
+```bash linenums="1"
 vis_coco --img_id 1 --json_path dataset/COCO_format/annotations/instances_train2017.json -img_dir dataset/COCO_format/train2017
 ```
 
@@ -10,7 +14,7 @@ vis_coco --img_id 1 --json_path dataset/COCO_format/annotations/instances_train2
 
 #### JSON 格式示例
 
-```json {linenos=table}
+```json linenums="1"
 {
     "info": {
       "year": 2022,
@@ -66,20 +70,3 @@ vis_coco --img_id 1 --json_path dataset/COCO_format/annotations/instances_train2
 #### 相关信息
 
 - [MSCOCO 数据标注详解](https://blog.csdn.net/wc781708249/article/details/79603522)
-
-<script src="https://giscus.app/client.js"
-        data-repo="RapidAI/LabelConvert"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkzODkwNDExMDY="
-        data-category="Q&A"
-        data-category-id="DIC_kwDOFzBL0s4CYoY-"
-        data-mapping="title"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>

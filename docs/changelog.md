@@ -1,13 +1,5 @@
 ---
-weight: 43
-date: "2023-09-15"
-draft: false
-author: "SWHL"
-title: "更新日志"
-icon: "update"
-toc: true
-description: ""
-publishdate: "2023-09-08"
+comments: true
 ---
 
 后续更新日志将会移步到 [release](https://github.com/RapidAI/LabelConvert/releases)。当前界面不再更新。
@@ -52,20 +44,3 @@ publishdate: "2023-09-08"
 #### 2023-09-15 v0.0.3 update
 
 - Add labelImg to publaynet format.
-
-<script src="https://giscus.app/client.js"
-        data-repo="RapidAI/LabelConvert"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkzODkwNDExMDY="
-        data-category="Q&A"
-        data-category-id="DIC_kwDOFzBL0s4CYoY-"
-        data-mapping="title"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>

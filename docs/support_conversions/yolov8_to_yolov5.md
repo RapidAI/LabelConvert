@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 #### 简介
 
 将 YOLOv8 格式数据集转换为 YOLOv5 格式。
@@ -6,9 +10,11 @@
 
 #### YOLOv8 数据结构如下
 
-{{< alert text="具体结构示例文件，可移步：[yolov8_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/yolov8_dataset)" />}}
+!!! tip
 
-```text {linenos=table}
+    具体结构示例文件，可移步：[yolov8_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/yolov8_dataset)
+
+```text linenums="1"
 yolov8_dataset
 ├── images
 │   ├── train
@@ -28,7 +34,7 @@ yolov8_dataset
 
 #### 转换
 
-```bash {linenos=table}
+```bash linenums="1"
 yolov8_to_yolov5 --data_dir dataset/yolov5_dataset --mode_list train,val
 ```
 
@@ -39,9 +45,11 @@ yolov8_to_yolov5 --data_dir dataset/yolov5_dataset --mode_list train,val
 
 #### 转换后结构如下
 
-{{< alert text="具体结构示例文件，可移步：[yolov5_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/yolov5_dataset)" />}}
+!!! tip
 
-```text {linenos=table}
+    具体结构示例文件，可移步：[yolov5_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/yolov5_dataset)
+
+```text linenums="1"
 yolov5_dataset
 ├── classes.txt
 ├── images
@@ -53,20 +61,3 @@ yolov5_dataset
 ├── train.txt
 └── val.txt
 ```
-
-<script src="https://giscus.app/client.js"
-        data-repo="RapidAI/LabelConvert"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkzODkwNDExMDY="
-        data-category="Q&A"
-        data-category-id="DIC_kwDOFzBL0s4CYoY-"
-        data-mapping="title"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>

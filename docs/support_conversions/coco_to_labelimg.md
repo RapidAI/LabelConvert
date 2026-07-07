@@ -1,12 +1,18 @@
+---
+comments: true
+---
+
 #### 简介
 
 将 COCO 格式数据集转换为可以直接用 [labelImg](https://github.com/HumanSignal/labelImg) 工具可视化标注的 YOLO 格式。
 
 #### COCO 结构如下
 
-{{< alert text="具体结构示例文件，可移步：[COCO_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/COCO_dataset)" />}}
+!!! tip
 
-```text {linenos=table}
+    具体结构示例文件，可移步：[COCO_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/COCO_dataset)
+
+```text linenums="1" linenums="1"
 COCO_dataset
 ├── annotations
 │   ├── instances_train2017.json
@@ -20,7 +26,7 @@ COCO_dataset
 
 #### 转换
 
-```bash {linenos=table}
+```bash linenums="1"
 coco_to_labelImg --data_dir dataset/COCO_dataset --save_dir dataset/labelImg_format
 ```
 
@@ -31,7 +37,7 @@ coco_to_labelImg --data_dir dataset/COCO_dataset --save_dir dataset/labelImg_for
 
 {{< alert text="具体结构示例文件，可移步：[labelImg_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/labelImg_dataset)" />}}
 
-```text {linenos=table}
+```text linenums="1"
 labelImg_dataset
   ├── train
   │   ├── 000000000001.jpg
@@ -46,27 +52,10 @@ labelImg_dataset
 
 #### labelImg 可视化
 
-```bash {linenos=table}
+```bash linenums="1"
 $ cd dataset/labelImg_dataset
 $ labelImg train train/classes.txt
 
 # or
 $ labelImg val val/classes.txt
 ```
-
-<script src="https://giscus.app/client.js"
-        data-repo="RapidAI/LabelConvert"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkzODkwNDExMDY="
-        data-category="Q&A"
-        data-category-id="DIC_kwDOFzBL0s4CYoY-"
-        data-mapping="title"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>
