@@ -18,23 +18,26 @@ data_dir_name = "yolov5_dataset"
 
 
 def test_normal():
+    save_dir: Path = test_file_dir / f"{data_dir_name}_temp_coco"
+
     data_dir = test_file_dir / data_dir_name
-    converter = YOLOv5ToCOCO(data_dir)
+    converter = YOLOv5ToCOCO(data_dir, save_dir)
     converter()
 
-    save_dir: Path = test_file_dir / f"{data_dir_name}_temp_coco"
-    assert save_dir.exists()
+    try:
+        assert save_dir.exists()
 
-    train_json_path = save_dir / "annotations" / "instances_train2017.json"
-    assert train_json_path.exists()
+        train_json_path = save_dir / "annotations" / "instances_train2017.json"
+        assert train_json_path.exists()
 
-    val_json_path = save_dir / "annotations" / "instances_val2017.json"
-    assert val_json_path.exists()
+        val_json_path = save_dir / "annotations" / "instances_val2017.json"
+        assert val_json_path.exists()
 
-    train_dir: Path = save_dir / "train2017"
-    assert train_dir.exists()
+        train_dir: Path = save_dir / "train2017"
+        assert train_dir.exists()
 
-    val_dir: Path = save_dir / "val2017"
-    assert val_dir.exists()
+        val_dir: Path = save_dir / "val2017"
+        assert val_dir.exists()
 
-    shutil.rmtree(save_dir)
+    finally:
+        shutil.rmtree(save_dir)

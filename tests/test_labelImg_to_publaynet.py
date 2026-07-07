@@ -20,10 +20,9 @@ dataset_name = "labelImg_dataset"
 
 def test_normal():
     data_dir = test_file_dir / dataset_name
-    convert = LabelImgToPubLayNet(data_dir=data_dir)
-    convert()
-
     save_dir = test_file_dir / f"{dataset_name}_publaynet"
+    convert = LabelImgToPubLayNet(data_dir=data_dir, save_dir=save_dir)
+    convert()
 
     train_data_dir = save_dir / "train"
     assert train_data_dir.exists()
