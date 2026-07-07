@@ -12,7 +12,7 @@ comments: true
 
     具体结构示例文件，可移步：[labelImg_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/labelImg_dataset)
 
-````text linenums="1"
+```text linenums="1"
 labelImg_dataset
 ├── classes.txt
 ├── images(13).jpg
@@ -26,7 +26,7 @@ labelImg_dataset
 ├── images6.jpg
 ├── images7.jpg
 └── images7.txt
-````
+```
 
 #### 转换
 
@@ -50,7 +50,7 @@ labelImg_to_yolov5 --data_dir dataset/labelImg_dataset \
 
     具体结构示例文件，可移步：[yolov5_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/yolov5_dataset)
 
-````text linenums="1"
+```text linenums="1"
 labelImg_dataset_output/
 ├── classes.txt
 ├── images
@@ -70,10 +70,10 @@ labelImg_dataset_output/
 ├── test.txt
 ├── train.txt
 └── val.txt
-````
+```
 
 #### 进一步转换为 COCO 格式
 
 ```bash linenums="1"
 yolov5_to_coco --data_dir dataset/labellImg_dataset_output
-````
+```

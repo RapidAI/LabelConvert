@@ -35,7 +35,9 @@ coco_to_labelImg --data_dir dataset/COCO_dataset --save_dir dataset/labelImg_for
 
 #### 转换后结构如下
 
-{{< alert text="具体结构示例文件，可移步：[labelImg_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/labelImg_dataset)" />}}
+!!! tip
+
+    具体结构示例文件，可移步：[labelImg_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/labelImg_dataset)
 
 ```text linenums="1"
 labelImg_dataset

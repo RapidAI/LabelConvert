@@ -49,7 +49,7 @@ labelImg_to_publaynet --data_dir dataset/labelImg_dataset \
 
     具体结构示例文件，可移步：[publaynet_dataset](https://github.com/RapidAI/LabelConvert/tree/main/tests/test_files/publaynet_dataset)
 
-````text linenums="1"
+```text linenums="1"
 publaynet_dataset
 ├── test
 │   ├── images5.jpg
@@ -75,4 +75,4 @@ publaynet_dataset
 │   ├── images7.jpg
 │   └── images7.txt
 └── val.json
-````
+```

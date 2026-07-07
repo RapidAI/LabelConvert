@@ -4,9 +4,7 @@ comments: true
 
 #### 简介
 
-将 YOLOv5 格式数据集转换为 COCO 格式。
-
-支持标注格式为矩形框和多边形框。
+将 YOLOv5 格式数据集转换为 COCO 格式。支持标注格式为矩形框和多边形框。
 
 #### YOLOv5 数据结构如下
 
@@ -16,17 +14,17 @@ comments: true
 
 ```text linenums="1"
 yolov5_dataset
-├── classes.txt
-├── non_labels  # 通常用来放负样本
-│   └── bg1.jpeg
-├── images
-│   ├── images(13).jpg
-│   └── images(3).jpg
-├── labels
-│   ├── images(13).txt
-│   └── images(3).txt
-├── train.txt
-└── val.txt
+    ├── classes.txt
+    ├── non_labels  # 通常用来放负样本
+    │   └── bg1.jpeg
+    ├── images
+    │   ├── images(13).jpg
+    │   └── images(3).jpg
+    ├── labels
+    │   ├── images(13).txt
+    │   └── images(3).txt
+    ├── train.txt
+    └── val.txt
 ```
 
 #### 转换

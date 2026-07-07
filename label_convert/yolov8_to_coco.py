@@ -25,6 +25,7 @@ class YOLOv8ToCOCO:
     ):
         if data_dir is None:
             raise ValueError("data_dir must not be None")
+
         self.data_dir = Path(data_dir)
         self.verify_exists(self.data_dir)
 
@@ -35,8 +36,9 @@ class YOLOv8ToCOCO:
         self.verify_exists(self.label_dir)
 
         if save_dir is None:
-            save_dir = self.data_dir.parent / f"{Path(self.data_dir).name}_coco"
-        self.save_dir = save_dir
+            save_dir = self.data_dir.parent / f"{self.data_dir.name}_coco"
+
+        self.save_dir = Path(save_dir)
         self.mkdir(self.save_dir)
 
         self.yaml_path = yaml_path
@@ -98,13 +100,16 @@ class YOLOv8ToCOCO:
             mode_label_dir = self.label_dir / mode
             if not mode_label_dir.exists():
                 continue
+
             for label_path in mode_label_dir.iterdir():
                 if label_path.suffix != ".txt":
                     continue
+
                 label_list = self.read_txt(str(label_path))
                 for line in label_list:
                     if not line.strip():
                         continue
+
                     parts = line.strip().split()
                     if parts:
                         class_ids.add(int(parts[0]))
@@ -119,6 +124,7 @@ class YOLOv8ToCOCO:
         class_names = [""] * (max_id + 1)
         for cid in class_ids:
             class_names[cid] = f"class_{cid}"
+
         return class_names
 
     def _get_category(self, class_names):
@@ -126,13 +132,8 @@ class YOLOv8ToCOCO:
         for i, name in enumerate(class_names):
             if not name:
                 continue
-            categories.append(
-                {
-                    "supercategory": name,
-                    "id": i,
-                    "name": name,
-                }
-            )
+
+            categories.append({"supercategory": name, "id": i, "name": name})
         return categories
 
     def convert(self, img_list, save_img_dir, mode):
@@ -168,7 +169,11 @@ class YOLOv8ToCOCO:
 
         new_img_name = f"{img_id:012d}.jpg"
         save_img_path = save_img_dir / new_img_name
+
         img_src = cv2.imread(str(img_path))
+        if img_src is None:
+            raise ValueError(f"Failed to read image: {img_path}")
+
         if img_path.suffix.lower() == ".jpg":
             shutil.copyfile(img_path, save_img_path)
         else:

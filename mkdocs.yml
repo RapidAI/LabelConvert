@@ -123,7 +123,7 @@ nav:
   - 概览: index.md
   - 支持的转换格式:
     - labelImg → YOLOv5: support_conversions/labelimg_to_yolov5.md
-    - labelImg → PubLayout: support_conversions/labelimg_to_publaynet.md
+    - labelImg → PubLayNet: support_conversions/labelimg_to_publaynet.md
     - COCO → labelImg YOLO: support_conversions/coco_to_labelimg.md
     - YOLOv5 → COCO: support_conversions/yolov5_to_coco.md
     - YOLOv5 → YOLOv8: support_conversions/yolov5_to_yolov8.md
