@@ -11,7 +11,7 @@ hide:
   </div>
   <br/>
 
-  <a href=""><img src="https://img.shields.io/badge/Python->=3.6,<3.12-aff.svg"></a>
+  <a href=""><img src="https://img.shields.io/badge/Python->=3.8,<3.12-aff.svg"></a>
   <a href=""><img src="https://img.shields.io/badge/OS-Linux%2C%20Win%2C%20Mac-pink.svg"></a>
   <a href="https://github.com/RapidAI/LabelConvert/graphs/contributors"><img src="https://img.shields.io/github/contributors/RapidAI/LabelConvert?color=9ea"></a>
   <a href="https://github.com/RapidAI/LabelConvert/stargazers"><img src="https://img.shields.io/github/stars/RapidAI/LabelConvert?color=ccf" ></a>
