@@ -1,0 +1,72 @@
+[build-system]
+requires = [
+    "setuptools>=77",
+    "wheel",
+    "setuptools-scm>=8",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "label_convert"
+dynamic = ["version", "dependencies"]
+description = "A tool for object detection and image segmentation dataset format conversion. Supports conversion between labelme tool annotated data, labelImg tool annotated data, YOLO, PubLayNet and COCO data set formats."
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.8,<4"
+license = "Apache-2.0"
+authors = [
+    { name = "SWHL", email = "liekkaskono@163.com" },
+]
+keywords = [
+    "convert",
+    "coco",
+    "labelme",
+    "labelImg",
+    "yolov5",
+    "yolox",
+    "yolov6",
+    "yolov8",
+]
+classifiers = [
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+[project.urls]
+Documentation = "https://rapidai.github.io/LabelConvert/"
+Changelog = "https://github.com/RapidAI/LabelConvert/releases"
+
+[project.scripts]
+coco_to_labelImg="label_convert.coco_to_labelImg:main"
+vis_coco="label_convert.vis_coco:main"
+darknet_to_coco="label_convert.darknet_to_coco:main"
+labelImg_to_yolov5="label_convert.labelImg_to_yolov5:main"
+yolov5_to_coco="label_convert.yolov5_to_coco:main"
+yolov5_yaml_to_coco="label_convert.yolov5_yaml_to_coco:main"
+labelImg_to_publaynet="label_convert.labelImg_to_publaynet:main"
+labelme_to_coco="label_convert.labelme_to_coco:main"
+yolov5_to_yolov8="label_convert.yolov5_to_yolov8:main"
+yolov8_to_yolov5="label_convert.yolov8_to_yolov5:main"
+yolov8_to_coco="label_convert.yolov8_to_coco:main"
+
+[tool.setuptools]
+include-package-data = true
+platforms = ["Any"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["label_convert*"]
+exclude = ["tests*"]
+namespaces = false
+
+[tool.setuptools_scm]
+root = "."
+tag_regex = "^v?(?P<version>[0-9]+(?:\\.[0-9]+)*.*)$"
+version_file = "label_convert/_version.py"
+local_scheme = "no-local-version"

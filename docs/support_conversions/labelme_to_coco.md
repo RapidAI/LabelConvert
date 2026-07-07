@@ -4,7 +4,7 @@ comments: true
 
 #### 简介
 
-一键转换 [labelme](https://github.com/wkentaro/labelme) 标注的数据格式为 COCO 格式
+一键转换 [labelme](https://github.com/wkentaro/labelme) 标注的数据格式为 COCO 格式。
 
 #### labelme 结构如下
 

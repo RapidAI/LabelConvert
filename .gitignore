@@ -3,7 +3,7 @@
 *.pyc
 
 *.onnx
-
+label_convert/_version.py
 temp/
 .DS_Store
 

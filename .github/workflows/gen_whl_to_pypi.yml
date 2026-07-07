@@ -18,10 +18,10 @@ jobs:
       - name: Pull latest code
         uses: actions/checkout@v3
 
-      - name: Set up Python 3.7
+      - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
-          python-version: '3.7'
+          python-version: '3.10'
           architecture: 'x64'
 
       - name: Display Python version
@@ -33,32 +33,24 @@ jobs:
           pip install pytest
           pytest tests/test*.py
 
-  GenerateWHL_PushPyPi:
-    needs: UnitTesting
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          architecture: 'x64'
-
-      - name: Run setup.py
+      - name: Install all dependencies
         run: |
           pip install -r requirements.txt
           python -m pip install --upgrade pip
-          pip install wheel get_pypi_latest_version
-          python setup.py bdist_wheel ${{ github.ref_name }}
+          pip install -q build
 
-      # - name: Publish distribution 📦 to Test PyPI
-      #   uses: pypa/gh-action-pypi-publish@v1.5.0
-      #   with:
-      #     password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-      #     repository_url: https://test.pypi.org/legacy/
-      #     packages_dir:  dist/
+      - name: Verify release tag
+        run: |
+          test -n "$GITHUB_REF_NAME"
+          git tag --points-at HEAD | grep -Fx "$GITHUB_REF_NAME"
+          VERSION="${GITHUB_REF_NAME#v}"
+          echo "SETUPTOOLS_SCM_PRETEND_VERSION_FOR_RAPIDOCR=$VERSION" >> "$GITHUB_ENV"
+          echo "Building rapidocr version: $VERSION"
+
+      - name: Build wheel package
+        run: |
+          python -m build --wheel
+          mv dist ../
 
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@v1.5.0

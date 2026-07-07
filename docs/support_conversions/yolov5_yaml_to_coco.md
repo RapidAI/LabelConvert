@@ -4,9 +4,7 @@ comments: true
 
 #### 简介
 
-将以 yaml 文件给出的 YOLOv5 格式数据集转换为 COCO 格式
-
-支持标注格式为矩形框和多边形框。
+将以 yaml 文件给出的 YOLOv5 格式数据集转换为 COCO 格式，支持标注格式为矩形框和多边形框。
 
 #### YOLOv5 yaml 结构如下
 
