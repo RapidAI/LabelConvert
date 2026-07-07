@@ -1,8 +1,8 @@
 # -*- encoding: utf-8 -*-
 # @Author: SWHL
 # @Contact: liekkaskono@163.com
-import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 cur_dir = Path(__file__).resolve().parent
@@ -18,17 +18,16 @@ data_dir_name = "yolov5_dataset"
 
 
 def test_normal():
-    data_dir = test_file_dir / data_dir_name
-    converter = YOLOv5ToYOLOv8(data_dir)
-    converter()
+    with tempfile.TemporaryDirectory() as save_dir:
+        save_dir = Path(save_dir)
+        data_dir = test_file_dir / data_dir_name
+        converter = YOLOv5ToYOLOv8(data_dir, save_dir)
+        converter()
 
-    save_dir: Path = test_file_dir / f"{data_dir_name}_yolov8"
-    assert save_dir.exists()
+        assert save_dir.exists()
 
-    train_img_dir = save_dir / "images" / "train"
-    assert train_img_dir.exists()
+        train_img_dir = save_dir / "images" / "train"
+        assert train_img_dir.exists()
 
-    val_label_dir = save_dir / "labels" / "val"
-    assert val_label_dir.exists()
-
-    shutil.rmtree(save_dir)
+        val_label_dir = save_dir / "labels" / "val"
+        assert val_label_dir.exists()

@@ -1,8 +1,8 @@
 # -*- encoding: utf-8 -*-
 # @Author: SWHL
 # @Contact: liekkaskono@163.com
-import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 cur_dir = Path(__file__).resolve().parent
@@ -19,22 +19,21 @@ data_dir_name = "labelme_dataset"
 
 def test_normal():
     data_dir = test_file_dir / data_dir_name
-    converter = LabelmeToCOCO(data_dir)
-    converter()
+    with tempfile.TemporaryDirectory() as save_dir:
+        save_dir = Path(save_dir)
+        converter = LabelmeToCOCO(data_dir, save_dir)
+        converter()
 
-    save_dir: Path = test_file_dir / f"{data_dir_name}_coco"
-    assert save_dir.exists()
+        assert save_dir.exists()
 
-    train_json_path = save_dir / "annotations" / "instances_train2017.json"
-    assert train_json_path.exists()
+        train_json_path = save_dir / "annotations" / "instances_train2017.json"
+        assert train_json_path.exists()
 
-    val_json_path = save_dir / "annotations" / "instances_val2017.json"
-    assert val_json_path.exists()
+        val_json_path = save_dir / "annotations" / "instances_val2017.json"
+        assert val_json_path.exists()
 
-    train_dir: Path = save_dir / "train2017"
-    assert train_dir.exists()
+        train_dir: Path = save_dir / "train2017"
+        assert train_dir.exists()
 
-    val_dir: Path = save_dir / "val2017"
-    assert val_dir.exists()
-
-    shutil.rmtree(save_dir)
+        val_dir: Path = save_dir / "val2017"
+        assert val_dir.exists()

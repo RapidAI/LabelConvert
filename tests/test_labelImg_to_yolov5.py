@@ -1,8 +1,8 @@
 # -*- encoding: utf-8 -*-
 # @Author: SWHL
 # @Contact: liekkaskono@163.com
-import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 cur_dir = Path(__file__).resolve().parent
@@ -19,22 +19,23 @@ dataset_name = "labelImg_dataset"
 
 
 def test_normal():
-    data_dir = test_file_dir / dataset_name
-    convert = LabelImgToYOLOv5(data_dir)
-    convert()
+    with tempfile.TemporaryDirectory() as save_dir:
+        save_dir = Path(save_dir)
 
-    save_dir = test_file_dir / f"{dataset_name}_yolov5"
+        data_dir = test_file_dir / dataset_name
+        converter = LabelImgToYOLOv5(data_dir, save_dir)
+        converter()
 
-    train_data_dir = save_dir / "non_labels"
-    assert train_data_dir.exists()
+        assert save_dir.exists()
 
-    train_json_path = save_dir / "images"
-    assert train_json_path.exists()
+        train_data_dir = save_dir / "non_labels"
+        assert train_data_dir.exists()
 
-    test_data_dir = save_dir / "labels"
-    assert test_data_dir.exists()
+        train_json_path = save_dir / "images"
+        assert train_json_path.exists()
 
-    test_json_path = save_dir / "classes.txt"
-    assert test_json_path.exists()
+        test_data_dir = save_dir / "labels"
+        assert test_data_dir.exists()
 
-    shutil.rmtree(save_dir)
+        test_json_path = save_dir / "classes.txt"
+        assert test_json_path.exists()

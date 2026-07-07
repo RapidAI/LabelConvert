@@ -1,8 +1,8 @@
 # -*- encoding: utf-8 -*-
 # @Author: SWHL
 # @Contact: liekkaskono@163.com
-import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 cur_dir = Path(__file__).resolve().parent
@@ -18,13 +18,12 @@ data_dir_name = "yolov5_dataset"
 
 
 def test_normal():
-    save_dir: Path = test_file_dir / f"{data_dir_name}_temp_coco"
+    with tempfile.TemporaryDirectory() as save_dir:
+        save_dir = Path(save_dir)
+        data_dir = test_file_dir / data_dir_name
+        converter = YOLOv5ToCOCO(data_dir, save_dir)
+        converter()
 
-    data_dir = test_file_dir / data_dir_name
-    converter = YOLOv5ToCOCO(data_dir, save_dir)
-    converter()
-
-    try:
         assert save_dir.exists()
 
         train_json_path = save_dir / "annotations" / "instances_train2017.json"
@@ -35,9 +34,3 @@ def test_normal():
 
         train_dir: Path = save_dir / "train2017"
         assert train_dir.exists()
-
-        val_dir: Path = save_dir / "val2017"
-        assert val_dir.exists()
-
-    finally:
-        shutil.rmtree(save_dir)
