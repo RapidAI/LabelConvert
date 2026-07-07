@@ -22,7 +22,7 @@ def test_normal():
     converter = YOLOv5ToCOCO(data_dir)
     converter()
 
-    save_dir: Path = test_file_dir / f"{data_dir_name}_coco"
+    save_dir: Path = test_file_dir / f"{data_dir_name}_temp_coco"
     assert save_dir.exists()
 
     train_json_path = save_dir / "annotations" / "instances_train2017.json"
