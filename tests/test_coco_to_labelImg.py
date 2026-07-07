@@ -5,6 +5,7 @@ import shutil
 import sys
 import tempfile
 from pathlib import Path
+from time import sleep
 
 cur_dir = Path(__file__).resolve().parent
 root_dir = cur_dir.parent
@@ -24,6 +25,8 @@ def test_normal():
         data_dir = test_file_dir / data_dir_name
         converter = COCOTolabelImg(data_dir, save_dir)
         converter()
+
+        sleep(2)
 
         assert save_dir.exists()
 

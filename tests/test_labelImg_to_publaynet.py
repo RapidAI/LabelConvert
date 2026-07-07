@@ -26,7 +26,7 @@ def test_normal():
         convert = LabelImgToPubLayNet(data_dir=data_dir, save_dir=save_dir)
         convert()
 
-        sleep(0.5)
+        sleep(2)
 
         train_data_dir = save_dir / "train"
         assert train_data_dir.exists()
