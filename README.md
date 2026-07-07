@@ -49,7 +49,7 @@ pip install label_convert
 
 ## Documentation
 
-Full documentation can be found on [docs](https://rapidai.github.io/LabelConvert/docs) in Chinese.
+Full documentation can be found on [docs](https://rapidai.github.io/LabelConvert) in Chinese.
 
 ## Contributing
 
