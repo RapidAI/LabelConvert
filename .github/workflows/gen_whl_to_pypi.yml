@@ -50,7 +50,6 @@ jobs:
       - name: Build wheel package
         run: |
           python -m build --wheel
-          mv dist ../
 
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@v1.5.0
